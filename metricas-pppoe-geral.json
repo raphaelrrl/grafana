@@ -1,0 +1,2761 @@
+{
+  "apiVersion": "dashboard.grafana.app/v2",
+  "kind": "Dashboard",
+  "metadata": {
+    "name": "vMtK49V4z222",
+    "namespace": "default",
+    "uid": "a6709c11-5329-46a6-bc28-a4de45ff3271",
+    "resourceVersion": "1782878487047995",
+    "generation": 10,
+    "creationTimestamp": "2026-06-30T19:11:09Z",
+    "labels": {
+      "grafana.app/deprecatedInternalID": "56"
+    },
+    "annotations": {
+      "grafana.app/createdBy": "user:efqk2yawd4hs0d",
+      "grafana.app/folder": "",
+      "grafana.app/saved-from-ui": "Grafana v13.1.0 (b309c9bb3b)",
+      "grafana.app/updatedBy": "user:efqk2yawd4hs0d",
+      "grafana.app/updatedTimestamp": "2026-07-01T04:01:27Z"
+    }
+  },
+  "spec": {
+    "annotations": [
+      {
+        "kind": "AnnotationQuery",
+        "spec": {
+          "query": {
+            "kind": "DataQuery",
+            "group": "grafana",
+            "version": "v0",
+            "datasource": {
+              "name": "grafana"
+            },
+            "spec": {
+              "limit": 100,
+              "matchAny": false,
+              "tags": [],
+              "type": "dashboard"
+            }
+          },
+          "enable": true,
+          "hide": true,
+          "iconColor": "rgba(0, 211, 255, 1)",
+          "name": "Annotations & Alerts",
+          "builtIn": true
+        }
+      }
+    ],
+    "cursorSync": "Off",
+    "editable": true,
+    "elements": {
+      "panel-334": {
+        "kind": "Panel",
+        "spec": {
+          "id": 334,
+          "title": "",
+          "description": "",
+          "links": [],
+          "data": {
+            "kind": "QueryGroup",
+            "spec": {
+              "queries": [
+                {
+                  "kind": "PanelQuery",
+                  "spec": {
+                    "query": {
+                      "kind": "DataQuery",
+                      "group": "alexanderzobnin-zabbix-datasource",
+                      "version": "v0",
+                      "datasource": {
+                        "name": "cfqk8kvi756o0c"
+                      },
+                      "spec": {
+                        "application": {
+                          "filter": ""
+                        },
+                        "countTriggersBy": "",
+                        "evaltype": "0",
+                        "functions": [
+                          {
+                            "$$hashKey": "object:61",
+                            "def": {
+                              "category": "Alias",
+                              "defaultParams": [],
+                              "name": "setAlias",
+                              "params": [
+                                {
+                                  "name": "alias",
+                                  "type": "string"
+                                }
+                              ]
+                            },
+                            "params": [
+                              "TOTAL PPPOE ATUAL"
+                            ],
+                            "text": "setAlias(TOTAL PPPOE ATUAL)"
+                          }
+                        ],
+                        "group": {
+                          "filter": "$GRUPO"
+                        },
+                        "host": {
+                          "filter": "$HOST"
+                        },
+                        "item": {
+                          "filter": "PPPoEs Conectados"
+                        },
+                        "itemTag": {
+                          "filter": "/.*/"
+                        },
+                        "macro": {
+                          "filter": ""
+                        },
+                        "options": {
+                          "count": true,
+                          "disableDataAlignment": false,
+                          "minSeverity": 3,
+                          "showDisabledItems": false,
+                          "skipEmptyValues": false,
+                          "useTrends": "default",
+                          "useZabbixValueMapping": false
+                        },
+                        "proxy": {
+                          "filter": ""
+                        },
+                        "queryType": "0",
+                        "resultFormat": "time_series",
+                        "schema": 12,
+                        "table": {
+                          "skipEmptyValues": false
+                        },
+                        "tags": {
+                          "filter": ""
+                        },
+                        "textFilter": "",
+                        "trigger": {
+                          "filter": ""
+                        },
+                        "triggers": {
+                          "acknowledged": 2
+                        }
+                      }
+                    },
+                    "refId": "A",
+                    "hidden": false
+                  }
+                },
+                {
+                  "kind": "PanelQuery",
+                  "spec": {
+                    "query": {
+                      "kind": "DataQuery",
+                      "group": "alexanderzobnin-zabbix-datasource",
+                      "version": "v0",
+                      "datasource": {
+                        "name": "cfqk8kvi756o0c"
+                      },
+                      "spec": {
+                        "application": {
+                          "filter": ""
+                        },
+                        "countTriggersBy": "",
+                        "evaltype": "0",
+                        "functions": [
+                          {
+                            "$$hashKey": "object:61",
+                            "def": {
+                              "category": "Alias",
+                              "defaultParams": [],
+                              "name": "setAlias",
+                              "params": [
+                                {
+                                  "name": "alias",
+                                  "type": "string"
+                                }
+                              ]
+                            },
+                            "params": [
+                              "TOTAL PPPOE ATUAL"
+                            ],
+                            "text": "setAlias(TOTAL PPPOE ATUAL)"
+                          }
+                        ],
+                        "group": {
+                          "filter": "/.*/"
+                        },
+                        "host": {
+                          "filter": "$HOST"
+                        },
+                        "item": {
+                          "filter": "Connected PPPoE"
+                        },
+                        "itemTag": {
+                          "filter": "/.*/"
+                        },
+                        "macro": {
+                          "filter": ""
+                        },
+                        "options": {
+                          "count": true,
+                          "disableDataAlignment": false,
+                          "minSeverity": 3,
+                          "showDisabledItems": false,
+                          "skipEmptyValues": false,
+                          "useTrends": "default",
+                          "useZabbixValueMapping": false
+                        },
+                        "proxy": {
+                          "filter": ""
+                        },
+                        "queryType": "0",
+                        "resultFormat": "time_series",
+                        "schema": 12,
+                        "table": {
+                          "skipEmptyValues": false
+                        },
+                        "tags": {
+                          "filter": ""
+                        },
+                        "textFilter": "",
+                        "trigger": {
+                          "filter": ""
+                        },
+                        "triggers": {
+                          "acknowledged": 2
+                        }
+                      }
+                    },
+                    "refId": "B",
+                    "hidden": false
+                  }
+                }
+              ],
+              "transformations": [],
+              "queryOptions": {}
+            }
+          },
+          "vizConfig": {
+            "kind": "VizConfig",
+            "group": "stat",
+            "version": "13.1.0",
+            "spec": {
+              "options": {
+                "colorMode": "background_solid",
+                "graphMode": "none",
+                "justifyMode": "auto",
+                "orientation": "vertical",
+                "percentChangeColorMode": "standard",
+                "reduceOptions": {
+                  "calcs": [
+                    "last"
+                  ],
+                  "fields": "",
+                  "values": false
+                },
+                "showPercentChange": false,
+                "text": {
+                  "valueSize": 55
+                },
+                "textMode": "value_and_name",
+                "wideLayout": true
+              },
+              "fieldConfig": {
+                "defaults": {
+                  "displayName": "TOTAL PPPOE ATUAL",
+                  "thresholds": {
+                    "mode": "absolute",
+                    "steps": [
+                      {
+                        "value": 0,
+                        "color": "transparent"
+                      }
+                    ]
+                  },
+                  "noValue": "❌SEM DADOS❌"
+                },
+                "overrides": []
+              }
+            }
+          }
+        }
+      },
+      "panel-344": {
+        "kind": "Panel",
+        "spec": {
+          "id": 344,
+          "title": "",
+          "description": "",
+          "links": [],
+          "data": {
+            "kind": "QueryGroup",
+            "spec": {
+              "queries": [
+                {
+                  "kind": "PanelQuery",
+                  "spec": {
+                    "query": {
+                      "kind": "DataQuery",
+                      "group": "alexanderzobnin-zabbix-datasource",
+                      "version": "v0",
+                      "datasource": {
+                        "name": "cfqk8kvi756o0c"
+                      },
+                      "spec": {
+                        "application": {
+                          "filter": "PPPoEs Conectados"
+                        },
+                        "countTriggersBy": "",
+                        "evaltype": "0",
+                        "functions": [
+                          {
+                            "$$hashKey": "object:88",
+                            "def": {
+                              "category": "Aggregate",
+                              "defaultParams": [],
+                              "name": "sumSeries",
+                              "params": []
+                            },
+                            "params": [],
+                            "text": "sumSeries()"
+                          },
+                          {
+                            "$$hashKey": "object:89",
+                            "def": {
+                              "category": "Alias",
+                              "defaultParams": [],
+                              "name": "setAlias",
+                              "params": [
+                                {
+                                  "name": "alias",
+                                  "type": "string"
+                                }
+                              ]
+                            },
+                            "params": [
+                              "CLIENTES ATIVOS"
+                            ],
+                            "text": "setAlias(CLIENTES ATIVOS)"
+                          }
+                        ],
+                        "group": {
+                          "filter": "$GRUPO"
+                        },
+                        "host": {
+                          "filter": "$HOST"
+                        },
+                        "item": {
+                          "filter": "PPPoEs Conectados"
+                        },
+                        "itemTag": {
+                          "filter": ""
+                        },
+                        "macro": {
+                          "filter": ""
+                        },
+                        "options": {
+                          "count": true,
+                          "disableDataAlignment": false,
+                          "minSeverity": 3,
+                          "showDisabledItems": false,
+                          "skipEmptyValues": false,
+                          "useTrends": "default",
+                          "useZabbixValueMapping": false
+                        },
+                        "proxy": {
+                          "filter": ""
+                        },
+                        "queryType": "0",
+                        "resultFormat": "time_series",
+                        "schema": 12,
+                        "table": {
+                          "skipEmptyValues": false
+                        },
+                        "tags": {
+                          "filter": ""
+                        },
+                        "textFilter": "",
+                        "trigger": {
+                          "filter": ""
+                        },
+                        "triggers": {
+                          "acknowledged": 2
+                        }
+                      }
+                    },
+                    "refId": "B",
+                    "hidden": false
+                  }
+                }
+              ],
+              "transformations": [],
+              "queryOptions": {}
+            }
+          },
+          "vizConfig": {
+            "kind": "VizConfig",
+            "group": "stat",
+            "version": "13.1.0",
+            "spec": {
+              "options": {
+                "colorMode": "background_solid",
+                "graphMode": "none",
+                "justifyMode": "auto",
+                "orientation": "auto",
+                "percentChangeColorMode": "standard",
+                "reduceOptions": {
+                  "calcs": [
+                    "last"
+                  ],
+                  "fields": "",
+                  "values": false
+                },
+                "showPercentChange": false,
+                "text": {},
+                "textMode": "value_and_name",
+                "wideLayout": true
+              },
+              "fieldConfig": {
+                "defaults": {
+                  "displayName": "ATUAL",
+                  "thresholds": {
+                    "mode": "absolute",
+                    "steps": [
+                      {
+                        "value": 0,
+                        "color": "transparent"
+                      }
+                    ]
+                  },
+                  "noValue": "SEM DADOS"
+                },
+                "overrides": []
+              }
+            }
+          }
+        }
+      },
+      "panel-345": {
+        "kind": "Panel",
+        "spec": {
+          "id": 345,
+          "title": "",
+          "description": "",
+          "links": [],
+          "data": {
+            "kind": "QueryGroup",
+            "spec": {
+              "queries": [
+                {
+                  "kind": "PanelQuery",
+                  "spec": {
+                    "query": {
+                      "kind": "DataQuery",
+                      "group": "alexanderzobnin-zabbix-datasource",
+                      "version": "v0",
+                      "datasource": {
+                        "name": "cfqk8kvi756o0c"
+                      },
+                      "spec": {
+                        "application": {
+                          "filter": "PPPoEs Conectados"
+                        },
+                        "countTriggersBy": "",
+                        "evaltype": "0",
+                        "functions": [
+                          {
+                            "$$hashKey": "object:117",
+                            "def": {
+                              "category": "Aggregate",
+                              "defaultParams": [],
+                              "name": "sumSeries",
+                              "params": []
+                            },
+                            "params": [],
+                            "text": "sumSeries()"
+                          },
+                          {
+                            "$$hashKey": "object:118",
+                            "def": {
+                              "category": "Time",
+                              "defaultParams": [
+                                "24h"
+                              ],
+                              "name": "timeShift",
+                              "params": [
+                                {
+                                  "name": "interval",
+                                  "options": [
+                                    "24h",
+                                    "7d",
+                                    "1M",
+                                    "+24h",
+                                    "-24h"
+                                  ],
+                                  "type": "string"
+                                }
+                              ]
+                            },
+                            "params": [
+                              "3h"
+                            ],
+                            "text": "timeShift(3h)"
+                          },
+                          {
+                            "$$hashKey": "object:119",
+                            "def": {
+                              "category": "Alias",
+                              "defaultParams": [],
+                              "name": "setAlias",
+                              "params": [
+                                {
+                                  "name": "alias",
+                                  "type": "string"
+                                }
+                              ]
+                            },
+                            "params": [
+                              "ÚLTIMAS 3 HORAS"
+                            ],
+                            "text": "setAlias(CLIENTES ATIVOS)"
+                          }
+                        ],
+                        "group": {
+                          "filter": "$GRUPO"
+                        },
+                        "host": {
+                          "filter": "$HOST"
+                        },
+                        "item": {
+                          "filter": "PPPoEs Conectados"
+                        },
+                        "itemTag": {
+                          "filter": ""
+                        },
+                        "macro": {
+                          "filter": ""
+                        },
+                        "options": {
+                          "count": true,
+                          "disableDataAlignment": false,
+                          "minSeverity": 3,
+                          "showDisabledItems": false,
+                          "skipEmptyValues": false,
+                          "useTrends": "default",
+                          "useZabbixValueMapping": false
+                        },
+                        "proxy": {
+                          "filter": ""
+                        },
+                        "queryType": "0",
+                        "resultFormat": "time_series",
+                        "schema": 12,
+                        "table": {
+                          "skipEmptyValues": false
+                        },
+                        "tags": {
+                          "filter": ""
+                        },
+                        "textFilter": "",
+                        "trigger": {
+                          "filter": ""
+                        },
+                        "triggers": {
+                          "acknowledged": 2
+                        }
+                      }
+                    },
+                    "refId": "B",
+                    "hidden": false
+                  }
+                }
+              ],
+              "transformations": [],
+              "queryOptions": {}
+            }
+          },
+          "vizConfig": {
+            "kind": "VizConfig",
+            "group": "stat",
+            "version": "13.1.0",
+            "spec": {
+              "options": {
+                "colorMode": "background_solid",
+                "graphMode": "none",
+                "justifyMode": "auto",
+                "orientation": "auto",
+                "percentChangeColorMode": "standard",
+                "reduceOptions": {
+                  "calcs": [
+                    "last"
+                  ],
+                  "fields": "",
+                  "values": false
+                },
+                "showPercentChange": false,
+                "text": {},
+                "textMode": "value_and_name",
+                "wideLayout": true
+              },
+              "fieldConfig": {
+                "defaults": {
+                  "displayName": "3 HORAS ATRÁS",
+                  "thresholds": {
+                    "mode": "absolute",
+                    "steps": [
+                      {
+                        "value": 0,
+                        "color": "transparent"
+                      }
+                    ]
+                  },
+                  "noValue": "SEM DADOS"
+                },
+                "overrides": []
+              }
+            }
+          }
+        }
+      },
+      "panel-346": {
+        "kind": "Panel",
+        "spec": {
+          "id": 346,
+          "title": "",
+          "description": "",
+          "links": [],
+          "data": {
+            "kind": "QueryGroup",
+            "spec": {
+              "queries": [
+                {
+                  "kind": "PanelQuery",
+                  "spec": {
+                    "query": {
+                      "kind": "DataQuery",
+                      "group": "alexanderzobnin-zabbix-datasource",
+                      "version": "v0",
+                      "datasource": {
+                        "name": "cfqk8kvi756o0c"
+                      },
+                      "spec": {
+                        "application": {
+                          "filter": "PPPoEs Conectados"
+                        },
+                        "countTriggersBy": "",
+                        "evaltype": "0",
+                        "functions": [
+                          {
+                            "$$hashKey": "object:148",
+                            "def": {
+                              "category": "Aggregate",
+                              "defaultParams": [],
+                              "name": "sumSeries",
+                              "params": []
+                            },
+                            "params": [],
+                            "text": "sumSeries()"
+                          },
+                          {
+                            "$$hashKey": "object:149",
+                            "def": {
+                              "category": "Time",
+                              "defaultParams": [
+                                "24h"
+                              ],
+                              "name": "timeShift",
+                              "params": [
+                                {
+                                  "name": "interval",
+                                  "options": [
+                                    "24h",
+                                    "7d",
+                                    "1M",
+                                    "+24h",
+                                    "-24h"
+                                  ],
+                                  "type": "string"
+                                }
+                              ]
+                            },
+                            "params": [
+                              "24h"
+                            ],
+                            "text": "timeShift(24h)"
+                          },
+                          {
+                            "$$hashKey": "object:150",
+                            "def": {
+                              "category": "Alias",
+                              "defaultParams": [],
+                              "name": "setAlias",
+                              "params": [
+                                {
+                                  "name": "alias",
+                                  "type": "string"
+                                }
+                              ]
+                            },
+                            "params": [
+                              "ÚLTIMAS 24 HORAS"
+                            ],
+                            "text": "setAlias(CLIENTES ATIVOS)"
+                          }
+                        ],
+                        "group": {
+                          "filter": "$GRUPO"
+                        },
+                        "host": {
+                          "filter": "$HOST"
+                        },
+                        "item": {
+                          "filter": "PPPoEs Conectados"
+                        },
+                        "itemTag": {
+                          "filter": ""
+                        },
+                        "macro": {
+                          "filter": ""
+                        },
+                        "options": {
+                          "count": true,
+                          "disableDataAlignment": false,
+                          "minSeverity": 3,
+                          "showDisabledItems": false,
+                          "skipEmptyValues": false,
+                          "useTrends": "default",
+                          "useZabbixValueMapping": false
+                        },
+                        "proxy": {
+                          "filter": ""
+                        },
+                        "queryType": "0",
+                        "resultFormat": "time_series",
+                        "schema": 12,
+                        "table": {
+                          "skipEmptyValues": false
+                        },
+                        "tags": {
+                          "filter": ""
+                        },
+                        "textFilter": "",
+                        "trigger": {
+                          "filter": ""
+                        },
+                        "triggers": {
+                          "acknowledged": 2
+                        }
+                      }
+                    },
+                    "refId": "B",
+                    "hidden": false
+                  }
+                }
+              ],
+              "transformations": [],
+              "queryOptions": {}
+            }
+          },
+          "vizConfig": {
+            "kind": "VizConfig",
+            "group": "stat",
+            "version": "13.1.0",
+            "spec": {
+              "options": {
+                "colorMode": "background_solid",
+                "graphMode": "none",
+                "justifyMode": "auto",
+                "orientation": "auto",
+                "percentChangeColorMode": "standard",
+                "reduceOptions": {
+                  "calcs": [
+                    "last"
+                  ],
+                  "fields": "",
+                  "values": false
+                },
+                "showPercentChange": false,
+                "text": {},
+                "textMode": "value_and_name",
+                "wideLayout": true
+              },
+              "fieldConfig": {
+                "defaults": {
+                  "displayName": "24 HORAS ATRÁS",
+                  "thresholds": {
+                    "mode": "absolute",
+                    "steps": [
+                      {
+                        "value": 0,
+                        "color": "transparent"
+                      }
+                    ]
+                  },
+                  "noValue": "SEM DADOS"
+                },
+                "overrides": []
+              }
+            }
+          }
+        }
+      },
+      "panel-788": {
+        "kind": "Panel",
+        "spec": {
+          "id": 788,
+          "title": "",
+          "description": "",
+          "links": [],
+          "data": {
+            "kind": "QueryGroup",
+            "spec": {
+              "queries": [],
+              "transformations": [],
+              "queryOptions": {}
+            }
+          },
+          "vizConfig": {
+            "kind": "VizConfig",
+            "group": "text",
+            "version": "13.1.0",
+            "spec": {
+              "options": {
+                "code": {
+                  "language": "plaintext",
+                  "showLineNumbers": false,
+                  "showMiniMap": false
+                },
+                "content": "<!DOCTYPE html>\n<html lang=\"pt-br\">\n\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>flowspec Banner</title>\n    <link rel=\"preconnect\" href=\"https://fonts.googleapis.com\">\n    <link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin>\n    <link href=\"https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap\" rel=\"stylesheet\">\n    <style>\n        html,\n        body {\n            height: 100%;\n            width: 100%;\n            margin: 0;\n            padding: 0;\n            box-sizing: border-box;\n            background: transparent;\n        }\n\n        /*\n  Use um seletor mais específico se possível, como o ID do seu painel,\n  para evitar que este estilo afete outros painéis.\n  Exemplo: #panel-12 .css-i1l6yt::-webkit-scrollbar { ... }\n*/\n\n        /* Seleciona o elemento correto que contém a barra de rolagem,\n   baseado na sua imagem do inspetor de código. */\n        .css-i1l6yt::-webkit-scrollbar {\n            width: 12px;\n            /* Largura total da barra */\n        }\n\n        /* O \"trilho\" por onde a barra corre */\n        .css-i1l6yt::-webkit-scrollbar-track {\n            background: #2d3748;\n            /* Cor de fundo do trilho (cinza escuro) */\n            border-radius: 10px;\n        }\n\n        /* A parte móvel da barra (o \"polegar\") */\n        .css-i1l6yt::-webkit-scrollbar-thumb {\n            background-color: #00E96A;\n            /* O seu verde vibrante */\n            border-radius: 10px;\n\n            /* O TRUQUE para o efeito \"flutuante\":\n     Uma borda com a mesma cor do trilho cria a ilusão de espaçamento. */\n            border: 3px solid #2d3748;\n\n            /* Garante que o fundo verde não passe por baixo da borda */\n            background-clip: content-box;\n        }\n\n        /* Efeito ao passar o mouse por cima */\n        .css-i1l6yt::-webkit-scrollbar-thumb:hover {\n            background-color: #00ff75;\n            /* Um verde um pouco mais claro */\n        }\n\n\n\n        .css-fpx8k9-LegendRow:hover {\n            background: #0A253E;\n\n        }\n\n\n        /*GAUGE DO GRAFANA*/\n        flot-temp-elem {\n            color: white !important;\n        }\n\n        /*GAUGE DO GRAFANA*/\n\n\n\n\n\n        /*LEGEND LAST, MEAN ETC*/\n        .css-97ygya {\n            color: white;\n        }\n\n        /*LEGEND LAST, MEAN ETC*/\n\n\n\n\n\n\n        /* TEXTO DO STAT, OU PAINEIS E TALS */\n        .css-itdw1b-panel-container {\n            background-color: rgba(0, 0, 0, 0.2);\n            border-radius: 1rem;\n            color: white !important;\n        }\n\n        /* TEXTO DO STAT, OU PAINEIS E TALS */\n\n\n\n\n\n\n        /*ZABBIX PROBLEMS*/\n        .ReactTable .rt-thead.-header,\n        .panel-problems .ReactTable .rt-tr-group .rt-tr.-even {\n            border: none !important;\n            background: rgba(0, 0, 0, 0.2) !important;\n\n        }\n\n        .ReactTable .rt-thead .rt-resizable-header-content {\n            color: white;\n        }\n\n        .ReactTable .rt-tr {\n            color: white;\n        }\n\n        .panel-problems .ReactTable .rt-tr .rt-td.custom-expander i {\n            color: white !important;\n        }\n\n        .ReactTable .-pagination .-btn {\n            background: rgba(0, 0, 0, 0.2) !important;\n            color: white !important;\n            border-radius: 1rem !important;\n        }\n\n        .ReactTable .-pagination .-btn[disabled] {\n            opacity: 1 !important;\n\n        }\n\n        .ReactTable .-pagination .-pageInfo {\n            color: white !important;\n        }\n\n        .ReactTable .-pagination input,\n        .ReactTable .-pagination select {\n            color: white !important;\n            background: rgba(0, 0, 0, 0.2) !important;\n            border-radius: 1rem !important;\n        }\n\n        .panel-problems .ReactTable .rt-tr-group {\n            border: none !important;\n\n        }\n\n        /*ZABBIX PROBLEMS*/\n\n\n\n\n\n\n\n\n\n        /* PAINEIS DO GRAFANA */\n        .css-fvmsws-panel-container {\n            background: rgba(0, 0, 0, 0.2);\n            border-radius: 1.5rem;\n            color: white;\n        }\n\n        /*FIM DA SESSÃO DOS PAINEIS DO GRAFANA */\n\n\n\n\n\n\n        /* INICIO DA SESSÃO DAS ROW */\n        .css-1d3xu67-Icon {\n            fill: white !important;\n        }\n\n        .dashboard-row__title {\n            color: white !important;\n        }\n\n        .dashboard-row__panel_count {\n            font-size: 1.5rem !important;\n        }\n\n        /* FIM DA SESSÃO DAS ROW */\n\n\n\n\n\n\n        /*PAINEL TEXT DO GRAFANA*/\n        .css-7mshyc-panel-container {\n            background: rgba(0, 0, 0, 0.2);\n            border-radius: 1.5rem;\n        }\n\n        /*PAINEL TEXT DO GRAFANA*/\n\n\n\n\n\n\n        /*TITULO DE QUALQUER PAINEL DO GRAFANA */\n        .css-4sw7w0 {\n            color: rgba(255, 255, 255, 1);\n        }\n\n        .css-biljvk-panel-title {\n            background: rgba(0, 0, 0, 0.2);\n            padding-left: 0.5rem;\n            padding-right: 0.5rem;\n            border-radius: 1rem;\n        }\n\n        /*TITULO DE QUALQUER PAINEL DO GRAFANA */\n\n\n\n\n\n\n\n        /*INICIO DA SESSÃO DOS TABLE DO GRAFANA */\n\n        .css-1kfgvg7-thead {\n            color: #FFFFFF;\n            background: linear-gradient(180deg, #00E96A, #004e35);\n            //background: linear-gradient(180deg, #1f6f63 20%, #0d2b3d 90%);\n            /* Gradiente do azul claro para o azul escuro */\n            padding: 0;\n            border-radius: 1.5rem 1.5rem 0 0;\n        }\n\n        .css-119zpr0 {\n            text-transform: uppercase !important;\n        }\n\n        .css-1jj2cky-tableContentWrapper {\n            text-transform: uppercase;\n        }\n\n        .css-8fjwhi-row {\n            border: 1px solid rgba(204, 204, 220, 0.12);\n        }\n\n        .css-8fjwhi-row:last-child {\n            border-bottom: 1px solid rgba(204, 204, 220, 0.12);\n        }\n\n        .css-1jj2cky-tableContentWrapper {\n            text-transform: uppercase;\n        }\n\n\n        .css-8fjwhi-row {\n            color: rgba(255, 255, 255, 1) !important;\n            text-transform: uppercase !important;\n        }\n\n        /*FIM DA SESSÃO DO TABLE */\n\n\n\n\n\n\n\n\n        /*DIV PARA EDITAR PROPRIEDADES DO GEOMAPS */\n        .ol-viewport {\n            border-radius: 1rem !important;\n            border: 1px solid rgba(204, 204, 220, 0.25) !important;\n        }\n\n        /*DIV PARA EDITAR PROPRIEDADES DO GEOMAPS */\n\n\n\n\n\n        /*HEADER DA LEGEND DO TIME SERIES*/\n        .css-180sqb0,\n        .css-1l1pgpn {\n            text-transform: uppercase;\n        }\n\n        .css-180sqb0,\n        .css-1l1pgpn {\n            color: rgba(255, 255, 255, 1);\n        }\n\n\n        /*TEXTO DA LEGEND DO TIME SERIES*/\n\n        .css-7pp3mx-LegendLabel {\n            text-transform: uppercase;\n            color: white;\n            font-weight: 500;\n        }\n\n        .css-14gwilc,\n        .css-5imphy {\n            color: white !important;\n            text-transform: uppercase;\n            font-weight: 500;\n        }\n\n        /*LINHA DE MAX, LAST E MEAN(TEXTO) DA LEGEND DO TIME SERIES*/\n        .css-s2uf1z {\n            color: white;\n            font-weight: 500;\n        }\n\n        /*ICONES DE COR DA LEGENDA DO TIME SERIES*/\n        .css-1aj5l6t {\n            width: 1rem;\n            height: 1rem;\n        }\n\n        .css-4hqpog {\n            justify-content: center !important;\n        }\n\n        /*FIM DA SESSÃO DA LEGEND DO TIME SERIES*/\n\n\n\n\n\n\n\n\n\n        /* .css-n39kqr-cellContainerOverflow {\n            color: white;\n        }\n\n        .css-2qng6u-panel-container {\n            background: rgba(0, 0, 0, 0.2);\n            border: none;\n        }\n\n        .css-11qjisw {\n            height: 100%;\n        }\n\n        .css-1i88p6p {\n            width: 100%;\n            margin: 0;\n            padding: 0rem 0rem 0rem 2rem;\n        }\n\n        .css-m0z7c1 {\n            height: 100%;\n            margin: 0;\n        }\n\n        .css-n39kqr-cellContainerOverflow {\n            color: white;\n        }\n\n        .css-18yh62t-panel-container {\n            border-radius: 1rem;\n            border: 1px solid white;\n            background-color: rgba(0, 14, 28, 1);\n            color: white;\n        }\n\n        canvas[data-zr-dom-id=\"zr_0\"] {\n            border-radius: 1rem;\n            overflow: hidden;\n            \n        }\n\n        .dashboard-row--collapsed {\n            background: rgba(0, 0, 0, 0.2);\n        } */\n\n\n\n\n\n\n\n\n        /*INICIO DA SESSÃO BUSINESS VARIABLE*/\n        .css-rebjtg-input-wrapper {\n            background: rgba(0, 0, 0, 0.2);\n            width: 100%;\n            /* Define a largura como 100% */\n            height: 100%;\n            /* Define a altura como 100% */\n            border: 0;\n            color: #FFFFFF;\n            border-radius: 2rem;\n            border: 1px solid rgba(204, 204, 220, 0.12);\n        }\n\n        /*TEXTO DO BUSINESS*/\n        .css-8nwx1l-singleValue {\n            color: #FFFFFF;\n            text-transform: uppercase;\n        }\n\n        /*HEADER LAYOUT*/\n        .css-131hug8 label {\n            color: rgba(255, 255, 255, 1);\n            text-transform: uppercase;\n            background: rgba(0, 0, 0, 0.2);\n            border-radius: 2rem;\n            padding: 1rem;\n            border: 1px solid rgba(204, 204, 220, 0.12);\n        }\n\n        /*TEXTO QUANDO A VARIAVEL É NUMERO*/\n        .css-1pc1kg0-grafana-select-multi-value-container {\n            color: rgba(255, 255, 255, 1);\n            text-transform: uppercase;\n            background: rgba(0, 0, 0, 0);\n        }\n\n        /*TEXTO \"CHOOSE\" DO BUSINESS VARIABLE*/\n        .css-1n8tjau-placeholder {\n            color: rgba(255, 255, 255, 1);\n            text-transform: uppercase;\n        }\n\n        /*FIM DA SESSÃO BUSINESS VARIABLE*/\n\n\n\n\n\n\n\n\n\n\n        /*INCIO DA SESSÃO DO HEADER */\n\n        /* Contêiner principal do banner */\n        .flowspec-banner-container {\n            background: rgba(0, 0, 0, 0.2);\n            /* Fundo preto */\n            display: flex;\n            justify-content: center;\n            align-items: center;\n            width: 100%;\n            height: 100%;\n            position: relative;\n            border: 1px solid rgba(204, 204, 220, 0.12);\n            border-radius: 5rem;\n            overflow: hidden;\n            box-sizing: border-box;\n        }\n\n        /* Contêiner do conteúdo do banner */\n        .flowspec-banner-content {\n            display: flex;\n            align-items: center;\n            justify-content: center;\n            gap: 0.5rem;\n            color: #FFFFFF;\n            /* Texto branco */\n            width: 100%;\n            height: 100%;\n            padding: 0 9rem 0 1rem;\n            box-sizing: border-box;\n        }\n\n        /* Estilo do logo */\n        .flowspec-logo {\n            height: 3rem;\n            /* Ajuste o tamanho conforme necessário */\n            width: auto;\n        }\n\n        /* Estilo do texto */\n        .flowspec-text {\n            font-size: 3.5rem;\n            color: #FFFFFF;\n            /* Texto branco */\n            text-align: center;\n            display: flex;\n            align-items: center;\n            gap: 1rem;\n            /* Espaço entre o texto e o ícone */\n        }\n\n        /* Barra verde antes do texto */\n        .flowspec-divider {\n            color: #FFFFFF;\n            /* Verde Auzac */\n            font-size: 2rem;\n        }\n\n        /* Estilo do ícone de segurança */\n        .flowspec-security-icon {\n            width: 2.5rem;\n            height: auto;\n        }\n\n\n        /* BOTÃO VOLTAR */\n        .flowspec-banner-actions {\n            position: absolute;\n            right: 1.2rem;\n            top: 50%;\n            transform: translateY(-50%);\n            z-index: 5;\n            display: flex;\n            align-items: center;\n            justify-content: center;\n        }\n\n        .flowspec-btn-voltar {\n            display: inline-flex;\n            align-items: center;\n            justify-content: center;\n            min-width: 98px;\n            height: 38px;\n            padding: 0 1.2rem;\n            box-sizing: border-box;\n            border-radius: 0.75rem;\n            text-decoration: none;\n            font-size: 0.95rem;\n            font-weight: 800;\n            letter-spacing: 0.04rem;\n            text-transform: uppercase;\n            color: #ffffff !important;\n            background: linear-gradient(135deg, #00c8ff 0%, #12b3a8 100%);\n            border: 1px solid rgba(255, 255, 255, 0.18);\n            box-shadow: 0 0.45rem 1.2rem rgba(0, 200, 255, 0.25);\n            transition: all 0.25s ease;\n        }\n\n        .flowspec-btn-voltar:hover {\n            transform: translateY(-1px);\n            filter: brightness(1.08);\n            box-shadow: 0 0.55rem 1.4rem rgba(0, 0, 0, 0.35);\n        }\n\n        .flowspec-btn-voltar:active {\n            transform: translateY(0);\n        }\n\n        @media (max-width: 900px) {\n            .flowspec-banner-container {\n                min-height: 5rem;\n                padding: 0.7rem 1rem;\n                box-sizing: border-box;\n                border-radius: 2rem;\n            }\n\n            .flowspec-banner-content {\n                justify-content: center;\n                padding-right: 0;\n                flex-wrap: wrap;\n            }\n\n            .flowspec-banner-actions {\n                position: static;\n                transform: none;\n                width: 100%;\n                margin-top: 0.5rem;\n            }\n\n            .flowspec-btn-voltar {\n                min-width: 90px;\n                height: 36px;\n                font-size: 0.85rem;\n            }\n\n            .flowspec-text {\n                font-size: 2.2rem;\n            }\n        }\n\n        /*FIM DA SESSÃO DO HEADER */\n    </style>\n</head>\n\n<body>\n    <!-- Estrutura do banner -->\n    <div class=\"flowspec-banner-container\">\n        <div class=\"flowspec-banner-content\">\n            <span class=\"flowspec-text\"> INFORMAÇÕES PPPOE</span>\n        </div>\n\n        <div class=\"flowspec-banner-actions\">\n            <a href=\"/d/aecn8csqbwdmob/home\" class=\"flowspec-btn-voltar\">VOLTAR</a>\n        </div>\n    </div>\n</body>\n\n</html>",
+                "mode": "html"
+              },
+              "fieldConfig": {
+                "defaults": {},
+                "overrides": []
+              }
+            }
+          },
+          "transparent": true
+        }
+      },
+      "panel-789": {
+        "kind": "Panel",
+        "spec": {
+          "id": 789,
+          "title": "",
+          "description": "",
+          "links": [],
+          "data": {
+            "kind": "QueryGroup",
+            "spec": {
+              "queries": [
+                {
+                  "kind": "PanelQuery",
+                  "spec": {
+                    "query": {
+                      "kind": "DataQuery",
+                      "group": "alexanderzobnin-zabbix-datasource",
+                      "version": "v0",
+                      "datasource": {
+                        "name": "cfqk8kvi756o0c"
+                      },
+                      "spec": {
+                        "application": {
+                          "filter": "PPPoEs Conectados"
+                        },
+                        "countTriggersBy": "",
+                        "evaltype": "0",
+                        "functions": [
+                          {
+                            "$$hashKey": "object:117",
+                            "def": {
+                              "category": "Aggregate",
+                              "defaultParams": [],
+                              "name": "sumSeries",
+                              "params": []
+                            },
+                            "params": [],
+                            "text": "sumSeries()"
+                          },
+                          {
+                            "$$hashKey": "object:119",
+                            "def": {
+                              "category": "Alias",
+                              "defaultParams": [],
+                              "name": "setAlias",
+                              "params": [
+                                {
+                                  "name": "alias",
+                                  "type": "string"
+                                }
+                              ]
+                            },
+                            "params": [
+                              "ATUAL"
+                            ],
+                            "text": "setAlias(CLIENTES ATIVOS)"
+                          }
+                        ],
+                        "group": {
+                          "filter": "$GRUPO"
+                        },
+                        "host": {
+                          "filter": "$HOST"
+                        },
+                        "item": {
+                          "filter": "PPPoEs Conectados"
+                        },
+                        "itemTag": {
+                          "filter": ""
+                        },
+                        "macro": {
+                          "filter": ""
+                        },
+                        "options": {
+                          "count": true,
+                          "disableDataAlignment": false,
+                          "minSeverity": 3,
+                          "showDisabledItems": false,
+                          "skipEmptyValues": false,
+                          "useTrends": "default",
+                          "useZabbixValueMapping": false
+                        },
+                        "proxy": {
+                          "filter": ""
+                        },
+                        "queryType": "0",
+                        "resultFormat": "time_series",
+                        "schema": 12,
+                        "table": {
+                          "skipEmptyValues": false
+                        },
+                        "tags": {
+                          "filter": ""
+                        },
+                        "textFilter": "",
+                        "trigger": {
+                          "filter": ""
+                        },
+                        "triggers": {
+                          "acknowledged": 2
+                        }
+                      }
+                    },
+                    "refId": "C",
+                    "hidden": false
+                  }
+                },
+                {
+                  "kind": "PanelQuery",
+                  "spec": {
+                    "query": {
+                      "kind": "DataQuery",
+                      "group": "alexanderzobnin-zabbix-datasource",
+                      "version": "v0",
+                      "datasource": {
+                        "name": "cfqk8kvi756o0c"
+                      },
+                      "spec": {
+                        "application": {
+                          "filter": "PPPoEs Conectados"
+                        },
+                        "countTriggersBy": "",
+                        "evaltype": "0",
+                        "functions": [
+                          {
+                            "$$hashKey": "object:117",
+                            "def": {
+                              "category": "Aggregate",
+                              "defaultParams": [],
+                              "name": "sumSeries",
+                              "params": []
+                            },
+                            "params": [],
+                            "text": "sumSeries()"
+                          },
+                          {
+                            "$$hashKey": "object:118",
+                            "def": {
+                              "category": "Time",
+                              "defaultParams": [
+                                "24h"
+                              ],
+                              "name": "timeShift",
+                              "params": [
+                                {
+                                  "name": "interval",
+                                  "options": [
+                                    "24h",
+                                    "7d",
+                                    "1M",
+                                    "+24h",
+                                    "-24h"
+                                  ],
+                                  "type": "string"
+                                }
+                              ]
+                            },
+                            "params": [
+                              "3h"
+                            ],
+                            "text": "timeShift(3h)"
+                          },
+                          {
+                            "$$hashKey": "object:119",
+                            "def": {
+                              "category": "Alias",
+                              "defaultParams": [],
+                              "name": "setAlias",
+                              "params": [
+                                {
+                                  "name": "alias",
+                                  "type": "string"
+                                }
+                              ]
+                            },
+                            "params": [
+                              "ÚLTIMAS 3 HORAS"
+                            ],
+                            "text": "setAlias(CLIENTES ATIVOS)"
+                          }
+                        ],
+                        "group": {
+                          "filter": "$GRUPO"
+                        },
+                        "host": {
+                          "filter": "$HOST"
+                        },
+                        "item": {
+                          "filter": "PPPoEs Conectados"
+                        },
+                        "itemTag": {
+                          "filter": ""
+                        },
+                        "macro": {
+                          "filter": ""
+                        },
+                        "options": {
+                          "count": true,
+                          "disableDataAlignment": false,
+                          "minSeverity": 3,
+                          "showDisabledItems": false,
+                          "skipEmptyValues": false,
+                          "useTrends": "default",
+                          "useZabbixValueMapping": false
+                        },
+                        "proxy": {
+                          "filter": ""
+                        },
+                        "queryType": "0",
+                        "resultFormat": "time_series",
+                        "schema": 12,
+                        "table": {
+                          "skipEmptyValues": false
+                        },
+                        "tags": {
+                          "filter": ""
+                        },
+                        "textFilter": "",
+                        "trigger": {
+                          "filter": ""
+                        },
+                        "triggers": {
+                          "acknowledged": 2
+                        }
+                      }
+                    },
+                    "refId": "B",
+                    "hidden": false
+                  }
+                },
+                {
+                  "kind": "PanelQuery",
+                  "spec": {
+                    "query": {
+                      "kind": "DataQuery",
+                      "group": "alexanderzobnin-zabbix-datasource",
+                      "version": "v0",
+                      "datasource": {
+                        "name": "cfqk8kvi756o0c"
+                      },
+                      "spec": {
+                        "application": {
+                          "filter": "PPPoEs Conectados"
+                        },
+                        "countTriggersBy": "",
+                        "evaltype": "0",
+                        "functions": [
+                          {
+                            "$$hashKey": "object:117",
+                            "def": {
+                              "category": "Aggregate",
+                              "defaultParams": [],
+                              "name": "sumSeries",
+                              "params": []
+                            },
+                            "params": [],
+                            "text": "sumSeries()"
+                          },
+                          {
+                            "$$hashKey": "object:118",
+                            "def": {
+                              "category": "Time",
+                              "defaultParams": [
+                                "24h"
+                              ],
+                              "name": "timeShift",
+                              "params": [
+                                {
+                                  "name": "interval",
+                                  "options": [
+                                    "24h",
+                                    "7d",
+                                    "1M",
+                                    "+24h",
+                                    "-24h"
+                                  ],
+                                  "type": "string"
+                                }
+                              ]
+                            },
+                            "params": [
+                              "24h"
+                            ],
+                            "text": "timeShift(3h)"
+                          },
+                          {
+                            "$$hashKey": "object:119",
+                            "def": {
+                              "category": "Alias",
+                              "defaultParams": [],
+                              "name": "setAlias",
+                              "params": [
+                                {
+                                  "name": "alias",
+                                  "type": "string"
+                                }
+                              ]
+                            },
+                            "params": [
+                              "ÚLTIMAS 24 HORAS"
+                            ],
+                            "text": "setAlias(CLIENTES ATIVOS)"
+                          }
+                        ],
+                        "group": {
+                          "filter": "$GRUPO"
+                        },
+                        "host": {
+                          "filter": "$HOST"
+                        },
+                        "item": {
+                          "filter": "PPPoEs Conectados"
+                        },
+                        "itemTag": {
+                          "filter": ""
+                        },
+                        "macro": {
+                          "filter": ""
+                        },
+                        "options": {
+                          "count": true,
+                          "disableDataAlignment": false,
+                          "minSeverity": 3,
+                          "showDisabledItems": false,
+                          "skipEmptyValues": false,
+                          "useTrends": "default",
+                          "useZabbixValueMapping": false
+                        },
+                        "proxy": {
+                          "filter": ""
+                        },
+                        "queryType": "0",
+                        "resultFormat": "time_series",
+                        "schema": 12,
+                        "table": {
+                          "skipEmptyValues": false
+                        },
+                        "tags": {
+                          "filter": ""
+                        },
+                        "textFilter": "",
+                        "trigger": {
+                          "filter": ""
+                        },
+                        "triggers": {
+                          "acknowledged": 2
+                        }
+                      }
+                    },
+                    "refId": "A",
+                    "hidden": false
+                  }
+                }
+              ],
+              "transformations": [],
+              "queryOptions": {}
+            }
+          },
+          "vizConfig": {
+            "kind": "VizConfig",
+            "group": "timeseries",
+            "version": "13.1.0",
+            "spec": {
+              "options": {
+                "annotations": {
+                  "clustering": -1,
+                  "multiLane": false
+                },
+                "legend": {
+                  "calcs": [],
+                  "displayMode": "list",
+                  "enableFacetedFilter": false,
+                  "overflow": "ellipsis",
+                  "placement": "bottom",
+                  "showLegend": true
+                },
+                "tooltip": {
+                  "hideZeros": false,
+                  "mode": "single",
+                  "sort": "none"
+                }
+              },
+              "fieldConfig": {
+                "defaults": {
+                  "thresholds": {
+                    "mode": "absolute",
+                    "steps": [
+                      {
+                        "value": 0,
+                        "color": "transparent"
+                      }
+                    ]
+                  },
+                  "color": {
+                    "mode": "palette-classic"
+                  },
+                  "noValue": "SEM DADOS",
+                  "custom": {
+                    "axisBorderShow": false,
+                    "axisCenteredZero": false,
+                    "axisColorMode": "text",
+                    "axisLabel": "",
+                    "axisPlacement": "auto",
+                    "barAlignment": 0,
+                    "barWidthFactor": 0.6,
+                    "drawStyle": "line",
+                    "fillOpacity": 0,
+                    "gradientMode": "none",
+                    "hideFrom": {
+                      "legend": false,
+                      "tooltip": false,
+                      "viz": false
+                    },
+                    "insertNulls": false,
+                    "lineInterpolation": "smooth",
+                    "lineWidth": 3,
+                    "pointSize": 5,
+                    "scaleDistribution": {
+                      "type": "linear"
+                    },
+                    "showPoints": "never",
+                    "showValues": false,
+                    "spanNulls": false,
+                    "stacking": {
+                      "group": "A",
+                      "mode": "none"
+                    },
+                    "thresholdsStyle": {
+                      "mode": "off"
+                    }
+                  }
+                },
+                "overrides": [
+                  {
+                    "matcher": {
+                      "id": "byName",
+                      "options": "ÚLTIMAS 24 HORAS"
+                    },
+                    "properties": [
+                      {
+                        "id": "color",
+                        "value": {
+                          "fixedColor": "#0069e8",
+                          "mode": "fixed"
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "matcher": {
+                      "id": "byName",
+                      "options": "ÚLTIMAS 3 HORAS"
+                    },
+                    "properties": [
+                      {
+                        "id": "color",
+                        "value": {
+                          "fixedColor": "#fada0a",
+                          "mode": "fixed"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          }
+        }
+      },
+      "panel-795": {
+        "kind": "Panel",
+        "spec": {
+          "id": 795,
+          "title": "",
+          "description": "",
+          "links": [],
+          "data": {
+            "kind": "QueryGroup",
+            "spec": {
+              "queries": [
+                {
+                  "kind": "PanelQuery",
+                  "spec": {
+                    "query": {
+                      "kind": "DataQuery",
+                      "group": "alexanderzobnin-zabbix-datasource",
+                      "version": "v0",
+                      "datasource": {
+                        "name": "cfqk8kvi756o0c"
+                      },
+                      "spec": {
+                        "application": {
+                          "filter": "PPPoEs Conectados"
+                        },
+                        "countTriggersBy": "",
+                        "evaltype": "0",
+                        "functions": [
+                          {
+                            "$$hashKey": "object:148",
+                            "def": {
+                              "category": "Aggregate",
+                              "defaultParams": [],
+                              "name": "sumSeries",
+                              "params": []
+                            },
+                            "params": [],
+                            "text": "sumSeries()"
+                          },
+                          {
+                            "$$hashKey": "object:149",
+                            "def": {
+                              "category": "Time",
+                              "defaultParams": [
+                                "24h"
+                              ],
+                              "name": "timeShift",
+                              "params": [
+                                {
+                                  "name": "interval",
+                                  "options": [
+                                    "24h",
+                                    "7d",
+                                    "1M",
+                                    "+24h",
+                                    "-24h"
+                                  ],
+                                  "type": "string"
+                                }
+                              ]
+                            },
+                            "params": [
+                              "24h"
+                            ],
+                            "text": "timeShift(24h)"
+                          },
+                          {
+                            "$$hashKey": "object:150",
+                            "def": {
+                              "category": "Alias",
+                              "defaultParams": [],
+                              "name": "setAlias",
+                              "params": [
+                                {
+                                  "name": "alias",
+                                  "type": "string"
+                                }
+                              ]
+                            },
+                            "params": [
+                              "ÚLTIMAS 24 HORAS"
+                            ],
+                            "text": "setAlias(CLIENTES ATIVOS)"
+                          }
+                        ],
+                        "group": {
+                          "filter": "$GRUPO"
+                        },
+                        "host": {
+                          "filter": "$HOST"
+                        },
+                        "item": {
+                          "filter": "PPPoEs Conectados"
+                        },
+                        "itemTag": {
+                          "filter": "/.*/"
+                        },
+                        "macro": {
+                          "filter": ""
+                        },
+                        "options": {
+                          "count": true,
+                          "disableDataAlignment": false,
+                          "minSeverity": 3,
+                          "showDisabledItems": false,
+                          "skipEmptyValues": false,
+                          "useTrends": "default",
+                          "useZabbixValueMapping": false
+                        },
+                        "proxy": {
+                          "filter": ""
+                        },
+                        "queryType": "0",
+                        "resultFormat": "time_series",
+                        "schema": 12,
+                        "table": {
+                          "skipEmptyValues": false
+                        },
+                        "tags": {
+                          "filter": ""
+                        },
+                        "textFilter": "",
+                        "trigger": {
+                          "filter": ""
+                        },
+                        "triggers": {
+                          "acknowledged": 2
+                        }
+                      }
+                    },
+                    "refId": "B",
+                    "hidden": false
+                  }
+                },
+                {
+                  "kind": "PanelQuery",
+                  "spec": {
+                    "query": {
+                      "kind": "DataQuery",
+                      "group": "alexanderzobnin-zabbix-datasource",
+                      "version": "v0",
+                      "datasource": {
+                        "name": "cfqk8kvi756o0c"
+                      },
+                      "spec": {
+                        "application": {
+                          "filter": "PPPoEs Conectados"
+                        },
+                        "countTriggersBy": "",
+                        "evaltype": "0",
+                        "functions": [
+                          {
+                            "$$hashKey": "object:148",
+                            "def": {
+                              "category": "Aggregate",
+                              "defaultParams": [],
+                              "name": "sumSeries",
+                              "params": []
+                            },
+                            "params": [],
+                            "text": "sumSeries()"
+                          },
+                          {
+                            "$$hashKey": "object:149",
+                            "def": {
+                              "category": "Time",
+                              "defaultParams": [
+                                "24h"
+                              ],
+                              "name": "timeShift",
+                              "params": [
+                                {
+                                  "name": "interval",
+                                  "options": [
+                                    "24h",
+                                    "7d",
+                                    "1M",
+                                    "+24h",
+                                    "-24h"
+                                  ],
+                                  "type": "string"
+                                }
+                              ]
+                            },
+                            "params": [
+                              "3h"
+                            ],
+                            "text": "timeShift(24h)"
+                          },
+                          {
+                            "$$hashKey": "object:150",
+                            "def": {
+                              "category": "Alias",
+                              "defaultParams": [],
+                              "name": "setAlias",
+                              "params": [
+                                {
+                                  "name": "alias",
+                                  "type": "string"
+                                }
+                              ]
+                            },
+                            "params": [
+                              "ÚLTIMAS 3 HORAS"
+                            ],
+                            "text": "setAlias(CLIENTES ATIVOS)"
+                          }
+                        ],
+                        "group": {
+                          "filter": "$GRUPO"
+                        },
+                        "host": {
+                          "filter": "$HOST"
+                        },
+                        "item": {
+                          "filter": "PPPoEs Conectados"
+                        },
+                        "itemTag": {
+                          "filter": "/.*/"
+                        },
+                        "macro": {
+                          "filter": ""
+                        },
+                        "options": {
+                          "count": true,
+                          "disableDataAlignment": false,
+                          "minSeverity": 3,
+                          "showDisabledItems": false,
+                          "skipEmptyValues": false,
+                          "useTrends": "default",
+                          "useZabbixValueMapping": false
+                        },
+                        "proxy": {
+                          "filter": ""
+                        },
+                        "queryType": "0",
+                        "resultFormat": "time_series",
+                        "schema": 12,
+                        "table": {
+                          "skipEmptyValues": false
+                        },
+                        "tags": {
+                          "filter": ""
+                        },
+                        "textFilter": "",
+                        "trigger": {
+                          "filter": ""
+                        },
+                        "triggers": {
+                          "acknowledged": 2
+                        }
+                      }
+                    },
+                    "refId": "A",
+                    "hidden": false
+                  }
+                },
+                {
+                  "kind": "PanelQuery",
+                  "spec": {
+                    "query": {
+                      "kind": "DataQuery",
+                      "group": "alexanderzobnin-zabbix-datasource",
+                      "version": "v0",
+                      "datasource": {
+                        "name": "cfqk8kvi756o0c"
+                      },
+                      "spec": {
+                        "application": {
+                          "filter": "PPPoEs Conectados"
+                        },
+                        "countTriggersBy": "",
+                        "evaltype": "0",
+                        "functions": [
+                          {
+                            "$$hashKey": "object:148",
+                            "def": {
+                              "category": "Aggregate",
+                              "defaultParams": [],
+                              "name": "sumSeries",
+                              "params": []
+                            },
+                            "params": [],
+                            "text": "sumSeries()"
+                          },
+                          {
+                            "$$hashKey": "object:150",
+                            "def": {
+                              "category": "Alias",
+                              "defaultParams": [],
+                              "name": "setAlias",
+                              "params": [
+                                {
+                                  "name": "alias",
+                                  "type": "string"
+                                }
+                              ]
+                            },
+                            "params": [
+                              "ATUAL"
+                            ],
+                            "text": "setAlias(CLIENTES ATIVOS)"
+                          }
+                        ],
+                        "group": {
+                          "filter": "$GRUPO"
+                        },
+                        "host": {
+                          "filter": "$HOST"
+                        },
+                        "item": {
+                          "filter": "PPPoEs Conectados"
+                        },
+                        "itemTag": {
+                          "filter": "/.*/"
+                        },
+                        "macro": {
+                          "filter": ""
+                        },
+                        "options": {
+                          "count": true,
+                          "disableDataAlignment": false,
+                          "minSeverity": 3,
+                          "showDisabledItems": false,
+                          "skipEmptyValues": false,
+                          "useTrends": "default",
+                          "useZabbixValueMapping": false
+                        },
+                        "proxy": {
+                          "filter": ""
+                        },
+                        "queryType": "0",
+                        "resultFormat": "time_series",
+                        "schema": 12,
+                        "table": {
+                          "skipEmptyValues": false
+                        },
+                        "tags": {
+                          "filter": ""
+                        },
+                        "textFilter": "",
+                        "trigger": {
+                          "filter": ""
+                        },
+                        "triggers": {
+                          "acknowledged": 2
+                        }
+                      }
+                    },
+                    "refId": "C",
+                    "hidden": false
+                  }
+                }
+              ],
+              "transformations": [],
+              "queryOptions": {}
+            }
+          },
+          "vizConfig": {
+            "kind": "VizConfig",
+            "group": "timeseries",
+            "version": "13.1.0",
+            "spec": {
+              "options": {
+                "annotations": {
+                  "clustering": -1,
+                  "multiLane": false
+                },
+                "legend": {
+                  "calcs": [],
+                  "displayMode": "list",
+                  "enableFacetedFilter": false,
+                  "overflow": "ellipsis",
+                  "placement": "bottom",
+                  "showLegend": true
+                },
+                "tooltip": {
+                  "hideZeros": false,
+                  "mode": "single",
+                  "sort": "none"
+                }
+              },
+              "fieldConfig": {
+                "defaults": {
+                  "thresholds": {
+                    "mode": "absolute",
+                    "steps": [
+                      {
+                        "value": 0,
+                        "color": "transparent"
+                      }
+                    ]
+                  },
+                  "color": {
+                    "mode": "palette-classic"
+                  },
+                  "noValue": "❌SEM DADOS❌",
+                  "custom": {
+                    "axisBorderShow": false,
+                    "axisCenteredZero": false,
+                    "axisColorMode": "text",
+                    "axisLabel": "",
+                    "axisPlacement": "auto",
+                    "barAlignment": 0,
+                    "barWidthFactor": 0.6,
+                    "drawStyle": "line",
+                    "fillOpacity": 0,
+                    "gradientMode": "opacity",
+                    "hideFrom": {
+                      "legend": false,
+                      "tooltip": false,
+                      "viz": false
+                    },
+                    "insertNulls": false,
+                    "lineInterpolation": "smooth",
+                    "lineWidth": 3,
+                    "pointSize": 5,
+                    "scaleDistribution": {
+                      "type": "linear"
+                    },
+                    "showPoints": "never",
+                    "showValues": false,
+                    "spanNulls": false,
+                    "stacking": {
+                      "group": "A",
+                      "mode": "none"
+                    },
+                    "thresholdsStyle": {
+                      "mode": "off"
+                    }
+                  }
+                },
+                "overrides": [
+                  {
+                    "matcher": {
+                      "id": "byName",
+                      "options": "ÚLTIMAS 3 HORAS"
+                    },
+                    "properties": [
+                      {
+                        "id": "color",
+                        "value": {
+                          "fixedColor": "#00e96a",
+                          "mode": "fixed"
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "matcher": {
+                      "id": "byName",
+                      "options": "ÚLTIMAS 24 HORAS"
+                    },
+                    "properties": [
+                      {
+                        "id": "color",
+                        "value": {
+                          "fixedColor": "#fada0a",
+                          "mode": "fixed"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          }
+        }
+      },
+      "panel-796": {
+        "kind": "Panel",
+        "spec": {
+          "id": 796,
+          "title": "",
+          "description": "",
+          "links": [],
+          "data": {
+            "kind": "QueryGroup",
+            "spec": {
+              "queries": [],
+              "transformations": [],
+              "queryOptions": {}
+            }
+          },
+          "vizConfig": {
+            "kind": "VizConfig",
+            "group": "text",
+            "version": "13.1.0",
+            "spec": {
+              "options": {
+                "code": {
+                  "language": "plaintext",
+                  "showLineNumbers": false,
+                  "showMiniMap": false
+                },
+                "content": "<!DOCTYPE html>\r\n<html lang=\"pt-br\">\r\n\r\n<head>\r\n  <meta charset=\"UTF-8\">\r\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\r\n  <title>Flowbix Banner</title>\r\n  <link rel=\"preconnect\" href=\"https://fonts.googleapis.com\">\r\n  <link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin>\r\n  <link href=\"https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap\" rel=\"stylesheet\">\r\n  <style>\r\n    .container-banner-unique2 {\r\n      height: 100%;\r\n    }\r\n\r\n    .content-wrapper-banner-unique2 {\r\n      width: 100%;\r\n      margin: 0;\r\n    }\r\n\r\n    .background-banner-unique2 {\r\n      height: 100%;\r\n      margin: 0;\r\n    }\r\n\r\n    .input-wrapper-banner-unique2 {\r\n      background: rgba(0, 0, 0, 0.2);\r\n      width: 100%;\r\n      height: 100%;\r\n      border: 0;\r\n      color: #FFFFFF;\r\n    }\r\n\r\n    .main-container-banner-unique2 {\r\n      background: rgba(0, 0, 0, 0.1);\r\n      display: flex;\r\n      justify-content: center;\r\n      align-items: center;\r\n      height: 100%;\r\n      position: relative;\r\n      border-radius: 5rem;\r\n      border: 1px solid rgba(204, 204, 220, 0.12);\r\n    }\r\n\r\n    .content-main-banner-unique2 {\r\n      display: flex;\r\n      align-items: center;\r\n      gap: 1rem;\r\n      color: #FFFFFF;\r\n      font-weight: 400;\r\n      font-size: 1.5rem;\r\n      text-transform: uppercase;\r\n    }\r\n\r\n    .logo-banner-unique2 {\r\n      height: 4rem;\r\n      width: auto;\r\n    }\r\n\r\n    .text-banner-unique2 {\r\n      font-size: 2rem;\r\n      color: #FFFFFF;\r\n      text-align: center;\r\n      display: flex;\r\n      align-items: center;\r\n      gap: 0.5rem;\r\n    }\r\n\r\n    .divider-text-unique2 {\r\n      color: #FFFFFF;\r\n      font-size: 2rem;\r\n    }\r\n\r\n    .icon-security-unique2 {\r\n      width: 2rem;\r\n      height: auto;\r\n    }\r\n  </style>\r\n</head>\r\n\r\n<body>\r\n  <!-- Estrutura do banner -->\r\n  <div class=\"main-container-banner-unique2\">\r\n    <div class=\"content-main-banner-unique2\">\r\n      <span class=\"text-banner-unique2\">VISÃO DETALHADA\r\n\r\n\r\n\r\n\r\n\r\n\r\n \r\n        <!-- Ícone de segurança embutido ao lado do texto -->\r\n        \r\n  </div>\r\n</body>\r\n\r\n</html>",
+                "mode": "html"
+              },
+              "fieldConfig": {
+                "defaults": {},
+                "overrides": []
+              }
+            }
+          },
+          "transparent": true
+        }
+      },
+      "panel-797": {
+        "kind": "Panel",
+        "spec": {
+          "id": 797,
+          "title": "",
+          "description": "",
+          "links": [],
+          "data": {
+            "kind": "QueryGroup",
+            "spec": {
+              "queries": [
+                {
+                  "kind": "PanelQuery",
+                  "spec": {
+                    "query": {
+                      "kind": "DataQuery",
+                      "group": "alexanderzobnin-zabbix-datasource",
+                      "version": "v0",
+                      "datasource": {
+                        "name": "cfqk8kvi756o0c"
+                      },
+                      "spec": {
+                        "application": {
+                          "filter": ""
+                        },
+                        "countTriggersBy": "",
+                        "evaltype": "0",
+                        "functions": [],
+                        "group": {
+                          "filter": ""
+                        },
+                        "host": {
+                          "filter": ""
+                        },
+                        "item": {
+                          "filter": ""
+                        },
+                        "itemTag": {
+                          "filter": ""
+                        },
+                        "macro": {
+                          "filter": ""
+                        },
+                        "options": {
+                          "count": false,
+                          "disableDataAlignment": false,
+                          "showDisabledItems": false,
+                          "skipEmptyValues": false,
+                          "useTrends": "default",
+                          "useZabbixValueMapping": false
+                        },
+                        "proxy": {
+                          "filter": ""
+                        },
+                        "queryType": "0",
+                        "resultFormat": "time_series",
+                        "schema": 12,
+                        "table": {
+                          "skipEmptyValues": false
+                        },
+                        "tags": {
+                          "filter": ""
+                        },
+                        "textFilter": "",
+                        "trigger": {
+                          "filter": ""
+                        }
+                      }
+                    },
+                    "refId": "A",
+                    "hidden": false
+                  }
+                }
+              ],
+              "transformations": [],
+              "queryOptions": {}
+            }
+          },
+          "vizConfig": {
+            "kind": "VizConfig",
+            "group": "volkovlabs-variable-panel",
+            "version": "5.2.0",
+            "spec": {
+              "options": {
+                "alertCustomMessage": "",
+                "alwaysVisibleFilter": false,
+                "autoScroll": false,
+                "browserTabNamePattern": "",
+                "collapsedByDefault": false,
+                "customValue": false,
+                "displayMode": "button",
+                "emptyValue": false,
+                "favorites": {
+                  "enabled": false,
+                  "storage": "browser"
+                },
+                "filter": false,
+                "groupSelection": false,
+                "header": true,
+                "isMinimizeForTable": false,
+                "isMinimizeViewShowCustomIcon": false,
+                "isPinTabsEnabled": false,
+                "isUseLocalTime": false,
+                "minimizeOutputFormat": "text",
+                "minimizeViewCustomIcon": "",
+                "minimizeViewNativeIcon": "gf-movepane-right",
+                "padding": 10,
+                "persistent": false,
+                "requestLatency": "low",
+                "saveSelectedGroup": false,
+                "saveSelectedGroupKey": "",
+                "selectedValues": {
+                  "maxCount": 0,
+                  "showSelected": false
+                },
+                "showGroupTotal": false,
+                "showLabel": true,
+                "showName": false,
+                "showResetButton": false,
+                "showTotal": false,
+                "statusSort": false,
+                "sticky": false,
+                "tableViewPosition": "normal",
+                "tabsInOrder": true,
+                "toolbarMode": "tabs",
+                "variable": "HOST",
+                "wordBreak": "normal"
+              },
+              "fieldConfig": {
+                "defaults": {
+                  "thresholds": {
+                    "mode": "absolute",
+                    "steps": [
+                      {
+                        "value": 0,
+                        "color": "green"
+                      },
+                      {
+                        "value": 80,
+                        "color": "red"
+                      }
+                    ]
+                  },
+                  "custom": {
+                    "thresholdsStyle": {
+                      "mode": "color",
+                      "thresholds": []
+                    }
+                  }
+                },
+                "overrides": []
+              }
+            }
+          },
+          "transparent": true
+        }
+      },
+      "panel-798": {
+        "kind": "Panel",
+        "spec": {
+          "id": 798,
+          "title": "TRÁFEGO IPV6 PPPOE",
+          "description": "",
+          "links": [],
+          "data": {
+            "kind": "QueryGroup",
+            "spec": {
+              "queries": [
+                {
+                  "kind": "PanelQuery",
+                  "spec": {
+                    "query": {
+                      "kind": "DataQuery",
+                      "group": "alexanderzobnin-zabbix-datasource",
+                      "version": "v0",
+                      "datasource": {
+                        "name": "cfqk8kvi756o0c"
+                      },
+                      "spec": {
+                        "application": {
+                          "filter": ""
+                        },
+                        "countTriggersBy": "",
+                        "evaltype": "0",
+                        "functions": [],
+                        "group": {
+                          "filter": "BRAS"
+                        },
+                        "host": {
+                          "filter": "Huawei NE8000 BRAS"
+                        },
+                        "item": {
+                          "filter": "Interface GigabitEthernet0/7/0.200(PPPOE): Bits sent"
+                        },
+                        "itemTag": {
+                          "filter": "/Bits.*/"
+                        },
+                        "macro": {
+                          "filter": ""
+                        },
+                        "options": {
+                          "count": false,
+                          "disableDataAlignment": false,
+                          "showDisabledItems": false,
+                          "skipEmptyValues": false,
+                          "useTrends": "default",
+                          "useZabbixValueMapping": false
+                        },
+                        "proxy": {
+                          "filter": ""
+                        },
+                        "queryType": "0",
+                        "resultFormat": "time_series",
+                        "schema": 12,
+                        "table": {
+                          "skipEmptyValues": false
+                        },
+                        "tags": {
+                          "filter": ""
+                        },
+                        "textFilter": "",
+                        "trigger": {
+                          "filter": ""
+                        },
+                        "triggers": {
+                          "acknowledged": 2
+                        }
+                      }
+                    },
+                    "refId": "A",
+                    "hidden": true
+                  }
+                },
+                {
+                  "kind": "PanelQuery",
+                  "spec": {
+                    "query": {
+                      "kind": "DataQuery",
+                      "group": "alexanderzobnin-zabbix-datasource",
+                      "version": "v0",
+                      "datasource": {
+                        "name": "cfqk8kvi756o0c"
+                      },
+                      "spec": {
+                        "application": {
+                          "filter": ""
+                        },
+                        "countTriggersBy": "",
+                        "evaltype": "0",
+                        "functions": [],
+                        "group": {
+                          "filter": "BRAS"
+                        },
+                        "host": {
+                          "filter": "Huawei NE8000 BRAS"
+                        },
+                        "item": {
+                          "filter": "Interface Eth-Trunk0.5000(PPPOE): Bits received"
+                        },
+                        "itemTag": {
+                          "filter": "/Bits.*/"
+                        },
+                        "macro": {
+                          "filter": ""
+                        },
+                        "options": {
+                          "count": false,
+                          "disableDataAlignment": false,
+                          "showDisabledItems": false,
+                          "skipEmptyValues": false,
+                          "useTrends": "default",
+                          "useZabbixValueMapping": false
+                        },
+                        "proxy": {
+                          "filter": ""
+                        },
+                        "queryType": "0",
+                        "resultFormat": "time_series",
+                        "schema": 12,
+                        "table": {
+                          "skipEmptyValues": false
+                        },
+                        "tags": {
+                          "filter": ""
+                        },
+                        "textFilter": "",
+                        "trigger": {
+                          "filter": ""
+                        },
+                        "triggers": {
+                          "acknowledged": 2
+                        }
+                      }
+                    },
+                    "refId": "B",
+                    "hidden": true
+                  }
+                }
+              ],
+              "transformations": [],
+              "queryOptions": {}
+            }
+          },
+          "vizConfig": {
+            "kind": "VizConfig",
+            "group": "timeseries",
+            "version": "13.1.0",
+            "spec": {
+              "options": {
+                "annotations": {
+                  "clustering": -1,
+                  "multiLane": false
+                },
+                "legend": {
+                  "calcs": [
+                    "lastNotNull",
+                    "min",
+                    "max"
+                  ],
+                  "displayMode": "table",
+                  "enableFacetedFilter": false,
+                  "overflow": "ellipsis",
+                  "placement": "bottom",
+                  "showLegend": true
+                },
+                "tooltip": {
+                  "hideZeros": false,
+                  "mode": "single",
+                  "sort": "none"
+                }
+              },
+              "fieldConfig": {
+                "defaults": {
+                  "unit": "bps",
+                  "thresholds": {
+                    "mode": "absolute",
+                    "steps": [
+                      {
+                        "value": 0,
+                        "color": "green"
+                      },
+                      {
+                        "value": 80,
+                        "color": "red"
+                      }
+                    ]
+                  },
+                  "color": {
+                    "mode": "palette-classic"
+                  },
+                  "custom": {
+                    "axisBorderShow": false,
+                    "axisCenteredZero": false,
+                    "axisColorMode": "text",
+                    "axisLabel": "",
+                    "axisPlacement": "auto",
+                    "barAlignment": 0,
+                    "barWidthFactor": 0.6,
+                    "drawStyle": "line",
+                    "fillOpacity": 30,
+                    "gradientMode": "none",
+                    "hideFrom": {
+                      "legend": false,
+                      "tooltip": false,
+                      "viz": false
+                    },
+                    "insertNulls": false,
+                    "lineInterpolation": "linear",
+                    "lineWidth": 1,
+                    "pointSize": 5,
+                    "scaleDistribution": {
+                      "type": "linear"
+                    },
+                    "showPoints": "auto",
+                    "showValues": false,
+                    "spanNulls": false,
+                    "stacking": {
+                      "group": "A",
+                      "mode": "none"
+                    },
+                    "thresholdsStyle": {
+                      "mode": "off"
+                    }
+                  }
+                },
+                "overrides": [
+                  {
+                    "matcher": {
+                      "id": "byName",
+                      "options": "PPPOE-NE40: Interface Virtual-Ethernet0/3/101.110(IPV6 BNG): Bits received"
+                    },
+                    "properties": [
+                      {
+                        "id": "color",
+                        "value": {
+                          "fixedColor": "blue",
+                          "mode": "fixed"
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "matcher": {
+                      "id": "byName",
+                      "options": "PPPOE-NE40: Interface Virtual-Ethernet0/3/101.110(IPV6 BNG): Bits sent"
+                    },
+                    "properties": [
+                      {
+                        "id": "color",
+                        "value": {
+                          "fixedColor": "dark-orange",
+                          "mode": "fixed"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          }
+        }
+      },
+      "panel-799": {
+        "kind": "Panel",
+        "spec": {
+          "id": 799,
+          "title": "TRÁFEGO IPV4 PPPOE - CGNAT",
+          "description": "",
+          "links": [],
+          "data": {
+            "kind": "QueryGroup",
+            "spec": {
+              "queries": [
+                {
+                  "kind": "PanelQuery",
+                  "spec": {
+                    "query": {
+                      "kind": "DataQuery",
+                      "group": "alexanderzobnin-zabbix-datasource",
+                      "version": "v0",
+                      "datasource": {
+                        "name": "cfqk8kvi756o0c"
+                      },
+                      "spec": {
+                        "application": {
+                          "filter": ""
+                        },
+                        "countTriggersBy": "",
+                        "evaltype": "0",
+                        "functions": [],
+                        "group": {
+                          "filter": "$GRUPO"
+                        },
+                        "host": {
+                          "filter": "$HOST"
+                        },
+                        "item": {
+                          "filter": "/A10.*/"
+                        },
+                        "itemTag": {
+                          "filter": "/Bits.*/"
+                        },
+                        "macro": {
+                          "filter": ""
+                        },
+                        "options": {
+                          "count": false,
+                          "disableDataAlignment": false,
+                          "showDisabledItems": false,
+                          "skipEmptyValues": false,
+                          "useTrends": "default",
+                          "useZabbixValueMapping": false
+                        },
+                        "proxy": {
+                          "filter": ""
+                        },
+                        "queryType": "0",
+                        "resultFormat": "time_series",
+                        "schema": 12,
+                        "table": {
+                          "skipEmptyValues": false
+                        },
+                        "tags": {
+                          "filter": ""
+                        },
+                        "textFilter": "",
+                        "trigger": {
+                          "filter": ""
+                        }
+                      }
+                    },
+                    "refId": "A",
+                    "hidden": false
+                  }
+                }
+              ],
+              "transformations": [],
+              "queryOptions": {}
+            }
+          },
+          "vizConfig": {
+            "kind": "VizConfig",
+            "group": "timeseries",
+            "version": "13.1.0",
+            "spec": {
+              "options": {
+                "annotations": {
+                  "clustering": -1,
+                  "multiLane": false
+                },
+                "legend": {
+                  "calcs": [],
+                  "displayMode": "table",
+                  "enableFacetedFilter": false,
+                  "overflow": "ellipsis",
+                  "placement": "bottom",
+                  "showLegend": true
+                },
+                "tooltip": {
+                  "hideZeros": false,
+                  "mode": "single",
+                  "sort": "none"
+                }
+              },
+              "fieldConfig": {
+                "defaults": {
+                  "unit": "bps",
+                  "thresholds": {
+                    "mode": "absolute",
+                    "steps": [
+                      {
+                        "value": 0,
+                        "color": "green"
+                      },
+                      {
+                        "value": 80,
+                        "color": "red"
+                      }
+                    ]
+                  },
+                  "color": {
+                    "mode": "palette-classic"
+                  },
+                  "custom": {
+                    "axisBorderShow": false,
+                    "axisCenteredZero": false,
+                    "axisColorMode": "text",
+                    "axisLabel": "",
+                    "axisPlacement": "auto",
+                    "barAlignment": 0,
+                    "barWidthFactor": 0.6,
+                    "drawStyle": "line",
+                    "fillOpacity": 30,
+                    "gradientMode": "none",
+                    "hideFrom": {
+                      "legend": false,
+                      "tooltip": false,
+                      "viz": false
+                    },
+                    "insertNulls": false,
+                    "lineInterpolation": "linear",
+                    "lineWidth": 1,
+                    "pointSize": 5,
+                    "scaleDistribution": {
+                      "type": "linear"
+                    },
+                    "showPoints": "auto",
+                    "showValues": false,
+                    "spanNulls": false,
+                    "stacking": {
+                      "group": "A",
+                      "mode": "none"
+                    },
+                    "thresholdsStyle": {
+                      "mode": "off"
+                    }
+                  }
+                },
+                "overrides": []
+              }
+            }
+          }
+        }
+      }
+    },
+    "layout": {
+      "kind": "RowsLayout",
+      "spec": {
+        "rows": [
+          {
+            "kind": "RowsLayoutRow",
+            "spec": {
+              "title": "",
+              "collapse": false,
+              "hideHeader": true,
+              "layout": {
+                "kind": "GridLayout",
+                "spec": {
+                  "items": [
+                    {
+                      "kind": "GridLayoutItem",
+                      "spec": {
+                        "x": 0,
+                        "y": 0,
+                        "width": 24,
+                        "height": 3,
+                        "element": {
+                          "kind": "ElementReference",
+                          "name": "panel-788"
+                        }
+                      }
+                    },
+                    {
+                      "kind": "GridLayoutItem",
+                      "spec": {
+                        "x": 0,
+                        "y": 3,
+                        "width": 8,
+                        "height": 4,
+                        "element": {
+                          "kind": "ElementReference",
+                          "name": "panel-344"
+                        }
+                      }
+                    },
+                    {
+                      "kind": "GridLayoutItem",
+                      "spec": {
+                        "x": 8,
+                        "y": 3,
+                        "width": 16,
+                        "height": 12,
+                        "element": {
+                          "kind": "ElementReference",
+                          "name": "panel-789"
+                        }
+                      }
+                    },
+                    {
+                      "kind": "GridLayoutItem",
+                      "spec": {
+                        "x": 0,
+                        "y": 7,
+                        "width": 8,
+                        "height": 4,
+                        "element": {
+                          "kind": "ElementReference",
+                          "name": "panel-345"
+                        }
+                      }
+                    },
+                    {
+                      "kind": "GridLayoutItem",
+                      "spec": {
+                        "x": 0,
+                        "y": 11,
+                        "width": 8,
+                        "height": 4,
+                        "element": {
+                          "kind": "ElementReference",
+                          "name": "panel-346"
+                        }
+                      }
+                    },
+                    {
+                      "kind": "GridLayoutItem",
+                      "spec": {
+                        "x": 0,
+                        "y": 15,
+                        "width": 24,
+                        "height": 2,
+                        "element": {
+                          "kind": "ElementReference",
+                          "name": "panel-796"
+                        }
+                      }
+                    },
+                    {
+                      "kind": "GridLayoutItem",
+                      "spec": {
+                        "x": 0,
+                        "y": 17,
+                        "width": 24,
+                        "height": 2,
+                        "element": {
+                          "kind": "ElementReference",
+                          "name": "panel-797"
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          {
+            "kind": "RowsLayoutRow",
+            "spec": {
+              "title": "$HOST",
+              "collapse": true,
+              "repeat": {
+                "mode": "variable",
+                "value": "HOST"
+              },
+              "layout": {
+                "kind": "GridLayout",
+                "spec": {
+                  "items": [
+                    {
+                      "kind": "GridLayoutItem",
+                      "spec": {
+                        "x": 0,
+                        "y": 0,
+                        "width": 12,
+                        "height": 5,
+                        "element": {
+                          "kind": "ElementReference",
+                          "name": "panel-334"
+                        }
+                      }
+                    },
+                    {
+                      "kind": "GridLayoutItem",
+                      "spec": {
+                        "x": 12,
+                        "y": 0,
+                        "width": 12,
+                        "height": 5,
+                        "element": {
+                          "kind": "ElementReference",
+                          "name": "panel-795"
+                        }
+                      }
+                    },
+                    {
+                      "kind": "GridLayoutItem",
+                      "spec": {
+                        "x": 0,
+                        "y": 5,
+                        "width": 12,
+                        "height": 8,
+                        "element": {
+                          "kind": "ElementReference",
+                          "name": "panel-798"
+                        }
+                      }
+                    },
+                    {
+                      "kind": "GridLayoutItem",
+                      "spec": {
+                        "x": 12,
+                        "y": 5,
+                        "width": 12,
+                        "height": 8,
+                        "element": {
+                          "kind": "ElementReference",
+                          "name": "panel-799"
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    "links": [],
+    "liveNow": false,
+    "preload": false,
+    "tags": [],
+    "timeSettings": {
+      "timezone": "browser",
+      "from": "now-24h",
+      "to": "now",
+      "autoRefresh": "1m",
+      "autoRefreshIntervals": [
+        "10s",
+        "30s",
+        "1m",
+        "5m",
+        "15m",
+        "30m",
+        "1h",
+        "2h",
+        "1d"
+      ],
+      "hideTimepicker": false,
+      "fiscalYearStartMonth": 0
+    },
+    "title": "MÉTRICAS PPPOE GERAL",
+    "variables": [
+      {
+        "kind": "QueryVariable",
+        "spec": {
+          "name": "GRUPO",
+          "current": {
+            "text": "All",
+            "value": "$__all"
+          },
+          "hide": "hideVariable",
+          "refresh": "onDashboardLoad",
+          "skipUrlSync": false,
+          "query": {
+            "kind": "DataQuery",
+            "group": "alexanderzobnin-zabbix-datasource",
+            "version": "v0",
+            "datasource": {
+              "name": "cfqk8kvi756o0c"
+            },
+            "spec": {
+              "application": "",
+              "group": "/BRAS.*/",
+              "host": "",
+              "item": "",
+              "itemTag": "",
+              "queryType": "group",
+              "showDisabledItems": false
+            }
+          },
+          "regex": "",
+          "regexApplyTo": "value",
+          "sort": "disabled",
+          "definition": "",
+          "options": [],
+          "multi": true,
+          "includeAll": true,
+          "allowCustomValue": true
+        }
+      },
+      {
+        "kind": "QueryVariable",
+        "spec": {
+          "name": "HOST",
+          "current": {
+            "text": "All",
+            "value": [
+              "$__all"
+            ]
+          },
+          "label": "CONCENTRADOR",
+          "hide": "hideVariable",
+          "refresh": "onDashboardLoad",
+          "skipUrlSync": false,
+          "query": {
+            "kind": "DataQuery",
+            "group": "alexanderzobnin-zabbix-datasource",
+            "version": "v0",
+            "datasource": {
+              "name": "cfqk8kvi756o0c"
+            },
+            "spec": {
+              "application": "",
+              "group": "$GRUPO",
+              "host": "/.*/",
+              "item": "",
+              "itemTag": "",
+              "queryType": "host"
+            }
+          },
+          "regex": "/^(?!abc|.*SITE|.*AUDITORIA)/",
+          "regexApplyTo": "value",
+          "sort": "disabled",
+          "definition": "",
+          "options": [],
+          "multi": true,
+          "includeAll": true,
+          "allowCustomValue": true
+        }
+      },
+      {
+        "kind": "QueryVariable",
+        "spec": {
+          "name": "INTERFACE",
+          "current": {
+            "text": "Interface 100GE0/3/0(LACP-S6730-CLUSTER-MIRASSOL-100GE1/0/5): Bits received",
+            "value": "Interface 100GE0/3/0(LACP-S6730-CLUSTER-MIRASSOL-100GE1/0/5): Bits received"
+          },
+          "hide": "hideVariable",
+          "refresh": "onDashboardLoad",
+          "skipUrlSync": false,
+          "query": {
+            "kind": "DataQuery",
+            "group": "alexanderzobnin-zabbix-datasource",
+            "version": "v0",
+            "datasource": {
+              "name": "cfqk8kvi756o0c"
+            },
+            "spec": {
+              "application": "/Bits/",
+              "group": "$GRUPO",
+              "host": "$HOST",
+              "item": "/.*/",
+              "itemTag": "/Bits/",
+              "queryType": "item",
+              "showDisabledItems": false
+            }
+          },
+          "regex": "",
+          "regexApplyTo": "value",
+          "sort": "disabled",
+          "definition": "",
+          "options": [],
+          "multi": false,
+          "includeAll": false,
+          "allowCustomValue": true
+        }
+      },
+      {
+        "kind": "QueryVariable",
+        "spec": {
+          "name": "connectedPPoe",
+          "current": {
+            "text": "",
+            "value": ""
+          },
+          "hide": "hideVariable",
+          "refresh": "onDashboardLoad",
+          "skipUrlSync": false,
+          "query": {
+            "kind": "DataQuery",
+            "group": "alexanderzobnin-zabbix-datasource",
+            "version": "v0",
+            "spec": {
+              "application": "",
+              "group": "$GRUPO",
+              "host": "$HOST",
+              "item": "/Connected PPPoE/",
+              "itemTag": "",
+              "queryType": "item"
+            }
+          },
+          "regex": "",
+          "regexApplyTo": "value",
+          "sort": "disabled",
+          "definition": "",
+          "options": [],
+          "multi": false,
+          "includeAll": false,
+          "allowCustomValue": true
+        }
+      }
+    ]
+  }
+}

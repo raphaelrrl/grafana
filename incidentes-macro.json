@@ -1,0 +1,791 @@
+{
+  "apiVersion": "dashboard.grafana.app/v2",
+  "kind": "Dashboard",
+  "metadata": {
+    "name": "aee5dvw6lqpdsf5",
+    "namespace": "default",
+    "uid": "bc567bb5-65a5-474d-816d-ad37b23969ce",
+    "resourceVersion": "1783129471826009",
+    "generation": 4,
+    "creationTimestamp": "2026-07-01T03:33:39Z",
+    "labels": {
+      "grafana.app/deprecatedInternalID": "43"
+    },
+    "annotations": {
+      "grafana.app/createdBy": "user:efqk2yawd4hs0d",
+      "grafana.app/folder": "",
+      "grafana.app/saved-from-ui": "Grafana v13.1.0 (b309c9bb3b)",
+      "grafana.app/updatedBy": "user:efqk2yawd4hs0d",
+      "grafana.app/updatedTimestamp": "2026-07-04T01:44:31Z"
+    }
+  },
+  "spec": {
+    "annotations": [
+      {
+        "kind": "AnnotationQuery",
+        "spec": {
+          "query": {
+            "kind": "DataQuery",
+            "group": "grafana",
+            "version": "v0",
+            "datasource": {
+              "name": "-- Grafana --"
+            },
+            "spec": {}
+          },
+          "enable": true,
+          "hide": true,
+          "iconColor": "rgba(0, 211, 255, 1)",
+          "name": "Annotations & Alerts",
+          "builtIn": true
+        }
+      }
+    ],
+    "cursorSync": "Off",
+    "editable": true,
+    "elements": {
+      "panel-4": {
+        "kind": "Panel",
+        "spec": {
+          "id": 4,
+          "title": "",
+          "description": "",
+          "links": [],
+          "data": {
+            "kind": "QueryGroup",
+            "spec": {
+              "queries": [
+                {
+                  "kind": "PanelQuery",
+                  "spec": {
+                    "query": {
+                      "kind": "DataQuery",
+                      "group": "alexanderzobnin-zabbix-datasource",
+                      "version": "v0",
+                      "datasource": {
+                        "name": "cfqk8kvi756o0c"
+                      },
+                      "spec": {
+                        "application": {
+                          "filter": ""
+                        },
+                        "countTriggersBy": "",
+                        "evaltype": "0",
+                        "functions": [],
+                        "group": {
+                          "filter": "$GRUPO"
+                        },
+                        "host": {
+                          "filter": "/.*/"
+                        },
+                        "item": {
+                          "filter": ""
+                        },
+                        "itemTag": {
+                          "filter": "/.*/"
+                        },
+                        "macro": {
+                          "filter": ""
+                        },
+                        "options": {
+                          "acknowledged": 2,
+                          "count": true,
+                          "disableDataAlignment": false,
+                          "hostProxy": false,
+                          "hostsInMaintenance": false,
+                          "limit": 1001,
+                          "minSeverity": 3,
+                          "severities": [
+                            2,
+                            3,
+                            4
+                          ],
+                          "showDisabledItems": false,
+                          "skipEmptyValues": false,
+                          "sortProblems": "default",
+                          "useTimeRange": false,
+                          "useTrends": "default",
+                          "useZabbixValueMapping": false
+                        },
+                        "proxy": {
+                          "filter": "/.*/"
+                        },
+                        "queryType": "5",
+                        "resultFormat": "time_series",
+                        "schema": 12,
+                        "showProblems": "problems",
+                        "table": {
+                          "skipEmptyValues": false
+                        },
+                        "tags": {
+                          "filter": ""
+                        },
+                        "textFilter": "",
+                        "trigger": {
+                          "filter": "/.*/"
+                        },
+                        "triggers": {
+                          "acknowledged": 2
+                        }
+                      }
+                    },
+                    "refId": "A",
+                    "hidden": false
+                  }
+                }
+              ],
+              "transformations": [],
+              "queryOptions": {}
+            }
+          },
+          "vizConfig": {
+            "kind": "VizConfig",
+            "group": "alexanderzobnin-zabbix-triggers-panel",
+            "version": "6.4.0",
+            "spec": {
+              "options": {
+                "ackEventColor": "rgb(56, 219, 156)",
+                "ackField": false,
+                "ageField": true,
+                "allowDangerousHTML": true,
+                "customLastChangeFormat": false,
+                "customTagColumns": "",
+                "descriptionAtNewLine": false,
+                "descriptionField": true,
+                "fontSize": "100%",
+                "highlightBackground": false,
+                "highlightNewEvents": true,
+                "highlightNewerThan": "1h",
+                "hostField": true,
+                "hostGroups": false,
+                "hostProxy": false,
+                "hostTechNameField": false,
+                "lastChangeFormat": "",
+                "layout": "list",
+                "markAckEvents": false,
+                "okEventColor": "rgb(56, 189, 113)",
+                "opdataField": false,
+                "pageSize": 15,
+                "problemTimeline": false,
+                "resizedColumns": [
+                  {
+                    "id": "groups",
+                    "value": 157.828125
+                  },
+                  {
+                    "id": "severity",
+                    "value": 83
+                  },
+                  {
+                    "id": "name",
+                    "value": 525.671875
+                  },
+                  {
+                    "id": "lastchange",
+                    "value": 186
+                  },
+                  {
+                    "id": "age",
+                    "value": 107
+                  },
+                  {
+                    "id": "host",
+                    "value": 188.5
+                  }
+                ],
+                "severityField": true,
+                "showDatasourceName": false,
+                "showTags": false,
+                "sortProblems": "lastchange",
+                "statusField": false,
+                "statusIcon": false,
+                "triggerSeverity": [
+                  {
+                    "color": "#a0a0a0",
+                    "priority": 0,
+                    "severity": "Not classified",
+                    "show": true
+                  },
+                  {
+                    "color": "#3498db",
+                    "priority": 1,
+                    "severity": "Information",
+                    "show": true
+                  },
+                  {
+                    "color": "#f1c40f",
+                    "priority": 2,
+                    "severity": "Warning",
+                    "show": true
+                  },
+                  {
+                    "color": "#e67e22",
+                    "priority": 3,
+                    "severity": "Average",
+                    "show": true
+                  },
+                  {
+                    "color": "#c0392b",
+                    "priority": 4,
+                    "severity": "High",
+                    "show": true
+                  },
+                  {
+                    "color": "#8b0000",
+                    "priority": 5,
+                    "severity": "Disaster",
+                    "show": true
+                  }
+                ]
+              },
+              "fieldConfig": {
+                "defaults": {},
+                "overrides": []
+              }
+            }
+          }
+        }
+      },
+      "panel-60": {
+        "kind": "Panel",
+        "spec": {
+          "id": 60,
+          "title": "",
+          "description": "",
+          "links": [],
+          "data": {
+            "kind": "QueryGroup",
+            "spec": {
+              "queries": [
+                {
+                  "kind": "PanelQuery",
+                  "spec": {
+                    "query": {
+                      "kind": "DataQuery",
+                      "group": "alexanderzobnin-zabbix-datasource",
+                      "version": "v0",
+                      "datasource": {
+                        "name": "cfqk8kvi756o0c"
+                      },
+                      "spec": {
+                        "application": {
+                          "filter": ""
+                        },
+                        "countTriggersBy": "",
+                        "evaltype": "0",
+                        "functions": [],
+                        "group": {
+                          "filter": "$GRUPO"
+                        },
+                        "host": {
+                          "filter": "/.*/"
+                        },
+                        "item": {
+                          "filter": ""
+                        },
+                        "itemTag": {
+                          "filter": "/.*/"
+                        },
+                        "macro": {
+                          "filter": ""
+                        },
+                        "options": {
+                          "acknowledged": 2,
+                          "count": false,
+                          "disableDataAlignment": false,
+                          "hostProxy": false,
+                          "hostsInMaintenance": false,
+                          "limit": 1001,
+                          "minSeverity": 2,
+                          "showDisabledItems": false,
+                          "skipEmptyValues": false,
+                          "sortProblems": "default",
+                          "useTimeRange": false,
+                          "useTrends": "default",
+                          "useZabbixValueMapping": false
+                        },
+                        "proxy": {
+                          "filter": ""
+                        },
+                        "queryType": "4",
+                        "resultFormat": "time_series",
+                        "schema": 12,
+                        "showProblems": "problems",
+                        "table": {
+                          "skipEmptyValues": false
+                        },
+                        "tags": {
+                          "filter": ""
+                        },
+                        "textFilter": "",
+                        "trigger": {
+                          "filter": ""
+                        },
+                        "triggers": {
+                          "acknowledged": 2,
+                          "minSeverity": 0
+                        }
+                      }
+                    },
+                    "refId": "OLT",
+                    "hidden": false
+                  }
+                }
+              ],
+              "transformations": [],
+              "queryOptions": {}
+            }
+          },
+          "vizConfig": {
+            "kind": "VizConfig",
+            "group": "volkovlabs-echarts-panel",
+            "version": "7.2.5",
+            "spec": {
+              "options": {
+                "baidu": {
+                  "callback": "bmapReady",
+                  "key": ""
+                },
+                "editor": {
+                  "format": "auto",
+                  "height": 600
+                },
+                "editorMode": "visual",
+                "gaode": {
+                  "key": "",
+                  "plugin": "AMap.Scale,AMap.ToolBar"
+                },
+                "getOption": "let values = [];\ndata.series.forEach((s) => {\n  const numberFields = s.fields.filter((f) => f.type === 'number');\n  numberFields.forEach((field) => {\n    values.push(field.values);\n  });\n});\n\nreturn {\n  legend: {\n    top: 'bottom'\n  },\n  toolbox: {\n    show: false,\n    feature: {\n      mark: { show: true },\n      dataView: { show: true, readOnly: false },\n      restore: { show: true },\n      saveAsImage: { show: true }\n    }\n  },\n  series: [\n    {\n      name: 'Nightingale Chart',\n      type: 'pie',\n      radius: [50, 250],\n      center: ['50%', '50%'],\n      roseType: 'area',\n      itemStyle: {\n        borderRadius: 8\n      },\n      data: [\n        { value: values[0], name: 'Switch Huawei', itemStyle: { color: '#99c2ff' } },\n        { value: values[1], name: 'BGP', itemStyle: { color: '#3385ff' } },\n        { value: values[2], name: 'OLTS', itemStyle: { color: '#005ce6' } },\n        { value: values[3], name: 'Switch Datacom', itemStyle: { color: '#0052cc' } },\n        { value: values[4], name: 'Concentrador', itemStyle: { color: '#003d99' } }\n      ]\n    }\n  ]\n};",
+                "google": {
+                  "callback": "gmapReady",
+                  "key": ""
+                },
+                "map": "none",
+                "renderer": "canvas",
+                "themeEditor": {
+                  "config": "{}",
+                  "height": 400,
+                  "name": "default"
+                },
+                "visualEditor": {
+                  "code": "// Pega a fonte de dados que o Grafana fornece\nconst seriesData = context.panel.data.series[0];\n\n// Array para armazenar os dados do gráfico de pizza\nconst pieData = [];\n\n// Mapeia as severidades para suas cores e ordem padrão do Zabbix\nconst severityMap = {\n  'Disaster': { color: '#DC3838', order: 5 },\n  'High': { color: '#FF991A', order: 4 },\n  'Average': { color: '#F3DA91', order: 3 },\n  'Warning': { color: '#F9DB25', order: 2 },\n  'Information': { color: '#33A2CC', order: 1 },\n  'Not classified': { color: '#A9A9AA', order: 0 }\n};\n\n// Objeto para armazenar a SOMA total de cada severidade\nconst severityTotals = {\n  'Disaster': 0, 'High': 0, 'Average': 0, 'Warning': 0,\n  'Information': 0, 'Not classified': 0\n};\n\nlet titleText = 'Problemas por Severidade';\n\n// ===== LÓGICA ATUALIZADA PARA SOMAR TODAS AS LINHAS =====\nif (seriesData && seriesData.fields.length > 0) {\n  // Itera sobre cada nome de severidade que nos interessa\n  for (const severityName in severityTotals) {\n    const field = seriesData.fields.find(f => f.name === severityName);\n\n    if (field) {\n      // SOMA todos os valores nesta coluna (para todas as linhas/grupos)\n      const columnTotal = field.values.toArray().reduce((sum, value) => sum + value, 0);\n      severityTotals[severityName] = columnTotal;\n    }\n  }\n\n  // Constrói os dados do gráfico a partir dos totais somados\n  for (const severityName in severityTotals) {\n    const totalValue = severityTotals[severityName];\n    if (totalValue > 0) {\n      const severityInfo = severityMap[severityName];\n      pieData.push({\n        name: severityName,\n        value: totalValue,\n        itemStyle: { color: severityInfo.color },\n        order: severityInfo.order\n      });\n    }\n  }\n\n  // Ajusta o título dinamicamente\n  const rowCount = seriesData.fields[0].values.length;\n  if (rowCount > 1) {\n    titleText += ' - Todos os Grupos';\n  } else {\n    const groupField = seriesData.fields.find(f => f.name === 'Host group');\n    if (groupField) {\n      const groupName = groupField.values.get(0);\n      titleText += ` - ${groupName}`;\n    }\n  }\n}\n// =========================================================\n\n// Ordena as fatias pela ordem de severidade\npieData.sort((a, b) => b.order - a.order);\n\n// Verificação para o caso de não haver alarmes\nif (pieData.length === 0) {\n  return {\n    backgroundColor: 'transparent',\n    title: {\n      text: 'SEM ALARMES',\n      left: 'center', top: 'center',\n      textStyle: { color: '#00E96A', fontSize: 24, fontWeight: 'bold' }\n    }\n  };\n}\n\n// Configuração do Gráfico de Pizza\nreturn {\n  backgroundColor: 'transparent',\n  title: {\n    text: titleText,\n    left: 'center', top: '2%',\n    textStyle: { color: '#FFFFFF', fontSize: 20, fontWeight: 'bold' }\n  },\n  tooltip: {\n    trigger: 'item',\n    formatter: '{b}: {c} ({d}%)'\n  },\n  legend: {\n    orient: 'horizontal', type: 'scroll', bottom: '5%',\n    data: pieData.map((item) => item.name),\n    textStyle: { color: '#FFFFFF', fontSize: 12, fontWeight: 'bold' },\n    pageTextStyle: { color: '#FFFFFF' },\n    pageIconColor: '#FFFFFF',\n    pageIconInactiveColor: '#CCCCCC'\n  },\n  series: [{\n    name: 'Problemas por Severidade',\n    type: 'pie',\n    roseType: 'area',\n    radius: ['15%', '50%'],\n    center: ['50%', '50%'],\n    data: pieData,\n    label: {\n      show: true,\n      formatter: '{b}\\n{c}',\n      color: '#FFFFFF', fontSize: 14, fontWeight: 'bold'\n    },\n    labelLine: {\n      length: 15, length2: 10,\n      lineStyle: { color: '#FFFFFF', width: 2 }\n    },\n    itemStyle: {\n      borderRadius: 15,\n      borderColor: 'rgba(0,0,0,1)',\n      borderWidth: 1.5,\n    }\n  }]\n};",
+                  "dataset": [
+                    {
+                      "name": "Field",
+                      "source": "reduce-"
+                    },
+                    {
+                      "name": "Last *",
+                      "source": "reduce-"
+                    }
+                  ],
+                  "series": []
+                }
+              },
+              "fieldConfig": {
+                "defaults": {},
+                "overrides": []
+              }
+            }
+          }
+        }
+      },
+      "panel-86": {
+        "kind": "Panel",
+        "spec": {
+          "id": 86,
+          "title": "",
+          "description": "",
+          "links": [
+            {
+              "title": "Filtrar hosts do grupo ${__field.name} ",
+              "url": "http://45.169.228.84:3000/d/aey5r3yod53wgb2/incidentes-individual?orgId=${__org.id}&from=now-30d&to=now&var-GRUPO=${GRUPO}&var-HOST=All\n\n",
+              "targetBlank": true
+            }
+          ],
+          "data": {
+            "kind": "QueryGroup",
+            "spec": {
+              "queries": [
+                {
+                  "kind": "PanelQuery",
+                  "spec": {
+                    "query": {
+                      "kind": "DataQuery",
+                      "group": "alexanderzobnin-zabbix-datasource",
+                      "version": "v0",
+                      "datasource": {
+                        "name": "cfqk8kvi756o0c"
+                      },
+                      "spec": {
+                        "application": {
+                          "filter": ""
+                        },
+                        "countTriggersBy": "",
+                        "evaltype": "0",
+                        "functions": [],
+                        "group": {
+                          "filter": "$GRUPO"
+                        },
+                        "host": {
+                          "filter": "/.*/"
+                        },
+                        "item": {
+                          "filter": ""
+                        },
+                        "itemTag": {
+                          "filter": "/.*/"
+                        },
+                        "macro": {
+                          "filter": ""
+                        },
+                        "options": {
+                          "acknowledged": 2,
+                          "count": true,
+                          "disableDataAlignment": false,
+                          "hostProxy": false,
+                          "hostsInMaintenance": false,
+                          "limit": 1001,
+                          "minSeverity": 2,
+                          "showDisabledItems": false,
+                          "skipEmptyValues": false,
+                          "sortProblems": "default",
+                          "useTimeRange": false,
+                          "useTrends": "default",
+                          "useZabbixValueMapping": false
+                        },
+                        "proxy": {
+                          "filter": ""
+                        },
+                        "queryType": "4",
+                        "resultFormat": "time_series",
+                        "schema": 12,
+                        "showProblems": "problems",
+                        "table": {
+                          "skipEmptyValues": false
+                        },
+                        "tags": {
+                          "filter": ""
+                        },
+                        "textFilter": "",
+                        "trigger": {
+                          "filter": ""
+                        },
+                        "triggers": {
+                          "acknowledged": 2,
+                          "minSeverity": 0
+                        }
+                      }
+                    },
+                    "refId": "BGP",
+                    "hidden": false
+                  }
+                }
+              ],
+              "transformations": [],
+              "queryOptions": {}
+            }
+          },
+          "vizConfig": {
+            "kind": "VizConfig",
+            "group": "stat",
+            "version": "13.1.0",
+            "spec": {
+              "options": {
+                "colorMode": "value",
+                "graphMode": "none",
+                "justifyMode": "center",
+                "orientation": "vertical",
+                "percentChangeColorMode": "standard",
+                "reduceOptions": {
+                  "calcs": [
+                    "lastNotNull"
+                  ],
+                  "fields": "",
+                  "values": false
+                },
+                "showPercentChange": false,
+                "textMode": "value_and_name",
+                "wideLayout": false
+              },
+              "fieldConfig": {
+                "defaults": {
+                  "displayName": "$GRUPO",
+                  "thresholds": {
+                    "mode": "absolute",
+                    "steps": [
+                      {
+                        "value": 0,
+                        "color": "#ffffff"
+                      }
+                    ]
+                  },
+                  "color": {
+                    "mode": "thresholds"
+                  }
+                },
+                "overrides": []
+              }
+            }
+          }
+        }
+      },
+      "panel-87": {
+        "kind": "Panel",
+        "spec": {
+          "id": 87,
+          "title": "",
+          "description": "",
+          "links": [],
+          "data": {
+            "kind": "QueryGroup",
+            "spec": {
+              "queries": [],
+              "transformations": [],
+              "queryOptions": {}
+            }
+          },
+          "vizConfig": {
+            "kind": "VizConfig",
+            "group": "text",
+            "version": "13.1.0",
+            "spec": {
+              "options": {
+                "code": {
+                  "language": "plaintext",
+                  "showLineNumbers": false,
+                  "showMiniMap": false
+                },
+                "content": "<!DOCTYPE html>\n<html lang=\"pt-br\">\n\n<head>\n  <meta charset=\"UTF-8\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n  <title>Flowbix Banner</title>\n  <link rel=\"preconnect\" href=\"https://fonts.googleapis.com\">\n  <link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin>\n  <link href=\"https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap\" rel=\"stylesheet\">\n  <style>\n    .container-banner-unique {\n      height: 100%;\n    }\n\n    .content-wrapper-banner-unique {\n      width: 100%;\n      margin: 0;\n    }\n\n    .background-banner-unique {\n      height: 100%;\n      margin: 0;\n    }\n\n    .input-wrapper-banner-unique {\n      background: rgba(0, 0, 0, 0.2);\n      width: 100%;\n      height: 100%;\n      border: 0;\n      color: #FFFFFF;\n    }\n\n    .main-container-banner-unique {\n      background: rgba(0, 0, 0, 0.1);\n      display: flex;\n      justify-content: center;\n      align-items: center;\n      height: 100%;\n      position: relative;\n      border-radius: 5rem;\n      border: 1px solid rgba(204, 204, 220, 0.12);\n    }\n\n    .content-main-banner-unique {\n      display: flex;\n      align-items: center;\n      gap: 1rem;\n      color: #FFFFFF;\n      font-weight: 400;\n      font-size: 1.5rem;\n      text-transform: uppercase;\n    }\n\n    .logo-banner-unique {\n      height: 4rem;\n      width: auto;\n    }\n\n    .text-banner-unique {\n      font-size: 2rem;\n      color: #FFFFFF;\n      text-align: center;\n      display: flex;\n      align-items: center;\n      gap: 0.5rem;\n    }\n\n    .divider-text-unique {\n      color: #FFFFFF;\n      font-size: 2rem;\n    }\n\n    .icon-security-unique {\n      width: 2rem;\n      height: auto;\n    }\n  </style>\n</head>\n\n<body>\n  <!-- Estrutura do banner -->\n  <div class=\"main-container-banner-unique\">\n    <div class=\"content-main-banner-unique\">\n      <span class=\"text-banner-unique\"> INCIDENTES\n\n        <!-- Ícone de segurança embutido ao lado do texto -->\n        <img src=\"https://img.icons8.com/?size=100&id=8122&format=png&color=FFFFFF\" alt=\"Security Icon\" class=\"icon-security-unique\">\n      </span>\n    </div>\n  </div>\n</body>\n\n</html>",
+                "mode": "html"
+              },
+              "fieldConfig": {
+                "defaults": {},
+                "overrides": []
+              }
+            }
+          },
+          "transparent": true
+        }
+      },
+      "panel-88": {
+        "kind": "Panel",
+        "spec": {
+          "id": 88,
+          "title": "",
+          "description": "",
+          "links": [],
+          "data": {
+            "kind": "QueryGroup",
+            "spec": {
+              "queries": [],
+              "transformations": [],
+              "queryOptions": {}
+            }
+          },
+          "vizConfig": {
+            "kind": "VizConfig",
+            "group": "text",
+            "version": "13.1.0",
+            "spec": {
+              "options": {
+                "code": {
+                  "language": "plaintext",
+                  "showLineNumbers": false,
+                  "showMiniMap": false
+                },
+                "content": "<!DOCTYPE html>\n<html lang=\"pt-br\">\n\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>flowspec Banner</title>\n    <link rel=\"preconnect\" href=\"https://fonts.googleapis.com\">\n    <link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin>\n    <link href=\"https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap\" rel=\"stylesheet\">\n    <style>\n        html,\n        body {\n            height: 100%;\n            width: 100%;\n            margin: 0;\n            padding: 0;\n            box-sizing: border-box;\n            background: transparent;\n        }\n\n        /*\n  Use um seletor mais específico se possível, como o ID do seu painel,\n  para evitar que este estilo afete outros painéis.\n  Exemplo: #panel-12 .css-i1l6yt::-webkit-scrollbar { ... }\n*/\n\n        /* Seleciona o elemento correto que contém a barra de rolagem,\n   baseado na sua imagem do inspetor de código. */\n        .css-i1l6yt::-webkit-scrollbar {\n            width: 12px;\n            /* Largura total da barra */\n        }\n\n        /* O \"trilho\" por onde a barra corre */\n        .css-i1l6yt::-webkit-scrollbar-track {\n            background: #2d3748;\n            /* Cor de fundo do trilho (cinza escuro) */\n            border-radius: 10px;\n        }\n\n        /* A parte móvel da barra (o \"polegar\") */\n        .css-i1l6yt::-webkit-scrollbar-thumb {\n            background-color: #00E96A;\n            /* O seu verde vibrante */\n            border-radius: 10px;\n\n            /* O TRUQUE para o efeito \"flutuante\":\n     Uma borda com a mesma cor do trilho cria a ilusão de espaçamento. */\n            border: 3px solid #2d3748;\n\n            /* Garante que o fundo verde não passe por baixo da borda */\n            background-clip: content-box;\n        }\n\n        /* Efeito ao passar o mouse por cima */\n        .css-i1l6yt::-webkit-scrollbar-thumb:hover {\n            background-color: #00ff75;\n            /* Um verde um pouco mais claro */\n        }\n\n\n\n        .css-fpx8k9-LegendRow:hover {\n            background: #0A253E;\n\n        }\n\n\n        /*GAUGE DO GRAFANA*/\n        flot-temp-elem {\n            color: white !important;\n        }\n\n        /*GAUGE DO GRAFANA*/\n\n\n\n\n\n        /*LEGEND LAST, MEAN ETC*/\n        .css-97ygya {\n            color: white;\n        }\n\n        /*LEGEND LAST, MEAN ETC*/\n\n\n\n\n\n\n        /* TEXTO DO STAT, OU PAINEIS E TALS */\n        .css-itdw1b-panel-container {\n            background-color: rgba(0, 0, 0, 0.2);\n            border-radius: 1rem;\n            color: white !important;\n        }\n\n        /* TEXTO DO STAT, OU PAINEIS E TALS */\n\n\n\n\n\n\n        /*ZABBIX PROBLEMS*/\n        .ReactTable .rt-thead.-header,\n        .panel-problems .ReactTable .rt-tr-group .rt-tr.-even {\n            border: none !important;\n            background: rgba(0, 0, 0, 0.2) !important;\n\n        }\n\n        .ReactTable .rt-thead .rt-resizable-header-content {\n            color: white;\n        }\n\n        .ReactTable .rt-tr {\n            color: white;\n        }\n\n        .panel-problems .ReactTable .rt-tr .rt-td.custom-expander i {\n            color: white !important;\n        }\n\n        .ReactTable .-pagination .-btn {\n            background: rgba(0, 0, 0, 0.2) !important;\n            color: white !important;\n            border-radius: 1rem !important;\n        }\n\n        .ReactTable .-pagination .-btn[disabled] {\n            opacity: 1 !important;\n\n        }\n\n        .ReactTable .-pagination .-pageInfo {\n            color: white !important;\n        }\n\n        .ReactTable .-pagination input,\n        .ReactTable .-pagination select {\n            color: white !important;\n            background: rgba(0, 0, 0, 0.2) !important;\n            border-radius: 1rem !important;\n        }\n\n        .panel-problems .ReactTable .rt-tr-group {\n            border: none !important;\n\n        }\n\n        /*ZABBIX PROBLEMS*/\n\n\n\n\n\n\n\n\n\n        /* PAINEIS DO GRAFANA */\n        .css-fvmsws-panel-container {\n            background: rgba(0, 0, 0, 0.2);\n            border-radius: 1.5rem;\n            color: white;\n        }\n\n        /*FIM DA SESSÃO DOS PAINEIS DO GRAFANA */\n\n\n\n\n\n\n        /* INICIO DA SESSÃO DAS ROW */\n        .css-1d3xu67-Icon {\n            fill: white !important;\n        }\n\n        .dashboard-row__title {\n            color: white !important;\n        }\n\n        .dashboard-row__panel_count {\n            font-size: 1.5rem !important;\n        }\n\n        /* FIM DA SESSÃO DAS ROW */\n\n\n\n\n\n\n        /*PAINEL TEXT DO GRAFANA*/\n        .css-7mshyc-panel-container {\n            background: rgba(0, 0, 0, 0.2);\n            border-radius: 1.5rem;\n        }\n\n        /*PAINEL TEXT DO GRAFANA*/\n\n\n\n\n\n\n        /*TITULO DE QUALQUER PAINEL DO GRAFANA */\n        .css-4sw7w0 {\n            color: rgba(255, 255, 255, 1);\n        }\n\n        .css-biljvk-panel-title {\n            background: rgba(0, 0, 0, 0.2);\n            padding-left: 0.5rem;\n            padding-right: 0.5rem;\n            border-radius: 1rem;\n        }\n\n        /*TITULO DE QUALQUER PAINEL DO GRAFANA */\n\n\n\n\n\n\n\n        /*INICIO DA SESSÃO DOS TABLE DO GRAFANA */\n\n        .css-1kfgvg7-thead {\n            color: #FFFFFF;\n            background: linear-gradient(180deg, #00E96A, #004e35);\n            //background: linear-gradient(180deg, #1f6f63 20%, #0d2b3d 90%);\n            /* Gradiente do azul claro para o azul escuro */\n            padding: 0;\n            border-radius: 1.5rem 1.5rem 0 0;\n        }\n\n        .css-119zpr0 {\n            text-transform: uppercase !important;\n        }\n\n        .css-1jj2cky-tableContentWrapper {\n            text-transform: uppercase;\n        }\n\n        .css-8fjwhi-row {\n            border: 1px solid rgba(204, 204, 220, 0.12);\n        }\n\n        .css-8fjwhi-row:last-child {\n            border-bottom: 1px solid rgba(204, 204, 220, 0.12);\n        }\n\n        .css-1jj2cky-tableContentWrapper {\n            text-transform: uppercase;\n        }\n\n\n        .css-8fjwhi-row {\n            color: rgba(255, 255, 255, 1) !important;\n            text-transform: uppercase !important;\n        }\n\n        /*FIM DA SESSÃO DO TABLE */\n\n\n\n\n\n\n\n\n        /*DIV PARA EDITAR PROPRIEDADES DO GEOMAPS */\n        .ol-viewport {\n            border-radius: 1rem !important;\n            border: 1px solid rgba(204, 204, 220, 0.25) !important;\n        }\n\n        /*DIV PARA EDITAR PROPRIEDADES DO GEOMAPS */\n\n\n\n\n\n        /*HEADER DA LEGEND DO TIME SERIES*/\n        .css-180sqb0,\n        .css-1l1pgpn {\n            text-transform: uppercase;\n        }\n\n        .css-180sqb0,\n        .css-1l1pgpn {\n            color: rgba(255, 255, 255, 1);\n        }\n\n\n        /*TEXTO DA LEGEND DO TIME SERIES*/\n\n        .css-7pp3mx-LegendLabel {\n            text-transform: uppercase;\n            color: white;\n            font-weight: 500;\n        }\n\n        .css-14gwilc,\n        .css-5imphy {\n            color: white !important;\n            text-transform: uppercase;\n            font-weight: 500;\n        }\n\n        /*LINHA DE MAX, LAST E MEAN(TEXTO) DA LEGEND DO TIME SERIES*/\n        .css-s2uf1z {\n            color: white;\n            font-weight: 500;\n        }\n\n        /*ICONES DE COR DA LEGENDA DO TIME SERIES*/\n        .css-1aj5l6t {\n            width: 1rem;\n            height: 1rem;\n        }\n\n        .css-4hqpog {\n            justify-content: center !important;\n        }\n\n        /*FIM DA SESSÃO DA LEGEND DO TIME SERIES*/\n\n\n\n\n\n\n\n\n\n        /* .css-n39kqr-cellContainerOverflow {\n            color: white;\n        }\n\n        .css-2qng6u-panel-container {\n            background: rgba(0, 0, 0, 0.2);\n            border: none;\n        }\n\n        .css-11qjisw {\n            height: 100%;\n        }\n\n        .css-1i88p6p {\n            width: 100%;\n            margin: 0;\n            padding: 0rem 0rem 0rem 2rem;\n        }\n\n        .css-m0z7c1 {\n            height: 100%;\n            margin: 0;\n        }\n\n        .css-n39kqr-cellContainerOverflow {\n            color: white;\n        }\n\n        .css-18yh62t-panel-container {\n            border-radius: 1rem;\n            border: 1px solid white;\n            background-color: rgba(0, 14, 28, 1);\n            color: white;\n        }\n\n        canvas[data-zr-dom-id=\"zr_0\"] {\n            border-radius: 1rem;\n            overflow: hidden;\n            \n        }\n\n        .dashboard-row--collapsed {\n            background: rgba(0, 0, 0, 0.2);\n        } */\n\n\n\n\n\n\n\n\n        /*INICIO DA SESSÃO BUSINESS VARIABLE*/\n        .css-rebjtg-input-wrapper {\n            background: rgba(0, 0, 0, 0.2);\n            width: 100%;\n            /* Define a largura como 100% */\n            height: 100%;\n            /* Define a altura como 100% */\n            border: 0;\n            color: #FFFFFF;\n            border-radius: 2rem;\n            border: 1px solid rgba(204, 204, 220, 0.12);\n        }\n\n        /*TEXTO DO BUSINESS*/\n        .css-8nwx1l-singleValue {\n            color: #FFFFFF;\n            text-transform: uppercase;\n        }\n\n        /*HEADER LAYOUT*/\n        .css-131hug8 label {\n            color: rgba(255, 255, 255, 1);\n            text-transform: uppercase;\n            background: rgba(0, 0, 0, 0.2);\n            border-radius: 2rem;\n            padding: 1rem;\n            border: 1px solid rgba(204, 204, 220, 0.12);\n        }\n\n        /*TEXTO QUANDO A VARIAVEL É NUMERO*/\n        .css-1pc1kg0-grafana-select-multi-value-container {\n            color: rgba(255, 255, 255, 1);\n            text-transform: uppercase;\n            background: rgba(0, 0, 0, 0);\n        }\n\n        /*TEXTO \"CHOOSE\" DO BUSINESS VARIABLE*/\n        .css-1n8tjau-placeholder {\n            color: rgba(255, 255, 255, 1);\n            text-transform: uppercase;\n        }\n\n        /*FIM DA SESSÃO BUSINESS VARIABLE*/\n\n\n\n\n\n\n\n\n\n\n        /*INCIO DA SESSÃO DO HEADER */\n\n        /* Contêiner principal do banner */\n        .flowspec-banner-container {\n            background: rgba(0, 0, 0, 0.2);\n            /* Fundo preto */\n            display: flex;\n            justify-content: center;\n            align-items: center;\n            width: 100%;\n            height: 100%;\n            position: relative;\n            border: 1px solid rgba(204, 204, 220, 0.12);\n            border-radius: 5rem;\n            overflow: hidden;\n            box-sizing: border-box;\n        }\n\n        /* Contêiner do conteúdo do banner */\n        .flowspec-banner-content {\n            display: flex;\n            align-items: center;\n            justify-content: center;\n            gap: 0.5rem;\n            color: #FFFFFF;\n            /* Texto branco */\n            width: 100%;\n            height: 100%;\n            padding: 0 9rem 0 1rem;\n            box-sizing: border-box;\n        }\n\n        /* Estilo do logo */\n        .flowspec-logo {\n            height: 3rem;\n            /* Ajuste o tamanho conforme necessário */\n            width: auto;\n        }\n\n        /* Estilo do texto */\n        .flowspec-text {\n            font-size: 3.5rem;\n            color: #FFFFFF;\n            /* Texto branco */\n            text-align: center;\n            display: flex;\n            align-items: center;\n            gap: 1rem;\n            /* Espaço entre o texto e o ícone */\n        }\n\n        /* Barra verde antes do texto */\n        .flowspec-divider {\n            color: #FFFFFF;\n            /* Verde Auzac */\n            font-size: 2rem;\n        }\n\n        /* Estilo do ícone de segurança */\n        .flowspec-security-icon {\n            width: 2.5rem;\n            height: auto;\n        }\n\n\n        /* BOTÃO VOLTAR */\n        .flowspec-banner-actions {\n            position: absolute;\n            right: 1.2rem;\n            top: 50%;\n            transform: translateY(-50%);\n            z-index: 5;\n            display: flex;\n            align-items: center;\n            justify-content: center;\n        }\n\n        .flowspec-btn-voltar {\n            display: inline-flex;\n            align-items: center;\n            justify-content: center;\n            min-width: 98px;\n            height: 38px;\n            padding: 0 1.2rem;\n            box-sizing: border-box;\n            border-radius: 0.75rem;\n            text-decoration: none;\n            font-size: 0.95rem;\n            font-weight: 800;\n            letter-spacing: 0.04rem;\n            text-transform: uppercase;\n            color: #ffffff !important;\n            background: linear-gradient(135deg, #00c8ff 0%, #12b3a8 100%);\n            border: 1px solid rgba(255, 255, 255, 0.18);\n            box-shadow: 0 0.45rem 1.2rem rgba(0, 200, 255, 0.25);\n            transition: all 0.25s ease;\n        }\n\n        .flowspec-btn-voltar:hover {\n            transform: translateY(-1px);\n            filter: brightness(1.08);\n            box-shadow: 0 0.55rem 1.4rem rgba(0, 0, 0, 0.35);\n        }\n\n        .flowspec-btn-voltar:active {\n            transform: translateY(0);\n        }\n\n        @media (max-width: 900px) {\n            .flowspec-banner-container {\n                min-height: 5rem;\n                padding: 0.7rem 1rem;\n                box-sizing: border-box;\n                border-radius: 2rem;\n            }\n\n            .flowspec-banner-content {\n                justify-content: center;\n                padding-right: 0;\n                flex-wrap: wrap;\n            }\n\n            .flowspec-banner-actions {\n                position: static;\n                transform: none;\n                width: 100%;\n                margin-top: 0.5rem;\n            }\n\n            .flowspec-btn-voltar {\n                min-width: 90px;\n                height: 36px;\n                font-size: 0.85rem;\n            }\n\n            .flowspec-text {\n                font-size: 2.2rem;\n            }\n        }\n\n        /*FIM DA SESSÃO DO HEADER */\n    </style>\n</head>\n\n<body>\n    <!-- Estrutura do banner -->\n    <div class=\"flowspec-banner-container\">\n        <div class=\"flowspec-banner-content\">\n            <span class=\"flowspec-text\"> INCIDENTES</span>\n        </div>\n\n        <div class=\"flowspec-banner-actions\">\n            <a href=\"/d/aecn8csqbwdmob/home\" class=\"flowspec-btn-voltar\">VOLTAR</a>\n        </div>\n    </div>\n</body>\n\n</html>",
+                "mode": "html"
+              },
+              "fieldConfig": {
+                "defaults": {},
+                "overrides": []
+              }
+            }
+          },
+          "transparent": true
+        }
+      }
+    },
+    "layout": {
+      "kind": "GridLayout",
+      "spec": {
+        "items": [
+          {
+            "kind": "GridLayoutItem",
+            "spec": {
+              "x": 0,
+              "y": 0,
+              "width": 24,
+              "height": 3,
+              "element": {
+                "kind": "ElementReference",
+                "name": "panel-88"
+              }
+            }
+          },
+          {
+            "kind": "GridLayoutItem",
+            "spec": {
+              "x": 0,
+              "y": 3,
+              "width": 24,
+              "height": 4,
+              "element": {
+                "kind": "ElementReference",
+                "name": "panel-86"
+              },
+              "repeat": {
+                "mode": "variable",
+                "value": "GRUPO",
+                "direction": "h",
+                "maxPerRow": 8
+              }
+            }
+          },
+          {
+            "kind": "GridLayoutItem",
+            "spec": {
+              "x": 0,
+              "y": 11,
+              "width": 24,
+              "height": 2,
+              "element": {
+                "kind": "ElementReference",
+                "name": "panel-87"
+              }
+            }
+          },
+          {
+            "kind": "GridLayoutItem",
+            "spec": {
+              "x": 0,
+              "y": 13,
+              "width": 13,
+              "height": 8,
+              "element": {
+                "kind": "ElementReference",
+                "name": "panel-4"
+              }
+            }
+          },
+          {
+            "kind": "GridLayoutItem",
+            "spec": {
+              "x": 13,
+              "y": 13,
+              "width": 11,
+              "height": 8,
+              "element": {
+                "kind": "ElementReference",
+                "name": "panel-60"
+              }
+            }
+          }
+        ]
+      }
+    },
+    "links": [],
+    "liveNow": false,
+    "preload": false,
+    "tags": [],
+    "timeSettings": {
+      "timezone": "browser",
+      "from": "now-30d",
+      "to": "now",
+      "autoRefresh": "",
+      "autoRefreshIntervals": [
+        "5s",
+        "10s",
+        "30s",
+        "1m",
+        "5m",
+        "15m",
+        "30m",
+        "1h",
+        "2h",
+        "1d"
+      ],
+      "hideTimepicker": false,
+      "fiscalYearStartMonth": 0
+    },
+    "title": "INCIDENTES - MACRO",
+    "variables": [
+      {
+        "kind": "QueryVariable",
+        "spec": {
+          "name": "GRUPO",
+          "current": {
+            "text": "All",
+            "value": "$__all"
+          },
+          "hide": "hideVariable",
+          "refresh": "onDashboardLoad",
+          "skipUrlSync": false,
+          "query": {
+            "kind": "DataQuery",
+            "group": "alexanderzobnin-zabbix-datasource",
+            "version": "v0",
+            "datasource": {
+              "name": "cfqk8kvi756o0c"
+            },
+            "spec": {
+              "application": "",
+              "group": "/.*/",
+              "host": "",
+              "item": "",
+              "itemTag": "",
+              "queryType": "group"
+            }
+          },
+          "regex": "/^(?!abc|.*WEBSITES|.*test|.*Zabbix|.*TRACEROUTE|.*SITES|.*PPPOE|ISTHESERVICE|EQUIPAMENTOS|OLT|.*IDRAC)/",
+          "regexApplyTo": "value",
+          "sort": "disabled",
+          "definition": "Zabbix - group",
+          "options": [],
+          "multi": false,
+          "includeAll": true,
+          "allowCustomValue": true
+        }
+      },
+      {
+        "kind": "QueryVariable",
+        "spec": {
+          "name": "EQUIPAMENTO",
+          "current": {
+            "text": "All",
+            "value": "$__all"
+          },
+          "label": "EQUIPAMENTO",
+          "hide": "hideVariable",
+          "refresh": "onDashboardLoad",
+          "skipUrlSync": false,
+          "query": {
+            "kind": "DataQuery",
+            "group": "alexanderzobnin-zabbix-datasource",
+            "version": "v0",
+            "datasource": {
+              "name": "cfqk8kvi756o0c"
+            },
+            "spec": {
+              "application": "",
+              "group": "$GRUPO",
+              "host": "/.*/",
+              "item": "",
+              "itemTag": "",
+              "queryType": "host"
+            }
+          },
+          "regex": "",
+          "regexApplyTo": "value",
+          "sort": "disabled",
+          "definition": "Zabbix - host",
+          "options": [],
+          "multi": false,
+          "includeAll": true,
+          "allowCustomValue": true
+        }
+      }
+    ]
+  }
+}

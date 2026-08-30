@@ -1,0 +1,3806 @@
+{
+  "apiVersion": "dashboard.grafana.app/v2",
+  "kind": "Dashboard",
+  "metadata": {
+    "name": "f08b8ec0-8220-4da1-9441-891bfa29a924",
+    "namespace": "default",
+    "uid": "9fd23257-7914-4e1e-bf20-e9cab975da48",
+    "resourceVersion": "1782876102239003",
+    "generation": 3,
+    "creationTimestamp": "2026-06-30T21:33:21Z",
+    "labels": {
+      "grafana.app/deprecatedInternalID": "55"
+    },
+    "annotations": {
+      "grafana.app/createdBy": "user:efqk2yawd4hs0d",
+      "grafana.app/folder": "",
+      "grafana.app/saved-from-ui": "Grafana v13.1.0 (b309c9bb3b)",
+      "grafana.app/updatedBy": "user:efqk2yawd4hs0d",
+      "grafana.app/updatedTimestamp": "2026-07-01T03:21:42Z"
+    }
+  },
+  "spec": {
+    "annotations": [
+      {
+        "kind": "AnnotationQuery",
+        "spec": {
+          "query": {
+            "kind": "DataQuery",
+            "group": "grafana",
+            "version": "v0",
+            "datasource": {
+              "name": "grafana"
+            },
+            "spec": {
+              "limit": 100,
+              "matchAny": false,
+              "tags": [],
+              "type": "dashboard"
+            }
+          },
+          "enable": true,
+          "hide": true,
+          "iconColor": "rgba(0, 211, 255, 1)",
+          "name": "Annotations & Alerts",
+          "builtIn": true
+        }
+      }
+    ],
+    "cursorSync": "Off",
+    "editable": true,
+    "elements": {
+      "panel-100": {
+        "kind": "Panel",
+        "spec": {
+          "id": 100,
+          "title": "",
+          "description": "",
+          "links": [],
+          "data": {
+            "kind": "QueryGroup",
+            "spec": {
+              "queries": [
+                {
+                  "kind": "PanelQuery",
+                  "spec": {
+                    "query": {
+                      "kind": "DataQuery",
+                      "group": "alexanderzobnin-zabbix-datasource",
+                      "version": "v0",
+                      "datasource": {
+                        "name": "cfqk8kvi756o0c"
+                      },
+                      "spec": {
+                        "application": {
+                          "filter": "Rx Power"
+                        },
+                        "countTriggersBy": "",
+                        "evaltype": "0",
+                        "functions": [
+                          {
+                            "added": true,
+                            "def": {
+                              "category": "Alias",
+                              "defaultParams": [],
+                              "name": "setAliasByRegex",
+                              "params": [
+                                {
+                                  "name": "aliasByRegex",
+                                  "type": "string"
+                                }
+                              ]
+                            },
+                            "params": [
+                              "[^\\s(]+(?:\\([^)]*\\))?:\\s*RX(?: Lane \\d+)?"
+                            ],
+                            "text": "setAliasByRegex()"
+                          }
+                        ],
+                        "group": {
+                          "filter": "$GRUPO"
+                        },
+                        "host": {
+                          "filter": "$HOST"
+                        },
+                        "item": {
+                          "filter": "/.*/"
+                        },
+                        "itemTag": {
+                          "filter": "Application: GBIC_HUAWEI :: Rx Power"
+                        },
+                        "macro": {
+                          "filter": ""
+                        },
+                        "options": {
+                          "count": true,
+                          "disableDataAlignment": false,
+                          "minSeverity": 3,
+                          "showDisabledItems": false,
+                          "skipEmptyValues": false,
+                          "useTrends": "default",
+                          "useZabbixValueMapping": false
+                        },
+                        "proxy": {
+                          "filter": ""
+                        },
+                        "queryType": "0",
+                        "resultFormat": "time_series",
+                        "schema": 12,
+                        "table": {
+                          "skipEmptyValues": false
+                        },
+                        "tags": {
+                          "filter": ""
+                        },
+                        "textFilter": "",
+                        "trigger": {
+                          "filter": ""
+                        },
+                        "triggers": {
+                          "acknowledged": 2
+                        }
+                      }
+                    },
+                    "refId": "A",
+                    "hidden": false
+                  }
+                }
+              ],
+              "transformations": [
+                {
+                  "kind": "Transformation",
+                  "group": "reduce",
+                  "spec": {
+                    "options": {
+                      "reducers": [
+                        "lastNotNull"
+                      ]
+                    }
+                  }
+                },
+                {
+                  "kind": "Transformation",
+                  "group": "organize",
+                  "spec": {
+                    "options": {
+                      "excludeByName": {
+                        "Last *": false,
+                        "Last * * 100": false
+                      },
+                      "includeByName": {},
+                      "indexByName": {
+                        "Field": 0,
+                        "Last": 1
+                      },
+                      "renameByName": {
+                        "Field": "PORTA",
+                        "Last": "",
+                        "Last *": "RX POWER"
+                      }
+                    }
+                  }
+                }
+              ],
+              "queryOptions": {}
+            }
+          },
+          "vizConfig": {
+            "kind": "VizConfig",
+            "group": "table",
+            "version": "13.1.0",
+            "spec": {
+              "options": {
+                "cellHeight": "md",
+                "showHeader": true,
+                "sortBy": []
+              },
+              "fieldConfig": {
+                "defaults": {
+                  "unit": "dbm",
+                  "decimals": 2,
+                  "thresholds": {
+                    "mode": "absolute",
+                    "steps": [
+                      {
+                        "value": 0,
+                        "color": "#ffffff"
+                      }
+                    ]
+                  },
+                  "noValue": "SEM DADOS",
+                  "custom": {
+                    "align": "center",
+                    "cellOptions": {
+                      "type": "auto"
+                    },
+                    "filterable": true,
+                    "footer": {
+                      "reducers": []
+                    },
+                    "inspect": false,
+                    "wrapText": true
+                  }
+                },
+                "overrides": [
+                  {
+                    "matcher": {
+                      "id": "byName",
+                      "options": "Last *"
+                    },
+                    "properties": [
+                      {
+                        "id": "custom.width"
+                      },
+                      {
+                        "id": "custom.cellOptions",
+                        "value": {
+                          "type": "color-text"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          }
+        }
+      },
+      "panel-136": {
+        "kind": "Panel",
+        "spec": {
+          "id": 136,
+          "title": "",
+          "description": "",
+          "links": [],
+          "data": {
+            "kind": "QueryGroup",
+            "spec": {
+              "queries": [
+                {
+                  "kind": "PanelQuery",
+                  "spec": {
+                    "query": {
+                      "kind": "DataQuery",
+                      "group": "alexanderzobnin-zabbix-datasource",
+                      "version": "v0",
+                      "datasource": {
+                        "name": "cfqk8kvi756o0c"
+                      },
+                      "spec": {
+                        "application": {
+                          "filter": " /.*/"
+                        },
+                        "countTriggersBy": "",
+                        "evaltype": "0",
+                        "functions": [],
+                        "group": {
+                          "filter": "$GRUPO"
+                        },
+                        "host": {
+                          "filter": "$HOST"
+                        },
+                        "item": {
+                          "filter": "MPU Board 0: CPU utilization"
+                        },
+                        "itemTag": {
+                          "filter": "Application: CPU"
+                        },
+                        "macro": {
+                          "filter": ""
+                        },
+                        "options": {
+                          "count": true,
+                          "disableDataAlignment": false,
+                          "minSeverity": 3,
+                          "showDisabledItems": false,
+                          "skipEmptyValues": false,
+                          "useTrends": "default",
+                          "useZabbixValueMapping": false
+                        },
+                        "proxy": {
+                          "filter": ""
+                        },
+                        "queryType": "0",
+                        "resultFormat": "time_series",
+                        "schema": 12,
+                        "table": {
+                          "skipEmptyValues": false
+                        },
+                        "tags": {
+                          "filter": ""
+                        },
+                        "textFilter": "",
+                        "trigger": {
+                          "filter": ""
+                        },
+                        "triggers": {
+                          "acknowledged": 2
+                        }
+                      }
+                    },
+                    "refId": "A",
+                    "hidden": false
+                  }
+                }
+              ],
+              "transformations": [
+                {
+                  "kind": "Transformation",
+                  "group": "reduce",
+                  "spec": {
+                    "options": {
+                      "reducers": [
+                        "lastNotNull"
+                      ]
+                    }
+                  }
+                }
+              ],
+              "queryOptions": {}
+            }
+          },
+          "vizConfig": {
+            "kind": "VizConfig",
+            "group": "volkovlabs-echarts-panel",
+            "version": "7.2.5",
+            "spec": {
+              "options": {
+                "baidu": {
+                  "callback": "bmapReady",
+                  "key": ""
+                },
+                "editor": {
+                  "format": "auto"
+                },
+                "editorMode": "visual",
+                "gaode": {
+                  "key": "",
+                  "plugin": "AMap.Scale,AMap.ToolBar"
+                },
+                "getOption": "const series = context.panel.data.series.map((s) => {\n  const sData = s.fields.find((f) => f.type === 'number').values.buffer || s.fields.find((f) => f.type === 'number').values;\n  const sTime = s.fields.find((f) => f.type === 'time').values.buffer || s.fields.find((f) => f.type === 'time').values;\n  \n  return {\n    name: s.refId,\n    type: 'line',\n    showSymbol: false,\n    areaStyle: {\n      opacity: 0.1,\n    },\n    lineStyle: {\n      width: 1,\n    },\n    data: sData.map((d, i) => [sTime[i], d.toFixed(2)]),\n  };\n});\n\n/**\n * Enable Data Zoom by default\n */\nsetTimeout(() => context.panel.chart.dispatchAction({\n  type: 'takeGlobalCursor',\n  key: 'dataZoomSelect',\n  dataZoomSelectActive: true,\n}), 500);\n\n/**\n * Update Time Range on Zoom\n */\ncontext.panel.chart.on('datazoom', function (params) {\n  const startValue = params.batch[0]?.startValue;\n  const endValue = params.batch[0]?.endValue;\n  locationService.partial({ from: startValue, to: endValue });\n});\n\nreturn {\n  backgroundColor: 'transparent',\n  tooltip: {\n    trigger: 'axis',\n  },\n  legend: {\n    left: '0',\n    bottom: '0',\n    data: context.panel.data.series.map((s) => s.refId),\n    textStyle: {\n      color: 'rgba(128, 128, 128, .9)',\n    },\n  },\n  toolbox: {\n    feature: {\n      dataZoom: {\n        yAxisIndex: 'none',\n        icon: {\n          zoom: 'path://',\n          back: 'path://',\n        },\n      },\n      saveAsImage: {},\n    }\n  },\n  xAxis: {\n    type: 'time',\n  },\n  yAxis: {\n    type: 'value',\n    min: 'dataMin',\n  },\n  grid: {\n    left: '2%',\n    right: '2%',\n    top: '2%',\n    bottom: 24,\n    containLabel: true,\n  },\n  series,\n};",
+                "google": {
+                  "callback": "gmapReady",
+                  "key": ""
+                },
+                "map": "none",
+                "renderer": "canvas",
+                "themeEditor": {
+                  "config": "{}",
+                  "name": "default"
+                },
+                "visualEditor": {
+                  "code": "// Inicializa a variável para armazenar o valor do gauge\nlet gaugeValue = null;\n\n// Processa os dados da tabela de forma dinâmica\ncontext.panel.data.series.forEach((series) => {\n  const fieldColumn = series.fields.find(f => f.name.toLowerCase().includes('field'));\n  const valueColumn = series.fields.find(f => f.name.toLowerCase().includes('last'));\n\n  if (fieldColumn && valueColumn) {\n    const fieldNames = fieldColumn.values.toArray();\n    const values = valueColumn.values.toArray();\n\n    // Usa o primeiro valor encontrado (ajuste se precisar processar vários)\n    if (values.length > 0) {\n      gaugeValue = parseFloat(values[0]); // Converte para número\n    }\n  }\n});\n\n// Se não encontrou um valor válido, define um padrão\nif (gaugeValue === null || isNaN(gaugeValue)) {\n  gaugeValue = 0;\n}\n\n// Arredonda o valor para duas casas decimais\ngaugeValue = parseFloat(gaugeValue.toFixed(2));\n\n// Define a cor do gauge com base no valor do gauge e no threshold\nlet gaugeColor;\n\nif (gaugeValue <= 50) {\n  gaugeColor = '#00FF00'; // Verde\n} else if (gaugeValue <= 70) {\n  gaugeColor = '#FFA500'; // Laranja\n} else {\n  gaugeColor = '#FF0000'; // Vermelho\n}\n\n// Define a imagem com base no valor do gauge\nconst imageUrl =\n  gaugeValue < 70\n    ? 'https://storage.googleapis.com/flowbix-img/IMG%20DASHBOARD/verrok.png'\n    : 'https://storage.googleapis.com/flowbix-img/IMG%20DASHBOARD/alrretasas.png';\n\n// Configuração do gráfico estilo \"Gauge com imagem condicional\"\nreturn {\n  graphic: [\n    {\n      type: 'image',\n      style: {\n        image: imageUrl,\n        width: 40, // Largura da imagem\n        height: 40, // Altura da imagem\n        x: 95, // Posição X\n        y: 130 // Posição Y ajustada para alinhar com o gráfico\n      }\n    }\n  ],\n  series: [\n    {\n      type: 'gauge',\n      startAngle: 160,\n      endAngle: -160,\n      min: 0,\n      max: 100, // Define o máximo como 100% para porcentagem\n      splitNumber: 20,\n      pointer: {\n        show: false,\n        width: 8,\n        length: '70%',\n        itemStyle: {\n          color: '#ffffff'\n        }\n      },\n      progress: {\n        show: true,\n        overlap: false,\n        roundCap: true,\n        clip: false,\n        itemStyle: {\n          color: {\n            type: 'linear',\n            x: 0,\n            y: 0,\n            x2: 1,\n            y2: 0,\n            colorStops: [\n              { offset: 0, color: '#00E96A' },\n              { offset: 0.33, color: '#00E96A' },\n              { offset: 0.66, color: '#217571' },\n              { offset: 1, color: '#217571' }\n            ]\n          },\n          shadowBlur: 20,\n          shadowColor: 'rgba(0, 0, 0, 0.5)'\n        }\n      },\n      axisLine: {\n        lineStyle: {\n          width: 18,\n          color: [\n            [gaugeValue / 100, gaugeColor], // Cor do preenchimento conforme threshold\n            [1, 'rgba(255, 255, 255, 0.15)'] // Tubo não preenchido\n          ]\n        }\n      },\n      axisTick: {\n        show: true,\n        distance: -18,\n        length: 10,\n        lineStyle: {\n          color: '#ffffff',\n          width: 2\n        }\n      },\n      splitLine: {\n        show: true,\n        distance: -25,\n        length: 20,\n        lineStyle: {\n          color: '#fff',\n          width: 1\n        }\n      },\n      axisLabel: {\n        distance: -30,\n        color: '#ffffff',\n        fontSize: 14,\n        fontWeight: 'bold',\n      },\n      title: {\n        show: true,\n        offsetCenter: [0, '-5%'],\n        textStyle: {\n          fontSize: 14,\n          color: '#ffffff',\n          fontWeight: 'bold',\n        },\n        text: 'USO DE CPU'\n      },\n      detail: {\n        valueAnimation: true,\n        offsetCenter: [0, '25%'],\n        formatter: '{value} %', // Exibe o valor com unidade %\n        color: '#ffffff',\n        fontSize: 25,\n        fontWeight: 'bold',\n      },\n      data: [\n        {\n          value: gaugeValue,\n          name: 'UTILIZAÇÃO DE CPU '\n        }\n      ],\n      radius: '70%',             // controla o tamanho do gauge\n      center: ['50%', '50%']\n    }\n  ]\n};",
+                  "dataset": [],
+                  "series": []
+                }
+              },
+              "fieldConfig": {
+                "defaults": {},
+                "overrides": []
+              }
+            }
+          }
+        }
+      },
+      "panel-137": {
+        "kind": "Panel",
+        "spec": {
+          "id": 137,
+          "title": "",
+          "description": "",
+          "links": [],
+          "data": {
+            "kind": "QueryGroup",
+            "spec": {
+              "queries": [],
+              "transformations": [],
+              "queryOptions": {}
+            }
+          },
+          "vizConfig": {
+            "kind": "VizConfig",
+            "group": "text",
+            "version": "13.1.0",
+            "spec": {
+              "options": {
+                "code": {
+                  "language": "plaintext",
+                  "showLineNumbers": false,
+                  "showMiniMap": false
+                },
+                "content": "<!DOCTYPE html>\n<html lang=\"pt-br\">\n\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>flowspec Banner</title>\n    <link rel=\"preconnect\" href=\"https://fonts.googleapis.com\">\n    <link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin>\n    <link href=\"https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap\" rel=\"stylesheet\">\n    <style>\n        html,\n        body {\n            height: 100%;\n            width: 100%;\n            margin: 0;\n            padding: 0;\n            box-sizing: border-box;\n            background: transparent;\n        }\n\n        /*\n  Use um seletor mais específico se possível, como o ID do seu painel,\n  para evitar que este estilo afete outros painéis.\n  Exemplo: #panel-12 .css-i1l6yt::-webkit-scrollbar { ... }\n*/\n\n        /* Seleciona o elemento correto que contém a barra de rolagem,\n   baseado na sua imagem do inspetor de código. */\n        .css-i1l6yt::-webkit-scrollbar {\n            width: 12px;\n            /* Largura total da barra */\n        }\n\n        /* O \"trilho\" por onde a barra corre */\n        .css-i1l6yt::-webkit-scrollbar-track {\n            background: #2d3748;\n            /* Cor de fundo do trilho (cinza escuro) */\n            border-radius: 10px;\n        }\n\n        /* A parte móvel da barra (o \"polegar\") */\n        .css-i1l6yt::-webkit-scrollbar-thumb {\n            background-color: #00E96A;\n            /* O seu verde vibrante */\n            border-radius: 10px;\n\n            /* O TRUQUE para o efeito \"flutuante\":\n     Uma borda com a mesma cor do trilho cria a ilusão de espaçamento. */\n            border: 3px solid #2d3748;\n\n            /* Garante que o fundo verde não passe por baixo da borda */\n            background-clip: content-box;\n        }\n\n        /* Efeito ao passar o mouse por cima */\n        .css-i1l6yt::-webkit-scrollbar-thumb:hover {\n            background-color: #00ff75;\n            /* Um verde um pouco mais claro */\n        }\n\n\n\n        .css-fpx8k9-LegendRow:hover {\n            background: #0A253E;\n\n        }\n\n\n        /*GAUGE DO GRAFANA*/\n        flot-temp-elem {\n            color: white !important;\n        }\n\n        /*GAUGE DO GRAFANA*/\n\n\n\n\n\n        /*LEGEND LAST, MEAN ETC*/\n        .css-97ygya {\n            color: white;\n        }\n\n        /*LEGEND LAST, MEAN ETC*/\n\n\n\n\n\n\n        /* TEXTO DO STAT, OU PAINEIS E TALS */\n        .css-itdw1b-panel-container {\n            background-color: rgba(0, 0, 0, 0.2);\n            border-radius: 1rem;\n            color: white !important;\n        }\n\n        /* TEXTO DO STAT, OU PAINEIS E TALS */\n\n\n\n\n\n\n        /*ZABBIX PROBLEMS*/\n        .ReactTable .rt-thead.-header,\n        .panel-problems .ReactTable .rt-tr-group .rt-tr.-even {\n            border: none !important;\n            background: rgba(0, 0, 0, 0.2) !important;\n\n        }\n\n        .ReactTable .rt-thead .rt-resizable-header-content {\n            color: white;\n        }\n\n        .ReactTable .rt-tr {\n            color: white;\n        }\n\n        .panel-problems .ReactTable .rt-tr .rt-td.custom-expander i {\n            color: white !important;\n        }\n\n        .ReactTable .-pagination .-btn {\n            background: rgba(0, 0, 0, 0.2) !important;\n            color: white !important;\n            border-radius: 1rem !important;\n        }\n\n        .ReactTable .-pagination .-btn[disabled] {\n            opacity: 1 !important;\n\n        }\n\n        .ReactTable .-pagination .-pageInfo {\n            color: white !important;\n        }\n\n        .ReactTable .-pagination input,\n        .ReactTable .-pagination select {\n            color: white !important;\n            background: rgba(0, 0, 0, 0.2) !important;\n            border-radius: 1rem !important;\n        }\n\n        .panel-problems .ReactTable .rt-tr-group {\n            border: none !important;\n\n        }\n\n        /*ZABBIX PROBLEMS*/\n\n\n\n\n\n\n\n\n\n        /* PAINEIS DO GRAFANA */\n        .css-fvmsws-panel-container {\n            background: rgba(0, 0, 0, 0.2);\n            border-radius: 1.5rem;\n            color: white;\n        }\n\n        /*FIM DA SESSÃO DOS PAINEIS DO GRAFANA */\n\n\n\n\n\n\n        /* INICIO DA SESSÃO DAS ROW */\n        .css-1d3xu67-Icon {\n            fill: white !important;\n        }\n\n        .dashboard-row__title {\n            color: white !important;\n        }\n\n        .dashboard-row__panel_count {\n            font-size: 1.5rem !important;\n        }\n\n        /* FIM DA SESSÃO DAS ROW */\n\n\n\n\n\n\n        /*PAINEL TEXT DO GRAFANA*/\n        .css-7mshyc-panel-container {\n            background: rgba(0, 0, 0, 0.2);\n            border-radius: 1.5rem;\n        }\n\n        /*PAINEL TEXT DO GRAFANA*/\n\n\n\n\n\n\n        /*TITULO DE QUALQUER PAINEL DO GRAFANA */\n        .css-4sw7w0 {\n            color: rgba(255, 255, 255, 1);\n        }\n\n        .css-biljvk-panel-title {\n            background: rgba(0, 0, 0, 0.2);\n            padding-left: 0.5rem;\n            padding-right: 0.5rem;\n            border-radius: 1rem;\n        }\n\n        /*TITULO DE QUALQUER PAINEL DO GRAFANA */\n\n\n\n\n\n\n\n        /*INICIO DA SESSÃO DOS TABLE DO GRAFANA */\n\n        .css-1kfgvg7-thead {\n            color: #FFFFFF;\n            background: linear-gradient(180deg, #00E96A, #004e35);\n            //background: linear-gradient(180deg, #1f6f63 20%, #0d2b3d 90%);\n            /* Gradiente do azul claro para o azul escuro */\n            padding: 0;\n            border-radius: 1.5rem 1.5rem 0 0;\n        }\n\n        .css-119zpr0 {\n            text-transform: uppercase !important;\n        }\n\n        .css-1jj2cky-tableContentWrapper {\n            text-transform: uppercase;\n        }\n\n        .css-8fjwhi-row {\n            border: 1px solid rgba(204, 204, 220, 0.12);\n        }\n\n        .css-8fjwhi-row:last-child {\n            border-bottom: 1px solid rgba(204, 204, 220, 0.12);\n        }\n\n        .css-1jj2cky-tableContentWrapper {\n            text-transform: uppercase;\n        }\n\n\n        .css-8fjwhi-row {\n            color: rgba(255, 255, 255, 1) !important;\n            text-transform: uppercase !important;\n        }\n\n        /*FIM DA SESSÃO DO TABLE */\n\n\n\n\n\n\n\n\n        /*DIV PARA EDITAR PROPRIEDADES DO GEOMAPS */\n        .ol-viewport {\n            border-radius: 1rem !important;\n            border: 1px solid rgba(204, 204, 220, 0.25) !important;\n        }\n\n        /*DIV PARA EDITAR PROPRIEDADES DO GEOMAPS */\n\n\n\n\n\n        /*HEADER DA LEGEND DO TIME SERIES*/\n        .css-180sqb0,\n        .css-1l1pgpn {\n            text-transform: uppercase;\n        }\n\n        .css-180sqb0,\n        .css-1l1pgpn {\n            color: rgba(255, 255, 255, 1);\n        }\n\n\n        /*TEXTO DA LEGEND DO TIME SERIES*/\n\n        .css-7pp3mx-LegendLabel {\n            text-transform: uppercase;\n            color: white;\n            font-weight: 500;\n        }\n\n        .css-14gwilc,\n        .css-5imphy {\n            color: white !important;\n            text-transform: uppercase;\n            font-weight: 500;\n        }\n\n        /*LINHA DE MAX, LAST E MEAN(TEXTO) DA LEGEND DO TIME SERIES*/\n        .css-s2uf1z {\n            color: white;\n            font-weight: 500;\n        }\n\n        /*ICONES DE COR DA LEGENDA DO TIME SERIES*/\n        .css-1aj5l6t {\n            width: 1rem;\n            height: 1rem;\n        }\n\n        .css-4hqpog {\n            justify-content: center !important;\n        }\n\n        /*FIM DA SESSÃO DA LEGEND DO TIME SERIES*/\n\n\n\n\n\n\n\n\n\n        /* .css-n39kqr-cellContainerOverflow {\n            color: white;\n        }\n\n        .css-2qng6u-panel-container {\n            background: rgba(0, 0, 0, 0.2);\n            border: none;\n        }\n\n        .css-11qjisw {\n            height: 100%;\n        }\n\n        .css-1i88p6p {\n            width: 100%;\n            margin: 0;\n            padding: 0rem 0rem 0rem 2rem;\n        }\n\n        .css-m0z7c1 {\n            height: 100%;\n            margin: 0;\n        }\n\n        .css-n39kqr-cellContainerOverflow {\n            color: white;\n        }\n\n        .css-18yh62t-panel-container {\n            border-radius: 1rem;\n            border: 1px solid white;\n            background-color: rgba(0, 14, 28, 1);\n            color: white;\n        }\n\n        canvas[data-zr-dom-id=\"zr_0\"] {\n            border-radius: 1rem;\n            overflow: hidden;\n            \n        }\n\n        .dashboard-row--collapsed {\n            background: rgba(0, 0, 0, 0.2);\n        } */\n\n\n\n\n\n\n\n\n        /*INICIO DA SESSÃO BUSINESS VARIABLE*/\n        .css-rebjtg-input-wrapper {\n            background: rgba(0, 0, 0, 0.2);\n            width: 100%;\n            /* Define a largura como 100% */\n            height: 100%;\n            /* Define a altura como 100% */\n            border: 0;\n            color: #FFFFFF;\n            border-radius: 2rem;\n            border: 1px solid rgba(204, 204, 220, 0.12);\n        }\n\n        /*TEXTO DO BUSINESS*/\n        .css-8nwx1l-singleValue {\n            color: #FFFFFF;\n            text-transform: uppercase;\n        }\n\n        /*HEADER LAYOUT*/\n        .css-131hug8 label {\n            color: rgba(255, 255, 255, 1);\n            text-transform: uppercase;\n            background: rgba(0, 0, 0, 0.2);\n            border-radius: 2rem;\n            padding: 1rem;\n            border: 1px solid rgba(204, 204, 220, 0.12);\n        }\n\n        /*TEXTO QUANDO A VARIAVEL É NUMERO*/\n        .css-1pc1kg0-grafana-select-multi-value-container {\n            color: rgba(255, 255, 255, 1);\n            text-transform: uppercase;\n            background: rgba(0, 0, 0, 0);\n        }\n\n        /*TEXTO \"CHOOSE\" DO BUSINESS VARIABLE*/\n        .css-1n8tjau-placeholder {\n            color: rgba(255, 255, 255, 1);\n            text-transform: uppercase;\n        }\n\n        /*FIM DA SESSÃO BUSINESS VARIABLE*/\n\n\n\n\n\n\n\n\n\n\n        /*INCIO DA SESSÃO DO HEADER */\n\n        /* Contêiner principal do banner */\n        .flowspec-banner-container {\n            background: rgba(0, 0, 0, 0.2);\n            /* Fundo preto */\n            display: flex;\n            justify-content: center;\n            align-items: center;\n            width: 100%;\n            height: 100%;\n            position: relative;\n            border: 1px solid rgba(204, 204, 220, 0.12);\n            border-radius: 5rem;\n            overflow: hidden;\n            box-sizing: border-box;\n        }\n\n        /* Contêiner do conteúdo do banner */\n        .flowspec-banner-content {\n            display: flex;\n            align-items: center;\n            justify-content: center;\n            gap: 0.5rem;\n            color: #FFFFFF;\n            /* Texto branco */\n            width: 100%;\n            height: 100%;\n            padding: 0 9rem 0 1rem;\n            box-sizing: border-box;\n        }\n\n        /* Estilo do logo */\n        .flowspec-logo {\n            height: 3rem;\n            /* Ajuste o tamanho conforme necessário */\n            width: auto;\n        }\n\n        /* Estilo do texto */\n        .flowspec-text {\n            font-size: 3.5rem;\n            color: #FFFFFF;\n            /* Texto branco */\n            text-align: center;\n            display: flex;\n            align-items: center;\n            gap: 1rem;\n            /* Espaço entre o texto e o ícone */\n        }\n\n        /* Barra verde antes do texto */\n        .flowspec-divider {\n            color: #FFFFFF;\n            /* Verde Auzac */\n            font-size: 2rem;\n        }\n\n        /* Estilo do ícone de segurança */\n        .flowspec-security-icon {\n            width: 2.5rem;\n            height: auto;\n        }\n\n\n        /* BOTÃO VOLTAR */\n        .flowspec-banner-actions {\n            position: absolute;\n            right: 1.2rem;\n            top: 50%;\n            transform: translateY(-50%);\n            z-index: 5;\n            display: flex;\n            align-items: center;\n            justify-content: center;\n        }\n\n        .flowspec-btn-voltar {\n            display: inline-flex;\n            align-items: center;\n            justify-content: center;\n            min-width: 98px;\n            height: 38px;\n            padding: 0 1.2rem;\n            box-sizing: border-box;\n            border-radius: 0.75rem;\n            text-decoration: none;\n            font-size: 0.95rem;\n            font-weight: 800;\n            letter-spacing: 0.04rem;\n            text-transform: uppercase;\n            color: #ffffff !important;\n            background: linear-gradient(135deg, #00c8ff 0%, #12b3a8 100%);\n            border: 1px solid rgba(255, 255, 255, 0.18);\n            box-shadow: 0 0.45rem 1.2rem rgba(0, 200, 255, 0.25);\n            transition: all 0.25s ease;\n        }\n\n        .flowspec-btn-voltar:hover {\n            transform: translateY(-1px);\n            filter: brightness(1.08);\n            box-shadow: 0 0.55rem 1.4rem rgba(0, 0, 0, 0.35);\n        }\n\n        .flowspec-btn-voltar:active {\n            transform: translateY(0);\n        }\n\n        @media (max-width: 900px) {\n            .flowspec-banner-container {\n                min-height: 5rem;\n                padding: 0.7rem 1rem;\n                box-sizing: border-box;\n                border-radius: 2rem;\n            }\n\n            .flowspec-banner-content {\n                justify-content: center;\n                padding-right: 0;\n                flex-wrap: wrap;\n            }\n\n            .flowspec-banner-actions {\n                position: static;\n                transform: none;\n                width: 100%;\n                margin-top: 0.5rem;\n            }\n\n            .flowspec-btn-voltar {\n                min-width: 90px;\n                height: 36px;\n                font-size: 0.85rem;\n            }\n\n            .flowspec-text {\n                font-size: 2.2rem;\n            }\n        }\n\n        /*FIM DA SESSÃO DO HEADER */\n    </style>\n</head>\n\n<body>\n    <!-- Estrutura do banner -->\n    <div class=\"flowspec-banner-container\">\n        <div class=\"flowspec-banner-content\">\n            <span class=\"flowspec-text\">SWITCH HUAWEI</span>\n        </div>\n\n        <div class=\"flowspec-banner-actions\">\n            <a href=\"/d/aecn8csqbwdmob/home\" class=\"flowspec-btn-voltar\">VOLTAR</a>\n        </div>\n    </div>\n</body>\n\n</html>",
+                "mode": "html"
+              },
+              "fieldConfig": {
+                "defaults": {},
+                "overrides": []
+              }
+            }
+          },
+          "transparent": true
+        }
+      },
+      "panel-139": {
+        "kind": "Panel",
+        "spec": {
+          "id": 139,
+          "title": "",
+          "description": "",
+          "links": [],
+          "data": {
+            "kind": "QueryGroup",
+            "spec": {
+              "queries": [],
+              "transformations": [],
+              "queryOptions": {}
+            }
+          },
+          "vizConfig": {
+            "kind": "VizConfig",
+            "group": "text",
+            "version": "13.1.0",
+            "spec": {
+              "options": {
+                "code": {
+                  "language": "plaintext",
+                  "showLineNumbers": false,
+                  "showMiniMap": false
+                },
+                "content": "<!DOCTYPE html>\n<html lang=\"pt-br\">\n\n<head>\n  <meta charset=\"UTF-8\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n  <title>Flowbix Banner</title>\n  <link rel=\"preconnect\" href=\"https://fonts.googleapis.com\">\n  <link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin>\n  <link href=\"https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap\" rel=\"stylesheet\">\n  <style>\n\n    .container-banner-unique {\n      height: 100%;\n    }\n\n    .content-wrapper-banner-unique {\n      width: 100%;\n      margin: 0;\n    }\n\n    .background-banner-unique {\n      height: 100%;\n      margin: 0;\n    }\n\n    .input-wrapper-banner-unique {\n      background: rgba(0, 0, 0, 0.2);\n      width: 100%;\n      height: 100%;\n      border: 0;\n      color: #FFFFFF;\n    }\n\n    .main-container-banner-unique {\n      background: rgba(0, 0, 0, 0.1);\n      display: flex;\n      justify-content: center;\n      align-items: center;\n      height: 100%;\n      position: relative;\n      border-radius: 5rem;\n      border: 1px solid rgba(204, 204, 220, 0.12);\n    }\n\n    .content-main-banner-unique {\n      display: flex;\n      align-items: center;\n      gap: 1rem;\n      color: #FFFFFF;\n      font-weight: 400;\n      font-size: 1.5rem;\n      text-transform: uppercase;\n    }\n\n    .logo-banner-unique {\n      height: 4rem;\n      width: auto;\n    }\n\n    .text-banner-unique {\n      font-size: 2.5rem;\n      color: #FFFFFF;\n      text-align: center;\n      display: flex;\n      align-items: center;\n      gap: 0.5rem;\n    }\n\n    .divider-text-unique {\n      color: #FFFFFF;\n      font-size: 2rem;\n    }\n\n    .icon-security-unique {\n      width: 2rem;\n      height: auto;\n    }\n  </style>\n</head>\n\n<body>\n  <!-- Estrutura do banner -->\n  <div class=\"main-container-banner-unique\">\n    <div class=\"content-main-banner-unique\">\n      <span class=\"text-banner-unique\">FANS\n \n\n        <!-- Ícone de segurança embutido ao lado do texto -->\n        <!-- <img src=\"https://img.icons8.com/?size=100&id=2963&format=png&color=FFFFFF\" alt=\"Security Icon\" class=\"icon-security-unique\"> -->\n      </span>\n    </div>\n  </div>\n</body>\n\n</html>",
+                "mode": "html"
+              },
+              "fieldConfig": {
+                "defaults": {},
+                "overrides": []
+              }
+            }
+          },
+          "transparent": true
+        }
+      },
+      "panel-140": {
+        "kind": "Panel",
+        "spec": {
+          "id": 140,
+          "title": "",
+          "description": "",
+          "links": [],
+          "data": {
+            "kind": "QueryGroup",
+            "spec": {
+              "queries": [],
+              "transformations": [],
+              "queryOptions": {}
+            }
+          },
+          "vizConfig": {
+            "kind": "VizConfig",
+            "group": "text",
+            "version": "13.1.0",
+            "spec": {
+              "options": {
+                "code": {
+                  "language": "plaintext",
+                  "showLineNumbers": false,
+                  "showMiniMap": false
+                },
+                "content": "<!DOCTYPE html>\n<html lang=\"pt-br\">\n\n<head>\n  <meta charset=\"UTF-8\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n  <title>Flowbix Banner</title>\n  <link rel=\"preconnect\" href=\"https://fonts.googleapis.com\">\n  <link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin>\n  <link href=\"https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap\" rel=\"stylesheet\">\n  <style>\n\n    .container-banner-unique {\n      height: 100%;\n    }\n\n    .content-wrapper-banner-unique {\n      width: 100%;\n      margin: 0;\n    }\n\n    .background-banner-unique {\n      height: 100%;\n      margin: 0;\n    }\n\n    .input-wrapper-banner-unique {\n      background: rgba(0, 0, 0, 0.2);\n      width: 100%;\n      height: 100%;\n      border: 0;\n      color: #FFFFFF;\n    }\n\n    .main-container-banner-unique {\n      background: rgba(0, 0, 0, 0.1);\n      display: flex;\n      justify-content: center;\n      align-items: center;\n      height: 100%;\n      position: relative;\n      border-radius: 5rem;\n      border: 1px solid rgba(204, 204, 220, 0.12);\n    }\n\n    .content-main-banner-unique {\n      display: flex;\n      align-items: center;\n      gap: 1rem;\n      color: #FFFFFF;\n      font-weight: 400;\n      font-size: 1.5rem;\n      text-transform: uppercase;\n    }\n\n    .logo-banner-unique {\n      height: 4rem;\n      width: auto;\n    }\n\n    .text-banner-unique {\n      font-size: 2rem;\n      color: #FFFFFF;\n      text-align: center;\n      display: flex;\n      align-items: center;\n      gap: 0.5rem;\n    }\n\n    .divider-text-unique {\n      color: #FFFFFF;\n      font-size: 2rem;\n    }\n\n    .icon-security-unique {\n      width: 2rem;\n      height: auto;\n    }\n  </style>\n</head>\n\n<body>\n  <!-- Estrutura do banner -->\n  <div class=\"main-container-banner-unique\">\n    <div class=\"content-main-banner-unique\">\n      <span class=\"text-banner-unique\">SINAL ÓPTICO\n\n \n\n        <!-- Ícone de segurança embutido ao lado do texto -->\n        <!-- <img src=\"https://img.icons8.com/?size=100&id=2963&format=png&color=FFFFFF\" alt=\"Security Icon\" class=\"icon-security-unique\"> -->\n      </span>\n    </div>\n  </div>\n</body>\n\n</html>",
+                "mode": "html"
+              },
+              "fieldConfig": {
+                "defaults": {},
+                "overrides": []
+              }
+            }
+          },
+          "transparent": true
+        }
+      },
+      "panel-142": {
+        "kind": "Panel",
+        "spec": {
+          "id": 142,
+          "title": "",
+          "description": "",
+          "links": [],
+          "data": {
+            "kind": "QueryGroup",
+            "spec": {
+              "queries": [
+                {
+                  "kind": "PanelQuery",
+                  "spec": {
+                    "query": {
+                      "kind": "DataQuery",
+                      "group": "alexanderzobnin-zabbix-datasource",
+                      "version": "v0",
+                      "datasource": {
+                        "name": "cfqk8kvi756o0c"
+                      },
+                      "spec": {
+                        "application": {
+                          "filter": ""
+                        },
+                        "countTriggersBy": "",
+                        "evaltype": "0",
+                        "functions": [],
+                        "group": {
+                          "filter": ""
+                        },
+                        "host": {
+                          "filter": ""
+                        },
+                        "item": {
+                          "filter": ""
+                        },
+                        "itemTag": {
+                          "filter": ""
+                        },
+                        "macro": {
+                          "filter": ""
+                        },
+                        "options": {
+                          "count": false,
+                          "disableDataAlignment": false,
+                          "showDisabledItems": false,
+                          "skipEmptyValues": false,
+                          "useTrends": "default",
+                          "useZabbixValueMapping": false
+                        },
+                        "proxy": {
+                          "filter": ""
+                        },
+                        "queryType": "0",
+                        "resultFormat": "time_series",
+                        "schema": 12,
+                        "table": {
+                          "skipEmptyValues": false
+                        },
+                        "tags": {
+                          "filter": ""
+                        },
+                        "textFilter": "",
+                        "trigger": {
+                          "filter": ""
+                        }
+                      }
+                    },
+                    "refId": "A",
+                    "hidden": false
+                  }
+                }
+              ],
+              "transformations": [],
+              "queryOptions": {}
+            }
+          },
+          "vizConfig": {
+            "kind": "VizConfig",
+            "group": "volkovlabs-variable-panel",
+            "version": "5.2.0",
+            "spec": {
+              "options": {
+                "alertCustomMessage": "",
+                "alwaysVisibleFilter": false,
+                "autoScroll": false,
+                "browserTabNamePattern": "",
+                "collapsedByDefault": false,
+                "customValue": false,
+                "displayMode": "minimize",
+                "emptyValue": false,
+                "favorites": {
+                  "enabled": false,
+                  "storage": "browser"
+                },
+                "filter": false,
+                "groupSelection": false,
+                "header": true,
+                "isMinimizeForTable": false,
+                "isMinimizeViewShowCustomIcon": false,
+                "isPinTabsEnabled": false,
+                "isUseLocalTime": false,
+                "minimizeOutputFormat": "text",
+                "minimizeViewCustomIcon": "",
+                "minimizeViewNativeIcon": "gf-movepane-right",
+                "padding": 10,
+                "persistent": false,
+                "requestLatency": "low",
+                "saveSelectedGroup": false,
+                "saveSelectedGroupKey": "",
+                "selectedValues": {
+                  "maxCount": 0,
+                  "showSelected": false
+                },
+                "showGroupTotal": false,
+                "showLabel": true,
+                "showName": false,
+                "showResetButton": false,
+                "showTotal": false,
+                "statusSort": false,
+                "sticky": false,
+                "tableViewPosition": "normal",
+                "tabsInOrder": true,
+                "toolbarMode": "tabs",
+                "variable": "HOST",
+                "wordBreak": "normal"
+              },
+              "fieldConfig": {
+                "defaults": {
+                  "thresholds": {
+                    "mode": "absolute",
+                    "steps": [
+                      {
+                        "value": 0,
+                        "color": "green"
+                      },
+                      {
+                        "value": 80,
+                        "color": "red"
+                      }
+                    ]
+                  },
+                  "custom": {
+                    "thresholdsStyle": {
+                      "mode": "color",
+                      "thresholds": []
+                    }
+                  }
+                },
+                "overrides": []
+              }
+            }
+          },
+          "transparent": true
+        }
+      },
+      "panel-151": {
+        "kind": "Panel",
+        "spec": {
+          "id": 151,
+          "title": "",
+          "description": "",
+          "links": [],
+          "data": {
+            "kind": "QueryGroup",
+            "spec": {
+              "queries": [
+                {
+                  "kind": "PanelQuery",
+                  "spec": {
+                    "query": {
+                      "kind": "DataQuery",
+                      "group": "alexanderzobnin-zabbix-datasource",
+                      "version": "v0",
+                      "datasource": {
+                        "name": "cfqk8kvi756o0c"
+                      },
+                      "spec": {
+                        "application": {
+                          "filter": " /.*/"
+                        },
+                        "countTriggersBy": "",
+                        "evaltype": "0",
+                        "functions": [],
+                        "group": {
+                          "filter": "$GRUPO"
+                        },
+                        "host": {
+                          "filter": "$HOST"
+                        },
+                        "item": {
+                          "filter": "MPU Board 0: Memory utilization"
+                        },
+                        "itemTag": {
+                          "filter": "Application: Memory"
+                        },
+                        "macro": {
+                          "filter": ""
+                        },
+                        "options": {
+                          "count": true,
+                          "disableDataAlignment": false,
+                          "minSeverity": 3,
+                          "showDisabledItems": false,
+                          "skipEmptyValues": false,
+                          "useTrends": "default",
+                          "useZabbixValueMapping": false
+                        },
+                        "proxy": {
+                          "filter": ""
+                        },
+                        "queryType": "0",
+                        "resultFormat": "time_series",
+                        "schema": 12,
+                        "table": {
+                          "skipEmptyValues": false
+                        },
+                        "tags": {
+                          "filter": ""
+                        },
+                        "textFilter": "",
+                        "trigger": {
+                          "filter": ""
+                        },
+                        "triggers": {
+                          "acknowledged": 2
+                        }
+                      }
+                    },
+                    "refId": "A",
+                    "hidden": false
+                  }
+                }
+              ],
+              "transformations": [
+                {
+                  "kind": "Transformation",
+                  "group": "reduce",
+                  "spec": {
+                    "options": {
+                      "reducers": [
+                        "lastNotNull"
+                      ]
+                    }
+                  }
+                }
+              ],
+              "queryOptions": {}
+            }
+          },
+          "vizConfig": {
+            "kind": "VizConfig",
+            "group": "volkovlabs-echarts-panel",
+            "version": "7.2.5",
+            "spec": {
+              "options": {
+                "baidu": {
+                  "callback": "bmapReady",
+                  "key": ""
+                },
+                "editor": {
+                  "format": "auto"
+                },
+                "editorMode": "visual",
+                "gaode": {
+                  "key": "",
+                  "plugin": "AMap.Scale,AMap.ToolBar"
+                },
+                "getOption": "const series = context.panel.data.series.map((s) => {\n  const sData = s.fields.find((f) => f.type === 'number').values.buffer || s.fields.find((f) => f.type === 'number').values;\n  const sTime = s.fields.find((f) => f.type === 'time').values.buffer || s.fields.find((f) => f.type === 'time').values;\n  \n  return {\n    name: s.refId,\n    type: 'line',\n    showSymbol: false,\n    areaStyle: {\n      opacity: 0.1,\n    },\n    lineStyle: {\n      width: 1,\n    },\n    data: sData.map((d, i) => [sTime[i], d.toFixed(2)]),\n  };\n});\n\n/**\n * Enable Data Zoom by default\n */\nsetTimeout(() => context.panel.chart.dispatchAction({\n  type: 'takeGlobalCursor',\n  key: 'dataZoomSelect',\n  dataZoomSelectActive: true,\n}), 500);\n\n/**\n * Update Time Range on Zoom\n */\ncontext.panel.chart.on('datazoom', function (params) {\n  const startValue = params.batch[0]?.startValue;\n  const endValue = params.batch[0]?.endValue;\n  locationService.partial({ from: startValue, to: endValue });\n});\n\nreturn {\n  backgroundColor: 'transparent',\n  tooltip: {\n    trigger: 'axis',\n  },\n  legend: {\n    left: '0',\n    bottom: '0',\n    data: context.panel.data.series.map((s) => s.refId),\n    textStyle: {\n      color: 'rgba(128, 128, 128, .9)',\n    },\n  },\n  toolbox: {\n    feature: {\n      dataZoom: {\n        yAxisIndex: 'none',\n        icon: {\n          zoom: 'path://',\n          back: 'path://',\n        },\n      },\n      saveAsImage: {},\n    }\n  },\n  xAxis: {\n    type: 'time',\n  },\n  yAxis: {\n    type: 'value',\n    min: 'dataMin',\n  },\n  grid: {\n    left: '2%',\n    right: '2%',\n    top: '2%',\n    bottom: 24,\n    containLabel: true,\n  },\n  series,\n};",
+                "google": {
+                  "callback": "gmapReady",
+                  "key": ""
+                },
+                "map": "none",
+                "renderer": "canvas",
+                "themeEditor": {
+                  "config": "{}",
+                  "name": "default"
+                },
+                "visualEditor": {
+                  "code": "// Inicializa a variável para armazenar o valor do gauge\nlet gaugeValue = null;\n\n// Processa os dados da tabela de forma dinâmica\ncontext.panel.data.series.forEach((series) => {\n  const fieldColumn = series.fields.find(f => f.name.toLowerCase().includes('field'));\n  const valueColumn = series.fields.find(f => f.name.toLowerCase().includes('last'));\n\n  if (fieldColumn && valueColumn) {\n    const fieldNames = fieldColumn.values.toArray();\n    const values = valueColumn.values.toArray();\n\n    // Usa o primeiro valor encontrado (ajuste se precisar processar vários)\n    if (values.length > 0) {\n      gaugeValue = parseFloat(values[0]); // Converte para número\n    }\n  }\n});\n\n// Se não encontrou um valor válido, define um padrão\nif (gaugeValue === null || isNaN(gaugeValue)) {\n  gaugeValue = 0;\n}\n\n// Arredonda o valor para duas casas decimais\ngaugeValue = parseFloat(gaugeValue.toFixed(2));\n\n// Define a cor do gauge com base no valor do gauge e no threshold\nlet gaugeColor;\n\nif (gaugeValue <= 50) {\n  gaugeColor = '#00FF00'; // Verde\n} else if (gaugeValue <= 70) {\n  gaugeColor = '#FFA500'; // Laranja\n} else {\n  gaugeColor = '#FF0000'; // Vermelho\n}\n\n// Define a imagem com base no valor do gauge\nconst imageUrl =\n  gaugeValue < 70\n    ? 'https://storage.googleapis.com/flowbix-img/IMG%20DASHBOARD/verrok.png'\n    : 'https://storage.googleapis.com/flowbix-img/IMG%20DASHBOARD/alrretasas.png';\n\n// Configuração do gráfico estilo \"Gauge com imagem condicional\"\nreturn {\n  graphic: [\n    {\n      type: 'image',\n      style: {\n        image: imageUrl,\n        width: 40, // Largura da imagem\n        height: 40, // Altura da imagem\n        x: 95, // Posição X\n        y: 130 // Posição Y ajustada para alinhar com o gráfico\n      }\n    }\n  ],\n  series: [\n    {\n      type: 'gauge',\n      startAngle: 160,\n      endAngle: -160,\n      min: 0,\n      max: 100, // Define o máximo como 100% para porcentagem\n      splitNumber: 20,\n      pointer: {\n        show: false,\n        width: 8,\n        length: '70%',\n        itemStyle: {\n          color: '#ffffff'\n        }\n      },\n      progress: {\n        show: true,\n        overlap: false,\n        roundCap: true,\n        clip: false,\n        itemStyle: {\n          color: {\n            type: 'linear',\n            x: 0,\n            y: 0,\n            x2: 1,\n            y2: 0,\n            colorStops: [\n              { offset: 0, color: '#00E96A' },\n              { offset: 0.33, color: '#00E96A' },\n              { offset: 0.66, color: '#217571' },\n              { offset: 1, color: '#217571' }\n            ]\n          },\n          shadowBlur: 20,\n          shadowColor: 'rgba(0, 0, 0, 0.5)'\n        }\n      },\n      axisLine: {\n        lineStyle: {\n          width: 18,\n          color: [\n            [gaugeValue / 100, gaugeColor], // Cor do preenchimento conforme threshold\n            [1, 'rgba(255, 255, 255, 0.15)'] // Tubo não preenchido\n          ]\n        }\n      },\n      axisTick: {\n        show: true,\n        distance: -18,\n        length: 10,\n        lineStyle: {\n          color: '#ffffff',\n          width: 2\n        }\n      },\n      splitLine: {\n        show: true,\n        distance: -25,\n        length: 20,\n        lineStyle: {\n          color: '#fff',\n          width: 1\n        }\n      },\n      axisLabel: {\n        distance: -30,\n        color: '#ffffff',\n        fontSize: 14,\n        fontWeight: 'bold',\n      },\n      title: {\n        show: true,\n        offsetCenter: [0, '-5%'],\n        textStyle: {\n          fontSize: 12,\n          color: '#ffffff',\n          fontWeight: 'bold',\n        },\n        text: 'USO DE CPU'\n      },\n      detail: {\n        valueAnimation: true,\n        offsetCenter: [0, '25%'],\n        formatter: '{value} %', // Exibe o valor com unidade %\n        color: '#ffffff',\n        fontSize: 25,\n        fontWeight: 'bold',\n      },\n      data: [\n        {\n          value: gaugeValue,\n          name: 'UTILIZAÇÃO DE MEMÓRIA '\n        }\n      ],\n      radius: '70%',             // controla o tamanho do gauge\n      center: ['50%', '50%']\n    }\n  ]\n};",
+                  "dataset": [],
+                  "series": []
+                }
+              },
+              "fieldConfig": {
+                "defaults": {},
+                "overrides": []
+              }
+            }
+          }
+        }
+      },
+      "panel-152": {
+        "kind": "Panel",
+        "spec": {
+          "id": 152,
+          "title": "",
+          "description": "",
+          "links": [],
+          "data": {
+            "kind": "QueryGroup",
+            "spec": {
+              "queries": [
+                {
+                  "kind": "PanelQuery",
+                  "spec": {
+                    "query": {
+                      "kind": "DataQuery",
+                      "group": "alexanderzobnin-zabbix-datasource",
+                      "version": "v0",
+                      "datasource": {
+                        "name": "cfqk8kvi756o0c"
+                      },
+                      "spec": {
+                        "application": {
+                          "filter": "Status"
+                        },
+                        "countTriggersBy": "",
+                        "evaltype": "0",
+                        "functions": [
+                          {
+                            "$$hashKey": "object:61",
+                            "def": {
+                              "category": "Alias",
+                              "defaultParams": [],
+                              "name": "setAlias",
+                              "params": [
+                                {
+                                  "name": "alias",
+                                  "type": "string"
+                                }
+                              ]
+                            },
+                            "params": [
+                              "TEMPO DE RESPOSTA"
+                            ],
+                            "text": "setAlias(TEMPO DE RESPOSTA)"
+                          },
+                          {
+                            "$$hashKey": "object:62",
+                            "def": {
+                              "category": "Alias",
+                              "defaultParams": [
+                                "/(.*)/",
+                                "$1"
+                              ],
+                              "name": "replaceAlias",
+                              "params": [
+                                {
+                                  "name": "regexp",
+                                  "type": "string"
+                                },
+                                {
+                                  "name": "newAlias",
+                                  "type": "string"
+                                }
+                              ]
+                            },
+                            "params": [
+                              "Switch Topo de Rack: ICMP response time",
+                              " "
+                            ],
+                            "text": "replaceAlias(Switch Topo de Rack: ICMP response time,  )"
+                          }
+                        ],
+                        "group": {
+                          "filter": "$GRUPO"
+                        },
+                        "host": {
+                          "filter": "$HOST"
+                        },
+                        "item": {
+                          "filter": "ICMP response time"
+                        },
+                        "itemTag": {
+                          "filter": ""
+                        },
+                        "macro": {
+                          "filter": ""
+                        },
+                        "options": {
+                          "count": true,
+                          "disableDataAlignment": false,
+                          "minSeverity": 3,
+                          "showDisabledItems": false,
+                          "skipEmptyValues": false,
+                          "useTrends": "default",
+                          "useZabbixValueMapping": false
+                        },
+                        "proxy": {
+                          "filter": ""
+                        },
+                        "queryType": "0",
+                        "resultFormat": "time_series",
+                        "schema": 12,
+                        "table": {
+                          "skipEmptyValues": false
+                        },
+                        "tags": {
+                          "filter": ""
+                        },
+                        "textFilter": "",
+                        "trigger": {
+                          "filter": ""
+                        },
+                        "triggers": {
+                          "acknowledged": 2
+                        }
+                      }
+                    },
+                    "refId": "A",
+                    "hidden": false
+                  }
+                }
+              ],
+              "transformations": [
+                {
+                  "kind": "Transformation",
+                  "group": "calculateField",
+                  "spec": {
+                    "options": {
+                      "alias": "TEMPO DE RESPOSTA",
+                      "binary": {
+                        "left": {
+                          "matcher": {
+                            "id": "byName",
+                            "options": "TEMPO DE RESPOSTA"
+                          }
+                        },
+                        "operator": "*",
+                        "right": {
+                          "fixed": "1000"
+                        }
+                      },
+                      "mode": "binary",
+                      "reduce": {
+                        "reducer": "sum"
+                      },
+                      "replaceFields": true
+                    }
+                  }
+                }
+              ],
+              "queryOptions": {}
+            }
+          },
+          "vizConfig": {
+            "kind": "VizConfig",
+            "group": "timeseries",
+            "version": "13.1.0",
+            "spec": {
+              "options": {
+                "annotations": {
+                  "clustering": -1,
+                  "multiLane": false
+                },
+                "legend": {
+                  "calcs": [],
+                  "displayMode": "list",
+                  "enableFacetedFilter": false,
+                  "overflow": "ellipsis",
+                  "placement": "bottom",
+                  "showLegend": false
+                },
+                "tooltip": {
+                  "hideZeros": false,
+                  "mode": "single",
+                  "sort": "none"
+                }
+              },
+              "fieldConfig": {
+                "defaults": {
+                  "unit": "ms",
+                  "thresholds": {
+                    "mode": "absolute",
+                    "steps": [
+                      {
+                        "value": 0,
+                        "color": "#00e96a"
+                      }
+                    ]
+                  },
+                  "color": {
+                    "mode": "thresholds",
+                    "fixedColor": "#ffffff"
+                  },
+                  "custom": {
+                    "axisBorderShow": false,
+                    "axisCenteredZero": false,
+                    "axisColorMode": "text",
+                    "axisLabel": "",
+                    "axisPlacement": "auto",
+                    "barAlignment": 0,
+                    "barWidthFactor": 0.6,
+                    "drawStyle": "line",
+                    "fillOpacity": 0,
+                    "gradientMode": "opacity",
+                    "hideFrom": {
+                      "legend": false,
+                      "tooltip": false,
+                      "viz": false
+                    },
+                    "insertNulls": false,
+                    "lineInterpolation": "smooth",
+                    "lineWidth": 2,
+                    "pointSize": 5,
+                    "scaleDistribution": {
+                      "type": "linear"
+                    },
+                    "showPoints": "auto",
+                    "showValues": false,
+                    "spanNulls": false,
+                    "stacking": {
+                      "group": "A",
+                      "mode": "none"
+                    },
+                    "thresholdsStyle": {
+                      "mode": "off"
+                    }
+                  }
+                },
+                "overrides": []
+              }
+            }
+          }
+        }
+      },
+      "panel-153": {
+        "kind": "Panel",
+        "spec": {
+          "id": 153,
+          "title": "",
+          "description": "",
+          "links": [],
+          "data": {
+            "kind": "QueryGroup",
+            "spec": {
+              "queries": [
+                {
+                  "kind": "PanelQuery",
+                  "spec": {
+                    "query": {
+                      "kind": "DataQuery",
+                      "group": "alexanderzobnin-zabbix-datasource",
+                      "version": "v0",
+                      "datasource": {
+                        "name": "cfqk8kvi756o0c"
+                      },
+                      "spec": {
+                        "application": {
+                          "filter": "Tx Power"
+                        },
+                        "countTriggersBy": "",
+                        "evaltype": "0",
+                        "functions": [
+                          {
+                            "added": true,
+                            "def": {
+                              "category": "Alias",
+                              "defaultParams": [
+                                "/(.*)/",
+                                "$1"
+                              ],
+                              "name": "replaceAlias",
+                              "params": [
+                                {
+                                  "name": "regexp",
+                                  "type": "string"
+                                },
+                                {
+                                  "name": "newAlias",
+                                  "type": "string"
+                                }
+                              ]
+                            },
+                            "params": [
+                              "/: Operational status/",
+                              "  "
+                            ],
+                            "text": "replaceAlias(/(.*)/, $1)"
+                          },
+                          {
+                            "added": true,
+                            "def": {
+                              "category": "Alias",
+                              "defaultParams": [
+                                "/(.*)/",
+                                "$1"
+                              ],
+                              "name": "replaceAlias",
+                              "params": [
+                                {
+                                  "name": "regexp",
+                                  "type": "string"
+                                },
+                                {
+                                  "name": "newAlias",
+                                  "type": "string"
+                                }
+                              ]
+                            },
+                            "params": [
+                              "/Interface/",
+                              " "
+                            ],
+                            "text": "replaceAlias(/(.*)/, $1)"
+                          }
+                        ],
+                        "group": {
+                          "filter": "$GRUPO"
+                        },
+                        "host": {
+                          "filter": "$HOST"
+                        },
+                        "item": {
+                          "filter": "/.*/"
+                        },
+                        "itemTag": {
+                          "filter": "Application: Operational status"
+                        },
+                        "macro": {
+                          "filter": ""
+                        },
+                        "options": {
+                          "count": true,
+                          "disableDataAlignment": false,
+                          "minSeverity": 3,
+                          "showDisabledItems": false,
+                          "skipEmptyValues": false,
+                          "useTrends": "default",
+                          "useZabbixValueMapping": false
+                        },
+                        "proxy": {
+                          "filter": ""
+                        },
+                        "queryType": "0",
+                        "resultFormat": "time_series",
+                        "schema": 12,
+                        "table": {
+                          "skipEmptyValues": false
+                        },
+                        "tags": {
+                          "filter": ""
+                        },
+                        "textFilter": "",
+                        "trigger": {
+                          "filter": ""
+                        },
+                        "triggers": {
+                          "acknowledged": 2
+                        }
+                      }
+                    },
+                    "refId": "A",
+                    "hidden": false
+                  }
+                }
+              ],
+              "transformations": [
+                {
+                  "kind": "Transformation",
+                  "group": "reduce",
+                  "spec": {
+                    "options": {
+                      "reducers": [
+                        "lastNotNull"
+                      ]
+                    }
+                  }
+                },
+                {
+                  "kind": "Transformation",
+                  "group": "organize",
+                  "spec": {
+                    "options": {
+                      "excludeByName": {},
+                      "includeByName": {},
+                      "indexByName": {
+                        "Field": 0,
+                        "Last": 1
+                      },
+                      "renameByName": {
+                        "Field": "PORTA",
+                        "Last": "TX POWER:",
+                        "Last *": "STATUS:"
+                      }
+                    }
+                  }
+                }
+              ],
+              "queryOptions": {}
+            }
+          },
+          "vizConfig": {
+            "kind": "VizConfig",
+            "group": "table",
+            "version": "13.1.0",
+            "spec": {
+              "options": {
+                "cellHeight": "lg",
+                "showHeader": true,
+                "sortBy": [
+                  {
+                    "desc": false,
+                    "displayName": "STATUS:"
+                  }
+                ]
+              },
+              "fieldConfig": {
+                "defaults": {
+                  "decimals": 2,
+                  "mappings": [
+                    {
+                      "type": "value",
+                      "options": {
+                        "1": {
+                          "text": "UP🟢",
+                          "index": 0
+                        },
+                        "2": {
+                          "text": "DOWN🔴",
+                          "index": 1
+                        }
+                      }
+                    }
+                  ],
+                  "thresholds": {
+                    "mode": "absolute",
+                    "steps": [
+                      {
+                        "value": 0,
+                        "color": "transparent"
+                      }
+                    ]
+                  },
+                  "noValue": "SEM DADOS",
+                  "custom": {
+                    "align": "center",
+                    "cellOptions": {
+                      "type": "auto"
+                    },
+                    "filterable": true,
+                    "footer": {
+                      "reducers": []
+                    },
+                    "inspect": false
+                  }
+                },
+                "overrides": [
+                  {
+                    "matcher": {
+                      "id": "byName",
+                      "options": "PORTA:"
+                    },
+                    "properties": [
+                      {
+                        "id": "custom.cellOptions",
+                        "value": {
+                          "applyToRow": true,
+                          "mode": "gradient",
+                          "type": "color-background"
+                        }
+                      },
+                      {
+                        "id": "custom.width",
+                        "value": 402
+                      }
+                    ]
+                  },
+                  {
+                    "matcher": {
+                      "id": "byName",
+                      "options": "TX POWER:"
+                    },
+                    "properties": [
+                      {
+                        "id": "thresholds",
+                        "value": {
+                          "mode": "absolute",
+                          "steps": [
+                            {
+                              "color": "#000557",
+                              "value": 0
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "id": "custom.cellOptions",
+                        "value": {
+                          "applyToRow": false,
+                          "type": "color-background"
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "matcher": {
+                      "id": "byName",
+                      "options": "PORTA"
+                    },
+                    "properties": [
+                      {
+                        "id": "custom.width",
+                        "value": 207
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          }
+        }
+      },
+      "panel-154": {
+        "kind": "Panel",
+        "spec": {
+          "id": 154,
+          "title": "DOWNLOAD",
+          "description": "",
+          "links": [],
+          "data": {
+            "kind": "QueryGroup",
+            "spec": {
+              "queries": [
+                {
+                  "kind": "PanelQuery",
+                  "spec": {
+                    "query": {
+                      "kind": "DataQuery",
+                      "group": "alexanderzobnin-zabbix-datasource",
+                      "version": "v0",
+                      "datasource": {
+                        "name": "cfqk8kvi756o0c"
+                      },
+                      "spec": {
+                        "application": {
+                          "filter": "Tx Power"
+                        },
+                        "countTriggersBy": "",
+                        "evaltype": "0",
+                        "functions": [
+                          {
+                            "added": true,
+                            "def": {
+                              "category": "Alias",
+                              "defaultParams": [
+                                "/(.*)/",
+                                "$1"
+                              ],
+                              "name": "replaceAlias",
+                              "params": [
+                                {
+                                  "name": "regexp",
+                                  "type": "string"
+                                },
+                                {
+                                  "name": "newAlias",
+                                  "type": "string"
+                                }
+                              ]
+                            },
+                            "params": [
+                              "/: Bits received/",
+                              "  "
+                            ],
+                            "text": "replaceAlias(/(.*)/, $1)"
+                          },
+                          {
+                            "added": true,
+                            "def": {
+                              "category": "Alias",
+                              "defaultParams": [
+                                "/(.*)/",
+                                "$1"
+                              ],
+                              "name": "replaceAlias",
+                              "params": [
+                                {
+                                  "name": "regexp",
+                                  "type": "string"
+                                },
+                                {
+                                  "name": "newAlias",
+                                  "type": "string"
+                                }
+                              ]
+                            },
+                            "params": [
+                              "/Interface/",
+                              " "
+                            ],
+                            "text": "replaceAlias(/(.*)/, $1)"
+                          }
+                        ],
+                        "group": {
+                          "filter": "$GRUPO"
+                        },
+                        "host": {
+                          "filter": "$HOST"
+                        },
+                        "item": {
+                          "filter": "/.*/"
+                        },
+                        "itemTag": {
+                          "filter": "Application: Bits received"
+                        },
+                        "macro": {
+                          "filter": ""
+                        },
+                        "options": {
+                          "count": true,
+                          "disableDataAlignment": false,
+                          "minSeverity": 3,
+                          "showDisabledItems": false,
+                          "skipEmptyValues": false,
+                          "useTrends": "default",
+                          "useZabbixValueMapping": false
+                        },
+                        "proxy": {
+                          "filter": ""
+                        },
+                        "queryType": "0",
+                        "resultFormat": "time_series",
+                        "schema": 12,
+                        "table": {
+                          "skipEmptyValues": false
+                        },
+                        "tags": {
+                          "filter": ""
+                        },
+                        "textFilter": "",
+                        "trigger": {
+                          "filter": ""
+                        },
+                        "triggers": {
+                          "acknowledged": 2
+                        }
+                      }
+                    },
+                    "refId": "A",
+                    "hidden": false
+                  }
+                }
+              ],
+              "transformations": [],
+              "queryOptions": {}
+            }
+          },
+          "vizConfig": {
+            "kind": "VizConfig",
+            "group": "timeseries",
+            "version": "13.1.0",
+            "spec": {
+              "options": {
+                "annotations": {
+                  "clustering": -1,
+                  "multiLane": false
+                },
+                "legend": {
+                  "calcs": [
+                    "lastNotNull"
+                  ],
+                  "displayMode": "table",
+                  "enableFacetedFilter": false,
+                  "overflow": "ellipsis",
+                  "placement": "bottom",
+                  "showLegend": true
+                },
+                "tooltip": {
+                  "hideZeros": false,
+                  "mode": "single",
+                  "sort": "none"
+                }
+              },
+              "fieldConfig": {
+                "defaults": {
+                  "unit": "GBs",
+                  "decimals": 2,
+                  "thresholds": {
+                    "mode": "absolute",
+                    "steps": [
+                      {
+                        "value": 0,
+                        "color": "transparent"
+                      }
+                    ]
+                  },
+                  "color": {
+                    "mode": "palette-classic"
+                  },
+                  "noValue": "SEM DADOS",
+                  "custom": {
+                    "axisBorderShow": false,
+                    "axisCenteredZero": false,
+                    "axisColorMode": "text",
+                    "axisLabel": "",
+                    "axisPlacement": "auto",
+                    "barAlignment": 0,
+                    "barWidthFactor": 0.6,
+                    "drawStyle": "line",
+                    "fillOpacity": 30,
+                    "gradientMode": "none",
+                    "hideFrom": {
+                      "legend": false,
+                      "tooltip": false,
+                      "viz": false
+                    },
+                    "insertNulls": false,
+                    "lineInterpolation": "linear",
+                    "lineWidth": 1,
+                    "pointSize": 1,
+                    "scaleDistribution": {
+                      "type": "linear"
+                    },
+                    "showPoints": "auto",
+                    "showValues": false,
+                    "spanNulls": false,
+                    "stacking": {
+                      "group": "A",
+                      "mode": "none"
+                    },
+                    "thresholdsStyle": {
+                      "mode": "off"
+                    }
+                  }
+                },
+                "overrides": [
+                  {
+                    "matcher": {
+                      "id": "byName",
+                      "options": "PORTA:"
+                    },
+                    "properties": []
+                  },
+                  {
+                    "matcher": {
+                      "id": "byName",
+                      "options": "TX POWER:"
+                    },
+                    "properties": [
+                      {
+                        "id": "thresholds",
+                        "value": {
+                          "mode": "absolute",
+                          "steps": [
+                            {
+                              "color": "#000557",
+                              "value": 0
+                            }
+                          ]
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "matcher": {
+                      "id": "byName",
+                      "options": "PORTA"
+                    },
+                    "properties": []
+                  }
+                ]
+              }
+            }
+          }
+        }
+      },
+      "panel-155": {
+        "kind": "Panel",
+        "spec": {
+          "id": 155,
+          "title": "UPLOAD",
+          "description": "",
+          "links": [],
+          "data": {
+            "kind": "QueryGroup",
+            "spec": {
+              "queries": [
+                {
+                  "kind": "PanelQuery",
+                  "spec": {
+                    "query": {
+                      "kind": "DataQuery",
+                      "group": "alexanderzobnin-zabbix-datasource",
+                      "version": "v0",
+                      "datasource": {
+                        "name": "cfqk8kvi756o0c"
+                      },
+                      "spec": {
+                        "application": {
+                          "filter": "Tx Power"
+                        },
+                        "countTriggersBy": "",
+                        "evaltype": "0",
+                        "functions": [
+                          {
+                            "added": true,
+                            "def": {
+                              "category": "Alias",
+                              "defaultParams": [
+                                "/(.*)/",
+                                "$1"
+                              ],
+                              "name": "replaceAlias",
+                              "params": [
+                                {
+                                  "name": "regexp",
+                                  "type": "string"
+                                },
+                                {
+                                  "name": "newAlias",
+                                  "type": "string"
+                                }
+                              ]
+                            },
+                            "params": [
+                              "/: Bits sent/",
+                              "  "
+                            ],
+                            "text": "replaceAlias(/(.*)/, $1)"
+                          },
+                          {
+                            "added": true,
+                            "def": {
+                              "category": "Alias",
+                              "defaultParams": [
+                                "/(.*)/",
+                                "$1"
+                              ],
+                              "name": "replaceAlias",
+                              "params": [
+                                {
+                                  "name": "regexp",
+                                  "type": "string"
+                                },
+                                {
+                                  "name": "newAlias",
+                                  "type": "string"
+                                }
+                              ]
+                            },
+                            "params": [
+                              "/Interface/",
+                              " "
+                            ],
+                            "text": "replaceAlias(/(.*)/, $1)"
+                          }
+                        ],
+                        "group": {
+                          "filter": "$GRUPO"
+                        },
+                        "host": {
+                          "filter": "$HOST"
+                        },
+                        "item": {
+                          "filter": "/.*/"
+                        },
+                        "itemTag": {
+                          "filter": "Application: Bits sent"
+                        },
+                        "macro": {
+                          "filter": ""
+                        },
+                        "options": {
+                          "count": true,
+                          "disableDataAlignment": false,
+                          "minSeverity": 3,
+                          "showDisabledItems": false,
+                          "skipEmptyValues": false,
+                          "useTrends": "default",
+                          "useZabbixValueMapping": false
+                        },
+                        "proxy": {
+                          "filter": ""
+                        },
+                        "queryType": "0",
+                        "resultFormat": "time_series",
+                        "schema": 12,
+                        "table": {
+                          "skipEmptyValues": false
+                        },
+                        "tags": {
+                          "filter": ""
+                        },
+                        "textFilter": "",
+                        "trigger": {
+                          "filter": ""
+                        },
+                        "triggers": {
+                          "acknowledged": 2
+                        }
+                      }
+                    },
+                    "refId": "A",
+                    "hidden": false
+                  }
+                }
+              ],
+              "transformations": [],
+              "queryOptions": {}
+            }
+          },
+          "vizConfig": {
+            "kind": "VizConfig",
+            "group": "timeseries",
+            "version": "13.1.0",
+            "spec": {
+              "options": {
+                "annotations": {
+                  "clustering": -1,
+                  "multiLane": false
+                },
+                "legend": {
+                  "calcs": [
+                    "lastNotNull"
+                  ],
+                  "displayMode": "table",
+                  "enableFacetedFilter": false,
+                  "overflow": "ellipsis",
+                  "placement": "bottom",
+                  "showLegend": true
+                },
+                "tooltip": {
+                  "hideZeros": false,
+                  "mode": "single",
+                  "sort": "none"
+                }
+              },
+              "fieldConfig": {
+                "defaults": {
+                  "unit": "GBs",
+                  "decimals": 2,
+                  "thresholds": {
+                    "mode": "absolute",
+                    "steps": [
+                      {
+                        "value": 0,
+                        "color": "transparent"
+                      }
+                    ]
+                  },
+                  "color": {
+                    "mode": "palette-classic"
+                  },
+                  "noValue": "SEM DADOS",
+                  "custom": {
+                    "axisBorderShow": false,
+                    "axisCenteredZero": false,
+                    "axisColorMode": "text",
+                    "axisLabel": "",
+                    "axisPlacement": "auto",
+                    "barAlignment": 0,
+                    "barWidthFactor": 0.6,
+                    "drawStyle": "line",
+                    "fillOpacity": 30,
+                    "gradientMode": "none",
+                    "hideFrom": {
+                      "legend": false,
+                      "tooltip": false,
+                      "viz": false
+                    },
+                    "insertNulls": false,
+                    "lineInterpolation": "linear",
+                    "lineWidth": 1,
+                    "pointSize": 1,
+                    "scaleDistribution": {
+                      "type": "linear"
+                    },
+                    "showPoints": "auto",
+                    "showValues": false,
+                    "spanNulls": false,
+                    "stacking": {
+                      "group": "A",
+                      "mode": "none"
+                    },
+                    "thresholdsStyle": {
+                      "mode": "off"
+                    }
+                  }
+                },
+                "overrides": [
+                  {
+                    "matcher": {
+                      "id": "byName",
+                      "options": "PORTA:"
+                    },
+                    "properties": []
+                  },
+                  {
+                    "matcher": {
+                      "id": "byName",
+                      "options": "TX POWER:"
+                    },
+                    "properties": [
+                      {
+                        "id": "thresholds",
+                        "value": {
+                          "mode": "absolute",
+                          "steps": [
+                            {
+                              "color": "#000557",
+                              "value": 0
+                            }
+                          ]
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "matcher": {
+                      "id": "byName",
+                      "options": "PORTA"
+                    },
+                    "properties": []
+                  }
+                ]
+              }
+            }
+          }
+        }
+      },
+      "panel-156": {
+        "kind": "Panel",
+        "spec": {
+          "id": 156,
+          "title": "",
+          "description": "",
+          "links": [],
+          "data": {
+            "kind": "QueryGroup",
+            "spec": {
+              "queries": [],
+              "transformations": [],
+              "queryOptions": {}
+            }
+          },
+          "vizConfig": {
+            "kind": "VizConfig",
+            "group": "text",
+            "version": "13.1.0",
+            "spec": {
+              "options": {
+                "code": {
+                  "language": "plaintext",
+                  "showLineNumbers": false,
+                  "showMiniMap": false
+                },
+                "content": "<!DOCTYPE html>\n<html lang=\"pt-br\">\n\n<head>\n  <meta charset=\"UTF-8\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n  <title>Flowbix Banner</title>\n  <link rel=\"preconnect\" href=\"https://fonts.googleapis.com\">\n  <link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin>\n  <link href=\"https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap\" rel=\"stylesheet\">\n  <style>\n\n    .container-banner-unique {\n      height: 100%;\n    }\n\n    .content-wrapper-banner-unique {\n      width: 100%;\n      margin: 0;\n    }\n\n    .background-banner-unique {\n      height: 100%;\n      margin: 0;\n    }\n\n    .input-wrapper-banner-unique {\n      background: rgba(0, 0, 0, 0.2);\n      width: 100%;\n      height: 100%;\n      border: 0;\n      color: #FFFFFF;\n    }\n\n    .main-container-banner-unique {\n      background: rgba(0, 0, 0, 0.1);\n      display: flex;\n      justify-content: center;\n      align-items: center;\n      height: 100%;\n      position: relative;\n      border-radius: 5rem;\n      border: 1px solid rgba(204, 204, 220, 0.12);\n    }\n\n    .content-main-banner-unique {\n      display: flex;\n      align-items: center;\n      gap: 1rem;\n      color: #FFFFFF;\n      font-weight: 400;\n      font-size: 1.5rem;\n      text-transform: uppercase;\n    }\n\n    .logo-banner-unique {\n      height: 4rem;\n      width: auto;\n    }\n\n    .text-banner-unique {\n      font-size: 2rem;\n      color: #FFFFFF;\n      text-align: center;\n      display: flex;\n      align-items: center;\n      gap: 0.5rem;\n    }\n\n    .divider-text-unique {\n      color: #FFFFFF;\n      font-size: 2rem;\n    }\n\n    .icon-security-unique {\n      width: 2rem;\n      height: auto;\n    }\n  </style>\n</head>\n\n<body>\n  <!-- Estrutura do banner -->\n  <div class=\"main-container-banner-unique\">\n    <div class=\"content-main-banner-unique\">\n      <span class=\"text-banner-unique\">TRÁFEGO\n\n \n\n        <!-- Ícone de segurança embutido ao lado do texto -->\n        <!-- <img src=\"https://img.icons8.com/?size=100&id=2963&format=png&color=FFFFFF\" alt=\"Security Icon\" class=\"icon-security-unique\"> -->\n      </span>\n    </div>\n  </div>\n</body>\n\n</html>",
+                "mode": "html"
+              },
+              "fieldConfig": {
+                "defaults": {},
+                "overrides": []
+              }
+            }
+          },
+          "transparent": true
+        }
+      },
+      "panel-70": {
+        "kind": "Panel",
+        "spec": {
+          "id": 70,
+          "title": "",
+          "description": "",
+          "links": [],
+          "data": {
+            "kind": "QueryGroup",
+            "spec": {
+              "queries": [
+                {
+                  "kind": "PanelQuery",
+                  "spec": {
+                    "query": {
+                      "kind": "DataQuery",
+                      "group": "alexanderzobnin-zabbix-datasource",
+                      "version": "v0",
+                      "datasource": {
+                        "name": "cfqk8kvi756o0c"
+                      },
+                      "spec": {
+                        "application": {
+                          "filter": "Tx Power"
+                        },
+                        "countTriggersBy": "",
+                        "evaltype": "0",
+                        "functions": [
+                          {
+                            "added": true,
+                            "def": {
+                              "category": "Alias",
+                              "defaultParams": [],
+                              "name": "setAliasByRegex",
+                              "params": [
+                                {
+                                  "name": "aliasByRegex",
+                                  "type": "string"
+                                }
+                              ]
+                            },
+                            "params": [
+                              "[^\\s(]+(?:\\([^)]*\\))?: TX(?: Lane \\d+)?"
+                            ],
+                            "text": "setAliasByRegex()"
+                          }
+                        ],
+                        "group": {
+                          "filter": "$GRUPO"
+                        },
+                        "host": {
+                          "filter": "$HOST"
+                        },
+                        "item": {
+                          "filter": "/.*/"
+                        },
+                        "itemTag": {
+                          "filter": "Application: GBIC_HUAWEI :: Tx Power"
+                        },
+                        "macro": {
+                          "filter": ""
+                        },
+                        "options": {
+                          "count": true,
+                          "disableDataAlignment": false,
+                          "minSeverity": 3,
+                          "showDisabledItems": false,
+                          "skipEmptyValues": false,
+                          "useTrends": "default",
+                          "useZabbixValueMapping": false
+                        },
+                        "proxy": {
+                          "filter": ""
+                        },
+                        "queryType": "0",
+                        "resultFormat": "time_series",
+                        "schema": 12,
+                        "table": {
+                          "skipEmptyValues": false
+                        },
+                        "tags": {
+                          "filter": ""
+                        },
+                        "textFilter": "",
+                        "trigger": {
+                          "filter": ""
+                        },
+                        "triggers": {
+                          "acknowledged": 2
+                        }
+                      }
+                    },
+                    "refId": "A",
+                    "hidden": false
+                  }
+                }
+              ],
+              "transformations": [
+                {
+                  "kind": "Transformation",
+                  "group": "reduce",
+                  "spec": {
+                    "options": {
+                      "reducers": [
+                        "lastNotNull"
+                      ]
+                    }
+                  }
+                },
+                {
+                  "kind": "Transformation",
+                  "group": "organize",
+                  "spec": {
+                    "options": {
+                      "excludeByName": {
+                        "Last *": false
+                      },
+                      "includeByName": {},
+                      "indexByName": {
+                        "Field": 0,
+                        "Last": 1
+                      },
+                      "renameByName": {
+                        "Field": "PORTA",
+                        "Last": "TX POWER:",
+                        "Last *": "TX POWER",
+                        "Last * * 0.01": "TX POWER:"
+                      }
+                    }
+                  }
+                }
+              ],
+              "queryOptions": {}
+            }
+          },
+          "vizConfig": {
+            "kind": "VizConfig",
+            "group": "table",
+            "version": "13.1.0",
+            "spec": {
+              "options": {
+                "cellHeight": "md",
+                "showHeader": true,
+                "sortBy": [
+                  {
+                    "desc": true,
+                    "displayName": "TX POWER"
+                  }
+                ]
+              },
+              "fieldConfig": {
+                "defaults": {
+                  "unit": "dbm",
+                  "thresholds": {
+                    "mode": "absolute",
+                    "steps": [
+                      {
+                        "value": 0,
+                        "color": "#ffffff"
+                      }
+                    ]
+                  },
+                  "noValue": "SEM DADOS",
+                  "custom": {
+                    "align": "center",
+                    "cellOptions": {
+                      "type": "color-text"
+                    },
+                    "filterable": true,
+                    "footer": {
+                      "reducers": []
+                    },
+                    "inspect": false,
+                    "styleField": "Field",
+                    "wrapText": true
+                  }
+                },
+                "overrides": [
+                  {
+                    "matcher": {
+                      "id": "byName",
+                      "scope": "series",
+                      "options": "Field"
+                    },
+                    "properties": [
+                      {
+                        "id": "custom.cellOptions",
+                        "value": {
+                          "type": "color-text"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          }
+        }
+      },
+      "panel-75": {
+        "kind": "Panel",
+        "spec": {
+          "id": 75,
+          "title": "",
+          "description": "",
+          "links": [],
+          "data": {
+            "kind": "QueryGroup",
+            "spec": {
+              "queries": [
+                {
+                  "kind": "PanelQuery",
+                  "spec": {
+                    "query": {
+                      "kind": "DataQuery",
+                      "group": "alexanderzobnin-zabbix-datasource",
+                      "version": "v0",
+                      "datasource": {
+                        "name": "cfqk8kvi756o0c"
+                      },
+                      "spec": {
+                        "application": {
+                          "filter": "Status"
+                        },
+                        "countTriggersBy": "",
+                        "evaltype": "0",
+                        "functions": [],
+                        "group": {
+                          "filter": "$GRUPO"
+                        },
+                        "host": {
+                          "filter": "$HOST"
+                        },
+                        "item": {
+                          "filter": "ICMP ping"
+                        },
+                        "itemTag": {
+                          "filter": ""
+                        },
+                        "macro": {
+                          "filter": ""
+                        },
+                        "options": {
+                          "count": true,
+                          "disableDataAlignment": false,
+                          "minSeverity": 3,
+                          "showDisabledItems": false,
+                          "skipEmptyValues": false,
+                          "useTrends": "default",
+                          "useZabbixValueMapping": false
+                        },
+                        "proxy": {
+                          "filter": ""
+                        },
+                        "queryType": "0",
+                        "resultFormat": "time_series",
+                        "schema": 12,
+                        "table": {
+                          "skipEmptyValues": false
+                        },
+                        "tags": {
+                          "filter": ""
+                        },
+                        "textFilter": "",
+                        "trigger": {
+                          "filter": ""
+                        },
+                        "triggers": {
+                          "acknowledged": 2
+                        }
+                      }
+                    },
+                    "refId": "A",
+                    "hidden": false
+                  }
+                }
+              ],
+              "transformations": [],
+              "queryOptions": {}
+            }
+          },
+          "vizConfig": {
+            "kind": "VizConfig",
+            "group": "stat",
+            "version": "13.1.0",
+            "spec": {
+              "options": {
+                "colorMode": "value",
+                "graphMode": "none",
+                "justifyMode": "auto",
+                "orientation": "auto",
+                "percentChangeColorMode": "standard",
+                "reduceOptions": {
+                  "calcs": [
+                    "lastNotNull"
+                  ],
+                  "fields": "",
+                  "values": false
+                },
+                "showPercentChange": false,
+                "text": {},
+                "textMode": "value_and_name",
+                "wideLayout": true
+              },
+              "fieldConfig": {
+                "defaults": {
+                  "displayName": "DISPONIBILIDADE",
+                  "unit": "none",
+                  "mappings": [
+                    {
+                      "type": "value",
+                      "options": {
+                        "0": {
+                          "text": "OFFLINE 🔴",
+                          "index": 1
+                        },
+                        "1": {
+                          "text": "ONLINE 🟢",
+                          "index": 0
+                        }
+                      }
+                    }
+                  ],
+                  "thresholds": {
+                    "mode": "absolute",
+                    "steps": [
+                      {
+                        "value": 0,
+                        "color": "#ffffff"
+                      }
+                    ]
+                  },
+                  "color": {
+                    "mode": "thresholds"
+                  }
+                },
+                "overrides": []
+              }
+            }
+          }
+        }
+      },
+      "panel-76": {
+        "kind": "Panel",
+        "spec": {
+          "id": 76,
+          "title": "",
+          "description": "",
+          "links": [],
+          "data": {
+            "kind": "QueryGroup",
+            "spec": {
+              "queries": [
+                {
+                  "kind": "PanelQuery",
+                  "spec": {
+                    "query": {
+                      "kind": "DataQuery",
+                      "group": "alexanderzobnin-zabbix-datasource",
+                      "version": "v0",
+                      "datasource": {
+                        "name": "cfqk8kvi756o0c"
+                      },
+                      "spec": {
+                        "application": {
+                          "filter": ""
+                        },
+                        "countTriggersBy": "",
+                        "evaltype": "0",
+                        "functions": [],
+                        "group": {
+                          "filter": "/.*/"
+                        },
+                        "host": {
+                          "filter": "$HOST"
+                        },
+                        "item": {
+                          "filter": "Uptime (network)"
+                        },
+                        "itemTag": {
+                          "filter": ""
+                        },
+                        "macro": {
+                          "filter": ""
+                        },
+                        "options": {
+                          "count": true,
+                          "disableDataAlignment": false,
+                          "minSeverity": 3,
+                          "showDisabledItems": false,
+                          "skipEmptyValues": false,
+                          "useTrends": "default",
+                          "useZabbixValueMapping": false
+                        },
+                        "proxy": {
+                          "filter": ""
+                        },
+                        "queryType": "0",
+                        "resultFormat": "time_series",
+                        "schema": 12,
+                        "table": {
+                          "skipEmptyValues": false
+                        },
+                        "tags": {
+                          "filter": ""
+                        },
+                        "textFilter": "",
+                        "trigger": {
+                          "filter": ""
+                        },
+                        "triggers": {
+                          "acknowledged": 2
+                        }
+                      }
+                    },
+                    "refId": "A",
+                    "hidden": false
+                  }
+                }
+              ],
+              "transformations": [],
+              "queryOptions": {}
+            }
+          },
+          "vizConfig": {
+            "kind": "VizConfig",
+            "group": "stat",
+            "version": "13.1.0",
+            "spec": {
+              "options": {
+                "colorMode": "value",
+                "graphMode": "none",
+                "justifyMode": "auto",
+                "orientation": "auto",
+                "percentChangeColorMode": "standard",
+                "reduceOptions": {
+                  "calcs": [
+                    "lastNotNull"
+                  ],
+                  "fields": "",
+                  "values": false
+                },
+                "showPercentChange": false,
+                "text": {
+                  "valueSize": 25
+                },
+                "textMode": "value_and_name",
+                "wideLayout": true
+              },
+              "fieldConfig": {
+                "defaults": {
+                  "displayName": "UPTIME",
+                  "unit": "dtdhms",
+                  "thresholds": {
+                    "mode": "absolute",
+                    "steps": [
+                      {
+                        "value": 0,
+                        "color": "#ffffff"
+                      }
+                    ]
+                  },
+                  "color": {
+                    "mode": "thresholds"
+                  }
+                },
+                "overrides": []
+              }
+            }
+          }
+        }
+      },
+      "panel-77": {
+        "kind": "Panel",
+        "spec": {
+          "id": 77,
+          "title": "",
+          "description": "",
+          "links": [],
+          "data": {
+            "kind": "QueryGroup",
+            "spec": {
+              "queries": [
+                {
+                  "kind": "PanelQuery",
+                  "spec": {
+                    "query": {
+                      "kind": "DataQuery",
+                      "group": "alexanderzobnin-zabbix-datasource",
+                      "version": "v0",
+                      "datasource": {
+                        "name": "cfqk8kvi756o0c"
+                      },
+                      "spec": {
+                        "application": {
+                          "filter": "Fans"
+                        },
+                        "countTriggersBy": "",
+                        "evaltype": "0",
+                        "functions": [
+                          {
+                            "added": true,
+                            "def": {
+                              "category": "Alias",
+                              "defaultParams": [
+                                "/(.*)/",
+                                "$1"
+                              ],
+                              "name": "replaceAlias",
+                              "params": [
+                                {
+                                  "name": "regexp",
+                                  "type": "string"
+                                },
+                                {
+                                  "name": "newAlias",
+                                  "type": "string"
+                                }
+                              ]
+                            },
+                            "params": [
+                              "/(.*): Fan status/",
+                              "$1"
+                            ],
+                            "text": "replaceAlias(/(.*)/, $1)"
+                          }
+                        ],
+                        "group": {
+                          "filter": "$GRUPO"
+                        },
+                        "host": {
+                          "filter": "$HOST"
+                        },
+                        "item": {
+                          "filter": "/Fan/"
+                        },
+                        "itemTag": {
+                          "filter": "Application: Fans"
+                        },
+                        "macro": {
+                          "filter": ""
+                        },
+                        "options": {
+                          "count": true,
+                          "disableDataAlignment": false,
+                          "minSeverity": 3,
+                          "showDisabledItems": false,
+                          "skipEmptyValues": false,
+                          "useTrends": "default",
+                          "useZabbixValueMapping": false
+                        },
+                        "proxy": {
+                          "filter": ""
+                        },
+                        "queryType": "0",
+                        "resultFormat": "time_series",
+                        "schema": 12,
+                        "table": {
+                          "skipEmptyValues": false
+                        },
+                        "tags": {
+                          "filter": ""
+                        },
+                        "textFilter": "",
+                        "trigger": {
+                          "filter": ""
+                        },
+                        "triggers": {
+                          "acknowledged": 2
+                        }
+                      }
+                    },
+                    "refId": "A",
+                    "hidden": false
+                  }
+                }
+              ],
+              "transformations": [],
+              "queryOptions": {}
+            }
+          },
+          "vizConfig": {
+            "kind": "VizConfig",
+            "group": "stat",
+            "version": "13.1.0",
+            "spec": {
+              "options": {
+                "colorMode": "value",
+                "graphMode": "none",
+                "justifyMode": "center",
+                "orientation": "auto",
+                "percentChangeColorMode": "standard",
+                "reduceOptions": {
+                  "calcs": [
+                    "lastNotNull"
+                  ],
+                  "fields": "",
+                  "values": false
+                },
+                "showPercentChange": false,
+                "textMode": "auto",
+                "wideLayout": true
+              },
+              "fieldConfig": {
+                "defaults": {
+                  "unit": "none",
+                  "min": 0,
+                  "max": 1,
+                  "mappings": [
+                    {
+                      "type": "value",
+                      "options": {
+                        "0": {
+                          "text": "other",
+                          "color": "semi-dark-red",
+                          "index": 0
+                        },
+                        "1": {
+                          "text": "WORKING",
+                          "color": "#00e96a",
+                          "index": 1
+                        },
+                        "2": {
+                          "text": "fail",
+                          "color": "semi-dark-yellow",
+                          "index": 2
+                        },
+                        "3": {
+                          "text": "speed-0",
+                          "color": "semi-dark-purple",
+                          "index": 3
+                        },
+                        "4": {
+                          "text": "speed-low",
+                          "color": "semi-dark-orange",
+                          "index": 4
+                        },
+                        "5": {
+                          "text": "speed-middle",
+                          "color": "semi-dark-green",
+                          "index": 5
+                        },
+                        "6": {
+                          "text": "speed-high",
+                          "color": "#3af2dda6",
+                          "index": 6
+                        }
+                      }
+                    }
+                  ],
+                  "thresholds": {
+                    "mode": "absolute",
+                    "steps": [
+                      {
+                        "value": 0,
+                        "color": "#009f3f"
+                      }
+                    ]
+                  },
+                  "color": {
+                    "mode": "thresholds"
+                  }
+                },
+                "overrides": []
+              }
+            }
+          }
+        }
+      },
+      "panel-92": {
+        "kind": "Panel",
+        "spec": {
+          "id": 92,
+          "title": "",
+          "description": "",
+          "links": [],
+          "data": {
+            "kind": "QueryGroup",
+            "spec": {
+              "queries": [
+                {
+                  "kind": "PanelQuery",
+                  "spec": {
+                    "query": {
+                      "kind": "DataQuery",
+                      "group": "alexanderzobnin-zabbix-datasource",
+                      "version": "v0",
+                      "datasource": {
+                        "name": "cfqk8kvi756o0c"
+                      },
+                      "spec": {
+                        "application": {
+                          "filter": "Status"
+                        },
+                        "countTriggersBy": "",
+                        "evaltype": "0",
+                        "functions": [
+                          {
+                            "$$hashKey": "object:61",
+                            "def": {
+                              "category": "Alias",
+                              "defaultParams": [],
+                              "name": "setAlias",
+                              "params": [
+                                {
+                                  "name": "alias",
+                                  "type": "string"
+                                }
+                              ]
+                            },
+                            "params": [
+                              "TEMPO DE RESPOSTA"
+                            ],
+                            "text": "setAlias(TEMPO DE RESPOSTA)"
+                          },
+                          {
+                            "$$hashKey": "object:62",
+                            "def": {
+                              "category": "Alias",
+                              "defaultParams": [
+                                "/(.*)/",
+                                "$1"
+                              ],
+                              "name": "replaceAlias",
+                              "params": [
+                                {
+                                  "name": "regexp",
+                                  "type": "string"
+                                },
+                                {
+                                  "name": "newAlias",
+                                  "type": "string"
+                                }
+                              ]
+                            },
+                            "params": [
+                              "Switch Topo de Rack: ICMP response time",
+                              " "
+                            ],
+                            "text": "replaceAlias(Switch Topo de Rack: ICMP response time,  )"
+                          }
+                        ],
+                        "group": {
+                          "filter": "$GRUPO"
+                        },
+                        "host": {
+                          "filter": "$HOST"
+                        },
+                        "item": {
+                          "filter": "ICMP response time"
+                        },
+                        "itemTag": {
+                          "filter": ""
+                        },
+                        "macro": {
+                          "filter": ""
+                        },
+                        "options": {
+                          "count": true,
+                          "disableDataAlignment": false,
+                          "minSeverity": 3,
+                          "showDisabledItems": false,
+                          "skipEmptyValues": false,
+                          "useTrends": "default",
+                          "useZabbixValueMapping": false
+                        },
+                        "proxy": {
+                          "filter": ""
+                        },
+                        "queryType": "0",
+                        "resultFormat": "time_series",
+                        "schema": 12,
+                        "table": {
+                          "skipEmptyValues": false
+                        },
+                        "tags": {
+                          "filter": ""
+                        },
+                        "textFilter": "",
+                        "trigger": {
+                          "filter": ""
+                        },
+                        "triggers": {
+                          "acknowledged": 2
+                        }
+                      }
+                    },
+                    "refId": "A",
+                    "hidden": false
+                  }
+                }
+              ],
+              "transformations": [
+                {
+                  "kind": "Transformation",
+                  "group": "calculateField",
+                  "spec": {
+                    "options": {
+                      "alias": "TEMPO DE RESPOSTA",
+                      "binary": {
+                        "left": {
+                          "matcher": {
+                            "id": "byName",
+                            "options": "TEMPO DE RESPOSTA"
+                          }
+                        },
+                        "operator": "*",
+                        "right": {
+                          "fixed": "1000"
+                        }
+                      },
+                      "mode": "binary",
+                      "reduce": {
+                        "reducer": "sum"
+                      },
+                      "replaceFields": true
+                    }
+                  }
+                }
+              ],
+              "queryOptions": {}
+            }
+          },
+          "vizConfig": {
+            "kind": "VizConfig",
+            "group": "stat",
+            "version": "13.1.0",
+            "spec": {
+              "options": {
+                "colorMode": "value",
+                "graphMode": "none",
+                "justifyMode": "auto",
+                "orientation": "auto",
+                "percentChangeColorMode": "standard",
+                "reduceOptions": {
+                  "calcs": [
+                    "lastNotNull"
+                  ],
+                  "fields": "",
+                  "values": false
+                },
+                "showPercentChange": false,
+                "textMode": "value_and_name",
+                "wideLayout": true
+              },
+              "fieldConfig": {
+                "defaults": {
+                  "unit": "ms",
+                  "thresholds": {
+                    "mode": "absolute",
+                    "steps": [
+                      {
+                        "value": 0,
+                        "color": "#63ffca"
+                      }
+                    ]
+                  },
+                  "color": {
+                    "mode": "fixed",
+                    "fixedColor": "#ffffff"
+                  }
+                },
+                "overrides": []
+              }
+            }
+          }
+        }
+      },
+      "panel-94": {
+        "kind": "Panel",
+        "spec": {
+          "id": 94,
+          "title": "",
+          "description": "",
+          "links": [],
+          "data": {
+            "kind": "QueryGroup",
+            "spec": {
+              "queries": [
+                {
+                  "kind": "PanelQuery",
+                  "spec": {
+                    "query": {
+                      "kind": "DataQuery",
+                      "group": "alexanderzobnin-zabbix-datasource",
+                      "version": "v0",
+                      "datasource": {
+                        "name": "cfqk8kvi756o0c"
+                      },
+                      "spec": {
+                        "application": {
+                          "filter": "CPU"
+                        },
+                        "countTriggersBy": "",
+                        "evaltype": "0",
+                        "functions": [
+                          {
+                            "$$hashKey": "object:206",
+                            "def": {
+                              "category": "Alias",
+                              "defaultParams": [],
+                              "name": "setAlias",
+                              "params": [
+                                {
+                                  "name": "alias",
+                                  "type": "string"
+                                }
+                              ]
+                            },
+                            "params": [
+                              "UTILIZAÇÃO DE CPU"
+                            ],
+                            "text": "setAlias(USO DE CPU)"
+                          },
+                          {
+                            "$$hashKey": "object:207",
+                            "def": {
+                              "category": "Alias",
+                              "defaultParams": [
+                                "/(.*)/",
+                                "$1"
+                              ],
+                              "name": "replaceAlias",
+                              "params": [
+                                {
+                                  "name": "regexp",
+                                  "type": "string"
+                                },
+                                {
+                                  "name": "newAlias",
+                                  "type": "string"
+                                }
+                              ]
+                            },
+                            "params": [
+                              "Switch Topo de Rack: ICMP response time",
+                              " "
+                            ],
+                            "text": "replaceAlias(Switch Topo de Rack: ICMP response time,  )"
+                          }
+                        ],
+                        "group": {
+                          "filter": "$GRUPO"
+                        },
+                        "host": {
+                          "filter": "$HOST"
+                        },
+                        "item": {
+                          "filter": "MPU Board 0: CPU utilization"
+                        },
+                        "itemTag": {
+                          "filter": "Application: CPU"
+                        },
+                        "macro": {
+                          "filter": ""
+                        },
+                        "options": {
+                          "count": false,
+                          "disableDataAlignment": false,
+                          "showDisabledItems": false,
+                          "skipEmptyValues": false,
+                          "useTrends": "default",
+                          "useZabbixValueMapping": false
+                        },
+                        "proxy": {
+                          "filter": ""
+                        },
+                        "queryType": "0",
+                        "resultFormat": "time_series",
+                        "schema": 12,
+                        "table": {
+                          "skipEmptyValues": false
+                        },
+                        "tags": {
+                          "filter": ""
+                        },
+                        "textFilter": "",
+                        "trigger": {
+                          "filter": ""
+                        },
+                        "triggers": {
+                          "acknowledged": 2
+                        }
+                      }
+                    },
+                    "refId": "A",
+                    "hidden": false
+                  }
+                },
+                {
+                  "kind": "PanelQuery",
+                  "spec": {
+                    "query": {
+                      "kind": "DataQuery",
+                      "group": "alexanderzobnin-zabbix-datasource",
+                      "version": "v0",
+                      "datasource": {
+                        "name": "cfqk8kvi756o0c"
+                      },
+                      "spec": {
+                        "application": {
+                          "filter": "Memory"
+                        },
+                        "countTriggersBy": "",
+                        "evaltype": "0",
+                        "functions": [
+                          {
+                            "$$hashKey": "object:229",
+                            "def": {
+                              "category": "Alias",
+                              "defaultParams": [],
+                              "name": "setAlias",
+                              "params": [
+                                {
+                                  "name": "alias",
+                                  "type": "string"
+                                }
+                              ]
+                            },
+                            "params": [
+                              "UTILIZAÇÃO DE MEMÓRIA"
+                            ],
+                            "text": "setAlias(USO DE MEMÓRIA)"
+                          },
+                          {
+                            "$$hashKey": "object:230",
+                            "def": {
+                              "category": "Alias",
+                              "defaultParams": [
+                                "/(.*)/",
+                                "$1"
+                              ],
+                              "name": "replaceAlias",
+                              "params": [
+                                {
+                                  "name": "regexp",
+                                  "type": "string"
+                                },
+                                {
+                                  "name": "newAlias",
+                                  "type": "string"
+                                }
+                              ]
+                            },
+                            "params": [
+                              "Switch Topo de Rack: ICMP response time",
+                              " "
+                            ],
+                            "text": "replaceAlias(Switch Topo de Rack: ICMP response time,  )"
+                          }
+                        ],
+                        "group": {
+                          "filter": "$GRUPO"
+                        },
+                        "host": {
+                          "filter": "$HOST"
+                        },
+                        "item": {
+                          "filter": "MPU Board 0: Memory utilization"
+                        },
+                        "itemTag": {
+                          "filter": "Application: Memory"
+                        },
+                        "macro": {
+                          "filter": ""
+                        },
+                        "options": {
+                          "count": true,
+                          "disableDataAlignment": false,
+                          "minSeverity": 3,
+                          "showDisabledItems": false,
+                          "skipEmptyValues": false,
+                          "useTrends": "default",
+                          "useZabbixValueMapping": false
+                        },
+                        "proxy": {
+                          "filter": ""
+                        },
+                        "queryType": "0",
+                        "resultFormat": "time_series",
+                        "schema": 12,
+                        "table": {
+                          "skipEmptyValues": false
+                        },
+                        "tags": {
+                          "filter": ""
+                        },
+                        "textFilter": "",
+                        "trigger": {
+                          "filter": ""
+                        },
+                        "triggers": {
+                          "acknowledged": 2
+                        }
+                      }
+                    },
+                    "refId": "B",
+                    "hidden": false
+                  }
+                }
+              ],
+              "transformations": [],
+              "queryOptions": {}
+            }
+          },
+          "vizConfig": {
+            "kind": "VizConfig",
+            "group": "timeseries",
+            "version": "13.1.0",
+            "spec": {
+              "options": {
+                "annotations": {
+                  "clustering": -1,
+                  "multiLane": false
+                },
+                "legend": {
+                  "calcs": [],
+                  "displayMode": "list",
+                  "enableFacetedFilter": false,
+                  "overflow": "ellipsis",
+                  "placement": "bottom",
+                  "showLegend": true
+                },
+                "tooltip": {
+                  "hideZeros": false,
+                  "mode": "single",
+                  "sort": "none"
+                }
+              },
+              "fieldConfig": {
+                "defaults": {
+                  "unit": "percent",
+                  "thresholds": {
+                    "mode": "absolute",
+                    "steps": [
+                      {
+                        "value": 0,
+                        "color": "#08c463"
+                      }
+                    ]
+                  },
+                  "color": {
+                    "mode": "palette-classic"
+                  },
+                  "custom": {
+                    "axisBorderShow": false,
+                    "axisCenteredZero": false,
+                    "axisColorMode": "text",
+                    "axisLabel": "",
+                    "axisPlacement": "auto",
+                    "barAlignment": 0,
+                    "barWidthFactor": 0.6,
+                    "drawStyle": "line",
+                    "fillOpacity": 0,
+                    "gradientMode": "opacity",
+                    "hideFrom": {
+                      "legend": false,
+                      "tooltip": false,
+                      "viz": false
+                    },
+                    "insertNulls": false,
+                    "lineInterpolation": "smooth",
+                    "lineWidth": 2,
+                    "pointSize": 1,
+                    "scaleDistribution": {
+                      "type": "linear"
+                    },
+                    "showPoints": "never",
+                    "showValues": false,
+                    "spanNulls": true,
+                    "stacking": {
+                      "group": "A",
+                      "mode": "none"
+                    },
+                    "thresholdsStyle": {
+                      "mode": "off"
+                    }
+                  }
+                },
+                "overrides": [
+                  {
+                    "matcher": {
+                      "id": "byName",
+                      "options": "UTILIZAÇÃO DE CPU"
+                    },
+                    "properties": [
+                      {
+                        "id": "color",
+                        "value": {
+                          "fixedColor": "#00e96a",
+                          "mode": "fixed"
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "matcher": {
+                      "id": "byName",
+                      "options": "UTILIZAÇÃO DE MEMÓRIA"
+                    },
+                    "properties": [
+                      {
+                        "id": "color",
+                        "value": {
+                          "fixedColor": "#0031ff",
+                          "mode": "fixed"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          }
+        }
+      },
+      "panel-97": {
+        "kind": "Panel",
+        "spec": {
+          "id": 97,
+          "title": "",
+          "description": "",
+          "links": [],
+          "data": {
+            "kind": "QueryGroup",
+            "spec": {
+              "queries": [
+                {
+                  "kind": "PanelQuery",
+                  "spec": {
+                    "query": {
+                      "kind": "DataQuery",
+                      "group": "alexanderzobnin-zabbix-datasource",
+                      "version": "v0",
+                      "datasource": {
+                        "name": "cfqk8kvi756o0c"
+                      },
+                      "spec": {
+                        "application": {
+                          "filter": "Optical Temperature"
+                        },
+                        "countTriggersBy": "",
+                        "evaltype": "0",
+                        "functions": [
+                          {
+                            "added": true,
+                            "def": {
+                              "category": "Alias",
+                              "defaultParams": [],
+                              "name": "setAliasByRegex",
+                              "params": [
+                                {
+                                  "name": "aliasByRegex",
+                                  "type": "string"
+                                }
+                              ]
+                            },
+                            "params": [
+                              "(?<=^Interface\\s)([A-Za-z0-9/()-]+)"
+                            ],
+                            "text": "setAliasByRegex()"
+                          }
+                        ],
+                        "group": {
+                          "filter": "$GRUPO"
+                        },
+                        "host": {
+                          "filter": "$HOST"
+                        },
+                        "item": {
+                          "filter": "/.*/"
+                        },
+                        "itemTag": {
+                          "filter": "Application: GBIC_HUAWEI :: Temperatura"
+                        },
+                        "macro": {
+                          "filter": ""
+                        },
+                        "options": {
+                          "count": true,
+                          "disableDataAlignment": false,
+                          "minSeverity": 3,
+                          "showDisabledItems": false,
+                          "skipEmptyValues": false,
+                          "useTrends": "default",
+                          "useZabbixValueMapping": false
+                        },
+                        "proxy": {
+                          "filter": ""
+                        },
+                        "queryType": "0",
+                        "resultFormat": "time_series",
+                        "schema": 12,
+                        "table": {
+                          "skipEmptyValues": false
+                        },
+                        "tags": {
+                          "filter": ""
+                        },
+                        "textFilter": "",
+                        "trigger": {
+                          "filter": ""
+                        },
+                        "triggers": {
+                          "acknowledged": 2
+                        }
+                      }
+                    },
+                    "refId": "A",
+                    "hidden": false
+                  }
+                }
+              ],
+              "transformations": [
+                {
+                  "kind": "Transformation",
+                  "group": "reduce",
+                  "spec": {
+                    "options": {
+                      "reducers": [
+                        "lastNotNull"
+                      ]
+                    }
+                  }
+                },
+                {
+                  "kind": "Transformation",
+                  "group": "organize",
+                  "spec": {
+                    "options": {
+                      "excludeByName": {},
+                      "includeByName": {},
+                      "indexByName": {
+                        "Field": 0,
+                        "Last": 1
+                      },
+                      "renameByName": {
+                        "Field": "PORTA",
+                        "Last": "TEMPERATURA:",
+                        "Last *": "TEMPERATURA"
+                      }
+                    }
+                  }
+                }
+              ],
+              "queryOptions": {}
+            }
+          },
+          "vizConfig": {
+            "kind": "VizConfig",
+            "group": "table",
+            "version": "13.1.0",
+            "spec": {
+              "options": {
+                "cellHeight": "md",
+                "showHeader": true,
+                "sortBy": []
+              },
+              "fieldConfig": {
+                "defaults": {
+                  "unit": "celsius",
+                  "thresholds": {
+                    "mode": "absolute",
+                    "steps": [
+                      {
+                        "value": 0,
+                        "color": "#ffffff"
+                      }
+                    ]
+                  },
+                  "noValue": "SEM DADOS",
+                  "custom": {
+                    "align": "center",
+                    "cellOptions": {
+                      "type": "color-text"
+                    },
+                    "filterable": true,
+                    "footer": {
+                      "reducers": []
+                    },
+                    "inspect": false,
+                    "wrapText": true
+                  }
+                },
+                "overrides": []
+              }
+            }
+          }
+        }
+      },
+      "panel-99": {
+        "kind": "Panel",
+        "spec": {
+          "id": 99,
+          "title": "",
+          "description": "",
+          "links": [],
+          "data": {
+            "kind": "QueryGroup",
+            "spec": {
+              "queries": [
+                {
+                  "kind": "PanelQuery",
+                  "spec": {
+                    "query": {
+                      "kind": "DataQuery",
+                      "group": "alexanderzobnin-zabbix-datasource",
+                      "version": "v0",
+                      "datasource": {
+                        "name": "cfqk8kvi756o0c"
+                      },
+                      "spec": {
+                        "application": {
+                          "filter": "Optical Voltagem"
+                        },
+                        "countTriggersBy": "",
+                        "evaltype": "0",
+                        "functions": [
+                          {
+                            "added": true,
+                            "def": {
+                              "category": "Alias",
+                              "defaultParams": [],
+                              "name": "setAliasByRegex",
+                              "params": [
+                                {
+                                  "name": "aliasByRegex",
+                                  "type": "string"
+                                }
+                              ]
+                            },
+                            "params": [
+                              "(?<=^Interface\\s)([A-Za-z0-9/()-]+)"
+                            ],
+                            "text": "setAliasByRegex()"
+                          }
+                        ],
+                        "group": {
+                          "filter": "$GRUPO"
+                        },
+                        "host": {
+                          "filter": "$HOST"
+                        },
+                        "item": {
+                          "filter": "/.*/"
+                        },
+                        "itemTag": {
+                          "filter": "Application: GBIC_HUAWEI :: Voltagem"
+                        },
+                        "macro": {
+                          "filter": ""
+                        },
+                        "options": {
+                          "count": true,
+                          "disableDataAlignment": false,
+                          "minSeverity": 3,
+                          "showDisabledItems": false,
+                          "skipEmptyValues": false,
+                          "useTrends": "default",
+                          "useZabbixValueMapping": false
+                        },
+                        "proxy": {
+                          "filter": ""
+                        },
+                        "queryType": "0",
+                        "resultFormat": "time_series",
+                        "schema": 12,
+                        "table": {
+                          "skipEmptyValues": false
+                        },
+                        "tags": {
+                          "filter": ""
+                        },
+                        "textFilter": "",
+                        "trigger": {
+                          "filter": ""
+                        },
+                        "triggers": {
+                          "acknowledged": 2
+                        }
+                      }
+                    },
+                    "refId": "A",
+                    "hidden": false
+                  }
+                }
+              ],
+              "transformations": [
+                {
+                  "kind": "Transformation",
+                  "group": "reduce",
+                  "spec": {
+                    "options": {
+                      "reducers": [
+                        "lastNotNull"
+                      ]
+                    }
+                  }
+                },
+                {
+                  "kind": "Transformation",
+                  "group": "organize",
+                  "spec": {
+                    "options": {
+                      "excludeByName": {},
+                      "includeByName": {},
+                      "indexByName": {
+                        "Field": 0,
+                        "Last": 1
+                      },
+                      "renameByName": {
+                        "Field": "PORTA",
+                        "Last": "VOLTAGEM:",
+                        "Last *": "VOLTAGEM"
+                      }
+                    }
+                  }
+                }
+              ],
+              "queryOptions": {}
+            }
+          },
+          "vizConfig": {
+            "kind": "VizConfig",
+            "group": "table",
+            "version": "13.1.0",
+            "spec": {
+              "options": {
+                "cellHeight": "md",
+                "showHeader": true,
+                "sortBy": [
+                  {
+                    "desc": true,
+                    "displayName": "VOLTAGEM"
+                  }
+                ]
+              },
+              "fieldConfig": {
+                "defaults": {
+                  "unit": "volt",
+                  "thresholds": {
+                    "mode": "absolute",
+                    "steps": [
+                      {
+                        "value": 0,
+                        "color": "#f1f2f7"
+                      }
+                    ]
+                  },
+                  "noValue": "SEM DADOS",
+                  "custom": {
+                    "align": "center",
+                    "cellOptions": {
+                      "type": "color-text"
+                    },
+                    "filterable": true,
+                    "footer": {
+                      "reducers": []
+                    },
+                    "inspect": false,
+                    "wrapText": true
+                  }
+                },
+                "overrides": []
+              }
+            }
+          }
+        }
+      }
+    },
+    "layout": {
+      "kind": "GridLayout",
+      "spec": {
+        "items": [
+          {
+            "kind": "GridLayoutItem",
+            "spec": {
+              "x": 0,
+              "y": 0,
+              "width": 24,
+              "height": 3,
+              "element": {
+                "kind": "ElementReference",
+                "name": "panel-137"
+              }
+            }
+          },
+          {
+            "kind": "GridLayoutItem",
+            "spec": {
+              "x": 0,
+              "y": 3,
+              "width": 24,
+              "height": 2,
+              "element": {
+                "kind": "ElementReference",
+                "name": "panel-142"
+              }
+            }
+          },
+          {
+            "kind": "GridLayoutItem",
+            "spec": {
+              "x": 0,
+              "y": 5,
+              "width": 6,
+              "height": 3,
+              "element": {
+                "kind": "ElementReference",
+                "name": "panel-75"
+              }
+            }
+          },
+          {
+            "kind": "GridLayoutItem",
+            "spec": {
+              "x": 6,
+              "y": 5,
+              "width": 6,
+              "height": 3,
+              "element": {
+                "kind": "ElementReference",
+                "name": "panel-92"
+              }
+            }
+          },
+          {
+            "kind": "GridLayoutItem",
+            "spec": {
+              "x": 12,
+              "y": 5,
+              "width": 6,
+              "height": 8,
+              "element": {
+                "kind": "ElementReference",
+                "name": "panel-136"
+              }
+            }
+          },
+          {
+            "kind": "GridLayoutItem",
+            "spec": {
+              "x": 18,
+              "y": 5,
+              "width": 6,
+              "height": 8,
+              "element": {
+                "kind": "ElementReference",
+                "name": "panel-151"
+              }
+            }
+          },
+          {
+            "kind": "GridLayoutItem",
+            "spec": {
+              "x": 0,
+              "y": 8,
+              "width": 6,
+              "height": 3,
+              "element": {
+                "kind": "ElementReference",
+                "name": "panel-76"
+              }
+            }
+          },
+          {
+            "kind": "GridLayoutItem",
+            "spec": {
+              "x": 6,
+              "y": 8,
+              "width": 6,
+              "height": 3,
+              "element": {
+                "kind": "ElementReference",
+                "name": "panel-152"
+              }
+            }
+          },
+          {
+            "kind": "GridLayoutItem",
+            "spec": {
+              "x": 0,
+              "y": 11,
+              "width": 12,
+              "height": 2,
+              "element": {
+                "kind": "ElementReference",
+                "name": "panel-139"
+              }
+            }
+          },
+          {
+            "kind": "GridLayoutItem",
+            "spec": {
+              "x": 0,
+              "y": 13,
+              "width": 12,
+              "height": 7,
+              "element": {
+                "kind": "ElementReference",
+                "name": "panel-77"
+              }
+            }
+          },
+          {
+            "kind": "GridLayoutItem",
+            "spec": {
+              "x": 12,
+              "y": 13,
+              "width": 12,
+              "height": 7,
+              "element": {
+                "kind": "ElementReference",
+                "name": "panel-94"
+              }
+            }
+          },
+          {
+            "kind": "GridLayoutItem",
+            "spec": {
+              "x": 0,
+              "y": 20,
+              "width": 24,
+              "height": 2,
+              "element": {
+                "kind": "ElementReference",
+                "name": "panel-140"
+              }
+            }
+          },
+          {
+            "kind": "GridLayoutItem",
+            "spec": {
+              "x": 0,
+              "y": 22,
+              "width": 6,
+              "height": 7,
+              "element": {
+                "kind": "ElementReference",
+                "name": "panel-70"
+              }
+            }
+          },
+          {
+            "kind": "GridLayoutItem",
+            "spec": {
+              "x": 6,
+              "y": 22,
+              "width": 6,
+              "height": 7,
+              "element": {
+                "kind": "ElementReference",
+                "name": "panel-97"
+              }
+            }
+          },
+          {
+            "kind": "GridLayoutItem",
+            "spec": {
+              "x": 12,
+              "y": 22,
+              "width": 6,
+              "height": 7,
+              "element": {
+                "kind": "ElementReference",
+                "name": "panel-99"
+              }
+            }
+          },
+          {
+            "kind": "GridLayoutItem",
+            "spec": {
+              "x": 18,
+              "y": 22,
+              "width": 6,
+              "height": 7,
+              "element": {
+                "kind": "ElementReference",
+                "name": "panel-100"
+              }
+            }
+          },
+          {
+            "kind": "GridLayoutItem",
+            "spec": {
+              "x": 0,
+              "y": 29,
+              "width": 24,
+              "height": 2,
+              "element": {
+                "kind": "ElementReference",
+                "name": "panel-156"
+              }
+            }
+          },
+          {
+            "kind": "GridLayoutItem",
+            "spec": {
+              "x": 0,
+              "y": 31,
+              "width": 6,
+              "height": 8,
+              "element": {
+                "kind": "ElementReference",
+                "name": "panel-153"
+              }
+            }
+          },
+          {
+            "kind": "GridLayoutItem",
+            "spec": {
+              "x": 6,
+              "y": 31,
+              "width": 9,
+              "height": 8,
+              "element": {
+                "kind": "ElementReference",
+                "name": "panel-154"
+              }
+            }
+          },
+          {
+            "kind": "GridLayoutItem",
+            "spec": {
+              "x": 15,
+              "y": 31,
+              "width": 9,
+              "height": 8,
+              "element": {
+                "kind": "ElementReference",
+                "name": "panel-155"
+              }
+            }
+          }
+        ]
+      }
+    },
+    "links": [],
+    "liveNow": false,
+    "preload": false,
+    "tags": [],
+    "timeSettings": {
+      "timezone": "browser",
+      "from": "now-12h",
+      "to": "now",
+      "autoRefresh": "1m",
+      "autoRefreshIntervals": [
+        "10s",
+        "30s",
+        "1m",
+        "5m",
+        "15m",
+        "30m",
+        "1h",
+        "2h",
+        "1d"
+      ],
+      "hideTimepicker": false,
+      "fiscalYearStartMonth": 0
+    },
+    "title": "SWITCH HUAWEI",
+    "variables": [
+      {
+        "kind": "QueryVariable",
+        "spec": {
+          "name": "GRUPO",
+          "current": {
+            "text": [
+              "SWITCH"
+            ],
+            "value": [
+              "SWITCH"
+            ]
+          },
+          "label": "SELECIONE O GRUPO",
+          "hide": "hideVariable",
+          "refresh": "onDashboardLoad",
+          "skipUrlSync": false,
+          "query": {
+            "kind": "DataQuery",
+            "group": "alexanderzobnin-zabbix-datasource",
+            "version": "v0",
+            "datasource": {
+              "name": "cfqk8kvi756o0c"
+            },
+            "spec": {
+              "application": "",
+              "group": "SWITCH",
+              "host": "/.*/",
+              "item": "",
+              "itemTag": "",
+              "queryType": "group",
+              "showDisabledItems": false
+            }
+          },
+          "regex": "",
+          "regexApplyTo": "value",
+          "sort": "disabled",
+          "definition": "",
+          "options": [],
+          "multi": true,
+          "includeAll": false,
+          "allowCustomValue": true
+        }
+      },
+      {
+        "kind": "QueryVariable",
+        "spec": {
+          "name": "HOST",
+          "current": {
+            "text": "SWITCH S6730 Cluster",
+            "value": "SWITCH S6730 Cluster"
+          },
+          "label": "SELECIONE O EQUIPAMENTO",
+          "hide": "hideVariable",
+          "refresh": "onDashboardLoad",
+          "skipUrlSync": false,
+          "query": {
+            "kind": "DataQuery",
+            "group": "alexanderzobnin-zabbix-datasource",
+            "version": "v0",
+            "datasource": {
+              "name": "cfqk8kvi756o0c"
+            },
+            "spec": {
+              "application": "",
+              "group": "$GRUPO",
+              "host": "//",
+              "item": "",
+              "itemTag": "",
+              "queryType": "host"
+            }
+          },
+          "regex": "/^(?!abc|.*BGP|.*test|.*AUDITORIA|.*DATACOM|.*OLT|.*ODBC|.*BNG|.*-UNIFAI)/",
+          "regexApplyTo": "value",
+          "sort": "disabled",
+          "definition": "",
+          "options": [],
+          "multi": false,
+          "includeAll": false,
+          "allowCustomValue": true
+        }
+      }
+    ]
+  }
+}

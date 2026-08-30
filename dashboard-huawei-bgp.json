@@ -1,0 +1,2842 @@
+{
+  "apiVersion": "dashboard.grafana.app/v2",
+  "kind": "Dashboard",
+  "metadata": {
+    "name": "adtp899",
+    "namespace": "default",
+    "uid": "a5492b5d-494c-4364-b69e-b231ddc750a4",
+    "resourceVersion": "1782881269157990",
+    "generation": 6,
+    "creationTimestamp": "2026-07-01T04:07:47Z",
+    "labels": {
+      "grafana.app/deprecatedInternalID": "514447581548544"
+    },
+    "annotations": {
+      "grafana.app/createdBy": "user:efqk2yawd4hs0d",
+      "grafana.app/folder": "",
+      "grafana.app/saved-from-ui": "Grafana v13.1.0 (b309c9bb3b)",
+      "grafana.app/updatedBy": "user:efqk2yawd4hs0d",
+      "grafana.app/updatedTimestamp": "2026-07-01T04:47:49Z"
+    }
+  },
+  "spec": {
+    "annotations": [
+      {
+        "kind": "AnnotationQuery",
+        "spec": {
+          "query": {
+            "kind": "DataQuery",
+            "group": "grafana",
+            "version": "v0",
+            "datasource": {
+              "name": "-- Grafana --"
+            },
+            "spec": {}
+          },
+          "enable": true,
+          "hide": true,
+          "iconColor": "rgba(0, 211, 255, 1)",
+          "name": "Annotations & Alerts",
+          "builtIn": true
+        }
+      }
+    ],
+    "cursorSync": "Off",
+    "editable": true,
+    "elements": {
+      "panel-1": {
+        "kind": "Panel",
+        "spec": {
+          "id": 1,
+          "title": "Tráfego das Interfaces",
+          "description": "",
+          "links": [],
+          "data": {
+            "kind": "QueryGroup",
+            "spec": {
+              "queries": [
+                {
+                  "kind": "PanelQuery",
+                  "spec": {
+                    "query": {
+                      "kind": "DataQuery",
+                      "group": "alexanderzobnin-zabbix-datasource",
+                      "version": "v0",
+                      "datasource": {
+                        "name": "cfqk8kvi756o0c"
+                      },
+                      "spec": {
+                        "application": {
+                          "filter": ""
+                        },
+                        "countTriggersBy": "",
+                        "evaltype": "0",
+                        "functions": [],
+                        "group": {
+                          "filter": "$grupo"
+                        },
+                        "host": {
+                          "filter": "$host"
+                        },
+                        "item": {
+                          "filter": "/.*/"
+                        },
+                        "itemTag": {
+                          "filter": "/Bits.*/"
+                        },
+                        "macro": {
+                          "filter": ""
+                        },
+                        "options": {
+                          "count": false,
+                          "disableDataAlignment": false,
+                          "showDisabledItems": false,
+                          "skipEmptyValues": false,
+                          "useTrends": "default",
+                          "useZabbixValueMapping": false
+                        },
+                        "proxy": {
+                          "filter": ""
+                        },
+                        "queryType": "0",
+                        "resultFormat": "time_series",
+                        "schema": 12,
+                        "table": {
+                          "skipEmptyValues": false
+                        },
+                        "tags": {
+                          "filter": ""
+                        },
+                        "textFilter": "",
+                        "trigger": {
+                          "filter": ""
+                        }
+                      }
+                    },
+                    "refId": "A",
+                    "hidden": false
+                  }
+                }
+              ],
+              "transformations": [],
+              "queryOptions": {}
+            }
+          },
+          "vizConfig": {
+            "kind": "VizConfig",
+            "group": "timeseries",
+            "version": "13.1.0",
+            "spec": {
+              "options": {
+                "annotations": {
+                  "clustering": -1,
+                  "multiLane": false
+                },
+                "legend": {
+                  "calcs": [
+                    "lastNotNull",
+                    "max"
+                  ],
+                  "displayMode": "table",
+                  "enableFacetedFilter": false,
+                  "overflow": "ellipsis",
+                  "placement": "bottom",
+                  "showLegend": true,
+                  "sortBy": "Last *",
+                  "sortDesc": true
+                },
+                "tooltip": {
+                  "hideZeros": false,
+                  "mode": "single",
+                  "sort": "none"
+                }
+              },
+              "fieldConfig": {
+                "defaults": {
+                  "unit": "bps",
+                  "thresholds": {
+                    "mode": "absolute",
+                    "steps": [
+                      {
+                        "value": 0,
+                        "color": "green"
+                      },
+                      {
+                        "value": 80,
+                        "color": "red"
+                      }
+                    ]
+                  },
+                  "color": {
+                    "mode": "palette-classic"
+                  },
+                  "custom": {
+                    "axisBorderShow": false,
+                    "axisCenteredZero": false,
+                    "axisColorMode": "text",
+                    "axisLabel": "",
+                    "axisPlacement": "auto",
+                    "barAlignment": 0,
+                    "barWidthFactor": 0.6,
+                    "drawStyle": "line",
+                    "fillOpacity": 10,
+                    "gradientMode": "none",
+                    "hideFrom": {
+                      "legend": false,
+                      "tooltip": false,
+                      "viz": false
+                    },
+                    "insertNulls": false,
+                    "lineInterpolation": "smooth",
+                    "lineStyle": {
+                      "dash": [
+                        10,
+                        10
+                      ],
+                      "fill": "dash"
+                    },
+                    "lineWidth": 0,
+                    "pointSize": 2,
+                    "scaleDistribution": {
+                      "type": "linear"
+                    },
+                    "showPoints": "auto",
+                    "showValues": false,
+                    "spanNulls": true,
+                    "stacking": {
+                      "group": "A",
+                      "mode": "none"
+                    },
+                    "thresholdsStyle": {
+                      "mode": "off"
+                    }
+                  }
+                },
+                "overrides": []
+              }
+            }
+          },
+          "transparent": true
+        }
+      },
+      "panel-11": {
+        "kind": "Panel",
+        "spec": {
+          "id": 11,
+          "title": "Sinal das Interfaces",
+          "description": "",
+          "links": [],
+          "data": {
+            "kind": "QueryGroup",
+            "spec": {
+              "queries": [
+                {
+                  "kind": "PanelQuery",
+                  "spec": {
+                    "query": {
+                      "kind": "DataQuery",
+                      "group": "alexanderzobnin-zabbix-datasource",
+                      "version": "v0",
+                      "datasource": {
+                        "name": "cfqk8kvi756o0c"
+                      },
+                      "spec": {
+                        "application": {
+                          "filter": ""
+                        },
+                        "countTriggersBy": "",
+                        "evaltype": "0",
+                        "functions": [],
+                        "group": {
+                          "filter": "$grupo"
+                        },
+                        "host": {
+                          "filter": "$host"
+                        },
+                        "item": {
+                          "filter": "/[R-T]X Power Avg/"
+                        },
+                        "itemTag": {
+                          "filter": "/Sinal/"
+                        },
+                        "macro": {
+                          "filter": ""
+                        },
+                        "options": {
+                          "count": false,
+                          "disableDataAlignment": false,
+                          "showDisabledItems": false,
+                          "skipEmptyValues": false,
+                          "useTrends": "default",
+                          "useZabbixValueMapping": false
+                        },
+                        "proxy": {
+                          "filter": ""
+                        },
+                        "queryType": "0",
+                        "resultFormat": "time_series",
+                        "schema": 12,
+                        "table": {
+                          "skipEmptyValues": false
+                        },
+                        "tags": {
+                          "filter": ""
+                        },
+                        "textFilter": "",
+                        "trigger": {
+                          "filter": ""
+                        }
+                      }
+                    },
+                    "refId": "A",
+                    "hidden": false
+                  }
+                }
+              ],
+              "transformations": [],
+              "queryOptions": {}
+            }
+          },
+          "vizConfig": {
+            "kind": "VizConfig",
+            "group": "timeseries",
+            "version": "13.1.0",
+            "spec": {
+              "options": {
+                "annotations": {
+                  "clustering": -1,
+                  "multiLane": false
+                },
+                "legend": {
+                  "calcs": [
+                    "lastNotNull"
+                  ],
+                  "displayMode": "table",
+                  "enableFacetedFilter": false,
+                  "overflow": "ellipsis",
+                  "placement": "bottom",
+                  "showLegend": true
+                },
+                "tooltip": {
+                  "hideZeros": false,
+                  "mode": "single",
+                  "sort": "none"
+                }
+              },
+              "fieldConfig": {
+                "defaults": {
+                  "thresholds": {
+                    "mode": "absolute",
+                    "steps": [
+                      {
+                        "value": 0,
+                        "color": "green"
+                      },
+                      {
+                        "value": 80,
+                        "color": "red"
+                      }
+                    ]
+                  },
+                  "color": {
+                    "mode": "palette-classic"
+                  },
+                  "custom": {
+                    "axisBorderShow": false,
+                    "axisCenteredZero": false,
+                    "axisColorMode": "text",
+                    "axisLabel": "",
+                    "axisPlacement": "auto",
+                    "barAlignment": 0,
+                    "barWidthFactor": 0.6,
+                    "drawStyle": "line",
+                    "fillOpacity": 20,
+                    "gradientMode": "hue",
+                    "hideFrom": {
+                      "legend": false,
+                      "tooltip": false,
+                      "viz": false
+                    },
+                    "insertNulls": false,
+                    "lineInterpolation": "linear",
+                    "lineWidth": 1,
+                    "pointSize": 5,
+                    "scaleDistribution": {
+                      "type": "linear"
+                    },
+                    "showPoints": "auto",
+                    "showValues": false,
+                    "spanNulls": false,
+                    "stacking": {
+                      "group": "A",
+                      "mode": "none"
+                    },
+                    "thresholdsStyle": {
+                      "mode": "off"
+                    }
+                  }
+                },
+                "overrides": [
+                  {
+                    "matcher": {
+                      "id": "byFrameRefID",
+                      "options": "A"
+                    },
+                    "properties": [
+                      {
+                        "id": "unit",
+                        "value": "dbm"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          },
+          "transparent": true
+        }
+      },
+      "panel-12": {
+        "kind": "Panel",
+        "spec": {
+          "id": 12,
+          "title": "Status das Interfaces",
+          "description": "",
+          "links": [],
+          "data": {
+            "kind": "QueryGroup",
+            "spec": {
+              "queries": [
+                {
+                  "kind": "PanelQuery",
+                  "spec": {
+                    "query": {
+                      "kind": "DataQuery",
+                      "group": "alexanderzobnin-zabbix-datasource",
+                      "version": "v0",
+                      "datasource": {
+                        "name": "cfqk8kvi756o0c"
+                      },
+                      "spec": {
+                        "application": {
+                          "filter": ""
+                        },
+                        "countTriggersBy": "",
+                        "evaltype": "0",
+                        "functions": [],
+                        "group": {
+                          "filter": "$grupo"
+                        },
+                        "host": {
+                          "filter": "$host"
+                        },
+                        "item": {
+                          "filter": "/.*/"
+                        },
+                        "itemTag": {
+                          "filter": "Application: Operational status"
+                        },
+                        "macro": {
+                          "filter": ""
+                        },
+                        "options": {
+                          "count": false,
+                          "disableDataAlignment": false,
+                          "showDisabledItems": false,
+                          "skipEmptyValues": false,
+                          "useTrends": "default",
+                          "useZabbixValueMapping": false
+                        },
+                        "proxy": {
+                          "filter": ""
+                        },
+                        "queryType": "0",
+                        "resultFormat": "time_series",
+                        "schema": 12,
+                        "table": {
+                          "skipEmptyValues": false
+                        },
+                        "tags": {
+                          "filter": ""
+                        },
+                        "textFilter": "",
+                        "trigger": {
+                          "filter": ""
+                        }
+                      }
+                    },
+                    "refId": "A",
+                    "hidden": false
+                  }
+                }
+              ],
+              "transformations": [
+                {
+                  "kind": "Transformation",
+                  "group": "renameByRegex",
+                  "spec": {
+                    "options": {
+                      "regex": "/Operational status/",
+                      "renamePattern": ""
+                    }
+                  }
+                }
+              ],
+              "queryOptions": {}
+            }
+          },
+          "vizConfig": {
+            "kind": "VizConfig",
+            "group": "timeseries",
+            "version": "13.1.0",
+            "spec": {
+              "options": {
+                "annotations": {
+                  "clustering": -1,
+                  "multiLane": false
+                },
+                "legend": {
+                  "calcs": [
+                    "lastNotNull"
+                  ],
+                  "displayMode": "table",
+                  "enableFacetedFilter": false,
+                  "overflow": "ellipsis",
+                  "placement": "bottom",
+                  "showLegend": true,
+                  "sortBy": "Last *",
+                  "sortDesc": false
+                },
+                "tooltip": {
+                  "hideZeros": false,
+                  "mode": "single",
+                  "sort": "none"
+                }
+              },
+              "fieldConfig": {
+                "defaults": {
+                  "mappings": [
+                    {
+                      "type": "value",
+                      "options": {
+                        "1": {
+                          "text": "Up🟢",
+                          "color": "dark-green",
+                          "index": 0
+                        },
+                        "2": {
+                          "text": "Down🔴",
+                          "color": "dark-orange",
+                          "index": 1
+                        }
+                      }
+                    }
+                  ],
+                  "thresholds": {
+                    "mode": "absolute",
+                    "steps": [
+                      {
+                        "value": 0,
+                        "color": "dark-blue"
+                      }
+                    ]
+                  },
+                  "color": {
+                    "mode": "palette-classic"
+                  },
+                  "custom": {
+                    "axisBorderShow": false,
+                    "axisCenteredZero": false,
+                    "axisColorMode": "text",
+                    "axisLabel": "",
+                    "axisPlacement": "auto",
+                    "barAlignment": 0,
+                    "barWidthFactor": 0.6,
+                    "drawStyle": "line",
+                    "fillOpacity": 0,
+                    "gradientMode": "none",
+                    "hideFrom": {
+                      "legend": false,
+                      "tooltip": false,
+                      "viz": false
+                    },
+                    "insertNulls": false,
+                    "lineInterpolation": "linear",
+                    "lineStyle": {
+                      "fill": "solid"
+                    },
+                    "lineWidth": 1,
+                    "pointSize": 5,
+                    "scaleDistribution": {
+                      "type": "linear"
+                    },
+                    "showPoints": "auto",
+                    "showValues": false,
+                    "spanNulls": false,
+                    "stacking": {
+                      "group": "A",
+                      "mode": "none"
+                    },
+                    "thresholdsStyle": {
+                      "mode": "off"
+                    }
+                  }
+                },
+                "overrides": []
+              }
+            }
+          },
+          "transparent": true
+        }
+      },
+      "panel-14": {
+        "kind": "Panel",
+        "spec": {
+          "id": 14,
+          "title": "Tabela de problemas ",
+          "description": "",
+          "links": [],
+          "data": {
+            "kind": "QueryGroup",
+            "spec": {
+              "queries": [
+                {
+                  "kind": "PanelQuery",
+                  "spec": {
+                    "query": {
+                      "kind": "DataQuery",
+                      "group": "alexanderzobnin-zabbix-datasource",
+                      "version": "v0",
+                      "datasource": {
+                        "name": "cfqk8kvi756o0c"
+                      },
+                      "spec": {
+                        "application": {
+                          "filter": ""
+                        },
+                        "countTriggersBy": "",
+                        "evaltype": "0",
+                        "functions": [],
+                        "group": {
+                          "filter": "$grupo"
+                        },
+                        "host": {
+                          "filter": "$host"
+                        },
+                        "item": {
+                          "filter": ""
+                        },
+                        "itemTag": {
+                          "filter": ""
+                        },
+                        "macro": {
+                          "filter": ""
+                        },
+                        "options": {
+                          "acknowledged": 2,
+                          "count": false,
+                          "disableDataAlignment": false,
+                          "hostProxy": false,
+                          "hostsInMaintenance": false,
+                          "limit": 1001,
+                          "minSeverity": 0,
+                          "showDisabledItems": false,
+                          "skipEmptyValues": false,
+                          "sortProblems": "default",
+                          "useTimeRange": false,
+                          "useTrends": "default",
+                          "useZabbixValueMapping": false
+                        },
+                        "proxy": {
+                          "filter": ""
+                        },
+                        "queryType": "5",
+                        "resultFormat": "time_series",
+                        "schema": 12,
+                        "showProblems": "problems",
+                        "table": {
+                          "skipEmptyValues": false
+                        },
+                        "tags": {
+                          "filter": ""
+                        },
+                        "textFilter": "",
+                        "trigger": {
+                          "filter": ""
+                        }
+                      }
+                    },
+                    "refId": "A",
+                    "hidden": false
+                  }
+                }
+              ],
+              "transformations": [
+                {
+                  "kind": "Transformation",
+                  "group": "extractFields",
+                  "spec": {
+                    "options": {
+                      "delimiter": ",",
+                      "format": "json",
+                      "jsonPaths": [
+                        {
+                          "path": "hosts[0].host"
+                        },
+                        {
+                          "path": "groups[0].name"
+                        },
+                        {
+                          "alias": "",
+                          "path": "timestamp"
+                        },
+                        {
+                          "path": "name"
+                        },
+                        {
+                          "path": "severity"
+                        },
+                        {
+                          "path": "value"
+                        }
+                      ],
+                      "replace": true,
+                      "source": "Problems"
+                    }
+                  }
+                },
+                {
+                  "kind": "Transformation",
+                  "group": "calculateField",
+                  "spec": {
+                    "options": {
+                      "alias": "horario",
+                      "binary": {
+                        "left": {
+                          "matcher": {
+                            "id": "byName",
+                            "options": "timestamp"
+                          }
+                        },
+                        "operator": "*",
+                        "right": {
+                          "fixed": "1000"
+                        }
+                      },
+                      "mode": "binary",
+                      "reduce": {
+                        "reducer": "sum"
+                      }
+                    }
+                  }
+                },
+                {
+                  "kind": "Transformation",
+                  "group": "convertFieldType",
+                  "spec": {
+                    "options": {
+                      "conversions": [
+                        {
+                          "destinationType": "time",
+                          "targetField": "horario"
+                        }
+                      ],
+                      "fields": {}
+                    }
+                  }
+                },
+                {
+                  "kind": "Transformation",
+                  "group": "calculateField",
+                  "spec": {
+                    "disabled": true,
+                    "options": {
+                      "alias": "idade",
+                      "binary": {
+                        "left": {
+                          "matcher": {
+                            "id": "byName",
+                            "options": "$agora"
+                          }
+                        },
+                        "operator": "-",
+                        "right": {
+                          "matcher": {
+                            "id": "byName",
+                            "options": "timestamp"
+                          }
+                        }
+                      },
+                      "mode": "binary",
+                      "reduce": {
+                        "reducer": "sum"
+                      }
+                    }
+                  }
+                },
+                {
+                  "kind": "Transformation",
+                  "group": "convertFieldType",
+                  "spec": {
+                    "options": {
+                      "conversions": [
+                        {
+                          "destinationType": "time",
+                          "targetField": "horario"
+                        }
+                      ],
+                      "fields": {}
+                    }
+                  }
+                },
+                {
+                  "kind": "Transformation",
+                  "group": "organize",
+                  "spec": {
+                    "options": {
+                      "excludeByName": {
+                        "timestamp": true,
+                        "value": false
+                      },
+                      "includeByName": {},
+                      "indexByName": {
+                        "groups[0].name": 1,
+                        "horario": 0,
+                        "hosts[0].host": 2,
+                        "name": 4,
+                        "severity": 5,
+                        "timestamp": 3,
+                        "value": 6
+                      },
+                      "renameByName": {
+                        "groups[0].name": "grupo",
+                        "hosts[0].host": "hostname",
+                        "name": "problema",
+                        "severity": "severidade",
+                        "timestamp": "",
+                        "value": "status"
+                      }
+                    }
+                  }
+                }
+              ],
+              "queryOptions": {}
+            }
+          },
+          "vizConfig": {
+            "kind": "VizConfig",
+            "group": "table",
+            "version": "13.1.0",
+            "spec": {
+              "options": {
+                "cellHeight": "md",
+                "enablePagination": true,
+                "frameIndex": 0,
+                "showHeader": true,
+                "sortBy": [
+                  {
+                    "desc": true,
+                    "displayName": "horario"
+                  }
+                ]
+              },
+              "fieldConfig": {
+                "defaults": {
+                  "thresholds": {
+                    "mode": "absolute",
+                    "steps": [
+                      {
+                        "value": 0,
+                        "color": "#333c48"
+                      }
+                    ]
+                  },
+                  "color": {
+                    "mode": "thresholds"
+                  },
+                  "custom": {
+                    "align": "center",
+                    "cellOptions": {
+                      "type": "color-background"
+                    },
+                    "filterable": true,
+                    "footer": {
+                      "reducers": []
+                    },
+                    "inspect": false
+                  }
+                },
+                "overrides": [
+                  {
+                    "matcher": {
+                      "id": "byName",
+                      "options": "severidade"
+                    },
+                    "properties": [
+                      {
+                        "id": "mappings",
+                        "value": [
+                          {
+                            "options": {
+                              "0": {
+                                "color": "#808080",
+                                "index": 0,
+                                "text": "Sem classificação"
+                              },
+                              "1": {
+                                "color": "dark-blue",
+                                "index": 1,
+                                "text": "Informação"
+                              },
+                              "2": {
+                                "color": "dark-yellow",
+                                "index": 2,
+                                "text": "Atenção"
+                              },
+                              "3": {
+                                "color": "dark-orange",
+                                "index": 3,
+                                "text": "Média"
+                              },
+                              "4": {
+                                "color": "red",
+                                "index": 4,
+                                "text": "Alta"
+                              },
+                              "5": {
+                                "color": "dark-red",
+                                "index": 5,
+                                "text": "Desastre"
+                              }
+                            },
+                            "type": "value"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "matcher": {
+                      "id": "byName",
+                      "options": "status"
+                    },
+                    "properties": [
+                      {
+                        "id": "mappings",
+                        "value": [
+                          {
+                            "options": {
+                              "0": {
+                                "color": "dark-green",
+                                "index": 1,
+                                "text": "Resolvido🟢"
+                              },
+                              "1": {
+                                "color": "dark-red",
+                                "index": 0,
+                                "text": "Problema🔴"
+                              }
+                            },
+                            "type": "value"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "matcher": {
+                      "id": "byName",
+                      "options": "idade"
+                    },
+                    "properties": [
+                      {
+                        "id": "unit",
+                        "value": "dtdhms"
+                      },
+                      {
+                        "id": "thresholds",
+                        "value": {
+                          "mode": "absolute",
+                          "steps": [
+                            {
+                              "color": "#333c48",
+                              "value": 0
+                            },
+                            {
+                              "color": "dark-orange",
+                              "value": 3600
+                            },
+                            {
+                              "color": "dark-red",
+                              "value": 86400
+                            }
+                          ]
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "matcher": {
+                      "id": "byName",
+                      "options": "recuperacao"
+                    },
+                    "properties": [
+                      {
+                        "id": "unit",
+                        "value": ""
+                      },
+                      {
+                        "id": "mappings",
+                        "value": [
+                          {
+                            "options": {
+                              "0": {
+                                "index": 0,
+                                "text": "-"
+                              }
+                            },
+                            "type": "value"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "matcher": {
+                      "id": "byName",
+                      "options": "duracao"
+                    },
+                    "properties": [
+                      {
+                        "id": "unit",
+                        "value": "dtdhms"
+                      },
+                      {
+                        "id": "thresholds",
+                        "value": {
+                          "mode": "absolute",
+                          "steps": [
+                            {
+                              "color": "#333c48",
+                              "value": 0
+                            },
+                            {
+                              "color": "dark-orange",
+                              "value": 3600
+                            },
+                            {
+                              "color": "dark-red",
+                              "value": 86400
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "id": "mappings",
+                        "value": [
+                          {
+                            "options": {
+                              "0": {
+                                "index": 0,
+                                "text": "-"
+                              }
+                            },
+                            "type": "value"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          },
+          "transparent": true
+        }
+      },
+      "panel-15": {
+        "kind": "Panel",
+        "spec": {
+          "id": 15,
+          "title": "Status da Fonte",
+          "description": "",
+          "links": [],
+          "data": {
+            "kind": "QueryGroup",
+            "spec": {
+              "queries": [
+                {
+                  "kind": "PanelQuery",
+                  "spec": {
+                    "query": {
+                      "kind": "DataQuery",
+                      "group": "alexanderzobnin-zabbix-datasource",
+                      "version": "v0",
+                      "datasource": {
+                        "name": "cfqk8kvi756o0c"
+                      },
+                      "spec": {
+                        "application": {
+                          "filter": ""
+                        },
+                        "countTriggersBy": "",
+                        "evaltype": "0",
+                        "functions": [],
+                        "group": {
+                          "filter": "$grupo"
+                        },
+                        "host": {
+                          "filter": "$host"
+                        },
+                        "item": {
+                          "filter": "/.*/"
+                        },
+                        "itemTag": {
+                          "filter": "Fonte Status"
+                        },
+                        "macro": {
+                          "filter": ""
+                        },
+                        "options": {
+                          "count": false,
+                          "disableDataAlignment": false,
+                          "showDisabledItems": false,
+                          "skipEmptyValues": false,
+                          "useTrends": "default",
+                          "useZabbixValueMapping": true
+                        },
+                        "proxy": {
+                          "filter": ""
+                        },
+                        "queryType": "0",
+                        "resultFormat": "time_series",
+                        "schema": 12,
+                        "table": {
+                          "skipEmptyValues": false
+                        },
+                        "tags": {
+                          "filter": ""
+                        },
+                        "textFilter": "",
+                        "trigger": {
+                          "filter": ""
+                        }
+                      }
+                    },
+                    "refId": "A",
+                    "hidden": false
+                  }
+                }
+              ],
+              "transformations": [
+                {
+                  "kind": "Transformation",
+                  "group": "renameByRegex",
+                  "spec": {
+                    "options": {
+                      "regex": "/: Status/",
+                      "renamePattern": ""
+                    }
+                  }
+                }
+              ],
+              "queryOptions": {}
+            }
+          },
+          "vizConfig": {
+            "kind": "VizConfig",
+            "group": "stat",
+            "version": "13.1.0",
+            "spec": {
+              "options": {
+                "colorMode": "value",
+                "graphMode": "area",
+                "justifyMode": "auto",
+                "orientation": "auto",
+                "percentChangeColorMode": "standard",
+                "reduceOptions": {
+                  "calcs": [
+                    "lastNotNull"
+                  ],
+                  "fields": "",
+                  "values": false
+                },
+                "showPercentChange": false,
+                "textMode": "auto",
+                "wideLayout": true
+              },
+              "fieldConfig": {
+                "defaults": {
+                  "thresholds": {
+                    "mode": "absolute",
+                    "steps": [
+                      {
+                        "value": 0,
+                        "color": "text"
+                      },
+                      {
+                        "value": 80,
+                        "color": "dark-red"
+                      }
+                    ]
+                  },
+                  "color": {
+                    "mode": "thresholds"
+                  },
+                  "noValue": "SEM DADOS"
+                },
+                "overrides": []
+              }
+            }
+          },
+          "transparent": true
+        }
+      },
+      "panel-17": {
+        "kind": "Panel",
+        "spec": {
+          "id": 17,
+          "title": "",
+          "description": "",
+          "links": [],
+          "data": {
+            "kind": "QueryGroup",
+            "spec": {
+              "queries": [],
+              "transformations": [],
+              "queryOptions": {}
+            }
+          },
+          "vizConfig": {
+            "kind": "VizConfig",
+            "group": "text",
+            "version": "13.1.0",
+            "spec": {
+              "options": {
+                "code": {
+                  "language": "plaintext",
+                  "showLineNumbers": false,
+                  "showMiniMap": false
+                },
+                "content": "<!DOCTYPE html>\n<html lang=\"pt-br\">\n\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>flowspec Banner</title>\n    <link rel=\"preconnect\" href=\"https://fonts.googleapis.com\">\n    <link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin>\n    <link href=\"https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap\" rel=\"stylesheet\">\n    <style>\n        html,\n        body {\n            height: 100%;\n            width: 100%;\n            margin: 0;\n            padding: 0;\n            box-sizing: border-box;\n            background: transparent;\n        }\n\n        /*\n  Use um seletor mais específico se possível, como o ID do seu painel,\n  para evitar que este estilo afete outros painéis.\n  Exemplo: #panel-12 .css-i1l6yt::-webkit-scrollbar { ... }\n*/\n\n        /* Seleciona o elemento correto que contém a barra de rolagem,\n   baseado na sua imagem do inspetor de código. */\n        .css-i1l6yt::-webkit-scrollbar {\n            width: 12px;\n            /* Largura total da barra */\n        }\n\n        /* O \"trilho\" por onde a barra corre */\n        .css-i1l6yt::-webkit-scrollbar-track {\n            background: #2d3748;\n            /* Cor de fundo do trilho (cinza escuro) */\n            border-radius: 10px;\n        }\n\n        /* A parte móvel da barra (o \"polegar\") */\n        .css-i1l6yt::-webkit-scrollbar-thumb {\n            background-color: #00E96A;\n            /* O seu verde vibrante */\n            border-radius: 10px;\n\n            /* O TRUQUE para o efeito \"flutuante\":\n     Uma borda com a mesma cor do trilho cria a ilusão de espaçamento. */\n            border: 3px solid #2d3748;\n\n            /* Garante que o fundo verde não passe por baixo da borda */\n            background-clip: content-box;\n        }\n\n        /* Efeito ao passar o mouse por cima */\n        .css-i1l6yt::-webkit-scrollbar-thumb:hover {\n            background-color: #00ff75;\n            /* Um verde um pouco mais claro */\n        }\n\n\n\n        .css-fpx8k9-LegendRow:hover {\n            background: #0A253E;\n\n        }\n\n\n        /*GAUGE DO GRAFANA*/\n        flot-temp-elem {\n            color: white !important;\n        }\n\n        /*GAUGE DO GRAFANA*/\n\n\n\n\n\n        /*LEGEND LAST, MEAN ETC*/\n        .css-97ygya {\n            color: white;\n        }\n\n        /*LEGEND LAST, MEAN ETC*/\n\n\n\n\n\n\n        /* TEXTO DO STAT, OU PAINEIS E TALS */\n        .css-itdw1b-panel-container {\n            background-color: rgba(0, 0, 0, 0.2);\n            border-radius: 1rem;\n            color: white !important;\n        }\n\n        /* TEXTO DO STAT, OU PAINEIS E TALS */\n\n\n\n\n\n\n        /*ZABBIX PROBLEMS*/\n        .ReactTable .rt-thead.-header,\n        .panel-problems .ReactTable .rt-tr-group .rt-tr.-even {\n            border: none !important;\n            background: rgba(0, 0, 0, 0.2) !important;\n\n        }\n\n        .ReactTable .rt-thead .rt-resizable-header-content {\n            color: white;\n        }\n\n        .ReactTable .rt-tr {\n            color: white;\n        }\n\n        .panel-problems .ReactTable .rt-tr .rt-td.custom-expander i {\n            color: white !important;\n        }\n\n        .ReactTable .-pagination .-btn {\n            background: rgba(0, 0, 0, 0.2) !important;\n            color: white !important;\n            border-radius: 1rem !important;\n        }\n\n        .ReactTable .-pagination .-btn[disabled] {\n            opacity: 1 !important;\n\n        }\n\n        .ReactTable .-pagination .-pageInfo {\n            color: white !important;\n        }\n\n        .ReactTable .-pagination input,\n        .ReactTable .-pagination select {\n            color: white !important;\n            background: rgba(0, 0, 0, 0.2) !important;\n            border-radius: 1rem !important;\n        }\n\n        .panel-problems .ReactTable .rt-tr-group {\n            border: none !important;\n\n        }\n\n        /*ZABBIX PROBLEMS*/\n\n\n\n\n\n\n\n\n\n        /* PAINEIS DO GRAFANA */\n        .css-fvmsws-panel-container {\n            background: rgba(0, 0, 0, 0.2);\n            border-radius: 1.5rem;\n            color: white;\n        }\n\n        /*FIM DA SESSÃO DOS PAINEIS DO GRAFANA */\n\n\n\n\n\n\n        /* INICIO DA SESSÃO DAS ROW */\n        .css-1d3xu67-Icon {\n            fill: white !important;\n        }\n\n        .dashboard-row__title {\n            color: white !important;\n        }\n\n        .dashboard-row__panel_count {\n            font-size: 1.5rem !important;\n        }\n\n        /* FIM DA SESSÃO DAS ROW */\n\n\n\n\n\n\n        /*PAINEL TEXT DO GRAFANA*/\n        .css-7mshyc-panel-container {\n            background: rgba(0, 0, 0, 0.2);\n            border-radius: 1.5rem;\n        }\n\n        /*PAINEL TEXT DO GRAFANA*/\n\n\n\n\n\n\n        /*TITULO DE QUALQUER PAINEL DO GRAFANA */\n        .css-4sw7w0 {\n            color: rgba(255, 255, 255, 1);\n        }\n\n        .css-biljvk-panel-title {\n            background: rgba(0, 0, 0, 0.2);\n            padding-left: 0.5rem;\n            padding-right: 0.5rem;\n            border-radius: 1rem;\n        }\n\n        /*TITULO DE QUALQUER PAINEL DO GRAFANA */\n\n\n\n\n\n\n\n        /*INICIO DA SESSÃO DOS TABLE DO GRAFANA */\n\n        .css-1kfgvg7-thead {\n            color: #FFFFFF;\n            background: linear-gradient(180deg, #00E96A, #004e35);\n            //background: linear-gradient(180deg, #1f6f63 20%, #0d2b3d 90%);\n            /* Gradiente do azul claro para o azul escuro */\n            padding: 0;\n            border-radius: 1.5rem 1.5rem 0 0;\n        }\n\n        .css-119zpr0 {\n            text-transform: uppercase !important;\n        }\n\n        .css-1jj2cky-tableContentWrapper {\n            text-transform: uppercase;\n        }\n\n        .css-8fjwhi-row {\n            border: 1px solid rgba(204, 204, 220, 0.12);\n        }\n\n        .css-8fjwhi-row:last-child {\n            border-bottom: 1px solid rgba(204, 204, 220, 0.12);\n        }\n\n        .css-1jj2cky-tableContentWrapper {\n            text-transform: uppercase;\n        }\n\n\n        .css-8fjwhi-row {\n            color: rgba(255, 255, 255, 1) !important;\n            text-transform: uppercase !important;\n        }\n\n        /*FIM DA SESSÃO DO TABLE */\n\n\n\n\n\n\n\n\n        /*DIV PARA EDITAR PROPRIEDADES DO GEOMAPS */\n        .ol-viewport {\n            border-radius: 1rem !important;\n            border: 1px solid rgba(204, 204, 220, 0.25) !important;\n        }\n\n        /*DIV PARA EDITAR PROPRIEDADES DO GEOMAPS */\n\n\n\n\n\n        /*HEADER DA LEGEND DO TIME SERIES*/\n        .css-180sqb0,\n        .css-1l1pgpn {\n            text-transform: uppercase;\n        }\n\n        .css-180sqb0,\n        .css-1l1pgpn {\n            color: rgba(255, 255, 255, 1);\n        }\n\n\n        /*TEXTO DA LEGEND DO TIME SERIES*/\n\n        .css-7pp3mx-LegendLabel {\n            text-transform: uppercase;\n            color: white;\n            font-weight: 500;\n        }\n\n        .css-14gwilc,\n        .css-5imphy {\n            color: white !important;\n            text-transform: uppercase;\n            font-weight: 500;\n        }\n\n        /*LINHA DE MAX, LAST E MEAN(TEXTO) DA LEGEND DO TIME SERIES*/\n        .css-s2uf1z {\n            color: white;\n            font-weight: 500;\n        }\n\n        /*ICONES DE COR DA LEGENDA DO TIME SERIES*/\n        .css-1aj5l6t {\n            width: 1rem;\n            height: 1rem;\n        }\n\n        .css-4hqpog {\n            justify-content: center !important;\n        }\n\n        /*FIM DA SESSÃO DA LEGEND DO TIME SERIES*/\n\n\n\n\n\n\n\n\n\n        /* .css-n39kqr-cellContainerOverflow {\n            color: white;\n        }\n\n        .css-2qng6u-panel-container {\n            background: rgba(0, 0, 0, 0.2);\n            border: none;\n        }\n\n        .css-11qjisw {\n            height: 100%;\n        }\n\n        .css-1i88p6p {\n            width: 100%;\n            margin: 0;\n            padding: 0rem 0rem 0rem 2rem;\n        }\n\n        .css-m0z7c1 {\n            height: 100%;\n            margin: 0;\n        }\n\n        .css-n39kqr-cellContainerOverflow {\n            color: white;\n        }\n\n        .css-18yh62t-panel-container {\n            border-radius: 1rem;\n            border: 1px solid white;\n            background-color: rgba(0, 14, 28, 1);\n            color: white;\n        }\n\n        canvas[data-zr-dom-id=\"zr_0\"] {\n            border-radius: 1rem;\n            overflow: hidden;\n            \n        }\n\n        .dashboard-row--collapsed {\n            background: rgba(0, 0, 0, 0.2);\n        } */\n\n\n\n\n\n\n\n\n        /*INICIO DA SESSÃO BUSINESS VARIABLE*/\n        .css-rebjtg-input-wrapper {\n            background: rgba(0, 0, 0, 0.2);\n            width: 100%;\n            /* Define a largura como 100% */\n            height: 100%;\n            /* Define a altura como 100% */\n            border: 0;\n            color: #FFFFFF;\n            border-radius: 2rem;\n            border: 1px solid rgba(204, 204, 220, 0.12);\n        }\n\n        /*TEXTO DO BUSINESS*/\n        .css-8nwx1l-singleValue {\n            color: #FFFFFF;\n            text-transform: uppercase;\n        }\n\n        /*HEADER LAYOUT*/\n        .css-131hug8 label {\n            color: rgba(255, 255, 255, 1);\n            text-transform: uppercase;\n            background: rgba(0, 0, 0, 0.2);\n            border-radius: 2rem;\n            padding: 1rem;\n            border: 1px solid rgba(204, 204, 220, 0.12);\n        }\n\n        /*TEXTO QUANDO A VARIAVEL É NUMERO*/\n        .css-1pc1kg0-grafana-select-multi-value-container {\n            color: rgba(255, 255, 255, 1);\n            text-transform: uppercase;\n            background: rgba(0, 0, 0, 0);\n        }\n\n        /*TEXTO \"CHOOSE\" DO BUSINESS VARIABLE*/\n        .css-1n8tjau-placeholder {\n            color: rgba(255, 255, 255, 1);\n            text-transform: uppercase;\n        }\n\n        /*FIM DA SESSÃO BUSINESS VARIABLE*/\n\n\n\n\n\n\n\n\n\n\n        /*INCIO DA SESSÃO DO HEADER */\n\n        /* Contêiner principal do banner */\n        .flowspec-banner-container {\n            background: rgba(0, 0, 0, 0.2);\n            /* Fundo preto */\n            display: flex;\n            justify-content: center;\n            align-items: center;\n            width: 100%;\n            height: 100%;\n            position: relative;\n            border: 1px solid rgba(204, 204, 220, 0.12);\n            border-radius: 5rem;\n            overflow: hidden;\n            box-sizing: border-box;\n        }\n\n        /* Contêiner do conteúdo do banner */\n        .flowspec-banner-content {\n            display: flex;\n            align-items: center;\n            justify-content: center;\n            gap: 0.5rem;\n            color: #FFFFFF;\n            /* Texto branco */\n            width: 100%;\n            height: 100%;\n            padding: 0 9rem 0 1rem;\n            box-sizing: border-box;\n        }\n\n        /* Estilo do logo */\n        .flowspec-logo {\n            height: 3rem;\n            /* Ajuste o tamanho conforme necessário */\n            width: auto;\n        }\n\n        /* Estilo do texto */\n        .flowspec-text {\n            font-size: 3.5rem;\n            color: #FFFFFF;\n            /* Texto branco */\n            text-align: center;\n            display: flex;\n            align-items: center;\n            gap: 1rem;\n            /* Espaço entre o texto e o ícone */\n        }\n\n        /* Barra verde antes do texto */\n        .flowspec-divider {\n            color: #FFFFFF;\n            /* Verde Auzac */\n            font-size: 2rem;\n        }\n\n        /* Estilo do ícone de segurança */\n        .flowspec-security-icon {\n            width: 2.5rem;\n            height: auto;\n        }\n\n\n        /* BOTÃO VOLTAR */\n        .flowspec-banner-actions {\n            position: absolute;\n            right: 1.2rem;\n            top: 50%;\n            transform: translateY(-50%);\n            z-index: 5;\n            display: flex;\n            align-items: center;\n            justify-content: center;\n        }\n\n        .flowspec-btn-voltar {\n            display: inline-flex;\n            align-items: center;\n            justify-content: center;\n            min-width: 98px;\n            height: 38px;\n            padding: 0 1.2rem;\n            box-sizing: border-box;\n            border-radius: 0.75rem;\n            text-decoration: none;\n            font-size: 0.95rem;\n            font-weight: 800;\n            letter-spacing: 0.04rem;\n            text-transform: uppercase;\n            color: #ffffff !important;\n            background: linear-gradient(135deg, #00c8ff 0%, #12b3a8 100%);\n            border: 1px solid rgba(255, 255, 255, 0.18);\n            box-shadow: 0 0.45rem 1.2rem rgba(0, 200, 255, 0.25);\n            transition: all 0.25s ease;\n        }\n\n        .flowspec-btn-voltar:hover {\n            transform: translateY(-1px);\n            filter: brightness(1.08);\n            box-shadow: 0 0.55rem 1.4rem rgba(0, 0, 0, 0.35);\n        }\n\n        .flowspec-btn-voltar:active {\n            transform: translateY(0);\n        }\n\n        @media (max-width: 900px) {\n            .flowspec-banner-container {\n                min-height: 5rem;\n                padding: 0.7rem 1rem;\n                box-sizing: border-box;\n                border-radius: 2rem;\n            }\n\n            .flowspec-banner-content {\n                justify-content: center;\n                padding-right: 0;\n                flex-wrap: wrap;\n            }\n\n            .flowspec-banner-actions {\n                position: static;\n                transform: none;\n                width: 100%;\n                margin-top: 0.5rem;\n            }\n\n            .flowspec-btn-voltar {\n                min-width: 90px;\n                height: 36px;\n                font-size: 0.85rem;\n            }\n\n            .flowspec-text {\n                font-size: 2.2rem;\n            }\n        }\n\n        /*FIM DA SESSÃO DO HEADER */\n    </style>\n</head>\n\n<body>\n    <!-- Estrutura do banner -->\n    <div class=\"flowspec-banner-container\">\n        <div class=\"flowspec-banner-content\">\n            <span class=\"flowspec-text\">HUAWEI BGP</span>\n        </div>\n\n        <div class=\"flowspec-banner-actions\">\n            <a href=\"/d/aecn8csqbwdmob/home\" class=\"flowspec-btn-voltar\">VOLTAR</a>\n        </div>\n    </div>\n</body>\n\n</html>",
+                "mode": "html"
+              },
+              "fieldConfig": {
+                "defaults": {},
+                "overrides": []
+              }
+            }
+          },
+          "transparent": true
+        }
+      },
+      "panel-2": {
+        "kind": "Panel",
+        "spec": {
+          "id": 2,
+          "title": "",
+          "description": "",
+          "links": [],
+          "data": {
+            "kind": "QueryGroup",
+            "spec": {
+              "queries": [],
+              "transformations": [],
+              "queryOptions": {}
+            }
+          },
+          "vizConfig": {
+            "kind": "VizConfig",
+            "group": "text",
+            "version": "13.1.0",
+            "spec": {
+              "options": {
+                "code": {
+                  "language": "plaintext",
+                  "showLineNumbers": false,
+                  "showMiniMap": false
+                },
+                "content": "<center>\r\n<a target=\"new_blank\" href=\"https://flowspec.net.br\"><p>\r\n<h5>FLOWSPEC SOLUTIONS</h5>\r\n</a>\r\n</center>",
+                "mode": "html"
+              },
+              "fieldConfig": {
+                "defaults": {},
+                "overrides": []
+              }
+            }
+          },
+          "transparent": true
+        }
+      },
+      "panel-3": {
+        "kind": "Panel",
+        "spec": {
+          "id": 3,
+          "title": "CPU",
+          "description": "",
+          "links": [],
+          "data": {
+            "kind": "QueryGroup",
+            "spec": {
+              "queries": [
+                {
+                  "kind": "PanelQuery",
+                  "spec": {
+                    "query": {
+                      "kind": "DataQuery",
+                      "group": "alexanderzobnin-zabbix-datasource",
+                      "version": "v0",
+                      "datasource": {
+                        "name": "cfqk8kvi756o0c"
+                      },
+                      "spec": {
+                        "application": {
+                          "filter": ""
+                        },
+                        "countTriggersBy": "",
+                        "evaltype": "0",
+                        "functions": [],
+                        "group": {
+                          "filter": "$grupo"
+                        },
+                        "host": {
+                          "filter": "$host"
+                        },
+                        "item": {
+                          "filter": "/CPU/"
+                        },
+                        "itemTag": {
+                          "filter": "Uso de CPU"
+                        },
+                        "macro": {
+                          "filter": ""
+                        },
+                        "options": {
+                          "count": false,
+                          "disableDataAlignment": false,
+                          "showDisabledItems": false,
+                          "skipEmptyValues": false,
+                          "useTrends": "default",
+                          "useZabbixValueMapping": false
+                        },
+                        "proxy": {
+                          "filter": ""
+                        },
+                        "queryType": "0",
+                        "resultFormat": "time_series",
+                        "schema": 12,
+                        "table": {
+                          "skipEmptyValues": false
+                        },
+                        "tags": {
+                          "filter": ""
+                        },
+                        "textFilter": "",
+                        "trigger": {
+                          "filter": ""
+                        }
+                      }
+                    },
+                    "refId": "A",
+                    "hidden": false
+                  }
+                }
+              ],
+              "transformations": [],
+              "queryOptions": {}
+            }
+          },
+          "vizConfig": {
+            "kind": "VizConfig",
+            "group": "gauge",
+            "version": "13.1.0",
+            "spec": {
+              "options": {
+                "barShape": "flat",
+                "barWidthFactor": 0.5,
+                "effects": {
+                  "barGlow": false,
+                  "centerGlow": false,
+                  "gradient": false
+                },
+                "endpointMarker": "point",
+                "minVizHeight": 75,
+                "minVizWidth": 75,
+                "orientation": "auto",
+                "reduceOptions": {
+                  "calcs": [
+                    "lastNotNull"
+                  ],
+                  "fields": "",
+                  "values": false
+                },
+                "segmentCount": 1,
+                "segmentSpacing": 0.3,
+                "shape": "gauge",
+                "showThresholdLabels": false,
+                "showThresholdMarkers": true,
+                "sizing": "auto",
+                "sparkline": false,
+                "textMode": "auto"
+              },
+              "fieldConfig": {
+                "defaults": {
+                  "thresholds": {
+                    "mode": "absolute",
+                    "steps": [
+                      {
+                        "value": 0,
+                        "color": "text"
+                      },
+                      {
+                        "value": 80,
+                        "color": "dark-red"
+                      }
+                    ]
+                  },
+                  "color": {
+                    "mode": "thresholds"
+                  }
+                },
+                "overrides": []
+              }
+            }
+          },
+          "transparent": true
+        }
+      },
+      "panel-4": {
+        "kind": "Panel",
+        "spec": {
+          "id": 4,
+          "title": "Memoria",
+          "description": "",
+          "links": [],
+          "data": {
+            "kind": "QueryGroup",
+            "spec": {
+              "queries": [
+                {
+                  "kind": "PanelQuery",
+                  "spec": {
+                    "query": {
+                      "kind": "DataQuery",
+                      "group": "alexanderzobnin-zabbix-datasource",
+                      "version": "v0",
+                      "datasource": {
+                        "name": "cfqk8kvi756o0c"
+                      },
+                      "spec": {
+                        "application": {
+                          "filter": ""
+                        },
+                        "countTriggersBy": "",
+                        "evaltype": "0",
+                        "functions": [],
+                        "group": {
+                          "filter": "$grupo"
+                        },
+                        "host": {
+                          "filter": "$host"
+                        },
+                        "item": {
+                          "filter": "/Memoria/"
+                        },
+                        "itemTag": {
+                          "filter": "Uso de Memoria"
+                        },
+                        "macro": {
+                          "filter": ""
+                        },
+                        "options": {
+                          "count": false,
+                          "disableDataAlignment": false,
+                          "showDisabledItems": false,
+                          "skipEmptyValues": false,
+                          "useTrends": "default",
+                          "useZabbixValueMapping": false
+                        },
+                        "proxy": {
+                          "filter": ""
+                        },
+                        "queryType": "0",
+                        "resultFormat": "time_series",
+                        "schema": 12,
+                        "table": {
+                          "skipEmptyValues": false
+                        },
+                        "tags": {
+                          "filter": ""
+                        },
+                        "textFilter": "",
+                        "trigger": {
+                          "filter": ""
+                        }
+                      }
+                    },
+                    "refId": "A",
+                    "hidden": false
+                  }
+                }
+              ],
+              "transformations": [],
+              "queryOptions": {}
+            }
+          },
+          "vizConfig": {
+            "kind": "VizConfig",
+            "group": "gauge",
+            "version": "13.1.0",
+            "spec": {
+              "options": {
+                "barShape": "flat",
+                "barWidthFactor": 0.5,
+                "effects": {
+                  "barGlow": false,
+                  "centerGlow": false,
+                  "gradient": false
+                },
+                "endpointMarker": "point",
+                "minVizHeight": 75,
+                "minVizWidth": 75,
+                "orientation": "auto",
+                "reduceOptions": {
+                  "calcs": [
+                    "lastNotNull"
+                  ],
+                  "fields": "",
+                  "values": false
+                },
+                "segmentCount": 1,
+                "segmentSpacing": 0.3,
+                "shape": "gauge",
+                "showThresholdLabels": false,
+                "showThresholdMarkers": true,
+                "sizing": "auto",
+                "sparkline": false,
+                "textMode": "auto"
+              },
+              "fieldConfig": {
+                "defaults": {
+                  "thresholds": {
+                    "mode": "absolute",
+                    "steps": [
+                      {
+                        "value": 0,
+                        "color": "text"
+                      },
+                      {
+                        "value": 80,
+                        "color": "dark-red"
+                      }
+                    ]
+                  },
+                  "color": {
+                    "mode": "thresholds"
+                  }
+                },
+                "overrides": []
+              }
+            }
+          },
+          "transparent": true
+        }
+      },
+      "panel-5": {
+        "kind": "Panel",
+        "spec": {
+          "id": 5,
+          "title": "Temperatura",
+          "description": "",
+          "links": [],
+          "data": {
+            "kind": "QueryGroup",
+            "spec": {
+              "queries": [
+                {
+                  "kind": "PanelQuery",
+                  "spec": {
+                    "query": {
+                      "kind": "DataQuery",
+                      "group": "alexanderzobnin-zabbix-datasource",
+                      "version": "v0",
+                      "datasource": {
+                        "name": "cfqk8kvi756o0c"
+                      },
+                      "spec": {
+                        "application": {
+                          "filter": ""
+                        },
+                        "countTriggersBy": "",
+                        "evaltype": "0",
+                        "functions": [],
+                        "group": {
+                          "filter": "$grupo"
+                        },
+                        "host": {
+                          "filter": "$host"
+                        },
+                        "item": {
+                          "filter": "/Temperatura.*/"
+                        },
+                        "itemTag": {
+                          "filter": "Temperatura"
+                        },
+                        "macro": {
+                          "filter": ""
+                        },
+                        "options": {
+                          "count": false,
+                          "disableDataAlignment": false,
+                          "showDisabledItems": false,
+                          "skipEmptyValues": false,
+                          "useTrends": "default",
+                          "useZabbixValueMapping": false
+                        },
+                        "proxy": {
+                          "filter": ""
+                        },
+                        "queryType": "0",
+                        "resultFormat": "time_series",
+                        "schema": 12,
+                        "table": {
+                          "skipEmptyValues": false
+                        },
+                        "tags": {
+                          "filter": ""
+                        },
+                        "textFilter": "",
+                        "trigger": {
+                          "filter": ""
+                        }
+                      }
+                    },
+                    "refId": "A",
+                    "hidden": false
+                  }
+                }
+              ],
+              "transformations": [],
+              "queryOptions": {}
+            }
+          },
+          "vizConfig": {
+            "kind": "VizConfig",
+            "group": "gauge",
+            "version": "13.1.0",
+            "spec": {
+              "options": {
+                "barShape": "flat",
+                "barWidthFactor": 0.5,
+                "effects": {
+                  "barGlow": false,
+                  "centerGlow": false,
+                  "gradient": false
+                },
+                "endpointMarker": "point",
+                "minVizHeight": 75,
+                "minVizWidth": 75,
+                "orientation": "auto",
+                "reduceOptions": {
+                  "calcs": [
+                    "lastNotNull"
+                  ],
+                  "fields": "",
+                  "values": false
+                },
+                "segmentCount": 1,
+                "segmentSpacing": 0.3,
+                "shape": "gauge",
+                "showThresholdLabels": false,
+                "showThresholdMarkers": true,
+                "sizing": "auto",
+                "sparkline": false,
+                "textMode": "auto"
+              },
+              "fieldConfig": {
+                "defaults": {
+                  "unit": "celsius",
+                  "min": 15,
+                  "max": 50,
+                  "thresholds": {
+                    "mode": "absolute",
+                    "steps": [
+                      {
+                        "value": 0,
+                        "color": "text"
+                      },
+                      {
+                        "value": 50,
+                        "color": "dark-red"
+                      }
+                    ]
+                  },
+                  "color": {
+                    "mode": "thresholds"
+                  }
+                },
+                "overrides": []
+              }
+            }
+          },
+          "transparent": true
+        }
+      },
+      "panel-6": {
+        "kind": "Panel",
+        "spec": {
+          "id": 6,
+          "title": "Uptime",
+          "description": "",
+          "links": [],
+          "data": {
+            "kind": "QueryGroup",
+            "spec": {
+              "queries": [
+                {
+                  "kind": "PanelQuery",
+                  "spec": {
+                    "query": {
+                      "kind": "DataQuery",
+                      "group": "alexanderzobnin-zabbix-datasource",
+                      "version": "v0",
+                      "datasource": {
+                        "name": "cfqk8kvi756o0c"
+                      },
+                      "spec": {
+                        "application": {
+                          "filter": ""
+                        },
+                        "countTriggersBy": "",
+                        "evaltype": "0",
+                        "functions": [],
+                        "group": {
+                          "filter": "$grupo"
+                        },
+                        "host": {
+                          "filter": "$host"
+                        },
+                        "item": {
+                          "filter": "/Uptime \\(network\\)/"
+                        },
+                        "itemTag": {
+                          "filter": "component: system"
+                        },
+                        "macro": {
+                          "filter": ""
+                        },
+                        "options": {
+                          "count": false,
+                          "disableDataAlignment": false,
+                          "showDisabledItems": false,
+                          "skipEmptyValues": false,
+                          "useTrends": "default",
+                          "useZabbixValueMapping": false
+                        },
+                        "proxy": {
+                          "filter": ""
+                        },
+                        "queryType": "0",
+                        "resultFormat": "time_series",
+                        "schema": 12,
+                        "table": {
+                          "skipEmptyValues": false
+                        },
+                        "tags": {
+                          "filter": ""
+                        },
+                        "textFilter": "",
+                        "trigger": {
+                          "filter": ""
+                        }
+                      }
+                    },
+                    "refId": "A",
+                    "hidden": false
+                  }
+                }
+              ],
+              "transformations": [],
+              "queryOptions": {}
+            }
+          },
+          "vizConfig": {
+            "kind": "VizConfig",
+            "group": "stat",
+            "version": "13.1.0",
+            "spec": {
+              "options": {
+                "colorMode": "background",
+                "graphMode": "area",
+                "justifyMode": "auto",
+                "orientation": "auto",
+                "percentChangeColorMode": "standard",
+                "reduceOptions": {
+                  "calcs": [
+                    "lastNotNull"
+                  ],
+                  "fields": "",
+                  "values": false
+                },
+                "showPercentChange": false,
+                "textMode": "auto",
+                "wideLayout": true
+              },
+              "fieldConfig": {
+                "defaults": {
+                  "unit": "dtdhms",
+                  "thresholds": {
+                    "mode": "absolute",
+                    "steps": [
+                      {
+                        "value": 0,
+                        "color": "#26484d"
+                      }
+                    ]
+                  },
+                  "color": {
+                    "mode": "thresholds"
+                  }
+                },
+                "overrides": []
+              }
+            }
+          },
+          "transparent": true
+        }
+      },
+      "panel-7": {
+        "kind": "Panel",
+        "spec": {
+          "id": 7,
+          "title": "Status da Fan",
+          "description": "",
+          "links": [],
+          "data": {
+            "kind": "QueryGroup",
+            "spec": {
+              "queries": [
+                {
+                  "kind": "PanelQuery",
+                  "spec": {
+                    "query": {
+                      "kind": "DataQuery",
+                      "group": "alexanderzobnin-zabbix-datasource",
+                      "version": "v0",
+                      "datasource": {
+                        "name": "cfqk8kvi756o0c"
+                      },
+                      "spec": {
+                        "application": {
+                          "filter": ""
+                        },
+                        "countTriggersBy": "",
+                        "evaltype": "0",
+                        "functions": [],
+                        "group": {
+                          "filter": "$grupo"
+                        },
+                        "host": {
+                          "filter": "$host"
+                        },
+                        "item": {
+                          "filter": "/Fan status/"
+                        },
+                        "itemTag": {
+                          "filter": "Application: Fans"
+                        },
+                        "macro": {
+                          "filter": ""
+                        },
+                        "options": {
+                          "count": false,
+                          "disableDataAlignment": false,
+                          "showDisabledItems": false,
+                          "skipEmptyValues": false,
+                          "useTrends": "default",
+                          "useZabbixValueMapping": true
+                        },
+                        "proxy": {
+                          "filter": ""
+                        },
+                        "queryType": "0",
+                        "resultFormat": "time_series",
+                        "schema": 12,
+                        "table": {
+                          "skipEmptyValues": false
+                        },
+                        "tags": {
+                          "filter": ""
+                        },
+                        "textFilter": "",
+                        "trigger": {
+                          "filter": ""
+                        }
+                      }
+                    },
+                    "refId": "A",
+                    "hidden": false
+                  }
+                }
+              ],
+              "transformations": [],
+              "queryOptions": {}
+            }
+          },
+          "vizConfig": {
+            "kind": "VizConfig",
+            "group": "stat",
+            "version": "13.1.0",
+            "spec": {
+              "options": {
+                "colorMode": "value",
+                "graphMode": "area",
+                "justifyMode": "auto",
+                "orientation": "auto",
+                "percentChangeColorMode": "standard",
+                "reduceOptions": {
+                  "calcs": [
+                    "lastNotNull"
+                  ],
+                  "fields": "",
+                  "values": false
+                },
+                "showPercentChange": false,
+                "textMode": "auto",
+                "wideLayout": true
+              },
+              "fieldConfig": {
+                "defaults": {
+                  "thresholds": {
+                    "mode": "absolute",
+                    "steps": [
+                      {
+                        "value": 0,
+                        "color": "text"
+                      },
+                      {
+                        "value": 80,
+                        "color": "dark-red"
+                      }
+                    ]
+                  },
+                  "color": {
+                    "mode": "thresholds"
+                  },
+                  "noValue": "SEM DADOS"
+                },
+                "overrides": []
+              }
+            }
+          },
+          "transparent": true
+        }
+      },
+      "panel-8": {
+        "kind": "Panel",
+        "spec": {
+          "id": 8,
+          "title": "Status ICMP",
+          "description": "",
+          "links": [],
+          "data": {
+            "kind": "QueryGroup",
+            "spec": {
+              "queries": [
+                {
+                  "kind": "PanelQuery",
+                  "spec": {
+                    "query": {
+                      "kind": "DataQuery",
+                      "group": "alexanderzobnin-zabbix-datasource",
+                      "version": "v0",
+                      "datasource": {
+                        "name": "cfqk8kvi756o0c"
+                      },
+                      "spec": {
+                        "application": {
+                          "filter": ""
+                        },
+                        "countTriggersBy": "",
+                        "evaltype": "0",
+                        "functions": [],
+                        "group": {
+                          "filter": "$grupo"
+                        },
+                        "host": {
+                          "filter": "$host"
+                        },
+                        "item": {
+                          "filter": "/ICMP/"
+                        },
+                        "itemTag": {
+                          "filter": "component: health"
+                        },
+                        "macro": {
+                          "filter": ""
+                        },
+                        "options": {
+                          "count": false,
+                          "disableDataAlignment": false,
+                          "showDisabledItems": false,
+                          "skipEmptyValues": false,
+                          "useTrends": "default",
+                          "useZabbixValueMapping": false
+                        },
+                        "proxy": {
+                          "filter": ""
+                        },
+                        "queryType": "0",
+                        "resultFormat": "time_series",
+                        "schema": 12,
+                        "table": {
+                          "skipEmptyValues": false
+                        },
+                        "tags": {
+                          "filter": ""
+                        },
+                        "textFilter": "",
+                        "trigger": {
+                          "filter": ""
+                        }
+                      }
+                    },
+                    "refId": "A",
+                    "hidden": false
+                  }
+                }
+              ],
+              "transformations": [
+                {
+                  "kind": "Transformation",
+                  "group": "calculateField",
+                  "spec": {
+                    "options": {
+                      "binary": {
+                        "left": {
+                          "matcher": {
+                            "id": "byName",
+                            "options": "ICMP response time"
+                          }
+                        },
+                        "operator": "*",
+                        "right": {
+                          "fixed": "1000"
+                        }
+                      },
+                      "mode": "binary",
+                      "reduce": {
+                        "reducer": "sum"
+                      }
+                    }
+                  }
+                },
+                {
+                  "kind": "Transformation",
+                  "group": "organize",
+                  "spec": {
+                    "options": {
+                      "excludeByName": {
+                        "ICMP response time": true
+                      },
+                      "includeByName": {},
+                      "indexByName": {},
+                      "renameByName": {
+                        "ICMP response time * 1000": "ICMP response time"
+                      }
+                    }
+                  }
+                }
+              ],
+              "queryOptions": {}
+            }
+          },
+          "vizConfig": {
+            "kind": "VizConfig",
+            "group": "stat",
+            "version": "13.1.0",
+            "spec": {
+              "options": {
+                "colorMode": "value",
+                "graphMode": "area",
+                "justifyMode": "auto",
+                "orientation": "auto",
+                "percentChangeColorMode": "standard",
+                "reduceOptions": {
+                  "calcs": [
+                    "lastNotNull"
+                  ],
+                  "fields": "",
+                  "values": false
+                },
+                "showPercentChange": false,
+                "textMode": "auto",
+                "wideLayout": true
+              },
+              "fieldConfig": {
+                "defaults": {
+                  "thresholds": {
+                    "mode": "absolute",
+                    "steps": [
+                      {
+                        "value": 0,
+                        "color": "text"
+                      }
+                    ]
+                  },
+                  "color": {
+                    "mode": "thresholds"
+                  }
+                },
+                "overrides": [
+                  {
+                    "matcher": {
+                      "id": "byName",
+                      "options": "ICMP ping"
+                    },
+                    "properties": [
+                      {
+                        "id": "mappings",
+                        "value": [
+                          {
+                            "options": {
+                              "0": {
+                                "color": "dark-red",
+                                "index": 0,
+                                "text": "Down🔴"
+                              },
+                              "1": {
+                                "color": "dark-green",
+                                "index": 1,
+                                "text": "Up🟢"
+                              }
+                            },
+                            "type": "value"
+                          }
+                        ]
+                      },
+                      {
+                        "id": "color",
+                        "value": {
+                          "fixedColor": "text",
+                          "mode": "shades"
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "matcher": {
+                      "id": "byName",
+                      "options": "ICMP loss"
+                    },
+                    "properties": [
+                      {
+                        "id": "thresholds",
+                        "value": {
+                          "mode": "absolute",
+                          "steps": [
+                            {
+                              "color": "text",
+                              "value": 0
+                            },
+                            {
+                              "color": "dark-orange",
+                              "value": 20
+                            },
+                            {
+                              "color": "dark-red",
+                              "value": 80
+                            }
+                          ]
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "matcher": {
+                      "id": "byName",
+                      "options": "ICMP response time"
+                    },
+                    "properties": [
+                      {
+                        "id": "unit",
+                        "value": "ms"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          },
+          "transparent": true
+        }
+      },
+      "panel-9": {
+        "kind": "Panel",
+        "spec": {
+          "id": 9,
+          "title": "Consolidado BGP",
+          "description": "",
+          "links": [],
+          "data": {
+            "kind": "QueryGroup",
+            "spec": {
+              "queries": [
+                {
+                  "kind": "PanelQuery",
+                  "spec": {
+                    "query": {
+                      "kind": "DataQuery",
+                      "group": "alexanderzobnin-zabbix-datasource",
+                      "version": "v0",
+                      "datasource": {
+                        "name": "cfqk8kvi756o0c"
+                      },
+                      "spec": {
+                        "application": {
+                          "filter": ""
+                        },
+                        "countTriggersBy": "",
+                        "evaltype": "0",
+                        "functions": [],
+                        "group": {
+                          "filter": "$grupo"
+                        },
+                        "host": {
+                          "filter": "$host"
+                        },
+                        "item": {
+                          "filter": "/.*/"
+                        },
+                        "itemTag": {
+                          "filter": "/Peers BGP/"
+                        },
+                        "macro": {
+                          "filter": ""
+                        },
+                        "options": {
+                          "count": false,
+                          "disableDataAlignment": false,
+                          "showDisabledItems": false,
+                          "skipEmptyValues": false,
+                          "useTrends": "default",
+                          "useZabbixValueMapping": false
+                        },
+                        "proxy": {
+                          "filter": ""
+                        },
+                        "queryType": "0",
+                        "resultFormat": "time_series",
+                        "schema": 12,
+                        "table": {
+                          "skipEmptyValues": false
+                        },
+                        "tags": {
+                          "filter": ""
+                        },
+                        "textFilter": "",
+                        "trigger": {
+                          "filter": ""
+                        }
+                      }
+                    },
+                    "refId": "A",
+                    "hidden": false
+                  }
+                }
+              ],
+              "transformations": [
+                {
+                  "kind": "Transformation",
+                  "group": "reduce",
+                  "spec": {
+                    "options": {
+                      "includeTimeField": false,
+                      "mode": "seriesToRows",
+                      "reducers": [
+                        "lastNotNull"
+                      ]
+                    }
+                  }
+                },
+                {
+                  "kind": "Transformation",
+                  "group": "extractFields",
+                  "spec": {
+                    "options": {
+                      "delimiter": ",",
+                      "format": "regexp",
+                      "regExp": "/(?<Ip>[0-9\\.:A-Za-z]+)\\s+-\\s+(?<ASN>AS[0-9]+)\\s-\\s\\((?<Org>.*)\\):\\s(?<Item>.*)/",
+                      "source": "Field"
+                    }
+                  }
+                },
+                {
+                  "kind": "Transformation",
+                  "group": "filterFieldsByName",
+                  "spec": {
+                    "options": {
+                      "include": {
+                        "names": [
+                          "Last *",
+                          "Ip",
+                          "ASN",
+                          "Org",
+                          "Item"
+                        ]
+                      }
+                    }
+                  }
+                },
+                {
+                  "kind": "Transformation",
+                  "group": "partitionByValues",
+                  "spec": {
+                    "options": {
+                      "fields": [
+                        "Item"
+                      ],
+                      "keepFields": false,
+                      "naming": {
+                        "asLabels": false
+                      }
+                    }
+                  }
+                },
+                {
+                  "kind": "Transformation",
+                  "group": "joinByField",
+                  "spec": {
+                    "options": {
+                      "byField": "ASN",
+                      "mode": "outer"
+                    }
+                  }
+                },
+                {
+                  "kind": "Transformation",
+                  "group": "organize",
+                  "spec": {
+                    "options": {
+                      "excludeByName": {
+                        "Ip Prefixos": true,
+                        "Ip Status": true,
+                        "Ip Uptime": false,
+                        "Last * Prefixos": false,
+                        "Last * Status": false,
+                        "Last * Uptime": false,
+                        "Org Prefixos": true,
+                        "Org Status": false,
+                        "Org Uptime": true
+                      },
+                      "includeByName": {},
+                      "indexByName": {
+                        "ASN": 0,
+                        "Ip Prefixos": 7,
+                        "Ip Status": 9,
+                        "Ip Uptime": 1,
+                        "Last * Prefixos": 5,
+                        "Last * Status": 3,
+                        "Last * Uptime": 4,
+                        "Org Prefixos": 8,
+                        "Org Status": 2,
+                        "Org Uptime": 6
+                      },
+                      "renameByName": {
+                        "ASN": "",
+                        "Ip Status": "",
+                        "Ip Uptime": "Peer",
+                        "Last * Prefixos": "Prefixos",
+                        "Last * Status": "Status",
+                        "Last * Uptime": "Uptime",
+                        "Org Status": "Org",
+                        "Org Uptime": ""
+                      }
+                    }
+                  }
+                }
+              ],
+              "queryOptions": {}
+            }
+          },
+          "vizConfig": {
+            "kind": "VizConfig",
+            "group": "table",
+            "version": "13.1.0",
+            "spec": {
+              "options": {
+                "cellHeight": "sm",
+                "enablePagination": true,
+                "showHeader": true,
+                "sortBy": [
+                  {
+                    "desc": true,
+                    "displayName": "Status"
+                  }
+                ]
+              },
+              "fieldConfig": {
+                "defaults": {
+                  "thresholds": {
+                    "mode": "absolute",
+                    "steps": [
+                      {
+                        "value": 0,
+                        "color": "#293741"
+                      }
+                    ]
+                  },
+                  "color": {
+                    "mode": "thresholds"
+                  },
+                  "custom": {
+                    "align": "center",
+                    "cellOptions": {
+                      "type": "color-background"
+                    },
+                    "filterable": true,
+                    "footer": {
+                      "reducers": []
+                    },
+                    "hideFrom": {
+                      "viz": false
+                    },
+                    "inspect": false
+                  }
+                },
+                "overrides": [
+                  {
+                    "matcher": {
+                      "id": "byName",
+                      "options": "Status"
+                    },
+                    "properties": [
+                      {
+                        "id": "mappings",
+                        "value": [
+                          {
+                            "options": {
+                              "6": {
+                                "color": "dark-green",
+                                "index": 0,
+                                "text": "Up🟢"
+                              }
+                            },
+                            "type": "value"
+                          },
+                          {
+                            "options": {
+                              "from": 1,
+                              "result": {
+                                "color": "dark-red",
+                                "index": 1,
+                                "text": "Down🔴"
+                              },
+                              "to": 5
+                            },
+                            "type": "range"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "matcher": {
+                      "id": "byName",
+                      "options": "Uptime"
+                    },
+                    "properties": [
+                      {
+                        "id": "thresholds",
+                        "value": {
+                          "mode": "absolute",
+                          "steps": [
+                            {
+                              "color": "dark-red",
+                              "value": 0
+                            },
+                            {
+                              "color": "dark-blue",
+                              "value": 300
+                            },
+                            {
+                              "color": "dark-green",
+                              "value": 600
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "id": "unit",
+                        "value": "dtdhms"
+                      }
+                    ]
+                  },
+                  {
+                    "matcher": {
+                      "id": "byName",
+                      "options": "Prefixos"
+                    },
+                    "properties": [
+                      {
+                        "id": "thresholds",
+                        "value": {
+                          "mode": "absolute",
+                          "steps": [
+                            {
+                              "color": "dark-orange",
+                              "value": 0
+                            },
+                            {
+                              "color": "dark-green",
+                              "value": 1
+                            }
+                          ]
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "matcher": {
+                      "id": "byName",
+                      "options": "ASN"
+                    },
+                    "properties": [
+                      {
+                        "id": "custom.width",
+                        "value": 142
+                      }
+                    ]
+                  },
+                  {
+                    "matcher": {
+                      "id": "byName",
+                      "options": "Peer"
+                    },
+                    "properties": [
+                      {
+                        "id": "custom.width",
+                        "value": 257
+                      }
+                    ]
+                  },
+                  {
+                    "matcher": {
+                      "id": "byName",
+                      "options": "Org"
+                    },
+                    "properties": [
+                      {
+                        "id": "custom.width",
+                        "value": 549
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          },
+          "transparent": true
+        }
+      }
+    },
+    "layout": {
+      "kind": "GridLayout",
+      "spec": {
+        "items": [
+          {
+            "kind": "GridLayoutItem",
+            "spec": {
+              "x": 0,
+              "y": 0,
+              "width": 24,
+              "height": 3,
+              "element": {
+                "kind": "ElementReference",
+                "name": "panel-17"
+              }
+            }
+          },
+          {
+            "kind": "GridLayoutItem",
+            "spec": {
+              "x": 0,
+              "y": 3,
+              "width": 5,
+              "height": 4,
+              "element": {
+                "kind": "ElementReference",
+                "name": "panel-2"
+              }
+            }
+          },
+          {
+            "kind": "GridLayoutItem",
+            "spec": {
+              "x": 5,
+              "y": 3,
+              "width": 4,
+              "height": 4,
+              "element": {
+                "kind": "ElementReference",
+                "name": "panel-3"
+              }
+            }
+          },
+          {
+            "kind": "GridLayoutItem",
+            "spec": {
+              "x": 9,
+              "y": 3,
+              "width": 4,
+              "height": 4,
+              "element": {
+                "kind": "ElementReference",
+                "name": "panel-4"
+              }
+            }
+          },
+          {
+            "kind": "GridLayoutItem",
+            "spec": {
+              "x": 13,
+              "y": 3,
+              "width": 4,
+              "height": 4,
+              "element": {
+                "kind": "ElementReference",
+                "name": "panel-5"
+              }
+            }
+          },
+          {
+            "kind": "GridLayoutItem",
+            "spec": {
+              "x": 17,
+              "y": 3,
+              "width": 3,
+              "height": 4,
+              "element": {
+                "kind": "ElementReference",
+                "name": "panel-7"
+              }
+            }
+          },
+          {
+            "kind": "GridLayoutItem",
+            "spec": {
+              "x": 20,
+              "y": 3,
+              "width": 4,
+              "height": 4,
+              "element": {
+                "kind": "ElementReference",
+                "name": "panel-6"
+              }
+            }
+          },
+          {
+            "kind": "GridLayoutItem",
+            "spec": {
+              "x": 0,
+              "y": 7,
+              "width": 16,
+              "height": 5,
+              "element": {
+                "kind": "ElementReference",
+                "name": "panel-8"
+              }
+            }
+          },
+          {
+            "kind": "GridLayoutItem",
+            "spec": {
+              "x": 16,
+              "y": 7,
+              "width": 8,
+              "height": 5,
+              "element": {
+                "kind": "ElementReference",
+                "name": "panel-15"
+              }
+            }
+          },
+          {
+            "kind": "GridLayoutItem",
+            "spec": {
+              "x": 0,
+              "y": 12,
+              "width": 24,
+              "height": 11,
+              "element": {
+                "kind": "ElementReference",
+                "name": "panel-1"
+              }
+            }
+          },
+          {
+            "kind": "GridLayoutItem",
+            "spec": {
+              "x": 0,
+              "y": 23,
+              "width": 24,
+              "height": 11,
+              "element": {
+                "kind": "ElementReference",
+                "name": "panel-9"
+              }
+            }
+          },
+          {
+            "kind": "GridLayoutItem",
+            "spec": {
+              "x": 0,
+              "y": 34,
+              "width": 12,
+              "height": 9,
+              "element": {
+                "kind": "ElementReference",
+                "name": "panel-11"
+              }
+            }
+          },
+          {
+            "kind": "GridLayoutItem",
+            "spec": {
+              "x": 12,
+              "y": 34,
+              "width": 12,
+              "height": 9,
+              "element": {
+                "kind": "ElementReference",
+                "name": "panel-12"
+              }
+            }
+          },
+          {
+            "kind": "GridLayoutItem",
+            "spec": {
+              "x": 0,
+              "y": 43,
+              "width": 24,
+              "height": 11,
+              "element": {
+                "kind": "ElementReference",
+                "name": "panel-14"
+              }
+            }
+          }
+        ]
+      }
+    },
+    "links": [],
+    "liveNow": false,
+    "preload": false,
+    "tags": [],
+    "timeSettings": {
+      "timezone": "browser",
+      "from": "now-24h",
+      "to": "now",
+      "autoRefresh": "",
+      "autoRefreshIntervals": [
+        "5s",
+        "10s",
+        "30s",
+        "1m",
+        "5m",
+        "15m",
+        "30m",
+        "1h",
+        "2h",
+        "1d"
+      ],
+      "hideTimepicker": false,
+      "fiscalYearStartMonth": 0
+    },
+    "title": "Dashboard Huawei BGP",
+    "variables": [
+      {
+        "kind": "QueryVariable",
+        "spec": {
+          "name": "grupo",
+          "current": {
+            "text": [
+              "BGP"
+            ],
+            "value": [
+              "BGP"
+            ]
+          },
+          "label": "Grupo",
+          "hide": "dontHide",
+          "refresh": "onDashboardLoad",
+          "skipUrlSync": false,
+          "query": {
+            "kind": "DataQuery",
+            "group": "alexanderzobnin-zabbix-datasource",
+            "version": "v0",
+            "datasource": {
+              "name": "cfqk8kvi756o0c"
+            },
+            "spec": {
+              "application": "",
+              "group": "BGP",
+              "host": "",
+              "item": "",
+              "itemTag": "",
+              "queryType": "group",
+              "showDisabledItems": false
+            }
+          },
+          "regex": "",
+          "regexApplyTo": "value",
+          "sort": "disabled",
+          "definition": "",
+          "options": [],
+          "multi": true,
+          "includeAll": true,
+          "allowCustomValue": true
+        }
+      },
+      {
+        "kind": "QueryVariable",
+        "spec": {
+          "name": "host",
+          "current": {
+            "text": "Huawei NE8000 BRAS",
+            "value": "Huawei NE8000 BRAS"
+          },
+          "label": "Host",
+          "hide": "dontHide",
+          "refresh": "onDashboardLoad",
+          "skipUrlSync": false,
+          "query": {
+            "kind": "DataQuery",
+            "group": "alexanderzobnin-zabbix-datasource",
+            "version": "v0",
+            "datasource": {
+              "name": "cfqk8kvi756o0c"
+            },
+            "spec": {
+              "application": "",
+              "group": "$grupo",
+              "host": "/.*/",
+              "item": "",
+              "itemTag": "",
+              "queryType": "host",
+              "showDisabledItems": false
+            }
+          },
+          "regex": "",
+          "regexApplyTo": "value",
+          "sort": "disabled",
+          "definition": "",
+          "options": [],
+          "multi": false,
+          "includeAll": false,
+          "allowCustomValue": true
+        }
+      }
+    ]
+  }
+}

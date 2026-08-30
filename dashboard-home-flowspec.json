@@ -1,0 +1,133 @@
+{
+  "apiVersion": "dashboard.grafana.app/v2",
+  "kind": "Dashboard",
+  "metadata": {
+    "name": "aecn8csqbwdmob",
+    "namespace": "default",
+    "uid": "64ad59e3-f17c-4f24-9eec-ef72443360e0",
+    "resourceVersion": "1782882064060016",
+    "generation": 12,
+    "creationTimestamp": "2026-06-30T20:23:52Z",
+    "labels": {
+      "grafana.app/deprecatedInternalID": "397697653825536"
+    },
+    "annotations": {
+      "grafana.app/createdBy": "user:efqk2yawd4hs0d",
+      "grafana.app/folder": "",
+      "grafana.app/saved-from-ui": "Grafana v13.1.0 (b309c9bb3b)",
+      "grafana.app/updatedBy": "user:efqk2yawd4hs0d",
+      "grafana.app/updatedTimestamp": "2026-07-01T05:01:04Z"
+    }
+  },
+  "spec": {
+    "annotations": [
+      {
+        "kind": "AnnotationQuery",
+        "spec": {
+          "query": {
+            "kind": "DataQuery",
+            "group": "grafana",
+            "version": "v0",
+            "datasource": {
+              "name": "-- Grafana --"
+            },
+            "spec": {}
+          },
+          "enable": true,
+          "hide": true,
+          "iconColor": "rgba(0, 211, 255, 1)",
+          "name": "Annotations & Alerts",
+          "builtIn": true
+        }
+      }
+    ],
+    "cursorSync": "Off",
+    "editable": true,
+    "elements": {
+      "panel-1": {
+        "kind": "Panel",
+        "spec": {
+          "id": 1,
+          "title": "",
+          "description": "",
+          "links": [],
+          "data": {
+            "kind": "QueryGroup",
+            "spec": {
+              "queries": [],
+              "transformations": [],
+              "queryOptions": {}
+            }
+          },
+          "vizConfig": {
+            "kind": "VizConfig",
+            "group": "text",
+            "version": "13.1.0",
+            "spec": {
+              "options": {
+                "code": {
+                  "language": "plaintext",
+                  "showLineNumbers": false,
+                  "showMiniMap": false
+                },
+                "content": "<!-- Dependência jQuery -->\n<script src=\"https://code.jquery.com/jquery-3.6.0.min.js\"></script>\n\n<div class=\"dashboard-container\">\n  <!-- Menu de navegação -->\n  <div class=\"menu-container\">\n    <button class=\"btn btnWan\">☕︎ BORDA</button>\n    <button class=\"btn btnClientes\">💰 CLIENTES</button>\n    <button class=\"btn btnServidores\">㉿ BNG-PPPOE </button>\n    <button class=\"btn btnStfc\">🖧 OLT</button>\n    <button class=\"btn btnOlts\"> 💀NETFLOW-PORTMIRROR</button>\n    <button class=\"btn btnOutros\">⚙️ SWITCH </button>\n  </div>\n\n  <!-- Seções -->\n  <div id=\"wan\" class=\"section\">\n    <div class=\"dashboard-home\">\n      <div class=\"card\"><a href=\"/d/adl4w2d/main\"><div class=\"icon\">⚠️</div><div class=\"title\">LATENCIA JOGOS </div></a></div>\n      <div class=\"card\"><a href=\"/d/YFfbg7z7k/main\"><div class=\"icon\">⚠️</div><div class=\"title\">LATENCIA SERVIÇOS </div></a></div>\n      <div class=\"card\"><a href=\"/d/SBFRcio7k/main\"><div class=\"icon\">⚠️</div><div class=\"title\">LATENCIA SITES DIVERSOS </div></a></div>\n      <div class=\"card\"><a href=\"/d/fevhtcyezb6dcf2/main\"><div class=\"icon\">🖧</div><div class=\"title\">RT-NE-M4 HUAWEI</div></a></div>\n      <div class=\"card\"><a href=\"/d/adtp899/main\"><div class=\"icon\">🖧</div><div class=\"title\">RT-NE8000 HUAWEI</div></a></div>\n    </div>\n  </div>\n\n  <div id=\"clientes\" class=\"section\">\n    <div class=\"dashboard-home\">\n      <div class=\"card\"><a href=\"/d/deu3yk6j47abkc/main\"><div class=\"icon\">🐧</div><div class=\"title\">CPE-x01</div></a></div>\n      <div class=\"card\"><a href=\"/d/dewkv4fhmyj9cd/main\"><div class=\"icon\">🏢</div><div class=\"title\">CPE-x02</div></a></div>\n      <div class=\"card\"><a href=\"/d/aew4b9w0nn85cd/main\"><div class=\"icon\">🏢</div><div class=\"title\">CPE-x03</div></a></div>\n      <div class=\"card\"><a href=\"/d/bew5i24m1cbuod/main\"><div class=\"icon\">🏢</div><div class=\"title\">CPE-x04</div></a></div>\n      <div class=\"card\"><a href=\"/d/eez9at1d6ocn4e/main\"><div class=\"icon\">🏢</div><div class=\"title\">CPE-x05</div></a></div>\n      <div class=\"card\"><a href=\"/d/ef25suj86wjcwc/main\"><div class=\"icon\">🏢</div><div class=\"title\">CPE-x06</div></a></div>\n    </div>\n  </div>\n\n  <div id=\"servidores\" class=\"section\">\n    <div class=\"dashboard-home\">\n      <div class=\"card\"><a href=\"/d/vMtK49V4z222/main\"><div class=\"icon\">🖥️</div><div class=\"title\">HUAWEI-BRAS-METRICAS</div></a></div>\n      <div class=\"card\"><a href=\"/d/adpqxws/main\"><div class=\"icon\">🖥️</div><div class=\"title\">HUAWEI-BRAS-SERVIÇOS</div></a></div>\n      <div class=\"card\"><a href=\"/d/df0j0gqonlam8a/main\"><div class=\"icon\">🖥️</div><div class=\"title\">A10 - CGNAT</div></a></div>\n      <div class=\"card\"><a href=\"/d/aee5dvw6lqpdsf5/main\"><div class=\"icon\">⚠️</div><div class=\"title\">RELATORIO DE INCIDENTES</div></a></div>\n    </div>\n  </div>\n\n  <div id=\"stfc\" class=\"section\">\n    <div class=\"dashboard-home\">\n      <div class=\"card\"><a href=\"/d/deu3yk6j47abkc/main\"><div class=\"icon\">🐧</div><div class=\"title\">CPE-x01</div></a></div>\n      <div class=\"card\"><a href=\"/d/dewkv4fhmyj9cd/main\"><div class=\"icon\">🏢</div><div class=\"title\">CPE-x02</div></a></div>\n      <div class=\"card\"><a href=\"/d/aew4b9w0nn85cd/main\"><div class=\"icon\">🏢</div><div class=\"title\">CPE-x03</div></a></div>\n      <div class=\"card\"><a href=\"/d/bew5i24m1cbuod/main\"><div class=\"icon\">🏢</div><div class=\"title\">CPE-x04</div></a></div>\n      <div class=\"card\"><a href=\"/d/eez9at1d6ocn4e/main\"><div class=\"icon\">🏢</div><div class=\"title\">CPE-x05</div></a></div>\n      <div class=\"card\"><a href=\"/d/ef25suj86wjcwc/main\"><div class=\"icon\">🏢</div><div class=\"title\">CPE-x06</div></a></div>  \n    </div>\n  </div>\n\n  <div id=\"olts\" class=\"section\">\n    <div class=\"dashboard-home\">\n      <div class=\"card\"><a href=\"/d/B4rGN1y4k/main\"><div class=\"icon\">🖧</div><div class=\"title\">FLUXO GEOLOCATION</div></a></div>\n      <div class=\"card\"><a href=\"/d/3adb5b52-e787-4b29-9360-164b2104c1/main\"><div class=\"icon\">🖧</div><div class=\"title\">FLUXO TOTAL</div></a></div>\n      <div class=\"card\"><a href=\"/d/0cda7e56-29fd-417a-b39a-2e8958e207d5/main\"><div class=\"icon\">🖧</div><div class=\"title\">FLUXO PROTOCOLOS</div></a></div>\n      <div class=\"card\"><a href=\"/d/fff4a0e1-5179-4224-b3bc-8377fc6fcdb3/main\"><div class=\"icon\">🖧</div><div class=\"title\">FLUXO ASN</div></a></div>\n    </div>\n  </div>\n\n  <div id=\"outros\" class=\"section\">\n    <div class=\"dashboard-home\">\n      <div class=\"card\"><a href=\"/d/f08b8ec0-8220-4da1-9441-891bfa29a924/main\"><div class=\"icon\">⚙️</div><div class=\"title\">SWITCH 6730 CLUSTER</div></a></div>\n      <div class=\"card\"><a href=\"/d/b5b770cf-1589-4ea2-ace7-4f3d9881247e232/main\"><div class=\"icon\">⚙️</div><div class=\"title\">SWITCH DATACOM</div></a></div>\n    </div>\n  </div>\n</div>\n\n<style>\n:root {\n  --fs-bg-1: #06131d;\n  --fs-bg-2: #0a1f2d;\n  --fs-bg-3: #10344a;\n  --fs-surface: rgba(10, 22, 32, 0.88);\n  --fs-surface-2: rgba(13, 33, 47, 0.92);\n  --fs-border: rgba(0, 204, 255, 0.22);\n  --fs-border-strong: rgba(0, 204, 255, 0.45);\n  --fs-primary: #00c8ff;\n  --fs-primary-2: #00e5ff;\n  --fs-accent: #12b3a8;\n  --fs-accent-2: #19d3c5;\n  --fs-text: #f4fbff;\n  --fs-text-soft: #b9d7e6;\n  --fs-shadow: rgba(0, 0, 0, 0.35);\n}\n\n.dashboard-container {\n  background: transparent;\n  min-height: 100vh;\n  padding: 20px;\n  color: var(--fs-text);\n  font-family: Arial, Helvetica, sans-serif;\n}\n\n/* Botões de Menu */\n.menu-container {\n  margin: 20px auto 28px auto;\n  text-align: center;\n}\n\n.btn {\n  background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));\n  color: var(--fs-text);\n  border: 1px solid var(--fs-border);\n  padding: 12px 24px;\n  margin: 8px;\n  border-radius: 10px;\n  cursor: pointer;\n  font-size: 16px;\n  font-weight: 600;\n  letter-spacing: 0.2px;\n  transition: all 0.25s ease;\n  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.18);\n}\n\n.btn:hover {\n  background: linear-gradient(135deg, rgba(0, 200, 255, 0.18), rgba(18, 179, 168, 0.16));\n  border-color: var(--fs-border-strong);\n  transform: translateY(-1px);\n  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.28);\n}\n\n.btn.active {\n  background: linear-gradient(135deg, var(--fs-primary) 0%, var(--fs-accent) 100%);\n  color: #041018;\n  border: 1px solid transparent;\n  box-shadow: 0 6px 18px rgba(0, 200, 255, 0.22);\n}\n\n/* Cards */\n.dashboard-home {\n  display: grid;\n  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));\n  gap: 30px;\n  padding: 30px;\n  justify-items: center;\n}\n\n.card {\n  background:\n    linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01)),\n    var(--fs-surface);\n  border: 1px solid rgba(0, 200, 255, 0.12);\n  border-radius: 16px;\n  box-shadow: 0 8px 22px rgba(0,0,0,0.30);\n  text-align: center;\n  width: 170px;\n  height: 170px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  transition: all 0.25s ease;\n  backdrop-filter: blur(6px);\n}\n\n.card:hover {\n  transform: translateY(-6px);\n  box-shadow: 0 14px 28px rgba(0,0,0,0.45);\n  background:\n    linear-gradient(135deg, rgba(0, 200, 255, 0.14), rgba(18, 179, 168, 0.14)),\n    var(--fs-surface-2);\n  border-color: rgba(0, 229, 255, 0.32);\n}\n\n.card a {\n  text-decoration: none;\n  color: var(--fs-text);\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  gap: 10px;\n  width: 100%;\n  height: 100%;\n  justify-content: center;\n  padding: 10px;\n  box-sizing: border-box;\n}\n\n.icon {\n  font-size: 42px;\n  filter: drop-shadow(0 0 10px rgba(0, 200, 255, 0.12));\n}\n\n.title {\n  font-size: 16px;\n  font-weight: 600;\n  color: var(--fs-text);\n  line-height: 1.25;\n  word-break: break-word;\n}\n\n.section {\n  display: none;\n  animation: fadeIn 0.5s;\n}\n\n@keyframes fadeIn {\n  from { opacity: 0; transform: translateY(4px); }\n  to { opacity: 1; transform: translateY(0); }\n}\n\n/* Responsividade */\n@media (max-width: 768px) {\n  .dashboard-home {\n    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));\n    gap: 20px;\n    padding: 20px;\n  }\n\n  .card {\n    width: 140px;\n    height: 140px;\n  }\n\n  .btn {\n    padding: 10px 16px;\n    font-size: 14px;\n    margin: 5px;\n  }\n\n\n  .title {\n    font-size: 14px;\n  }\n\n  .icon {\n    font-size: 36px;\n  }\n}\n</style>\n\n<script>\n$(document).ready(function(){\n  function hideAll() {\n    $(\".section\").hide();\n    $(\".btn\").removeClass(\"active\");\n  }\n\n  // Abrir WAN por padrão\n  hideAll();\n  $(\"#wan\").show();\n  $(\".btnWan\").addClass(\"active\");\n\n  $(\".btnWan\").click(function() {\n    hideAll();\n    $(\"#wan\").fadeIn();\n    $(this).addClass(\"active\");\n  });\n\n  $(\".btnClientes\").click(function() {\n    hideAll();\n    $(\"#clientes\").fadeIn();\n    $(this).addClass(\"active\");\n  });\n\n  $(\".btnServidores\").click(function() {\n    hideAll();\n    $(\"#servidores\").fadeIn();\n    $(this).addClass(\"active\");\n  });\n\n  $(\".btnStfc\").click(function() {\n    hideAll();\n    $(\"#stfc\").fadeIn();\n    $(this).addClass(\"active\");\n  });\n\n  $(\".btnOlts\").click(function() {\n    hideAll();\n    $(\"#olts\").fadeIn();\n    $(this).addClass(\"active\");\n  });\n\n  $(\".btnOutros\").click(function() {\n    hideAll();\n    $(\"#outros\").fadeIn();\n    $(this).addClass(\"active\");\n  });\n});\n</script>",
+                "mode": "html"
+              },
+              "fieldConfig": {
+                "defaults": {},
+                "overrides": []
+              }
+            }
+          },
+          "transparent": true
+        }
+      }
+    },
+    "layout": {
+      "kind": "GridLayout",
+      "spec": {
+        "items": [
+          {
+            "kind": "GridLayoutItem",
+            "spec": {
+              "x": 0,
+              "y": 0,
+              "width": 24,
+              "height": 23,
+              "element": {
+                "kind": "ElementReference",
+                "name": "panel-1"
+              }
+            }
+          }
+        ]
+      }
+    },
+    "links": [],
+    "liveNow": false,
+    "preload": false,
+    "tags": [],
+    "timeSettings": {
+      "timezone": "America/Sao_Paulo",
+      "from": "now-6h",
+      "to": "now",
+      "autoRefresh": "",
+      "autoRefreshIntervals": [
+        "5s",
+        "10s",
+        "30s",
+        "1m",
+        "5m",
+        "15m",
+        "30m",
+        "1h",
+        "2h",
+        "1d"
+      ],
+      "hideTimepicker": false,
+      "fiscalYearStartMonth": 0
+    },
+    "title": "home",
+    "variables": []
+  }
+}
