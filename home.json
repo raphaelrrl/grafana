@@ -1,133 +1,1061 @@
 {
-  "apiVersion": "dashboard.grafana.app/v2",
-  "kind": "Dashboard",
-  "metadata": {
-    "name": "aecn8csqbwdmob",
-    "namespace": "default",
-    "uid": "64ad59e3-f17c-4f24-9eec-ef72443360e0",
-    "resourceVersion": "1782882064060016",
-    "generation": 12,
-    "creationTimestamp": "2026-06-30T20:23:52Z",
-    "labels": {
-      "grafana.app/deprecatedInternalID": "397697653825536"
-    },
-    "annotations": {
-      "grafana.app/createdBy": "user:efqk2yawd4hs0d",
-      "grafana.app/folder": "",
-      "grafana.app/saved-from-ui": "Grafana v13.1.0 (b309c9bb3b)",
-      "grafana.app/updatedBy": "user:efqk2yawd4hs0d",
-      "grafana.app/updatedTimestamp": "2026-07-01T05:01:04Z"
-    }
+  "uid": "aecn8csqbwdmob",
+  "title": "home",
+  "tags": [
+    "flowspec",
+    "noc"
+  ],
+  "timezone": "America/Sao_Paulo",
+  "editable": true,
+  "graphTooltip": 1,
+  "style": "dark",
+  "refresh": "30s",
+  "time": {
+    "from": "now-1h",
+    "to": "now"
   },
-  "spec": {
-    "annotations": [
+  "timepicker": {
+    "refresh_intervals": [
+      "10s",
+      "30s",
+      "1m",
+      "5m",
+      "15m",
+      "30m",
+      "1h"
+    ]
+  },
+  "links": [
+    {
+      "title": "SOB ATAQUE? · SOC 24/7",
+      "type": "link",
+      "url": "https://api.whatsapp.com/send/?phone=5521997115461",
+      "icon": "external link",
+      "targetBlank": true,
+      "tooltip": "Resposta a incidentes 24/7",
+      "asDropdown": false,
+      "includeVars": false,
+      "keepTime": false,
+      "tags": []
+    }
+  ],
+  "annotations": {
+    "list": [
       {
-        "kind": "AnnotationQuery",
-        "spec": {
-          "query": {
-            "kind": "DataQuery",
-            "group": "grafana",
-            "version": "v0",
-            "datasource": {
-              "name": "-- Grafana --"
-            },
-            "spec": {}
+        "builtIn": 1,
+        "datasource": {
+          "type": "datasource",
+          "uid": "grafana"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "templating": {
+    "list": []
+  },
+  "panels": [
+    {
+      "id": 1,
+      "type": "marcusolsson-dynamictext-panel",
+      "title": "",
+      "gridPos": {
+        "x": 0,
+        "y": 0,
+        "w": 24,
+        "h": 4
+      },
+      "transparent": true,
+      "datasource": {
+        "type": "datasource",
+        "uid": "grafana"
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "datasource",
+            "uid": "grafana"
           },
-          "enable": true,
-          "hide": true,
-          "iconColor": "rgba(0, 211, 255, 1)",
-          "name": "Annotations & Alerts",
-          "builtIn": true
+          "queryType": "randomWalk",
+          "refId": "A"
         }
-      }
-    ],
-    "cursorSync": "Off",
-    "editable": true,
-    "elements": {
-      "panel-1": {
-        "kind": "Panel",
-        "spec": {
-          "id": 1,
-          "title": "",
-          "description": "",
-          "links": [],
-          "data": {
-            "kind": "QueryGroup",
-            "spec": {
-              "queries": [],
-              "transformations": [],
-              "queryOptions": {}
-            }
-          },
-          "vizConfig": {
-            "kind": "VizConfig",
-            "group": "text",
-            "version": "13.1.0",
-            "spec": {
-              "options": {
-                "code": {
-                  "language": "plaintext",
-                  "showLineNumbers": false,
-                  "showMiniMap": false
-                },
-                "content": "<!-- Dependência jQuery -->\n<script src=\"https://code.jquery.com/jquery-3.6.0.min.js\"></script>\n\n<div class=\"dashboard-container\">\n\n  <!-- Menu de navegação -->\n  <div class=\"menu-container\">\n    <button class=\"btn btnWan\">☕︎ BORDA</button>\n    <button class=\"btn btnClientes\">💰 CLIENTES</button>\n    <button class=\"btn btnServidores\">㉿ BNG-PPPOE </button>\n    <button class=\"btn btnStfc\">🖧 OLT</button>\n    <button class=\"btn btnOlts\"> 💀NETFLOW-PORTMIRROR</button>\n    <button class=\"btn btnOutros\">⚙️ SWITCH </button>\n  </div>\n\n  <!-- Seções -->\n  <div id=\"wan\" class=\"section\">\n    <div class=\"dashboard-home\">\n      <div class=\"card\"><a href=\"/d/adl4w2d/main\"><div class=\"icon\">⚠️</div><div class=\"title\">LATENCIA JOGOS </div></a></div>\n      <div class=\"card\"><a href=\"/d/YFfbg7z7k/main\"><div class=\"icon\">⚠️</div><div class=\"title\">LATENCIA SERVIÇOS </div></a></div>\n      <div class=\"card\"><a href=\"/d/SBFRcio7k/main\"><div class=\"icon\">⚠️</div><div class=\"title\">LATENCIA SITES DIVERSOS </div></a></div>\n      <div class=\"card\"><a href=\"/d/fevhtcyezb6dcf2/main\"><div class=\"icon\">🖧</div><div class=\"title\">RT-NE-M4 HUAWEI</div></a></div>\n      <div class=\"card\"><a href=\"/d/adtp899/main\"><div class=\"icon\">🖧</div><div class=\"title\">RT-NE8000 HUAWEI</div></a></div>\n    </div>\n  </div>\n\n  <div id=\"clientes\" class=\"section\">\n    <div class=\"dashboard-home\">\n      <div class=\"card\"><a href=\"/d/deu3yk6j47abkc/main\"><div class=\"icon\">🐧</div><div class=\"title\">CPE-x01</div></a></div>\n      <div class=\"card\"><a href=\"/d/dewkv4fhmyj9cd/main\"><div class=\"icon\">🏢</div><div class=\"title\">CPE-x02</div></a></div>\n      <div class=\"card\"><a href=\"/d/aew4b9w0nn85cd/main\"><div class=\"icon\">🏢</div><div class=\"title\">CPE-x03</div></a></div>\n      <div class=\"card\"><a href=\"/d/bew5i24m1cbuod/main\"><div class=\"icon\">🏢</div><div class=\"title\">CPE-x04</div></a></div>\n      <div class=\"card\"><a href=\"/d/eez9at1d6ocn4e/main\"><div class=\"icon\">🏢</div><div class=\"title\">CPE-x05</div></a></div>\n      <div class=\"card\"><a href=\"/d/ef25suj86wjcwc/main\"><div class=\"icon\">🏢</div><div class=\"title\">CPE-x06</div></a></div>\n    </div>\n  </div>\n\n  <div id=\"servidores\" class=\"section\">\n    <div class=\"dashboard-home\">\n      <div class=\"card\"><a href=\"/d/vMtK49V4z222/main\"><div class=\"icon\">🖥️</div><div class=\"title\">HUAWEI-BRAS-METRICAS</div></a></div>\n      <div class=\"card\"><a href=\"/d/adpqxws/main\"><div class=\"icon\">🖥️</div><div class=\"title\">HUAWEI-BRAS-SERVIÇOS</div></a></div>\n      <div class=\"card\"><a href=\"/d/df0j0gqonlam8a/main\"><div class=\"icon\">🖥️</div><div class=\"title\">A10 - CGNAT</div></a></div>\n      <div class=\"card\"><a href=\"/d/aee5dvw6lqpdsf5/main\"><div class=\"icon\">⚠️</div><div class=\"title\">RELATORIO DE INCIDENTES</div></a></div>\n    </div>\n  </div>\n\n  <div id=\"stfc\" class=\"section\">\n    <div class=\"dashboard-home\">\n      <div class=\"card\"><a href=\"/d/deu3yk6j47abkc/main\"><div class=\"icon\">🐧</div><div class=\"title\">CPE-x01</div></a></div>\n      <div class=\"card\"><a href=\"/d/dewkv4fhmyj9cd/main\"><div class=\"icon\">🏢</div><div class=\"title\">CPE-x02</div></a></div>\n      <div class=\"card\"><a href=\"/d/aew4b9w0nn85cd/main\"><div class=\"icon\">🏢</div><div class=\"title\">CPE-x03</div></a></div>\n      <div class=\"card\"><a href=\"/d/bew5i24m1cbuod/main\"><div class=\"icon\">🏢</div><div class=\"title\">CPE-x04</div></a></div>\n      <div class=\"card\"><a href=\"/d/eez9at1d6ocn4e/main\"><div class=\"icon\">🏢</div><div class=\"title\">CPE-x05</div></a></div>\n      <div class=\"card\"><a href=\"/d/ef25suj86wjcwc/main\"><div class=\"icon\">🏢</div><div class=\"title\">CPE-x06</div></a></div>  \n    </div>\n  </div>\n\n  <div id=\"olts\" class=\"section\">\n    <div class=\"dashboard-home\">\n      <div class=\"card\"><a href=\"/d/B4rGN1y4k/main\"><div class=\"icon\">🖧</div><div class=\"title\">FLUXO GEOLOCATION</div></a></div>\n      <div class=\"card\"><a href=\"/d/3adb5b52-e787-4b29-9360-164b2104c1/main\"><div class=\"icon\">🖧</div><div class=\"title\">FLUXO TOTAL</div></a></div>\n      <div class=\"card\"><a href=\"/d/0cda7e56-29fd-417a-b39a-2e8958e207d5/main\"><div class=\"icon\">🖧</div><div class=\"title\">FLUXO PROTOCOLOS</div></a></div>\n      <div class=\"card\"><a href=\"/d/fff4a0e1-5179-4224-b3bc-8377fc6fcdb3/main\"><div class=\"icon\">🖧</div><div class=\"title\">FLUXO ASN</div></a></div>\n    </div>\n  </div>\n\n  <div id=\"outros\" class=\"section\">\n    <div class=\"dashboard-home\">\n      <div class=\"card\"><a href=\"/d/f08b8ec0-8220-4da1-9441-891bfa29a924/main\"><div class=\"icon\">⚙️</div><div class=\"title\">SWITCH 6730 CLUSTER</div></a></div>\n      <div class=\"card\"><a href=\"/d/b5b770cf-1589-4ea2-ace7-4f3d9881247e232/main\"><div class=\"icon\">⚙️</div><div class=\"title\">SWITCH DATACOM</div></a></div>\n    </div>\n  </div>\n</div>\n\n<style>\n:root {\n  --fs-bg-1: #06131d;\n  --fs-bg-2: #0a1f2d;\n  --fs-bg-3: #10344a;\n  --fs-surface: rgba(10, 22, 32, 0.88);\n  --fs-surface-2: rgba(13, 33, 47, 0.92);\n  --fs-border: rgba(0, 204, 255, 0.22);\n  --fs-border-strong: rgba(0, 204, 255, 0.45);\n  --fs-primary: #00c8ff;\n  --fs-primary-2: #00e5ff;\n  --fs-accent: #12b3a8;\n  --fs-accent-2: #19d3c5;\n  --fs-text: #f4fbff;\n  --fs-text-soft: #b9d7e6;\n  --fs-shadow: rgba(0, 0, 0, 0.35);\n}\n\n.dashboard-container {\n  background: transparent;\n  min-height: 100vh;\n  padding: 20px;\n  color: var(--fs-text);\n  font-family: Arial, Helvetica, sans-serif;\n}\n\n/* Botões de Menu */\n.menu-container {\n  margin: 20px auto 28px auto;\n  text-align: center;\n}\n\n.btn {\n  background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));\n  color: var(--fs-text);\n  border: 1px solid var(--fs-border);\n  padding: 12px 24px;\n  margin: 8px;\n  border-radius: 10px;\n  cursor: pointer;\n  font-size: 16px;\n  font-weight: 600;\n  letter-spacing: 0.2px;\n  transition: all 0.25s ease;\n  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.18);\n}\n\n.btn:hover {\n  background: linear-gradient(135deg, rgba(0, 200, 255, 0.18), rgba(18, 179, 168, 0.16));\n  border-color: var(--fs-border-strong);\n  transform: translateY(-1px);\n  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.28);\n}\n\n.btn.active {\n  background: linear-gradient(135deg, var(--fs-primary) 0%, var(--fs-accent) 100%);\n  color: #041018;\n  border: 1px solid transparent;\n  box-shadow: 0 6px 18px rgba(0, 200, 255, 0.22);\n}\n\n/* Cards */\n.dashboard-home {\n  display: grid;\n  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));\n  gap: 30px;\n  padding: 30px;\n  justify-items: center;\n}\n\n.card {\n  background:\n    linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01)),\n    var(--fs-surface);\n  border: 1px solid rgba(0, 200, 255, 0.12);\n  border-radius: 16px;\n  box-shadow: 0 8px 22px rgba(0,0,0,0.30);\n  text-align: center;\n  width: 170px;\n  height: 170px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  transition: all 0.25s ease;\n  backdrop-filter: blur(6px);\n}\n\n.card:hover {\n  transform: translateY(-6px);\n  box-shadow: 0 14px 28px rgba(0,0,0,0.45);\n  background:\n    linear-gradient(135deg, rgba(0, 200, 255, 0.14), rgba(18, 179, 168, 0.14)),\n    var(--fs-surface-2);\n  border-color: rgba(0, 229, 255, 0.32);\n}\n\n.card a {\n  text-decoration: none;\n  color: var(--fs-text);\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  gap: 10px;\n  width: 100%;\n  height: 100%;\n  justify-content: center;\n  padding: 10px;\n  box-sizing: border-box;\n}\n\n.icon {\n  font-size: 42px;\n  filter: drop-shadow(0 0 10px rgba(0, 200, 255, 0.12));\n}\n\n.title {\n  font-size: 16px;\n  font-weight: 600;\n  color: var(--fs-text);\n  line-height: 1.25;\n  word-break: break-word;\n}\n\n.section {\n  display: none;\n  animation: fadeIn 0.5s;\n}\n\n@keyframes fadeIn {\n  from { opacity: 0; transform: translateY(4px); }\n  to { opacity: 1; transform: translateY(0); }\n}\n\n/* Responsividade */\n@media (max-width: 768px) {\n  .dashboard-home {\n    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));\n    gap: 20px;\n    padding: 20px;\n  }\n\n  .card {\n    width: 140px;\n    height: 140px;\n  }\n\n  .btn {\n    padding: 10px 16px;\n    font-size: 14px;\n    margin: 5px;\n  }\n\n\n  .title {\n    font-size: 14px;\n  }\n\n  .icon {\n    font-size: 36px;\n  }\n}\n</style>\n\n<script>\n$(document).ready(function(){\n  function hideAll() {\n    $(\".section\").hide();\n    $(\".btn\").removeClass(\"active\");\n  }\n\n  // Abrir WAN por padrão\n  hideAll();\n  $(\"#wan\").show();\n  $(\".btnWan\").addClass(\"active\");\n\n  $(\".btnWan\").click(function() {\n    hideAll();\n    $(\"#wan\").fadeIn();\n    $(this).addClass(\"active\");\n  });\n\n  $(\".btnClientes\").click(function() {\n    hideAll();\n    $(\"#clientes\").fadeIn();\n    $(this).addClass(\"active\");\n  });\n\n  $(\".btnServidores\").click(function() {\n    hideAll();\n    $(\"#servidores\").fadeIn();\n    $(this).addClass(\"active\");\n  });\n\n  $(\".btnStfc\").click(function() {\n    hideAll();\n    $(\"#stfc\").fadeIn();\n    $(this).addClass(\"active\");\n  });\n\n  $(\".btnOlts\").click(function() {\n    hideAll();\n    $(\"#olts\").fadeIn();\n    $(this).addClass(\"active\");\n  });\n\n  $(\".btnOutros\").click(function() {\n    hideAll();\n    $(\"#outros\").fadeIn();\n    $(this).addClass(\"active\");\n  });\n});\n</script>",
-                "mode": "html"
-              },
-              "fieldConfig": {
-                "defaults": {},
-                "overrides": []
-              }
-            }
-          },
-          "transparent": true
-        }
-      }
-    },
-    "layout": {
-      "kind": "GridLayout",
-      "spec": {
-        "items": [
-          {
-            "kind": "GridLayoutItem",
-            "spec": {
-              "x": 0,
-              "y": 0,
-              "width": 24,
-              "height": 23,
-              "element": {
-                "kind": "ElementReference",
-                "name": "panel-1"
-              }
-            }
-          }
-        ]
-      }
-    },
-    "links": [],
-    "liveNow": false,
-    "preload": false,
-    "tags": [],
-    "timeSettings": {
-      "timezone": "America/Sao_Paulo",
-      "from": "now-6h",
-      "to": "now",
-      "autoRefresh": "",
-      "autoRefreshIntervals": [
-        "5s",
-        "10s",
-        "30s",
-        "1m",
-        "5m",
-        "15m",
-        "30m",
-        "1h",
-        "2h",
-        "1d"
       ],
-      "hideTimepicker": false,
-      "fiscalYearStartMonth": 0
+      "options": {
+        "renderMode": "allRows",
+        "content": "<div class=\"fs-banner\">\n  <div class=\"fs-banner-left\">\n    <span class=\"fs-prompt\">flowspec@flowguard:<span class=\"fs-path\">~/noc</span></span>\n    <span class=\"fs-sep\">|</span>\n    <span class=\"fs-title\">FLOWGUARD ANTI-DDOS <span class=\"fs-thin\">/ CENTRO DE OPERAÇÕES</span></span>\n  </div>\n  <div class=\"fs-banner-right\">\n    <span class=\"fs-pill fs-pill--ok\"><span class=\"fs-dot\"></span>SCRUBBING CENTER · ONLINE</span>\n    <span class=\"fs-pill\"><span class=\"fs-mono\" id=\"fs-clock\">--:--:--</span></span>\n    <a class=\"fs-pill fs-pill--alert\" href=\"https://api.whatsapp.com/send/?phone=5521997115461\" target=\"_blank\" rel=\"noopener\">SOB ATAQUE? · SOC 24/7</a>\n  </div>\n</div>\n<div class=\"fs-ticker\"><div class=\"fs-ticker-track\">\n  <span>+ BGP FLOWSPEC</span><span>+ RATE LIMITING</span><span>+ NULL ROUTING</span><span>+ FILTRAGEM DE TRÁFEGO</span><span>+ MACHINE LEARNING</span><span>+ ANÁLISE COMPORTAMENTAL</span><span>+ SOC 24/7</span><span>+ REDES NGN</span>\n  <span>+ BGP FLOWSPEC</span><span>+ RATE LIMITING</span><span>+ NULL ROUTING</span><span>+ FILTRAGEM DE TRÁFEGO</span><span>+ MACHINE LEARNING</span><span>+ ANÁLISE COMPORTAMENTAL</span><span>+ SOC 24/7</span><span>+ REDES NGN</span>\n</div></div>\n",
+        "defaultContent": "<div class=\"fs-banner\">\n  <div class=\"fs-banner-left\">\n    <span class=\"fs-prompt\">flowspec@flowguard:<span class=\"fs-path\">~/noc</span></span>\n    <span class=\"fs-sep\">|</span>\n    <span class=\"fs-title\">FLOWGUARD ANTI-DDOS <span class=\"fs-thin\">/ CENTRO DE OPERAÇÕES</span></span>\n  </div>\n  <div class=\"fs-banner-right\">\n    <span class=\"fs-pill fs-pill--ok\"><span class=\"fs-dot\"></span>SCRUBBING CENTER · ONLINE</span>\n    <span class=\"fs-pill\"><span class=\"fs-mono\" id=\"fs-clock\">--:--:--</span></span>\n    <a class=\"fs-pill fs-pill--alert\" href=\"https://api.whatsapp.com/send/?phone=5521997115461\" target=\"_blank\" rel=\"noopener\">SOB ATAQUE? · SOC 24/7</a>\n  </div>\n</div>\n<div class=\"fs-ticker\"><div class=\"fs-ticker-track\">\n  <span>+ BGP FLOWSPEC</span><span>+ RATE LIMITING</span><span>+ NULL ROUTING</span><span>+ FILTRAGEM DE TRÁFEGO</span><span>+ MACHINE LEARNING</span><span>+ ANÁLISE COMPORTAMENTAL</span><span>+ SOC 24/7</span><span>+ REDES NGN</span>\n  <span>+ BGP FLOWSPEC</span><span>+ RATE LIMITING</span><span>+ NULL ROUTING</span><span>+ FILTRAGEM DE TRÁFEGO</span><span>+ MACHINE LEARNING</span><span>+ ANÁLISE COMPORTAMENTAL</span><span>+ SOC 24/7</span><span>+ REDES NGN</span>\n</div></div>\n",
+        "styles": ":root{--fs-accent:#00c8ff;--fs-alert:#ff5a5a;--fs-text:#eef4f8;--fs-dim:#8fa3b3;--fs-line:rgba(255,255,255,.08);\n--fs-mono:ui-monospace,\"JetBrains Mono\",Menlo,Consolas,monospace;}\n.fs-banner{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;font-family:var(--fs-mono);color:var(--fs-dim);padding:6px 4px 10px;border-bottom:1px solid var(--fs-line);}\n.fs-banner-left{display:flex;align-items:center;gap:12px;font-size:12px;letter-spacing:.04em;}\n.fs-banner-right{display:flex;align-items:center;gap:8px;flex-wrap:wrap;}\n.fs-prompt{color:var(--fs-accent);}.fs-path{color:var(--fs-text);margin-left:6px;}.fs-sep{opacity:.35;}\n.fs-title{color:var(--fs-text);font-weight:700;letter-spacing:.14em;font-size:13px;}.fs-thin{font-weight:400;color:var(--fs-dim);}\n.fs-pill{display:inline-flex;align-items:center;gap:8px;padding:5px 12px;border:1px solid rgba(255,255,255,.16);border-radius:999px;color:var(--fs-text);font-family:var(--fs-mono);font-size:11px;letter-spacing:.12em;text-decoration:none;background:rgba(8,12,18,.6);}\n.fs-pill--ok{border-color:rgba(0,200,255,.35);background:rgba(0,200,255,.12);}\n.fs-pill--alert{border-color:rgba(255,90,90,.45);background:rgba(255,90,90,.12);color:#ffd5d5;}\n.fs-pill--alert:hover{background:rgba(255,90,90,.25);}\n.fs-dot{width:7px;height:7px;border-radius:50%;background:var(--fs-accent);animation:fs-pulse 1.8s ease-out infinite;}\n@keyframes fs-pulse{0%{box-shadow:0 0 0 0 rgba(0,200,255,.55)}100%{box-shadow:0 0 0 9px rgba(0,200,255,0)}}\n.fs-ticker{overflow:hidden;white-space:nowrap;margin-top:8px;font-family:var(--fs-mono);font-size:11px;letter-spacing:.16em;color:var(--fs-dim);}\n.fs-ticker-track{display:inline-block;animation:fs-scroll 40s linear infinite;}\n.fs-ticker-track span{margin-right:42px;}.fs-ticker-track span::first-letter{color:var(--fs-accent);}\n@keyframes fs-scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}\n",
+        "afterRender": "(function(){\n  var root = (typeof context !== 'undefined' && context.element) ? context.element : (typeof element !== 'undefined' ? element : document);\n  var el = root.querySelector ? root.querySelector('#fs-clock') : null;\n  if (!el) return;\n  function tick(){ var d=new Date(); el.textContent = d.toLocaleTimeString('pt-BR',{hour12:false}) + ' BRT'; }\n  tick(); if (el._t) clearInterval(el._t); el._t = setInterval(tick, 1000);\n})();\n",
+        "helpers": "",
+        "status": "",
+        "wrap": false,
+        "contentPartials": [],
+        "externalScripts": [],
+        "externalStyles": [],
+        "editors": [
+          "styles",
+          "afterRender"
+        ],
+        "editor": {
+          "format": "auto",
+          "height": 200,
+          "language": "html"
+        }
+      }
     },
-    "title": "home",
-    "variables": []
-  }
+    {
+      "id": 2,
+      "type": "stat",
+      "title": "TRÁFEGO LIMPO",
+      "description": "DEMO: random walk. Trocar por query real (interface de saída do scrubbing).",
+      "gridPos": {
+        "x": 0,
+        "y": 4,
+        "w": 6,
+        "h": 4
+      },
+      "transparent": false,
+      "datasource": {
+        "type": "datasource",
+        "uid": "grafana"
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "datasource",
+            "uid": "grafana"
+          },
+          "queryType": "randomWalk",
+          "refId": "A"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "Mbits",
+          "decimals": 0,
+          "color": {
+            "mode": "fixed",
+            "fixedColor": "#00c8ff"
+          },
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "#00c8ff",
+                "value": null
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "options": {
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "orientation": "auto",
+        "textMode": "value_and_name",
+        "colorMode": "background_gradient",
+        "graphMode": "area",
+        "justifyMode": "center",
+        "wideLayout": true,
+        "showPercentChange": true,
+        "percentChangeColorMode": "standard"
+      }
+    },
+    {
+      "id": 3,
+      "type": "stat",
+      "title": "ATAQUE MITIGADO",
+      "description": "DEMO: random walk. Trocar por volume descartado no Wanguard/A10.",
+      "gridPos": {
+        "x": 6,
+        "y": 4,
+        "w": 6,
+        "h": 4
+      },
+      "transparent": false,
+      "datasource": {
+        "type": "datasource",
+        "uid": "grafana"
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "datasource",
+            "uid": "grafana"
+          },
+          "queryType": "randomWalk",
+          "refId": "A"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "Mbits",
+          "decimals": 0,
+          "color": {
+            "mode": "fixed",
+            "fixedColor": "#ff5a5a"
+          },
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "#ff5a5a",
+                "value": null
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "options": {
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "orientation": "auto",
+        "textMode": "value_and_name",
+        "colorMode": "background_gradient",
+        "graphMode": "area",
+        "justifyMode": "center",
+        "wideLayout": true,
+        "showPercentChange": true,
+        "percentChangeColorMode": "standard"
+      }
+    },
+    {
+      "id": 4,
+      "type": "stat",
+      "title": "PACOTES FILTRADOS",
+      "description": "DEMO: random walk. Trocar por pps descartados.",
+      "gridPos": {
+        "x": 12,
+        "y": 4,
+        "w": 6,
+        "h": 4
+      },
+      "transparent": false,
+      "datasource": {
+        "type": "datasource",
+        "uid": "grafana"
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "datasource",
+            "uid": "grafana"
+          },
+          "queryType": "randomWalk",
+          "refId": "A"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "pps",
+          "decimals": 0,
+          "color": {
+            "mode": "fixed",
+            "fixedColor": "#12b3a8"
+          },
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "#12b3a8",
+                "value": null
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "options": {
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "orientation": "auto",
+        "textMode": "value_and_name",
+        "colorMode": "background_gradient",
+        "graphMode": "area",
+        "justifyMode": "center",
+        "wideLayout": true,
+        "showPercentChange": true,
+        "percentChangeColorMode": "standard"
+      }
+    },
+    {
+      "id": 5,
+      "type": "stat",
+      "title": "UPTIME DA REDE",
+      "description": "DEMO: random walk. Trocar por disponibilidade (Zabbix).",
+      "gridPos": {
+        "x": 18,
+        "y": 4,
+        "w": 6,
+        "h": 4
+      },
+      "transparent": false,
+      "datasource": {
+        "type": "datasource",
+        "uid": "grafana"
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "datasource",
+            "uid": "grafana"
+          },
+          "queryType": "randomWalk",
+          "refId": "A"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "percent",
+          "decimals": 2,
+          "color": {
+            "mode": "fixed",
+            "fixedColor": "#9be15d"
+          },
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "#9be15d",
+                "value": null
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "options": {
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "orientation": "auto",
+        "textMode": "value_and_name",
+        "colorMode": "background_gradient",
+        "graphMode": "area",
+        "justifyMode": "center",
+        "wideLayout": true,
+        "showPercentChange": true,
+        "percentChangeColorMode": "standard"
+      }
+    },
+    {
+      "id": 6,
+      "type": "volkovlabs-links-panel",
+      "title": "MÓDULOS",
+      "description": "Navegação entre os dashboards por área.",
+      "gridPos": {
+        "x": 0,
+        "y": 8,
+        "w": 16,
+        "h": 10
+      },
+      "transparent": false,
+      "options": {
+        "groups": [
+          {
+            "name": "BORDA",
+            "items": [
+              {
+                "id": "8ae7f784-0727-4bd7-a52e-ebdbe656e1f1",
+                "type": "link",
+                "linkType": "single",
+                "name": "LATÊNCIA JOGOS",
+                "url": "/d/adl4w2d/main",
+                "icon": "bolt",
+                "target": "_self",
+                "enable": true,
+                "includeTimeRange": false,
+                "includeVariables": false,
+                "hoverMenu": false,
+                "showMenuOnHover": false,
+                "hideTooltipOnHover": false,
+                "dropdownName": "",
+                "alignContentPosition": "left",
+                "showCustomIcons": false,
+                "customIconUrl": ""
+              },
+              {
+                "id": "78c7dadd-e692-41ff-bd03-0f9888bf59d2",
+                "type": "link",
+                "linkType": "single",
+                "name": "LATÊNCIA SERVIÇOS",
+                "url": "/d/YFfbg7z7k/main",
+                "icon": "bolt",
+                "target": "_self",
+                "enable": true,
+                "includeTimeRange": false,
+                "includeVariables": false,
+                "hoverMenu": false,
+                "showMenuOnHover": false,
+                "hideTooltipOnHover": false,
+                "dropdownName": "",
+                "alignContentPosition": "left",
+                "showCustomIcons": false,
+                "customIconUrl": ""
+              },
+              {
+                "id": "d0817d4a-54b9-4a68-b71b-29b076c36b68",
+                "type": "link",
+                "linkType": "single",
+                "name": "LATÊNCIA SITES DIVERSOS",
+                "url": "/d/SBFRcio7k/main",
+                "icon": "globe",
+                "target": "_self",
+                "enable": true,
+                "includeTimeRange": false,
+                "includeVariables": false,
+                "hoverMenu": false,
+                "showMenuOnHover": false,
+                "hideTooltipOnHover": false,
+                "dropdownName": "",
+                "alignContentPosition": "left",
+                "showCustomIcons": false,
+                "customIconUrl": ""
+              },
+              {
+                "id": "1097acb4-ebac-4d10-8c19-2d4517a2251d",
+                "type": "link",
+                "linkType": "single",
+                "name": "RT-NE-M4 HUAWEI",
+                "url": "/d/fevhtcyezb6dcf2/main",
+                "icon": "sitemap",
+                "target": "_self",
+                "enable": true,
+                "includeTimeRange": false,
+                "includeVariables": false,
+                "hoverMenu": false,
+                "showMenuOnHover": false,
+                "hideTooltipOnHover": false,
+                "dropdownName": "",
+                "alignContentPosition": "left",
+                "showCustomIcons": false,
+                "customIconUrl": ""
+              },
+              {
+                "id": "5425c282-575e-4343-8849-555519eb13a2",
+                "type": "link",
+                "linkType": "single",
+                "name": "RT-NE8000 HUAWEI",
+                "url": "/d/adtp899/main",
+                "icon": "sitemap",
+                "target": "_self",
+                "enable": true,
+                "includeTimeRange": false,
+                "includeVariables": false,
+                "hoverMenu": false,
+                "showMenuOnHover": false,
+                "hideTooltipOnHover": false,
+                "dropdownName": "",
+                "alignContentPosition": "left",
+                "showCustomIcons": false,
+                "customIconUrl": ""
+              }
+            ]
+          },
+          {
+            "name": "CLIENTES",
+            "items": [
+              {
+                "id": "4ff0f129-63e9-4aad-957c-90937b02a65d",
+                "type": "link",
+                "linkType": "single",
+                "name": "CPE-x01",
+                "url": "/d/deu3yk6j47abkc/main",
+                "icon": "shield",
+                "target": "_self",
+                "enable": true,
+                "includeTimeRange": false,
+                "includeVariables": false,
+                "hoverMenu": false,
+                "showMenuOnHover": false,
+                "hideTooltipOnHover": false,
+                "dropdownName": "",
+                "alignContentPosition": "left",
+                "showCustomIcons": false,
+                "customIconUrl": ""
+              },
+              {
+                "id": "1ee71072-6b11-4466-8900-56639a6cabe9",
+                "type": "link",
+                "linkType": "single",
+                "name": "CPE-x02",
+                "url": "/d/dewkv4fhmyj9cd/main",
+                "icon": "shield",
+                "target": "_self",
+                "enable": true,
+                "includeTimeRange": false,
+                "includeVariables": false,
+                "hoverMenu": false,
+                "showMenuOnHover": false,
+                "hideTooltipOnHover": false,
+                "dropdownName": "",
+                "alignContentPosition": "left",
+                "showCustomIcons": false,
+                "customIconUrl": ""
+              },
+              {
+                "id": "3f334666-9223-43b0-912c-6f33e572f4a0",
+                "type": "link",
+                "linkType": "single",
+                "name": "CPE-x03",
+                "url": "/d/aew4b9w0nn85cd/main",
+                "icon": "shield",
+                "target": "_self",
+                "enable": true,
+                "includeTimeRange": false,
+                "includeVariables": false,
+                "hoverMenu": false,
+                "showMenuOnHover": false,
+                "hideTooltipOnHover": false,
+                "dropdownName": "",
+                "alignContentPosition": "left",
+                "showCustomIcons": false,
+                "customIconUrl": ""
+              },
+              {
+                "id": "6e7a8cfb-2322-4081-a024-4eefb279395a",
+                "type": "link",
+                "linkType": "single",
+                "name": "CPE-x04",
+                "url": "/d/bew5i24m1cbuod/main",
+                "icon": "shield",
+                "target": "_self",
+                "enable": true,
+                "includeTimeRange": false,
+                "includeVariables": false,
+                "hoverMenu": false,
+                "showMenuOnHover": false,
+                "hideTooltipOnHover": false,
+                "dropdownName": "",
+                "alignContentPosition": "left",
+                "showCustomIcons": false,
+                "customIconUrl": ""
+              },
+              {
+                "id": "99008167-eef0-4ded-a580-3e12a2928158",
+                "type": "link",
+                "linkType": "single",
+                "name": "CPE-x05",
+                "url": "/d/eez9at1d6ocn4e/main",
+                "icon": "shield",
+                "target": "_self",
+                "enable": true,
+                "includeTimeRange": false,
+                "includeVariables": false,
+                "hoverMenu": false,
+                "showMenuOnHover": false,
+                "hideTooltipOnHover": false,
+                "dropdownName": "",
+                "alignContentPosition": "left",
+                "showCustomIcons": false,
+                "customIconUrl": ""
+              },
+              {
+                "id": "7967264d-6e5c-42f4-8cb0-0f743703746f",
+                "type": "link",
+                "linkType": "single",
+                "name": "CPE-x06",
+                "url": "/d/ef25suj86wjcwc/main",
+                "icon": "shield",
+                "target": "_self",
+                "enable": true,
+                "includeTimeRange": false,
+                "includeVariables": false,
+                "hoverMenu": false,
+                "showMenuOnHover": false,
+                "hideTooltipOnHover": false,
+                "dropdownName": "",
+                "alignContentPosition": "left",
+                "showCustomIcons": false,
+                "customIconUrl": ""
+              }
+            ]
+          },
+          {
+            "name": "BNG-PPPOE",
+            "items": [
+              {
+                "id": "d9ad20c3-7fd1-441f-9b90-572c1a8dbddc",
+                "type": "link",
+                "linkType": "single",
+                "name": "HUAWEI-BRAS-MÉTRICAS",
+                "url": "/d/vMtK49V4z222/main",
+                "icon": "chart-line",
+                "target": "_self",
+                "enable": true,
+                "includeTimeRange": false,
+                "includeVariables": false,
+                "hoverMenu": false,
+                "showMenuOnHover": false,
+                "hideTooltipOnHover": false,
+                "dropdownName": "",
+                "alignContentPosition": "left",
+                "showCustomIcons": false,
+                "customIconUrl": ""
+              },
+              {
+                "id": "20b5940b-e839-4c2a-9c59-61d3c8ab89a2",
+                "type": "link",
+                "linkType": "single",
+                "name": "HUAWEI-BRAS-SERVIÇOS",
+                "url": "/d/adpqxws/main",
+                "icon": "database",
+                "target": "_self",
+                "enable": true,
+                "includeTimeRange": false,
+                "includeVariables": false,
+                "hoverMenu": false,
+                "showMenuOnHover": false,
+                "hideTooltipOnHover": false,
+                "dropdownName": "",
+                "alignContentPosition": "left",
+                "showCustomIcons": false,
+                "customIconUrl": ""
+              },
+              {
+                "id": "17348ece-0669-452c-a7cf-b8f663a97b2f",
+                "type": "link",
+                "linkType": "single",
+                "name": "A10 - CGNAT",
+                "url": "/d/df0j0gqonlam8a/main",
+                "icon": "exchange-alt",
+                "target": "_self",
+                "enable": true,
+                "includeTimeRange": false,
+                "includeVariables": false,
+                "hoverMenu": false,
+                "showMenuOnHover": false,
+                "hideTooltipOnHover": false,
+                "dropdownName": "",
+                "alignContentPosition": "left",
+                "showCustomIcons": false,
+                "customIconUrl": ""
+              },
+              {
+                "id": "7f2d7472-85e0-41f9-9e49-cc47cbf21fae",
+                "type": "link",
+                "linkType": "single",
+                "name": "RELATÓRIO DE INCIDENTES",
+                "url": "/d/aee5dvw6lqpdsf5/main",
+                "icon": "exclamation-triangle",
+                "target": "_self",
+                "enable": true,
+                "includeTimeRange": false,
+                "includeVariables": false,
+                "hoverMenu": false,
+                "showMenuOnHover": false,
+                "hideTooltipOnHover": false,
+                "dropdownName": "",
+                "alignContentPosition": "left",
+                "showCustomIcons": false,
+                "customIconUrl": ""
+              }
+            ]
+          },
+          {
+            "name": "OLT",
+            "items": [
+              {
+                "id": "3a6bcb72-1adf-4893-8ffc-095ee88fdc46",
+                "type": "link",
+                "linkType": "single",
+                "name": "CPE-x01",
+                "url": "/d/deu3yk6j47abkc/main",
+                "icon": "cloud",
+                "target": "_self",
+                "enable": true,
+                "includeTimeRange": false,
+                "includeVariables": false,
+                "hoverMenu": false,
+                "showMenuOnHover": false,
+                "hideTooltipOnHover": false,
+                "dropdownName": "",
+                "alignContentPosition": "left",
+                "showCustomIcons": false,
+                "customIconUrl": ""
+              },
+              {
+                "id": "24bc1eca-859a-4461-802a-81d59f455e19",
+                "type": "link",
+                "linkType": "single",
+                "name": "CPE-x02",
+                "url": "/d/dewkv4fhmyj9cd/main",
+                "icon": "cloud",
+                "target": "_self",
+                "enable": true,
+                "includeTimeRange": false,
+                "includeVariables": false,
+                "hoverMenu": false,
+                "showMenuOnHover": false,
+                "hideTooltipOnHover": false,
+                "dropdownName": "",
+                "alignContentPosition": "left",
+                "showCustomIcons": false,
+                "customIconUrl": ""
+              },
+              {
+                "id": "1152fd5e-0e2f-4c1a-a530-876cbe58921e",
+                "type": "link",
+                "linkType": "single",
+                "name": "CPE-x03",
+                "url": "/d/aew4b9w0nn85cd/main",
+                "icon": "cloud",
+                "target": "_self",
+                "enable": true,
+                "includeTimeRange": false,
+                "includeVariables": false,
+                "hoverMenu": false,
+                "showMenuOnHover": false,
+                "hideTooltipOnHover": false,
+                "dropdownName": "",
+                "alignContentPosition": "left",
+                "showCustomIcons": false,
+                "customIconUrl": ""
+              },
+              {
+                "id": "c917b539-5f3e-46ff-b1a3-5c97ed181d2b",
+                "type": "link",
+                "linkType": "single",
+                "name": "CPE-x04",
+                "url": "/d/bew5i24m1cbuod/main",
+                "icon": "cloud",
+                "target": "_self",
+                "enable": true,
+                "includeTimeRange": false,
+                "includeVariables": false,
+                "hoverMenu": false,
+                "showMenuOnHover": false,
+                "hideTooltipOnHover": false,
+                "dropdownName": "",
+                "alignContentPosition": "left",
+                "showCustomIcons": false,
+                "customIconUrl": ""
+              },
+              {
+                "id": "6959bf61-38a3-4e61-bf5c-34369bb513ea",
+                "type": "link",
+                "linkType": "single",
+                "name": "CPE-x05",
+                "url": "/d/eez9at1d6ocn4e/main",
+                "icon": "cloud",
+                "target": "_self",
+                "enable": true,
+                "includeTimeRange": false,
+                "includeVariables": false,
+                "hoverMenu": false,
+                "showMenuOnHover": false,
+                "hideTooltipOnHover": false,
+                "dropdownName": "",
+                "alignContentPosition": "left",
+                "showCustomIcons": false,
+                "customIconUrl": ""
+              },
+              {
+                "id": "fa601169-2b60-48e2-8a12-e7f315e0b037",
+                "type": "link",
+                "linkType": "single",
+                "name": "CPE-x06",
+                "url": "/d/ef25suj86wjcwc/main",
+                "icon": "cloud",
+                "target": "_self",
+                "enable": true,
+                "includeTimeRange": false,
+                "includeVariables": false,
+                "hoverMenu": false,
+                "showMenuOnHover": false,
+                "hideTooltipOnHover": false,
+                "dropdownName": "",
+                "alignContentPosition": "left",
+                "showCustomIcons": false,
+                "customIconUrl": ""
+              }
+            ]
+          },
+          {
+            "name": "NETFLOW",
+            "items": [
+              {
+                "id": "8b51b330-f93e-4865-b475-13fd94f70c63",
+                "type": "link",
+                "linkType": "single",
+                "name": "FLUXO GEOLOCATION",
+                "url": "/d/B4rGN1y4k/main",
+                "icon": "globe",
+                "target": "_self",
+                "enable": true,
+                "includeTimeRange": false,
+                "includeVariables": false,
+                "hoverMenu": false,
+                "showMenuOnHover": false,
+                "hideTooltipOnHover": false,
+                "dropdownName": "",
+                "alignContentPosition": "left",
+                "showCustomIcons": false,
+                "customIconUrl": ""
+              },
+              {
+                "id": "85a6bb5b-972c-411c-80d9-910b96e64c1d",
+                "type": "link",
+                "linkType": "single",
+                "name": "FLUXO TOTAL",
+                "url": "/d/3adb5b52-e787-4b29-9360-164b2104c1/main",
+                "icon": "chart-line",
+                "target": "_self",
+                "enable": true,
+                "includeTimeRange": false,
+                "includeVariables": false,
+                "hoverMenu": false,
+                "showMenuOnHover": false,
+                "hideTooltipOnHover": false,
+                "dropdownName": "",
+                "alignContentPosition": "left",
+                "showCustomIcons": false,
+                "customIconUrl": ""
+              },
+              {
+                "id": "2039ae0c-7122-4c8e-9906-7a604683d0e0",
+                "type": "link",
+                "linkType": "single",
+                "name": "FLUXO PROTOCOLOS",
+                "url": "/d/0cda7e56-29fd-417a-b39a-2e8958e207d5/main",
+                "icon": "layer-group",
+                "target": "_self",
+                "enable": true,
+                "includeTimeRange": false,
+                "includeVariables": false,
+                "hoverMenu": false,
+                "showMenuOnHover": false,
+                "hideTooltipOnHover": false,
+                "dropdownName": "",
+                "alignContentPosition": "left",
+                "showCustomIcons": false,
+                "customIconUrl": ""
+              },
+              {
+                "id": "146799f7-8de5-4fa3-a01d-9c29e60f1732",
+                "type": "link",
+                "linkType": "single",
+                "name": "FLUXO ASN",
+                "url": "/d/fff4a0e1-5179-4224-b3bc-8377fc6fcdb3/main",
+                "icon": "sitemap",
+                "target": "_self",
+                "enable": true,
+                "includeTimeRange": false,
+                "includeVariables": false,
+                "hoverMenu": false,
+                "showMenuOnHover": false,
+                "hideTooltipOnHover": false,
+                "dropdownName": "",
+                "alignContentPosition": "left",
+                "showCustomIcons": false,
+                "customIconUrl": ""
+              }
+            ]
+          },
+          {
+            "name": "SWITCH",
+            "items": [
+              {
+                "id": "99228f82-cf65-4aae-8f48-ba12e777b164",
+                "type": "link",
+                "linkType": "single",
+                "name": "SWITCH 6730 CLUSTER",
+                "url": "/d/f08b8ec0-8220-4da1-9441-891bfa29a924/main",
+                "icon": "apps",
+                "target": "_self",
+                "enable": true,
+                "includeTimeRange": false,
+                "includeVariables": false,
+                "hoverMenu": false,
+                "showMenuOnHover": false,
+                "hideTooltipOnHover": false,
+                "dropdownName": "",
+                "alignContentPosition": "left",
+                "showCustomIcons": false,
+                "customIconUrl": ""
+              },
+              {
+                "id": "933e7a24-0f8e-4d36-b0e3-ea8262508364",
+                "type": "link",
+                "linkType": "single",
+                "name": "SWITCH DATACOM",
+                "url": "/d/b5b770cf-1589-4ea2-ace7-4f3d9881247e232/main",
+                "icon": "apps",
+                "target": "_self",
+                "enable": true,
+                "includeTimeRange": false,
+                "includeVariables": false,
+                "hoverMenu": false,
+                "showMenuOnHover": false,
+                "hideTooltipOnHover": false,
+                "dropdownName": "",
+                "alignContentPosition": "left",
+                "showCustomIcons": false,
+                "customIconUrl": ""
+              }
+            ]
+          }
+        ],
+        "dropdowns": [],
+        "groupsSorting": false,
+        "sticky": false,
+        "customPadding": 0
+      }
+    },
+    {
+      "id": 7,
+      "type": "volkovlabs-echarts-panel",
+      "title": "TRÁFEGO · LIMPO x ATAQUE (Mbps)",
+      "description": "DEMO: séries geradas por random walk. Trocar as queries A/B por dado real.",
+      "gridPos": {
+        "x": 16,
+        "y": 8,
+        "w": 8,
+        "h": 10
+      },
+      "transparent": false,
+      "datasource": {
+        "type": "datasource",
+        "uid": "grafana"
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "datasource",
+            "uid": "grafana"
+          },
+          "queryType": "randomWalk",
+          "refId": "A"
+        },
+        {
+          "datasource": {
+            "type": "datasource",
+            "uid": "grafana"
+          },
+          "queryType": "randomWalk",
+          "refId": "B"
+        }
+      ],
+      "options": {
+        "renderer": "canvas",
+        "map": "none",
+        "editorMode": "code",
+        "getOption": "// Business Charts — tráfego limpo x ataque (DEMO com random walk; trocar query por dado real)\nconst ctx = (typeof context !== 'undefined') ? context : null;\nconst frames = ctx ? ctx.panel.data.series : data.series;\nconst vals = (f) => (f && f.values) ? (f.values.toArray ? f.values.toArray() : Array.from(f.values)) : [];\nconst pick = (i) => {\n  const fr = frames[i]; if (!fr) return { t: [], v: [] };\n  const tf = fr.fields.find(x => x.type === 'time'); const vf = fr.fields.find(x => x.type === 'number');\n  return { t: vals(tf), v: vals(vf) };\n};\nconst a = pick(0), b = pick(1);\nconst clean  = a.v.map(v => Math.round(820 + v * 55));\nconst attack = b.v.map(v => Math.max(0, Math.round(140 + v * 45)));\nconst times  = a.t.map(t => new Date(t).toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' }));\nconst mono = 'ui-monospace, JetBrains Mono, Menlo, Consolas, monospace';\nreturn {\n  backgroundColor: 'transparent',\n  animationDuration: 900, animationEasing: 'cubicOut',\n  textStyle: { fontFamily: mono },\n  legend: { top: 4, right: 8, textStyle: { color: '#8fa3b3', fontSize: 11, fontFamily: mono }, itemWidth: 14, itemHeight: 3, icon: 'rect' },\n  tooltip: { trigger: 'axis', backgroundColor: 'rgba(8,12,18,.95)', borderColor: 'rgba(0,200,255,.35)', textStyle: { color: '#eef4f8', fontFamily: mono, fontSize: 11 }, valueFormatter: v => v + ' Mbps' },\n  grid: { left: 44, right: 14, top: 34, bottom: 26 },\n  xAxis: { type: 'category', data: times, boundaryGap: false, axisLine: { lineStyle: { color: 'rgba(255,255,255,.12)' } }, axisLabel: { color: '#8fa3b3', fontSize: 10 }, axisTick: { show: false } },\n  yAxis: { type: 'value', splitLine: { lineStyle: { color: 'rgba(255,255,255,.06)' } }, axisLabel: { color: '#8fa3b3', fontSize: 10, formatter: '{value}' } },\n  series: [\n    { name: 'TRÁFEGO LIMPO', type: 'line', data: clean, smooth: true, showSymbol: false,\n      lineStyle: { width: 2, color: '#00c8ff', shadowColor: 'rgba(0,200,255,.6)', shadowBlur: 12 },\n      areaStyle: { color: { type: 'linear', x: 0, y: 0, x2: 0, y2: 1, colorStops: [{ offset: 0, color: 'rgba(0,200,255,.35)' }, { offset: 1, color: 'rgba(0,200,255,0)' }] } } },\n    { name: 'ATAQUE MITIGADO', type: 'line', data: attack, smooth: true, showSymbol: false,\n      lineStyle: { width: 2, color: '#ff5a5a', shadowColor: 'rgba(255,90,90,.6)', shadowBlur: 12 },\n      areaStyle: { color: { type: 'linear', x: 0, y: 0, x2: 0, y2: 1, colorStops: [{ offset: 0, color: 'rgba(255,90,90,.35)' }, { offset: 1, color: 'rgba(255,90,90,0)' }] } } }\n  ]\n};\n",
+        "editor": {
+          "format": "auto",
+          "height": 600
+        },
+        "themeEditor": {
+          "config": "{}",
+          "height": 400,
+          "name": "default"
+        },
+        "visualEditor": {
+          "code": "return { dataset: context.editor.dataset, series: context.editor.series }",
+          "dataset": [],
+          "series": [],
+          "codeHeight": 600
+        },
+        "baidu": {
+          "callback": "bmapReady",
+          "key": ""
+        },
+        "gaode": {
+          "key": "",
+          "plugin": "AMap.Scale,AMap.ToolBar"
+        },
+        "google": {
+          "callback": "gmapReady",
+          "key": ""
+        }
+      }
+    },
+    {
+      "id": 8,
+      "type": "dashlist",
+      "title": "ACESSO RÁPIDO · RECENTES E FAVORITOS",
+      "gridPos": {
+        "x": 0,
+        "y": 18,
+        "w": 16,
+        "h": 8
+      },
+      "transparent": false,
+      "options": {
+        "showStarred": true,
+        "showRecentlyViewed": true,
+        "showSearch": false,
+        "showHeadings": true,
+        "showFolderNames": true,
+        "maxItems": 10,
+        "query": "",
+        "tags": [],
+        "folderUID": "",
+        "includeVars": false,
+        "keepTime": false
+      }
+    },
+    {
+      "id": 9,
+      "type": "alertlist",
+      "title": "ALERTAS EM ANDAMENTO",
+      "gridPos": {
+        "x": 16,
+        "y": 18,
+        "w": 8,
+        "h": 8
+      },
+      "transparent": false,
+      "options": {
+        "alertName": "",
+        "dashboardAlerts": false,
+        "groupBy": [],
+        "groupMode": "default",
+        "maxItems": 20,
+        "sortOrder": 1,
+        "stateFilter": {
+          "error": true,
+          "firing": true,
+          "noData": false,
+          "normal": false,
+          "pending": true,
+          "recovering": true
+        },
+        "viewMode": "list",
+        "alertInstanceLabelFilter": "",
+        "datasource": "",
+        "folder": null
+      }
+    }
+  ],
+  "schemaVersion": 41,
+  "version": 1,
+  "fiscalYearStartMonth": 0,
+  "liveNow": false,
+  "weekStart": ""
 }
