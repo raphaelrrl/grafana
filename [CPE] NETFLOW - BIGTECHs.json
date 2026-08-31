@@ -1,0 +1,1590 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "grafana",
+          "uid": "-- Grafana --"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "id": 83,
+  "links": [],
+  "panels": [
+    {
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "cdx1w3w4lbwu8a"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 12,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 1,
+      "options": {
+        "SVGBaseFix": true,
+        "add100Percentage": false,
+        "calcsMutation": "standard",
+        "centerAlignContent": false,
+        "codeData": "{}",
+        "css": "\n:host,*{box-sizing:border-box}body,.r{margin:0;padding:0;font-family:Inter,Arial,sans-serif;color:#ecf4ff}\n.r{width:100%;height:100%;padding:14px;background:\nradial-gradient(circle at top right, rgba(12,84,188,.22), transparent 28%),\nradial-gradient(circle at bottom left, rgba(2,132,199,.14), transparent 22%),\nlinear-gradient(180deg, rgba(8,15,28,.99), rgba(6,12,20,.99))}\n.s{width:100%;height:100%;border:1px solid rgba(120,170,255,.14);border-radius:22px;background:rgba(10,18,32,.72);padding:16px;box-shadow:0 12px 40px rgba(0,0,0,.20), inset 0 1px 0 rgba(255,255,255,.03)}\n.t{font-size:12px;text-transform:uppercase;letter-spacing:.08em;font-weight:700;color:#8bb8ff;margin-bottom:10px}\n.hero{display:grid;grid-template-columns:1.35fr .9fr;gap:16px;height:100%}\n.k{display:inline-flex;align-items:center;gap:8px;width:fit-content;border:1px solid rgba(96,165,250,.30);border-radius:999px;padding:6px 10px;color:#dbeafe;background:rgba(29,78,216,.14);font-size:12px;font-weight:700;margin-bottom:10px}\n.brand{display:flex;align-items:center;gap:10px;margin-bottom:12px}.brand-badge{width:40px;height:40px;border-radius:12px;background:linear-gradient(135deg,#2563eb,#38bdf8);display:flex;align-items:center;justify-content:center;font-weight:900;color:white}.brand-name{font-size:18px;font-weight:800;color:#f8fbff}.brand-sub{font-size:12px;color:#9ab3cf}\n.h1{font-size:30px;line-height:1.06;font-weight:850;margin:0 0 10px 0}.c{font-size:13px;line-height:1.6;color:#d3deea;max-width:760px}\n.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}.tag{padding:6px 10px;border-radius:999px;font-size:11px;color:#dbeafe;background:rgba(37,99,235,.12);border:1px solid rgba(96,165,250,.18)}\n.hr{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}\n.m{border-radius:16px;padding:14px;background:rgba(2,8,23,.42);border:1px solid rgba(148,163,184,.12)}.ml{font-size:11px;color:#98aeca;margin-bottom:8px;text-transform:uppercase;letter-spacing:.06em}.mv{font-size:24px;font-weight:800;line-height:1.05}.mn{margin-top:8px;color:#8ea8c7;font-size:11px}\n.cards{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}.card{border:1px solid rgba(148,163,184,.12);border-radius:16px;padding:14px;background:rgba(2,8,23,.34)}.card .l{font-size:12px;color:#8ea8c7;margin-bottom:6px}.card .v{font-size:22px;font-weight:800;line-height:1.1}.mini{margin-top:10px;height:34px}\n.w{width:100%;height:calc(100% - 22px);border-radius:16px;background:rgba(2,8,23,.28);border:1px solid rgba(148,163,184,.10);padding:12px}\n.legend{display:flex;flex-wrap:wrap;gap:8px 12px;margin-top:8px}.li{display:flex;align-items:center;gap:6px;font-size:12px;color:#d2ddeb}.sw{width:10px;height:10px;border-radius:999px}\n.rows{display:flex;flex-direction:column;gap:10px}.row{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center}.name{font-size:13px;color:#f2f7ff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.metric{font-size:12px;font-weight:700}.bw{position:relative;height:10px;border-radius:999px;background:rgba(148,163,184,.12);overflow:hidden;margin-top:6px}.bar{position:absolute;inset:0 auto 0 0;border-radius:999px;background:linear-gradient(90deg,#38bdf8,#2563eb)}\n.nb{border-radius:16px;border:1px solid rgba(148,163,184,.10);background:rgba(2,8,23,.28);padding:14px}.nt{font-size:12px;color:#8bb8ff;text-transform:uppercase;letter-spacing:.06em;margin-bottom:10px}.ni{font-size:13px;line-height:1.5;color:#e8f2ff;margin-bottom:10px}.sub{color:#90a9c7;font-size:12px}svg{width:100%;height:100%;display:block}\n.cta{margin-top:16px;display:flex;gap:10px;flex-wrap:wrap}.btn{display:inline-flex;align-items:center;justify-content:center;padding:10px 14px;border-radius:12px;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.04em}.btn-primary{background:linear-gradient(135deg,#2563eb,#38bdf8);color:white}.btn-secondary{background:rgba(37,99,235,.10);color:#dbeafe;border:1px solid rgba(96,165,250,.20)}\n@media (max-width:980px){.cards{grid-template-columns:repeat(2,minmax(0,1fr))}.hero{grid-template-columns:1fr}}\n",
+        "dynamicData": false,
+        "dynamicFieldDisplayValues": false,
+        "dynamicHtmlGraphics": false,
+        "dynamicProps": false,
+        "html": "\n<div class=\"r\"><div class=\"s hero\"><div><div class=\"brand\"><div class=\"brand-badge\">F</div><div><div class=\"brand-name\">Flowspec Solutions</div><div class=\"brand-sub\">Scrubbing Center Anti-DDoS · SOC · Dashboards Executivos</div></div></div><div class=\"k\">ESTÁ SOB ATAQUE?</div><div class=\"h1\">Visão executiva de consumo, top talkers e presença de Big Techs/CDNs</div><div class=\"c\">Painel orientado para leitura técnica, alinhado à proposta de mitigação DDoS, BGP Flowspec local, dashboards em tempo real e suporte 24x7.</div><div class=\"tags\"><div class=\"tag\">Mitigação DDoS</div><div class=\"tag\">BGP Flowspec local</div><div class=\"tag\">Dashboards em tempo real</div><div class=\"tag\">Suporte 24x7</div></div><div class=\"cta\"><div class=\"btn btn-primary\">Flowspec Solutions</div><div class=\"btn btn-secondary\">SEGURANÇA EM REDES SOC</div></div></div><div id=\"heroMetrics\" class=\"hr\"></div></div></div>\n",
+        "onInit": "",
+        "onInitOnResize": false,
+        "onRender": "\nconst C=['#60a5fa','#22c55e','#f59e0b','#a78bfa','#ef4444','#14b8a6','#f472b6','#eab308'];\nconst arr=v=>{if(v==null)return[];if(Array.isArray(v))return v;if(Array.isArray(v.buffer))return v.buffer;if(typeof v.toArray==='function')return v.toArray();if(typeof v.get==='function'&&typeof v.length==='number'){const a=[];for(let i=0;i<v.length;i++)a.push(v.get(i));return a}return[]};\nconst sum=a=>a.reduce((x,y)=>x+(Number(y)||0),0);\nconst fb=n=>{n=Number(n)||0;if(!n)return'0 B';const u=['B','KB','MB','GB','TB'];const i=Math.min(Math.floor(Math.log(n)/Math.log(1024)),u.length-1);const v=n/Math.pow(1024,i);return `${v>=100?v.toFixed(0):v>=10?v.toFixed(1):v.toFixed(2)} ${u[i]}`};\nconst fn=n=>new Intl.NumberFormat('pt-BR').format(Math.round(Number(n)||0));\nconst eh=s=>String(s??'').replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('\"','&quot;').replaceAll(\"'\",'&#039;');\nconst vf=s=>!s||!s.fields?null:(s.fields.find(f=>f.type&&f.type!=='time'&&f.type!=='string')||s.fields[1]||null);\nconst lf=s=>!s||!s.fields?null:(s.fields.find(f=>f.type==='string')||s.fields[0]||null);\nconst total=s=>{const f=vf(s);return f?sum(Array.isArray(f.values)?f.values:arr(f.values)):0};\nconst pts=s=>{const f=vf(s);return f?arr(f.values).map(v=>Number(v)||0):[]};\nconst termRows=()=>{const s=htmlGraphics.data?.series?.[0];if(!s)return[];const l=lf(s),v=vf(s);const ls=l?arr(l.values):[],vs=v?arr(v.values):[];return ls.map((x,i)=>({label:x,value:Number(vs[i])||0})).sort((a,b)=>b.value-a.value)};\nconst spark=(values,w=180,h=34,c='#60a5fa')=>{if(!values.length)return `<svg viewBox=\"0 0 ${w} ${h}\"><text x=\"8\" y=\"${h/2}\" fill=\"#93a4bf\" font-size=\"11\">Sem dados</text></svg>`;const mx=Math.max(...values,1),mn=Math.min(...values,0),sp=Math.max(mx-mn,1);const p=values.map((v,i)=>{const x=(i/Math.max(values.length-1,1))*w;const y=h-((v-mn)/sp)*(h-6)-3;return `${x.toFixed(2)},${y.toFixed(2)}`}).join(' ');return `<svg viewBox=\"0 0 ${w} ${h}\" preserveAspectRatio=\"none\"><polyline fill=\"none\" stroke=\"${c}\" stroke-width=\"2\" points=\"${p}\" /></svg>`};\n\nconst host=htmlGraphics.htmlNode.querySelector('#heroMetrics'); if(!host) return; const srs=htmlGraphics.data?.series||[];\nhost.innerHTML=srs.map((s,i)=>{const t=total(s),p=pts(s),low=(s.name||'').toLowerCase(),isCount=low.includes('pacote')||low.includes('fluxo');return `<div class=\"m\"><div class=\"ml\">${eh(s.name||'Métrica')}</div><div class=\"mv\">${isCount?fn(t):fb(t)}</div><div class=\"mn\">${spark(p,160,30,C[i%C.length])}</div></div>`}).join('');\n",
+        "overflow": "visible",
+        "panelupdateOnMount": true,
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull",
+            "last",
+            "firstNotNull",
+            "first",
+            "min",
+            "max",
+            "mean",
+            "sum",
+            "count",
+            "range",
+            "delta",
+            "step",
+            "diff",
+            "logmin",
+            "allIsZero",
+            "allIsNull",
+            "diffperc"
+          ]
+        },
+        "renderOnMount": true,
+        "rootCSS": "",
+        "useGrafanaScrollbar": false
+      },
+      "pluginVersion": "2.2.3",
+      "targets": [
+        {
+          "alias": "Tráfego Total",
+          "bucketAggs": [
+            {
+              "field": "@timestamp",
+              "id": "2",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": "0",
+                "trimEdges": "0"
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "metrics": [
+            {
+              "field": "network.bytes",
+              "id": "1",
+              "type": "sum"
+            }
+          ],
+          "query": "*",
+          "refId": "A",
+          "timeField": "@timestamp"
+        },
+        {
+          "alias": "Pacotes Totais",
+          "bucketAggs": [
+            {
+              "field": "@timestamp",
+              "id": "2",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": "0",
+                "trimEdges": "0"
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "metrics": [
+            {
+              "field": "network.packets",
+              "id": "1",
+              "type": "sum"
+            }
+          ],
+          "query": "*",
+          "refId": "B",
+          "timeField": "@timestamp"
+        },
+        {
+          "alias": "Fluxos Totais",
+          "bucketAggs": [
+            {
+              "field": "@timestamp",
+              "id": "2",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": "0",
+                "trimEdges": "0"
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "metrics": [
+            {
+              "id": "1",
+              "type": "count"
+            }
+          ],
+          "query": "*",
+          "refId": "C",
+          "timeField": "@timestamp"
+        },
+        {
+          "alias": "Big Tech/CDN",
+          "bucketAggs": [
+            {
+              "field": "@timestamp",
+              "id": "2",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": "0",
+                "trimEdges": "0"
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "metrics": [
+            {
+              "field": "network.bytes",
+              "id": "1",
+              "type": "sum"
+            }
+          ],
+          "query": "(source.as.organization.name:\"Facebook, Inc.\") OR (source.as.organization.name:\"Google LLC\") OR (source.as.organization.name:\"Bytedance Inc.\" OR source.as.organization.name:\"ByteDance Inc.\") OR (source.as.organization.name:\"Amazon.com, Inc.\") OR (source.as.organization.name:\"Akamai International B.V.\") OR (source.as.organization.name:\"Globo Comunicacao e Participacoes SA\") OR (source.as.organization.name:\"Cloudflare, Inc.\") OR (source.as.organization.name:\"Fastly, Inc.\")",
+          "refId": "D",
+          "timeField": "@timestamp"
+        }
+      ],
+      "title": "Header Executivo",
+      "transparent": true,
+      "type": "gapit-htmlgraphics-panel"
+    },
+    {
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "cdx1w3w4lbwu8a"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 11,
+        "w": 24,
+        "x": 0,
+        "y": 12
+      },
+      "id": 2,
+      "options": {
+        "SVGBaseFix": true,
+        "add100Percentage": false,
+        "calcsMutation": "standard",
+        "centerAlignContent": false,
+        "codeData": "{}",
+        "css": "\n:host,*{box-sizing:border-box}body,.r{margin:0;padding:0;font-family:Inter,Arial,sans-serif;color:#ecf4ff}\n.r{width:100%;height:100%;padding:14px;background:\nradial-gradient(circle at top right, rgba(12,84,188,.22), transparent 28%),\nradial-gradient(circle at bottom left, rgba(2,132,199,.14), transparent 22%),\nlinear-gradient(180deg, rgba(8,15,28,.99), rgba(6,12,20,.99))}\n.s{width:100%;height:100%;border:1px solid rgba(120,170,255,.14);border-radius:22px;background:rgba(10,18,32,.72);padding:16px;box-shadow:0 12px 40px rgba(0,0,0,.20), inset 0 1px 0 rgba(255,255,255,.03)}\n.t{font-size:12px;text-transform:uppercase;letter-spacing:.08em;font-weight:700;color:#8bb8ff;margin-bottom:10px}\n.hero{display:grid;grid-template-columns:1.35fr .9fr;gap:16px;height:100%}\n.k{display:inline-flex;align-items:center;gap:8px;width:fit-content;border:1px solid rgba(96,165,250,.30);border-radius:999px;padding:6px 10px;color:#dbeafe;background:rgba(29,78,216,.14);font-size:12px;font-weight:700;margin-bottom:10px}\n.brand{display:flex;align-items:center;gap:10px;margin-bottom:12px}.brand-badge{width:40px;height:40px;border-radius:12px;background:linear-gradient(135deg,#2563eb,#38bdf8);display:flex;align-items:center;justify-content:center;font-weight:900;color:white}.brand-name{font-size:18px;font-weight:800;color:#f8fbff}.brand-sub{font-size:12px;color:#9ab3cf}\n.h1{font-size:30px;line-height:1.06;font-weight:850;margin:0 0 10px 0}.c{font-size:13px;line-height:1.6;color:#d3deea;max-width:760px}\n.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}.tag{padding:6px 10px;border-radius:999px;font-size:11px;color:#dbeafe;background:rgba(37,99,235,.12);border:1px solid rgba(96,165,250,.18)}\n.hr{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}\n.m{border-radius:16px;padding:14px;background:rgba(2,8,23,.42);border:1px solid rgba(148,163,184,.12)}.ml{font-size:11px;color:#98aeca;margin-bottom:8px;text-transform:uppercase;letter-spacing:.06em}.mv{font-size:24px;font-weight:800;line-height:1.05}.mn{margin-top:8px;color:#8ea8c7;font-size:11px}\n.cards{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}.card{border:1px solid rgba(148,163,184,.12);border-radius:16px;padding:14px;background:rgba(2,8,23,.34)}.card .l{font-size:12px;color:#8ea8c7;margin-bottom:6px}.card .v{font-size:22px;font-weight:800;line-height:1.1}.mini{margin-top:10px;height:34px}\n.w{width:100%;height:calc(100% - 22px);border-radius:16px;background:rgba(2,8,23,.28);border:1px solid rgba(148,163,184,.10);padding:12px}\n.legend{display:flex;flex-wrap:wrap;gap:8px 12px;margin-top:8px}.li{display:flex;align-items:center;gap:6px;font-size:12px;color:#d2ddeb}.sw{width:10px;height:10px;border-radius:999px}\n.rows{display:flex;flex-direction:column;gap:10px}.row{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center}.name{font-size:13px;color:#f2f7ff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.metric{font-size:12px;font-weight:700}.bw{position:relative;height:10px;border-radius:999px;background:rgba(148,163,184,.12);overflow:hidden;margin-top:6px}.bar{position:absolute;inset:0 auto 0 0;border-radius:999px;background:linear-gradient(90deg,#38bdf8,#2563eb)}\n.nb{border-radius:16px;border:1px solid rgba(148,163,184,.10);background:rgba(2,8,23,.28);padding:14px}.nt{font-size:12px;color:#8bb8ff;text-transform:uppercase;letter-spacing:.06em;margin-bottom:10px}.ni{font-size:13px;line-height:1.5;color:#e8f2ff;margin-bottom:10px}.sub{color:#90a9c7;font-size:12px}svg{width:100%;height:100%;display:block}\n.cta{margin-top:16px;display:flex;gap:10px;flex-wrap:wrap}.btn{display:inline-flex;align-items:center;justify-content:center;padding:10px 14px;border-radius:12px;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.04em}.btn-primary{background:linear-gradient(135deg,#2563eb,#38bdf8);color:white}.btn-secondary{background:rgba(37,99,235,.10);color:#dbeafe;border:1px solid rgba(96,165,250,.20)}\n@media (max-width:980px){.cards{grid-template-columns:repeat(2,minmax(0,1fr))}.hero{grid-template-columns:1fr}}\n",
+        "dynamicData": false,
+        "dynamicFieldDisplayValues": false,
+        "dynamicHtmlGraphics": false,
+        "dynamicProps": false,
+        "html": "<div class=\"r\"><div class=\"s\"><div class=\"t\">Big Techs & CDNs observadas</div><div id=\"cards\" class=\"cards\"></div></div></div>",
+        "onInit": "",
+        "onInitOnResize": false,
+        "onRender": "\nconst C=['#60a5fa','#22c55e','#f59e0b','#a78bfa','#ef4444','#14b8a6','#f472b6','#eab308'];\nconst arr=v=>{if(v==null)return[];if(Array.isArray(v))return v;if(Array.isArray(v.buffer))return v.buffer;if(typeof v.toArray==='function')return v.toArray();if(typeof v.get==='function'&&typeof v.length==='number'){const a=[];for(let i=0;i<v.length;i++)a.push(v.get(i));return a}return[]};\nconst sum=a=>a.reduce((x,y)=>x+(Number(y)||0),0);\nconst fb=n=>{n=Number(n)||0;if(!n)return'0 B';const u=['B','KB','MB','GB','TB'];const i=Math.min(Math.floor(Math.log(n)/Math.log(1024)),u.length-1);const v=n/Math.pow(1024,i);return `${v>=100?v.toFixed(0):v>=10?v.toFixed(1):v.toFixed(2)} ${u[i]}`};\nconst fn=n=>new Intl.NumberFormat('pt-BR').format(Math.round(Number(n)||0));\nconst eh=s=>String(s??'').replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('\"','&quot;').replaceAll(\"'\",'&#039;');\nconst vf=s=>!s||!s.fields?null:(s.fields.find(f=>f.type&&f.type!=='time'&&f.type!=='string')||s.fields[1]||null);\nconst lf=s=>!s||!s.fields?null:(s.fields.find(f=>f.type==='string')||s.fields[0]||null);\nconst total=s=>{const f=vf(s);return f?sum(Array.isArray(f.values)?f.values:arr(f.values)):0};\nconst pts=s=>{const f=vf(s);return f?arr(f.values).map(v=>Number(v)||0):[]};\nconst termRows=()=>{const s=htmlGraphics.data?.series?.[0];if(!s)return[];const l=lf(s),v=vf(s);const ls=l?arr(l.values):[],vs=v?arr(v.values):[];return ls.map((x,i)=>({label:x,value:Number(vs[i])||0})).sort((a,b)=>b.value-a.value)};\nconst spark=(values,w=180,h=34,c='#60a5fa')=>{if(!values.length)return `<svg viewBox=\"0 0 ${w} ${h}\"><text x=\"8\" y=\"${h/2}\" fill=\"#93a4bf\" font-size=\"11\">Sem dados</text></svg>`;const mx=Math.max(...values,1),mn=Math.min(...values,0),sp=Math.max(mx-mn,1);const p=values.map((v,i)=>{const x=(i/Math.max(values.length-1,1))*w;const y=h-((v-mn)/sp)*(h-6)-3;return `${x.toFixed(2)},${y.toFixed(2)}`}).join(' ');return `<svg viewBox=\"0 0 ${w} ${h}\" preserveAspectRatio=\"none\"><polyline fill=\"none\" stroke=\"${c}\" stroke-width=\"2\" points=\"${p}\" /></svg>`};\n\nconst host=htmlGraphics.htmlNode.querySelector('#cards'); if(!host) return; const srs=htmlGraphics.data?.series||[];\nhost.innerHTML=srs.map((s,i)=>`<div class=\"card\"><div class=\"l\">${eh(s.name||'Série')}</div><div class=\"v\">${fb(total(s))}</div><div class=\"mini\">${spark(pts(s),180,34,C[i%C.length])}</div></div>`).join('')||'<div class=\"sub\">Sem dados.</div>';\n",
+        "overflow": "visible",
+        "panelupdateOnMount": true,
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull",
+            "last",
+            "firstNotNull",
+            "first",
+            "min",
+            "max",
+            "mean",
+            "sum",
+            "count",
+            "range",
+            "delta",
+            "step",
+            "diff",
+            "logmin",
+            "allIsZero",
+            "allIsNull",
+            "diffperc"
+          ]
+        },
+        "renderOnMount": true,
+        "rootCSS": "",
+        "useGrafanaScrollbar": false
+      },
+      "pluginVersion": "2.2.3",
+      "targets": [
+        {
+          "alias": "Facebook",
+          "bucketAggs": [
+            {
+              "field": "@timestamp",
+              "id": "2",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": "0",
+                "trimEdges": "0"
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "metrics": [
+            {
+              "field": "network.bytes",
+              "id": "1",
+              "type": "sum"
+            }
+          ],
+          "query": "source.as.organization.name:\"Facebook, Inc.\"",
+          "refId": "A",
+          "timeField": "@timestamp"
+        },
+        {
+          "alias": "Google",
+          "bucketAggs": [
+            {
+              "field": "@timestamp",
+              "id": "2",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": "0",
+                "trimEdges": "0"
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "metrics": [
+            {
+              "field": "network.bytes",
+              "id": "1",
+              "type": "sum"
+            }
+          ],
+          "query": "source.as.organization.name:\"Google LLC\"",
+          "refId": "B",
+          "timeField": "@timestamp"
+        },
+        {
+          "alias": "ByteDance",
+          "bucketAggs": [
+            {
+              "field": "@timestamp",
+              "id": "2",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": "0",
+                "trimEdges": "0"
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "metrics": [
+            {
+              "field": "network.bytes",
+              "id": "1",
+              "type": "sum"
+            }
+          ],
+          "query": "source.as.organization.name:\"Bytedance Inc.\" OR source.as.organization.name:\"ByteDance Inc.\"",
+          "refId": "C",
+          "timeField": "@timestamp"
+        },
+        {
+          "alias": "Amazon",
+          "bucketAggs": [
+            {
+              "field": "@timestamp",
+              "id": "2",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": "0",
+                "trimEdges": "0"
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "metrics": [
+            {
+              "field": "network.bytes",
+              "id": "1",
+              "type": "sum"
+            }
+          ],
+          "query": "source.as.organization.name:\"Amazon.com, Inc.\"",
+          "refId": "D",
+          "timeField": "@timestamp"
+        },
+        {
+          "alias": "Akamai",
+          "bucketAggs": [
+            {
+              "field": "@timestamp",
+              "id": "2",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": "0",
+                "trimEdges": "0"
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "metrics": [
+            {
+              "field": "network.bytes",
+              "id": "1",
+              "type": "sum"
+            }
+          ],
+          "query": "source.as.organization.name:\"Akamai International B.V.\"",
+          "refId": "E",
+          "timeField": "@timestamp"
+        },
+        {
+          "alias": "Globo",
+          "bucketAggs": [
+            {
+              "field": "@timestamp",
+              "id": "2",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": "0",
+                "trimEdges": "0"
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "metrics": [
+            {
+              "field": "network.bytes",
+              "id": "1",
+              "type": "sum"
+            }
+          ],
+          "query": "source.as.organization.name:\"Globo Comunicacao e Participacoes SA\"",
+          "refId": "F",
+          "timeField": "@timestamp"
+        },
+        {
+          "alias": "Cloudflare",
+          "bucketAggs": [
+            {
+              "field": "@timestamp",
+              "id": "2",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": "0",
+                "trimEdges": "0"
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "metrics": [
+            {
+              "field": "network.bytes",
+              "id": "1",
+              "type": "sum"
+            }
+          ],
+          "query": "source.as.organization.name:\"Cloudflare, Inc.\"",
+          "refId": "G",
+          "timeField": "@timestamp"
+        },
+        {
+          "alias": "Fastly",
+          "bucketAggs": [
+            {
+              "field": "@timestamp",
+              "id": "2",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": "0",
+                "trimEdges": "0"
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "metrics": [
+            {
+              "field": "network.bytes",
+              "id": "1",
+              "type": "sum"
+            }
+          ],
+          "query": "source.as.organization.name:\"Fastly, Inc.\"",
+          "refId": "H",
+          "timeField": "@timestamp"
+        }
+      ],
+      "title": "Big Techs & CDNs",
+      "transparent": true,
+      "type": "gapit-htmlgraphics-panel"
+    },
+    {
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "cdx1w3w4lbwu8a"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 14,
+        "w": 15,
+        "x": 0,
+        "y": 23
+      },
+      "id": 3,
+      "options": {
+        "SVGBaseFix": true,
+        "add100Percentage": false,
+        "calcsMutation": "standard",
+        "centerAlignContent": false,
+        "codeData": "{}",
+        "css": "\n:host,*{box-sizing:border-box}body,.r{margin:0;padding:0;font-family:Inter,Arial,sans-serif;color:#ecf4ff}\n.r{width:100%;height:100%;padding:14px;background:\nradial-gradient(circle at top right, rgba(12,84,188,.22), transparent 28%),\nradial-gradient(circle at bottom left, rgba(2,132,199,.14), transparent 22%),\nlinear-gradient(180deg, rgba(8,15,28,.99), rgba(6,12,20,.99))}\n.s{width:100%;height:100%;border:1px solid rgba(120,170,255,.14);border-radius:22px;background:rgba(10,18,32,.72);padding:16px;box-shadow:0 12px 40px rgba(0,0,0,.20), inset 0 1px 0 rgba(255,255,255,.03)}\n.t{font-size:12px;text-transform:uppercase;letter-spacing:.08em;font-weight:700;color:#8bb8ff;margin-bottom:10px}\n.hero{display:grid;grid-template-columns:1.35fr .9fr;gap:16px;height:100%}\n.k{display:inline-flex;align-items:center;gap:8px;width:fit-content;border:1px solid rgba(96,165,250,.30);border-radius:999px;padding:6px 10px;color:#dbeafe;background:rgba(29,78,216,.14);font-size:12px;font-weight:700;margin-bottom:10px}\n.brand{display:flex;align-items:center;gap:10px;margin-bottom:12px}.brand-badge{width:40px;height:40px;border-radius:12px;background:linear-gradient(135deg,#2563eb,#38bdf8);display:flex;align-items:center;justify-content:center;font-weight:900;color:white}.brand-name{font-size:18px;font-weight:800;color:#f8fbff}.brand-sub{font-size:12px;color:#9ab3cf}\n.h1{font-size:30px;line-height:1.06;font-weight:850;margin:0 0 10px 0}.c{font-size:13px;line-height:1.6;color:#d3deea;max-width:760px}\n.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}.tag{padding:6px 10px;border-radius:999px;font-size:11px;color:#dbeafe;background:rgba(37,99,235,.12);border:1px solid rgba(96,165,250,.18)}\n.hr{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}\n.m{border-radius:16px;padding:14px;background:rgba(2,8,23,.42);border:1px solid rgba(148,163,184,.12)}.ml{font-size:11px;color:#98aeca;margin-bottom:8px;text-transform:uppercase;letter-spacing:.06em}.mv{font-size:24px;font-weight:800;line-height:1.05}.mn{margin-top:8px;color:#8ea8c7;font-size:11px}\n.cards{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}.card{border:1px solid rgba(148,163,184,.12);border-radius:16px;padding:14px;background:rgba(2,8,23,.34)}.card .l{font-size:12px;color:#8ea8c7;margin-bottom:6px}.card .v{font-size:22px;font-weight:800;line-height:1.1}.mini{margin-top:10px;height:34px}\n.w{width:100%;height:calc(100% - 22px);border-radius:16px;background:rgba(2,8,23,.28);border:1px solid rgba(148,163,184,.10);padding:12px}\n.legend{display:flex;flex-wrap:wrap;gap:8px 12px;margin-top:8px}.li{display:flex;align-items:center;gap:6px;font-size:12px;color:#d2ddeb}.sw{width:10px;height:10px;border-radius:999px}\n.rows{display:flex;flex-direction:column;gap:10px}.row{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center}.name{font-size:13px;color:#f2f7ff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.metric{font-size:12px;font-weight:700}.bw{position:relative;height:10px;border-radius:999px;background:rgba(148,163,184,.12);overflow:hidden;margin-top:6px}.bar{position:absolute;inset:0 auto 0 0;border-radius:999px;background:linear-gradient(90deg,#38bdf8,#2563eb)}\n.nb{border-radius:16px;border:1px solid rgba(148,163,184,.10);background:rgba(2,8,23,.28);padding:14px}.nt{font-size:12px;color:#8bb8ff;text-transform:uppercase;letter-spacing:.06em;margin-bottom:10px}.ni{font-size:13px;line-height:1.5;color:#e8f2ff;margin-bottom:10px}.sub{color:#90a9c7;font-size:12px}svg{width:100%;height:100%;display:block}\n.cta{margin-top:16px;display:flex;gap:10px;flex-wrap:wrap}.btn{display:inline-flex;align-items:center;justify-content:center;padding:10px 14px;border-radius:12px;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.04em}.btn-primary{background:linear-gradient(135deg,#2563eb,#38bdf8);color:white}.btn-secondary{background:rgba(37,99,235,.10);color:#dbeafe;border:1px solid rgba(96,165,250,.20)}\n@media (max-width:980px){.cards{grid-template-columns:repeat(2,minmax(0,1fr))}.hero{grid-template-columns:1fr}}\n",
+        "dynamicData": false,
+        "dynamicFieldDisplayValues": false,
+        "dynamicHtmlGraphics": false,
+        "dynamicProps": false,
+        "html": "<div class=\"r\"><div class=\"s\"><div class=\"t\">Evolução do consumo</div><div id=\"chart\" class=\"w\"></div><div id=\"legend\" class=\"legend\"></div></div></div>",
+        "onInit": "",
+        "onInitOnResize": false,
+        "onRender": "\nconst C=['#60a5fa','#22c55e','#f59e0b','#a78bfa','#ef4444','#14b8a6','#f472b6','#eab308'];\nconst arr=v=>{if(v==null)return[];if(Array.isArray(v))return v;if(Array.isArray(v.buffer))return v.buffer;if(typeof v.toArray==='function')return v.toArray();if(typeof v.get==='function'&&typeof v.length==='number'){const a=[];for(let i=0;i<v.length;i++)a.push(v.get(i));return a}return[]};\nconst sum=a=>a.reduce((x,y)=>x+(Number(y)||0),0);\nconst fb=n=>{n=Number(n)||0;if(!n)return'0 B';const u=['B','KB','MB','GB','TB'];const i=Math.min(Math.floor(Math.log(n)/Math.log(1024)),u.length-1);const v=n/Math.pow(1024,i);return `${v>=100?v.toFixed(0):v>=10?v.toFixed(1):v.toFixed(2)} ${u[i]}`};\nconst fn=n=>new Intl.NumberFormat('pt-BR').format(Math.round(Number(n)||0));\nconst eh=s=>String(s??'').replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('\"','&quot;').replaceAll(\"'\",'&#039;');\nconst vf=s=>!s||!s.fields?null:(s.fields.find(f=>f.type&&f.type!=='time'&&f.type!=='string')||s.fields[1]||null);\nconst lf=s=>!s||!s.fields?null:(s.fields.find(f=>f.type==='string')||s.fields[0]||null);\nconst total=s=>{const f=vf(s);return f?sum(Array.isArray(f.values)?f.values:arr(f.values)):0};\nconst pts=s=>{const f=vf(s);return f?arr(f.values).map(v=>Number(v)||0):[]};\nconst termRows=()=>{const s=htmlGraphics.data?.series?.[0];if(!s)return[];const l=lf(s),v=vf(s);const ls=l?arr(l.values):[],vs=v?arr(v.values):[];return ls.map((x,i)=>({label:x,value:Number(vs[i])||0})).sort((a,b)=>b.value-a.value)};\nconst spark=(values,w=180,h=34,c='#60a5fa')=>{if(!values.length)return `<svg viewBox=\"0 0 ${w} ${h}\"><text x=\"8\" y=\"${h/2}\" fill=\"#93a4bf\" font-size=\"11\">Sem dados</text></svg>`;const mx=Math.max(...values,1),mn=Math.min(...values,0),sp=Math.max(mx-mn,1);const p=values.map((v,i)=>{const x=(i/Math.max(values.length-1,1))*w;const y=h-((v-mn)/sp)*(h-6)-3;return `${x.toFixed(2)},${y.toFixed(2)}`}).join(' ');return `<svg viewBox=\"0 0 ${w} ${h}\" preserveAspectRatio=\"none\"><polyline fill=\"none\" stroke=\"${c}\" stroke-width=\"2\" points=\"${p}\" /></svg>`};\n\nconst chart=htmlGraphics.htmlNode.querySelector('#chart'),legend=htmlGraphics.htmlNode.querySelector('#legend'),srs=htmlGraphics.data?.series||[]; if(!chart||!legend)return;\nconst w=Math.max(chart.clientWidth||(htmlGraphics.width-50),320),h=Math.max(chart.clientHeight||(htmlGraphics.height-100),220),pad={top:8,right:12,bottom:16,left:10},iw=w-pad.left-pad.right,ih=h-pad.top-pad.bottom,vals=srs.flatMap(s=>pts(s)),mx=Math.max(...vals,1);\nconst grid=[0,.25,.5,.75,1].map(p=>{const y=pad.top+ih-ih*p;return `<line x1=\"${pad.left}\" y1=\"${y}\" x2=\"${w-pad.right}\" y2=\"${y}\" stroke=\"rgba(148,163,184,.14)\" stroke-width=\"1\" />`}).join('');\nconst lines=srs.map((s,i)=>{const a=pts(s); if(!a.length)return ''; const ps=a.map((v,j)=>{const x=pad.left+(j/Math.max(a.length-1,1))*iw; const y=pad.top+ih-((v/mx)*ih); return `${x.toFixed(2)},${y.toFixed(2)}`}).join(' '); return `<polyline fill=\"none\" stroke=\"${C[i%C.length]}\" stroke-width=\"2.4\" points=\"${ps}\" />`}).join('');\nchart.innerHTML=`<svg viewBox=\"0 0 ${w} ${h}\" preserveAspectRatio=\"none\">${grid}${lines}</svg>`;\nlegend.innerHTML=srs.map((s,i)=>`<div class=\"li\"><span class=\"sw\" style=\"background:${C[i%C.length]}\"></span><span>${eh(s.name||'Série')}</span></div>`).join('');\n",
+        "overflow": "visible",
+        "panelupdateOnMount": true,
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull",
+            "last",
+            "firstNotNull",
+            "first",
+            "min",
+            "max",
+            "mean",
+            "sum",
+            "count",
+            "range",
+            "delta",
+            "step",
+            "diff",
+            "logmin",
+            "allIsZero",
+            "allIsNull",
+            "diffperc"
+          ]
+        },
+        "renderOnMount": true,
+        "rootCSS": "",
+        "useGrafanaScrollbar": false
+      },
+      "pluginVersion": "2.2.3",
+      "targets": [
+        {
+          "alias": "Facebook",
+          "bucketAggs": [
+            {
+              "field": "@timestamp",
+              "id": "2",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": "0",
+                "trimEdges": "0"
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "metrics": [
+            {
+              "field": "network.bytes",
+              "id": "1",
+              "type": "sum"
+            }
+          ],
+          "query": "source.as.organization.name:\"Facebook, Inc.\"",
+          "refId": "A",
+          "timeField": "@timestamp"
+        },
+        {
+          "alias": "Google",
+          "bucketAggs": [
+            {
+              "field": "@timestamp",
+              "id": "2",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": "0",
+                "trimEdges": "0"
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "metrics": [
+            {
+              "field": "network.bytes",
+              "id": "1",
+              "type": "sum"
+            }
+          ],
+          "query": "source.as.organization.name:\"Google LLC\"",
+          "refId": "B",
+          "timeField": "@timestamp"
+        },
+        {
+          "alias": "ByteDance",
+          "bucketAggs": [
+            {
+              "field": "@timestamp",
+              "id": "2",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": "0",
+                "trimEdges": "0"
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "metrics": [
+            {
+              "field": "network.bytes",
+              "id": "1",
+              "type": "sum"
+            }
+          ],
+          "query": "source.as.organization.name:\"Bytedance Inc.\" OR source.as.organization.name:\"ByteDance Inc.\"",
+          "refId": "C",
+          "timeField": "@timestamp"
+        },
+        {
+          "alias": "Amazon",
+          "bucketAggs": [
+            {
+              "field": "@timestamp",
+              "id": "2",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": "0",
+                "trimEdges": "0"
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "metrics": [
+            {
+              "field": "network.bytes",
+              "id": "1",
+              "type": "sum"
+            }
+          ],
+          "query": "source.as.organization.name:\"Amazon.com, Inc.\"",
+          "refId": "D",
+          "timeField": "@timestamp"
+        },
+        {
+          "alias": "Akamai",
+          "bucketAggs": [
+            {
+              "field": "@timestamp",
+              "id": "2",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": "0",
+                "trimEdges": "0"
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "metrics": [
+            {
+              "field": "network.bytes",
+              "id": "1",
+              "type": "sum"
+            }
+          ],
+          "query": "source.as.organization.name:\"Akamai International B.V.\"",
+          "refId": "E",
+          "timeField": "@timestamp"
+        },
+        {
+          "alias": "Globo",
+          "bucketAggs": [
+            {
+              "field": "@timestamp",
+              "id": "2",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": "0",
+                "trimEdges": "0"
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "metrics": [
+            {
+              "field": "network.bytes",
+              "id": "1",
+              "type": "sum"
+            }
+          ],
+          "query": "source.as.organization.name:\"Globo Comunicacao e Participacoes SA\"",
+          "refId": "F",
+          "timeField": "@timestamp"
+        },
+        {
+          "alias": "Cloudflare",
+          "bucketAggs": [
+            {
+              "field": "@timestamp",
+              "id": "2",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": "0",
+                "trimEdges": "0"
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "metrics": [
+            {
+              "field": "network.bytes",
+              "id": "1",
+              "type": "sum"
+            }
+          ],
+          "query": "source.as.organization.name:\"Cloudflare, Inc.\"",
+          "refId": "G",
+          "timeField": "@timestamp"
+        },
+        {
+          "alias": "Fastly",
+          "bucketAggs": [
+            {
+              "field": "@timestamp",
+              "id": "2",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": "0",
+                "trimEdges": "0"
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "metrics": [
+            {
+              "field": "network.bytes",
+              "id": "1",
+              "type": "sum"
+            }
+          ],
+          "query": "source.as.organization.name:\"Fastly, Inc.\"",
+          "refId": "H",
+          "timeField": "@timestamp"
+        }
+      ],
+      "title": "Evolução do Consumo",
+      "transparent": true,
+      "type": "gapit-htmlgraphics-panel"
+    },
+    {
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "cdx1w3w4lbwu8a"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 14,
+        "w": 9,
+        "x": 15,
+        "y": 23
+      },
+      "id": 4,
+      "options": {
+        "SVGBaseFix": true,
+        "add100Percentage": false,
+        "calcsMutation": "standard",
+        "centerAlignContent": false,
+        "codeData": "{}",
+        "css": "\n:host,*{box-sizing:border-box}body,.r{margin:0;padding:0;font-family:Inter,Arial,sans-serif;color:#ecf4ff}\n.r{width:100%;height:100%;padding:14px;background:\nradial-gradient(circle at top right, rgba(12,84,188,.22), transparent 28%),\nradial-gradient(circle at bottom left, rgba(2,132,199,.14), transparent 22%),\nlinear-gradient(180deg, rgba(8,15,28,.99), rgba(6,12,20,.99))}\n.s{width:100%;height:100%;border:1px solid rgba(120,170,255,.14);border-radius:22px;background:rgba(10,18,32,.72);padding:16px;box-shadow:0 12px 40px rgba(0,0,0,.20), inset 0 1px 0 rgba(255,255,255,.03)}\n.t{font-size:12px;text-transform:uppercase;letter-spacing:.08em;font-weight:700;color:#8bb8ff;margin-bottom:10px}\n.hero{display:grid;grid-template-columns:1.35fr .9fr;gap:16px;height:100%}\n.k{display:inline-flex;align-items:center;gap:8px;width:fit-content;border:1px solid rgba(96,165,250,.30);border-radius:999px;padding:6px 10px;color:#dbeafe;background:rgba(29,78,216,.14);font-size:12px;font-weight:700;margin-bottom:10px}\n.brand{display:flex;align-items:center;gap:10px;margin-bottom:12px}.brand-badge{width:40px;height:40px;border-radius:12px;background:linear-gradient(135deg,#2563eb,#38bdf8);display:flex;align-items:center;justify-content:center;font-weight:900;color:white}.brand-name{font-size:18px;font-weight:800;color:#f8fbff}.brand-sub{font-size:12px;color:#9ab3cf}\n.h1{font-size:30px;line-height:1.06;font-weight:850;margin:0 0 10px 0}.c{font-size:13px;line-height:1.6;color:#d3deea;max-width:760px}\n.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}.tag{padding:6px 10px;border-radius:999px;font-size:11px;color:#dbeafe;background:rgba(37,99,235,.12);border:1px solid rgba(96,165,250,.18)}\n.hr{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}\n.m{border-radius:16px;padding:14px;background:rgba(2,8,23,.42);border:1px solid rgba(148,163,184,.12)}.ml{font-size:11px;color:#98aeca;margin-bottom:8px;text-transform:uppercase;letter-spacing:.06em}.mv{font-size:24px;font-weight:800;line-height:1.05}.mn{margin-top:8px;color:#8ea8c7;font-size:11px}\n.cards{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}.card{border:1px solid rgba(148,163,184,.12);border-radius:16px;padding:14px;background:rgba(2,8,23,.34)}.card .l{font-size:12px;color:#8ea8c7;margin-bottom:6px}.card .v{font-size:22px;font-weight:800;line-height:1.1}.mini{margin-top:10px;height:34px}\n.w{width:100%;height:calc(100% - 22px);border-radius:16px;background:rgba(2,8,23,.28);border:1px solid rgba(148,163,184,.10);padding:12px}\n.legend{display:flex;flex-wrap:wrap;gap:8px 12px;margin-top:8px}.li{display:flex;align-items:center;gap:6px;font-size:12px;color:#d2ddeb}.sw{width:10px;height:10px;border-radius:999px}\n.rows{display:flex;flex-direction:column;gap:10px}.row{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center}.name{font-size:13px;color:#f2f7ff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.metric{font-size:12px;font-weight:700}.bw{position:relative;height:10px;border-radius:999px;background:rgba(148,163,184,.12);overflow:hidden;margin-top:6px}.bar{position:absolute;inset:0 auto 0 0;border-radius:999px;background:linear-gradient(90deg,#38bdf8,#2563eb)}\n.nb{border-radius:16px;border:1px solid rgba(148,163,184,.10);background:rgba(2,8,23,.28);padding:14px}.nt{font-size:12px;color:#8bb8ff;text-transform:uppercase;letter-spacing:.06em;margin-bottom:10px}.ni{font-size:13px;line-height:1.5;color:#e8f2ff;margin-bottom:10px}.sub{color:#90a9c7;font-size:12px}svg{width:100%;height:100%;display:block}\n.cta{margin-top:16px;display:flex;gap:10px;flex-wrap:wrap}.btn{display:inline-flex;align-items:center;justify-content:center;padding:10px 14px;border-radius:12px;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.04em}.btn-primary{background:linear-gradient(135deg,#2563eb,#38bdf8);color:white}.btn-secondary{background:rgba(37,99,235,.10);color:#dbeafe;border:1px solid rgba(96,165,250,.20)}\n@media (max-width:980px){.cards{grid-template-columns:repeat(2,minmax(0,1fr))}.hero{grid-template-columns:1fr}}\n",
+        "dynamicData": false,
+        "dynamicFieldDisplayValues": false,
+        "dynamicHtmlGraphics": false,
+        "dynamicProps": false,
+        "html": "<div class=\"r\"><div class=\"s\"><div class=\"t\">Detalhamento</div><div id=\"rows\" class=\"rows\"></div></div></div>",
+        "onInit": "",
+        "onInitOnResize": false,
+        "onRender": "\nconst C=['#60a5fa','#22c55e','#f59e0b','#a78bfa','#ef4444','#14b8a6','#f472b6','#eab308'];\nconst arr=v=>{if(v==null)return[];if(Array.isArray(v))return v;if(Array.isArray(v.buffer))return v.buffer;if(typeof v.toArray==='function')return v.toArray();if(typeof v.get==='function'&&typeof v.length==='number'){const a=[];for(let i=0;i<v.length;i++)a.push(v.get(i));return a}return[]};\nconst sum=a=>a.reduce((x,y)=>x+(Number(y)||0),0);\nconst fb=n=>{n=Number(n)||0;if(!n)return'0 B';const u=['B','KB','MB','GB','TB'];const i=Math.min(Math.floor(Math.log(n)/Math.log(1024)),u.length-1);const v=n/Math.pow(1024,i);return `${v>=100?v.toFixed(0):v>=10?v.toFixed(1):v.toFixed(2)} ${u[i]}`};\nconst fn=n=>new Intl.NumberFormat('pt-BR').format(Math.round(Number(n)||0));\nconst eh=s=>String(s??'').replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('\"','&quot;').replaceAll(\"'\",'&#039;');\nconst vf=s=>!s||!s.fields?null:(s.fields.find(f=>f.type&&f.type!=='time'&&f.type!=='string')||s.fields[1]||null);\nconst lf=s=>!s||!s.fields?null:(s.fields.find(f=>f.type==='string')||s.fields[0]||null);\nconst total=s=>{const f=vf(s);return f?sum(Array.isArray(f.values)?f.values:arr(f.values)):0};\nconst pts=s=>{const f=vf(s);return f?arr(f.values).map(v=>Number(v)||0):[]};\nconst termRows=()=>{const s=htmlGraphics.data?.series?.[0];if(!s)return[];const l=lf(s),v=vf(s);const ls=l?arr(l.values):[],vs=v?arr(v.values):[];return ls.map((x,i)=>({label:x,value:Number(vs[i])||0})).sort((a,b)=>b.value-a.value)};\nconst spark=(values,w=180,h=34,c='#60a5fa')=>{if(!values.length)return `<svg viewBox=\"0 0 ${w} ${h}\"><text x=\"8\" y=\"${h/2}\" fill=\"#93a4bf\" font-size=\"11\">Sem dados</text></svg>`;const mx=Math.max(...values,1),mn=Math.min(...values,0),sp=Math.max(mx-mn,1);const p=values.map((v,i)=>{const x=(i/Math.max(values.length-1,1))*w;const y=h-((v-mn)/sp)*(h-6)-3;return `${x.toFixed(2)},${y.toFixed(2)}`}).join(' ');return `<svg viewBox=\"0 0 ${w} ${h}\" preserveAspectRatio=\"none\"><polyline fill=\"none\" stroke=\"${c}\" stroke-width=\"2\" points=\"${p}\" /></svg>`};\n\nconst host=htmlGraphics.htmlNode.querySelector('#rows'); if(!host)return; const rows=(htmlGraphics.data?.series||[]).map(s=>({name:s.name||'Série',value:total(s)})).sort((a,b)=>b.value-a.value),mx=Math.max(...rows.map(r=>r.value),1);\nhost.innerHTML=rows.map(r=>`<div class=\"row\"><div><div class=\"name\">${eh(r.name)}</div><div class=\"bw\"><div class=\"bar\" style=\"width:${(r.value/mx)*100}%\"></div></div></div><div class=\"metric\">${fb(r.value)}</div></div>`).join('')||'<div class=\"sub\">Sem dados.</div>';\n",
+        "overflow": "visible",
+        "panelupdateOnMount": true,
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull",
+            "last",
+            "firstNotNull",
+            "first",
+            "min",
+            "max",
+            "mean",
+            "sum",
+            "count",
+            "range",
+            "delta",
+            "step",
+            "diff",
+            "logmin",
+            "allIsZero",
+            "allIsNull",
+            "diffperc"
+          ]
+        },
+        "renderOnMount": true,
+        "rootCSS": "",
+        "useGrafanaScrollbar": false
+      },
+      "pluginVersion": "2.2.3",
+      "targets": [
+        {
+          "alias": "Facebook",
+          "bucketAggs": [
+            {
+              "field": "@timestamp",
+              "id": "2",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": "0",
+                "trimEdges": "0"
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "metrics": [
+            {
+              "field": "network.bytes",
+              "id": "1",
+              "type": "sum"
+            }
+          ],
+          "query": "source.as.organization.name:\"Facebook, Inc.\"",
+          "refId": "A",
+          "timeField": "@timestamp"
+        },
+        {
+          "alias": "Google",
+          "bucketAggs": [
+            {
+              "field": "@timestamp",
+              "id": "2",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": "0",
+                "trimEdges": "0"
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "metrics": [
+            {
+              "field": "network.bytes",
+              "id": "1",
+              "type": "sum"
+            }
+          ],
+          "query": "source.as.organization.name:\"Google LLC\"",
+          "refId": "B",
+          "timeField": "@timestamp"
+        },
+        {
+          "alias": "ByteDance",
+          "bucketAggs": [
+            {
+              "field": "@timestamp",
+              "id": "2",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": "0",
+                "trimEdges": "0"
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "metrics": [
+            {
+              "field": "network.bytes",
+              "id": "1",
+              "type": "sum"
+            }
+          ],
+          "query": "source.as.organization.name:\"Bytedance Inc.\" OR source.as.organization.name:\"ByteDance Inc.\"",
+          "refId": "C",
+          "timeField": "@timestamp"
+        },
+        {
+          "alias": "Amazon",
+          "bucketAggs": [
+            {
+              "field": "@timestamp",
+              "id": "2",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": "0",
+                "trimEdges": "0"
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "metrics": [
+            {
+              "field": "network.bytes",
+              "id": "1",
+              "type": "sum"
+            }
+          ],
+          "query": "source.as.organization.name:\"Amazon.com, Inc.\"",
+          "refId": "D",
+          "timeField": "@timestamp"
+        },
+        {
+          "alias": "Akamai",
+          "bucketAggs": [
+            {
+              "field": "@timestamp",
+              "id": "2",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": "0",
+                "trimEdges": "0"
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "metrics": [
+            {
+              "field": "network.bytes",
+              "id": "1",
+              "type": "sum"
+            }
+          ],
+          "query": "source.as.organization.name:\"Akamai International B.V.\"",
+          "refId": "E",
+          "timeField": "@timestamp"
+        },
+        {
+          "alias": "Globo",
+          "bucketAggs": [
+            {
+              "field": "@timestamp",
+              "id": "2",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": "0",
+                "trimEdges": "0"
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "metrics": [
+            {
+              "field": "network.bytes",
+              "id": "1",
+              "type": "sum"
+            }
+          ],
+          "query": "source.as.organization.name:\"Globo Comunicacao e Participacoes SA\"",
+          "refId": "F",
+          "timeField": "@timestamp"
+        },
+        {
+          "alias": "Cloudflare",
+          "bucketAggs": [
+            {
+              "field": "@timestamp",
+              "id": "2",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": "0",
+                "trimEdges": "0"
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "metrics": [
+            {
+              "field": "network.bytes",
+              "id": "1",
+              "type": "sum"
+            }
+          ],
+          "query": "source.as.organization.name:\"Cloudflare, Inc.\"",
+          "refId": "G",
+          "timeField": "@timestamp"
+        },
+        {
+          "alias": "Fastly",
+          "bucketAggs": [
+            {
+              "field": "@timestamp",
+              "id": "2",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": "0",
+                "trimEdges": "0"
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "metrics": [
+            {
+              "field": "network.bytes",
+              "id": "1",
+              "type": "sum"
+            }
+          ],
+          "query": "source.as.organization.name:\"Fastly, Inc.\"",
+          "refId": "H",
+          "timeField": "@timestamp"
+        }
+      ],
+      "title": "Ranking por Volume",
+      "transparent": true,
+      "type": "gapit-htmlgraphics-panel"
+    },
+    {
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "cdx1w3w4lbwu8a"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 19,
+        "w": 8,
+        "x": 0,
+        "y": 37
+      },
+      "id": 5,
+      "options": {
+        "SVGBaseFix": true,
+        "add100Percentage": false,
+        "calcsMutation": "standard",
+        "centerAlignContent": false,
+        "codeData": "{}",
+        "css": "\n:host,*{box-sizing:border-box}body,.r{margin:0;padding:0;font-family:Inter,Arial,sans-serif;color:#ecf4ff}\n.r{width:100%;height:100%;padding:14px;background:\nradial-gradient(circle at top right, rgba(12,84,188,.22), transparent 28%),\nradial-gradient(circle at bottom left, rgba(2,132,199,.14), transparent 22%),\nlinear-gradient(180deg, rgba(8,15,28,.99), rgba(6,12,20,.99))}\n.s{width:100%;height:100%;border:1px solid rgba(120,170,255,.14);border-radius:22px;background:rgba(10,18,32,.72);padding:16px;box-shadow:0 12px 40px rgba(0,0,0,.20), inset 0 1px 0 rgba(255,255,255,.03)}\n.t{font-size:12px;text-transform:uppercase;letter-spacing:.08em;font-weight:700;color:#8bb8ff;margin-bottom:10px}\n.hero{display:grid;grid-template-columns:1.35fr .9fr;gap:16px;height:100%}\n.k{display:inline-flex;align-items:center;gap:8px;width:fit-content;border:1px solid rgba(96,165,250,.30);border-radius:999px;padding:6px 10px;color:#dbeafe;background:rgba(29,78,216,.14);font-size:12px;font-weight:700;margin-bottom:10px}\n.brand{display:flex;align-items:center;gap:10px;margin-bottom:12px}.brand-badge{width:40px;height:40px;border-radius:12px;background:linear-gradient(135deg,#2563eb,#38bdf8);display:flex;align-items:center;justify-content:center;font-weight:900;color:white}.brand-name{font-size:18px;font-weight:800;color:#f8fbff}.brand-sub{font-size:12px;color:#9ab3cf}\n.h1{font-size:30px;line-height:1.06;font-weight:850;margin:0 0 10px 0}.c{font-size:13px;line-height:1.6;color:#d3deea;max-width:760px}\n.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}.tag{padding:6px 10px;border-radius:999px;font-size:11px;color:#dbeafe;background:rgba(37,99,235,.12);border:1px solid rgba(96,165,250,.18)}\n.hr{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}\n.m{border-radius:16px;padding:14px;background:rgba(2,8,23,.42);border:1px solid rgba(148,163,184,.12)}.ml{font-size:11px;color:#98aeca;margin-bottom:8px;text-transform:uppercase;letter-spacing:.06em}.mv{font-size:24px;font-weight:800;line-height:1.05}.mn{margin-top:8px;color:#8ea8c7;font-size:11px}\n.cards{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}.card{border:1px solid rgba(148,163,184,.12);border-radius:16px;padding:14px;background:rgba(2,8,23,.34)}.card .l{font-size:12px;color:#8ea8c7;margin-bottom:6px}.card .v{font-size:22px;font-weight:800;line-height:1.1}.mini{margin-top:10px;height:34px}\n.w{width:100%;height:calc(100% - 22px);border-radius:16px;background:rgba(2,8,23,.28);border:1px solid rgba(148,163,184,.10);padding:12px}\n.legend{display:flex;flex-wrap:wrap;gap:8px 12px;margin-top:8px}.li{display:flex;align-items:center;gap:6px;font-size:12px;color:#d2ddeb}.sw{width:10px;height:10px;border-radius:999px}\n.rows{display:flex;flex-direction:column;gap:10px}.row{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center}.name{font-size:13px;color:#f2f7ff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.metric{font-size:12px;font-weight:700}.bw{position:relative;height:10px;border-radius:999px;background:rgba(148,163,184,.12);overflow:hidden;margin-top:6px}.bar{position:absolute;inset:0 auto 0 0;border-radius:999px;background:linear-gradient(90deg,#38bdf8,#2563eb)}\n.nb{border-radius:16px;border:1px solid rgba(148,163,184,.10);background:rgba(2,8,23,.28);padding:14px}.nt{font-size:12px;color:#8bb8ff;text-transform:uppercase;letter-spacing:.06em;margin-bottom:10px}.ni{font-size:13px;line-height:1.5;color:#e8f2ff;margin-bottom:10px}.sub{color:#90a9c7;font-size:12px}svg{width:100%;height:100%;display:block}\n.cta{margin-top:16px;display:flex;gap:10px;flex-wrap:wrap}.btn{display:inline-flex;align-items:center;justify-content:center;padding:10px 14px;border-radius:12px;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.04em}.btn-primary{background:linear-gradient(135deg,#2563eb,#38bdf8);color:white}.btn-secondary{background:rgba(37,99,235,.10);color:#dbeafe;border:1px solid rgba(96,165,250,.20)}\n@media (max-width:980px){.cards{grid-template-columns:repeat(2,minmax(0,1fr))}.hero{grid-template-columns:1fr}}\n",
+        "dynamicData": false,
+        "dynamicFieldDisplayValues": false,
+        "dynamicHtmlGraphics": false,
+        "dynamicProps": false,
+        "html": "<div class=\"r\"><div class=\"s\"><div class=\"t\">Detalhamento</div><div id=\"rows\" class=\"rows\"></div></div></div>",
+        "onInit": "",
+        "onInitOnResize": false,
+        "onRender": "\nconst C=['#60a5fa','#22c55e','#f59e0b','#a78bfa','#ef4444','#14b8a6','#f472b6','#eab308'];\nconst arr=v=>{if(v==null)return[];if(Array.isArray(v))return v;if(Array.isArray(v.buffer))return v.buffer;if(typeof v.toArray==='function')return v.toArray();if(typeof v.get==='function'&&typeof v.length==='number'){const a=[];for(let i=0;i<v.length;i++)a.push(v.get(i));return a}return[]};\nconst sum=a=>a.reduce((x,y)=>x+(Number(y)||0),0);\nconst fb=n=>{n=Number(n)||0;if(!n)return'0 B';const u=['B','KB','MB','GB','TB'];const i=Math.min(Math.floor(Math.log(n)/Math.log(1024)),u.length-1);const v=n/Math.pow(1024,i);return `${v>=100?v.toFixed(0):v>=10?v.toFixed(1):v.toFixed(2)} ${u[i]}`};\nconst fn=n=>new Intl.NumberFormat('pt-BR').format(Math.round(Number(n)||0));\nconst eh=s=>String(s??'').replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('\"','&quot;').replaceAll(\"'\",'&#039;');\nconst vf=s=>!s||!s.fields?null:(s.fields.find(f=>f.type&&f.type!=='time'&&f.type!=='string')||s.fields[1]||null);\nconst lf=s=>!s||!s.fields?null:(s.fields.find(f=>f.type==='string')||s.fields[0]||null);\nconst total=s=>{const f=vf(s);return f?sum(Array.isArray(f.values)?f.values:arr(f.values)):0};\nconst pts=s=>{const f=vf(s);return f?arr(f.values).map(v=>Number(v)||0):[]};\nconst termRows=()=>{const s=htmlGraphics.data?.series?.[0];if(!s)return[];const l=lf(s),v=vf(s);const ls=l?arr(l.values):[],vs=v?arr(v.values):[];return ls.map((x,i)=>({label:x,value:Number(vs[i])||0})).sort((a,b)=>b.value-a.value)};\nconst spark=(values,w=180,h=34,c='#60a5fa')=>{if(!values.length)return `<svg viewBox=\"0 0 ${w} ${h}\"><text x=\"8\" y=\"${h/2}\" fill=\"#93a4bf\" font-size=\"11\">Sem dados</text></svg>`;const mx=Math.max(...values,1),mn=Math.min(...values,0),sp=Math.max(mx-mn,1);const p=values.map((v,i)=>{const x=(i/Math.max(values.length-1,1))*w;const y=h-((v-mn)/sp)*(h-6)-3;return `${x.toFixed(2)},${y.toFixed(2)}`}).join(' ');return `<svg viewBox=\"0 0 ${w} ${h}\" preserveAspectRatio=\"none\"><polyline fill=\"none\" stroke=\"${c}\" stroke-width=\"2\" points=\"${p}\" /></svg>`};\n\nconst host=htmlGraphics.htmlNode.querySelector('#rows'); if(!host)return; const rows=termRows(),mx=Math.max(...rows.map(r=>r.value),1);\nhost.innerHTML=rows.map(r=>`<div class=\"row\"><div><div class=\"name\">${eh(r.label)}</div><div class=\"bw\"><div class=\"bar\" style=\"width:${(r.value/mx)*100}%\"></div></div></div><div class=\"metric\">${fb(r.value)}</div></div>`).join('')||'<div class=\"sub\">Sem dados.</div>';\n",
+        "overflow": "visible",
+        "panelupdateOnMount": true,
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull",
+            "last",
+            "firstNotNull",
+            "first",
+            "min",
+            "max",
+            "mean",
+            "sum",
+            "count",
+            "range",
+            "delta",
+            "step",
+            "diff",
+            "logmin",
+            "allIsZero",
+            "allIsNull",
+            "diffperc"
+          ]
+        },
+        "renderOnMount": true,
+        "rootCSS": "",
+        "useGrafanaScrollbar": false
+      },
+      "pluginVersion": "2.2.3",
+      "targets": [
+        {
+          "alias": "Source IP",
+          "bucketAggs": [
+            {
+              "field": "source.ip",
+              "id": "2",
+              "settings": {
+                "min_doc_count": "1",
+                "order": "desc",
+                "orderBy": "1",
+                "size": "12"
+              },
+              "type": "terms"
+            }
+          ],
+          "metrics": [
+            {
+              "field": "network.bytes",
+              "id": "1",
+              "type": "sum"
+            }
+          ],
+          "query": "*",
+          "refId": "A",
+          "timeField": "@timestamp"
+        }
+      ],
+      "title": "Top Source IP",
+      "transparent": true,
+      "type": "gapit-htmlgraphics-panel"
+    },
+    {
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "cdx1w3w4lbwu8a"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 19,
+        "w": 8,
+        "x": 8,
+        "y": 37
+      },
+      "id": 6,
+      "options": {
+        "SVGBaseFix": true,
+        "add100Percentage": false,
+        "calcsMutation": "standard",
+        "centerAlignContent": false,
+        "codeData": "{}",
+        "css": "\n:host,*{box-sizing:border-box}body,.r{margin:0;padding:0;font-family:Inter,Arial,sans-serif;color:#ecf4ff}\n.r{width:100%;height:100%;padding:14px;background:\nradial-gradient(circle at top right, rgba(12,84,188,.22), transparent 28%),\nradial-gradient(circle at bottom left, rgba(2,132,199,.14), transparent 22%),\nlinear-gradient(180deg, rgba(8,15,28,.99), rgba(6,12,20,.99))}\n.s{width:100%;height:100%;border:1px solid rgba(120,170,255,.14);border-radius:22px;background:rgba(10,18,32,.72);padding:16px;box-shadow:0 12px 40px rgba(0,0,0,.20), inset 0 1px 0 rgba(255,255,255,.03)}\n.t{font-size:12px;text-transform:uppercase;letter-spacing:.08em;font-weight:700;color:#8bb8ff;margin-bottom:10px}\n.hero{display:grid;grid-template-columns:1.35fr .9fr;gap:16px;height:100%}\n.k{display:inline-flex;align-items:center;gap:8px;width:fit-content;border:1px solid rgba(96,165,250,.30);border-radius:999px;padding:6px 10px;color:#dbeafe;background:rgba(29,78,216,.14);font-size:12px;font-weight:700;margin-bottom:10px}\n.brand{display:flex;align-items:center;gap:10px;margin-bottom:12px}.brand-badge{width:40px;height:40px;border-radius:12px;background:linear-gradient(135deg,#2563eb,#38bdf8);display:flex;align-items:center;justify-content:center;font-weight:900;color:white}.brand-name{font-size:18px;font-weight:800;color:#f8fbff}.brand-sub{font-size:12px;color:#9ab3cf}\n.h1{font-size:30px;line-height:1.06;font-weight:850;margin:0 0 10px 0}.c{font-size:13px;line-height:1.6;color:#d3deea;max-width:760px}\n.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}.tag{padding:6px 10px;border-radius:999px;font-size:11px;color:#dbeafe;background:rgba(37,99,235,.12);border:1px solid rgba(96,165,250,.18)}\n.hr{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}\n.m{border-radius:16px;padding:14px;background:rgba(2,8,23,.42);border:1px solid rgba(148,163,184,.12)}.ml{font-size:11px;color:#98aeca;margin-bottom:8px;text-transform:uppercase;letter-spacing:.06em}.mv{font-size:24px;font-weight:800;line-height:1.05}.mn{margin-top:8px;color:#8ea8c7;font-size:11px}\n.cards{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}.card{border:1px solid rgba(148,163,184,.12);border-radius:16px;padding:14px;background:rgba(2,8,23,.34)}.card .l{font-size:12px;color:#8ea8c7;margin-bottom:6px}.card .v{font-size:22px;font-weight:800;line-height:1.1}.mini{margin-top:10px;height:34px}\n.w{width:100%;height:calc(100% - 22px);border-radius:16px;background:rgba(2,8,23,.28);border:1px solid rgba(148,163,184,.10);padding:12px}\n.legend{display:flex;flex-wrap:wrap;gap:8px 12px;margin-top:8px}.li{display:flex;align-items:center;gap:6px;font-size:12px;color:#d2ddeb}.sw{width:10px;height:10px;border-radius:999px}\n.rows{display:flex;flex-direction:column;gap:10px}.row{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center}.name{font-size:13px;color:#f2f7ff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.metric{font-size:12px;font-weight:700}.bw{position:relative;height:10px;border-radius:999px;background:rgba(148,163,184,.12);overflow:hidden;margin-top:6px}.bar{position:absolute;inset:0 auto 0 0;border-radius:999px;background:linear-gradient(90deg,#38bdf8,#2563eb)}\n.nb{border-radius:16px;border:1px solid rgba(148,163,184,.10);background:rgba(2,8,23,.28);padding:14px}.nt{font-size:12px;color:#8bb8ff;text-transform:uppercase;letter-spacing:.06em;margin-bottom:10px}.ni{font-size:13px;line-height:1.5;color:#e8f2ff;margin-bottom:10px}.sub{color:#90a9c7;font-size:12px}svg{width:100%;height:100%;display:block}\n.cta{margin-top:16px;display:flex;gap:10px;flex-wrap:wrap}.btn{display:inline-flex;align-items:center;justify-content:center;padding:10px 14px;border-radius:12px;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.04em}.btn-primary{background:linear-gradient(135deg,#2563eb,#38bdf8);color:white}.btn-secondary{background:rgba(37,99,235,.10);color:#dbeafe;border:1px solid rgba(96,165,250,.20)}\n@media (max-width:980px){.cards{grid-template-columns:repeat(2,minmax(0,1fr))}.hero{grid-template-columns:1fr}}\n",
+        "dynamicData": false,
+        "dynamicFieldDisplayValues": false,
+        "dynamicHtmlGraphics": false,
+        "dynamicProps": false,
+        "html": "<div class=\"r\"><div class=\"s\"><div class=\"t\">Detalhamento</div><div id=\"rows\" class=\"rows\"></div></div></div>",
+        "onInit": "",
+        "onInitOnResize": false,
+        "onRender": "\nconst C=['#60a5fa','#22c55e','#f59e0b','#a78bfa','#ef4444','#14b8a6','#f472b6','#eab308'];\nconst arr=v=>{if(v==null)return[];if(Array.isArray(v))return v;if(Array.isArray(v.buffer))return v.buffer;if(typeof v.toArray==='function')return v.toArray();if(typeof v.get==='function'&&typeof v.length==='number'){const a=[];for(let i=0;i<v.length;i++)a.push(v.get(i));return a}return[]};\nconst sum=a=>a.reduce((x,y)=>x+(Number(y)||0),0);\nconst fb=n=>{n=Number(n)||0;if(!n)return'0 B';const u=['B','KB','MB','GB','TB'];const i=Math.min(Math.floor(Math.log(n)/Math.log(1024)),u.length-1);const v=n/Math.pow(1024,i);return `${v>=100?v.toFixed(0):v>=10?v.toFixed(1):v.toFixed(2)} ${u[i]}`};\nconst fn=n=>new Intl.NumberFormat('pt-BR').format(Math.round(Number(n)||0));\nconst eh=s=>String(s??'').replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('\"','&quot;').replaceAll(\"'\",'&#039;');\nconst vf=s=>!s||!s.fields?null:(s.fields.find(f=>f.type&&f.type!=='time'&&f.type!=='string')||s.fields[1]||null);\nconst lf=s=>!s||!s.fields?null:(s.fields.find(f=>f.type==='string')||s.fields[0]||null);\nconst total=s=>{const f=vf(s);return f?sum(Array.isArray(f.values)?f.values:arr(f.values)):0};\nconst pts=s=>{const f=vf(s);return f?arr(f.values).map(v=>Number(v)||0):[]};\nconst termRows=()=>{const s=htmlGraphics.data?.series?.[0];if(!s)return[];const l=lf(s),v=vf(s);const ls=l?arr(l.values):[],vs=v?arr(v.values):[];return ls.map((x,i)=>({label:x,value:Number(vs[i])||0})).sort((a,b)=>b.value-a.value)};\nconst spark=(values,w=180,h=34,c='#60a5fa')=>{if(!values.length)return `<svg viewBox=\"0 0 ${w} ${h}\"><text x=\"8\" y=\"${h/2}\" fill=\"#93a4bf\" font-size=\"11\">Sem dados</text></svg>`;const mx=Math.max(...values,1),mn=Math.min(...values,0),sp=Math.max(mx-mn,1);const p=values.map((v,i)=>{const x=(i/Math.max(values.length-1,1))*w;const y=h-((v-mn)/sp)*(h-6)-3;return `${x.toFixed(2)},${y.toFixed(2)}`}).join(' ');return `<svg viewBox=\"0 0 ${w} ${h}\" preserveAspectRatio=\"none\"><polyline fill=\"none\" stroke=\"${c}\" stroke-width=\"2\" points=\"${p}\" /></svg>`};\n\nconst host=htmlGraphics.htmlNode.querySelector('#rows'); if(!host)return; const rows=termRows(),mx=Math.max(...rows.map(r=>r.value),1);\nhost.innerHTML=rows.map(r=>`<div class=\"row\"><div><div class=\"name\">${eh(r.label)}</div><div class=\"bw\"><div class=\"bar\" style=\"width:${(r.value/mx)*100}%\"></div></div></div><div class=\"metric\">${fb(r.value)}</div></div>`).join('')||'<div class=\"sub\">Sem dados.</div>';\n",
+        "overflow": "visible",
+        "panelupdateOnMount": true,
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull",
+            "last",
+            "firstNotNull",
+            "first",
+            "min",
+            "max",
+            "mean",
+            "sum",
+            "count",
+            "range",
+            "delta",
+            "step",
+            "diff",
+            "logmin",
+            "allIsZero",
+            "allIsNull",
+            "diffperc"
+          ]
+        },
+        "renderOnMount": true,
+        "rootCSS": "",
+        "useGrafanaScrollbar": false
+      },
+      "pluginVersion": "2.2.3",
+      "targets": [
+        {
+          "alias": "Destination IP",
+          "bucketAggs": [
+            {
+              "field": "destination.ip",
+              "id": "2",
+              "settings": {
+                "min_doc_count": "1",
+                "order": "desc",
+                "orderBy": "1",
+                "size": "12"
+              },
+              "type": "terms"
+            }
+          ],
+          "metrics": [
+            {
+              "field": "network.bytes",
+              "id": "1",
+              "type": "sum"
+            }
+          ],
+          "query": "*",
+          "refId": "A",
+          "timeField": "@timestamp"
+        }
+      ],
+      "title": "Top Destination IP",
+      "transparent": true,
+      "type": "gapit-htmlgraphics-panel"
+    },
+    {
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "cdx1w3w4lbwu8a"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 19,
+        "w": 8,
+        "x": 16,
+        "y": 37
+      },
+      "id": 7,
+      "options": {
+        "SVGBaseFix": true,
+        "add100Percentage": false,
+        "calcsMutation": "standard",
+        "centerAlignContent": false,
+        "codeData": "{}",
+        "css": "\n:host,*{box-sizing:border-box}body,.r{margin:0;padding:0;font-family:Inter,Arial,sans-serif;color:#ecf4ff}\n.r{width:100%;height:100%;padding:14px;background:\nradial-gradient(circle at top right, rgba(12,84,188,.22), transparent 28%),\nradial-gradient(circle at bottom left, rgba(2,132,199,.14), transparent 22%),\nlinear-gradient(180deg, rgba(8,15,28,.99), rgba(6,12,20,.99))}\n.s{width:100%;height:100%;border:1px solid rgba(120,170,255,.14);border-radius:22px;background:rgba(10,18,32,.72);padding:16px;box-shadow:0 12px 40px rgba(0,0,0,.20), inset 0 1px 0 rgba(255,255,255,.03)}\n.t{font-size:12px;text-transform:uppercase;letter-spacing:.08em;font-weight:700;color:#8bb8ff;margin-bottom:10px}\n.hero{display:grid;grid-template-columns:1.35fr .9fr;gap:16px;height:100%}\n.k{display:inline-flex;align-items:center;gap:8px;width:fit-content;border:1px solid rgba(96,165,250,.30);border-radius:999px;padding:6px 10px;color:#dbeafe;background:rgba(29,78,216,.14);font-size:12px;font-weight:700;margin-bottom:10px}\n.brand{display:flex;align-items:center;gap:10px;margin-bottom:12px}.brand-badge{width:40px;height:40px;border-radius:12px;background:linear-gradient(135deg,#2563eb,#38bdf8);display:flex;align-items:center;justify-content:center;font-weight:900;color:white}.brand-name{font-size:18px;font-weight:800;color:#f8fbff}.brand-sub{font-size:12px;color:#9ab3cf}\n.h1{font-size:30px;line-height:1.06;font-weight:850;margin:0 0 10px 0}.c{font-size:13px;line-height:1.6;color:#d3deea;max-width:760px}\n.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}.tag{padding:6px 10px;border-radius:999px;font-size:11px;color:#dbeafe;background:rgba(37,99,235,.12);border:1px solid rgba(96,165,250,.18)}\n.hr{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}\n.m{border-radius:16px;padding:14px;background:rgba(2,8,23,.42);border:1px solid rgba(148,163,184,.12)}.ml{font-size:11px;color:#98aeca;margin-bottom:8px;text-transform:uppercase;letter-spacing:.06em}.mv{font-size:24px;font-weight:800;line-height:1.05}.mn{margin-top:8px;color:#8ea8c7;font-size:11px}\n.cards{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}.card{border:1px solid rgba(148,163,184,.12);border-radius:16px;padding:14px;background:rgba(2,8,23,.34)}.card .l{font-size:12px;color:#8ea8c7;margin-bottom:6px}.card .v{font-size:22px;font-weight:800;line-height:1.1}.mini{margin-top:10px;height:34px}\n.w{width:100%;height:calc(100% - 22px);border-radius:16px;background:rgba(2,8,23,.28);border:1px solid rgba(148,163,184,.10);padding:12px}\n.legend{display:flex;flex-wrap:wrap;gap:8px 12px;margin-top:8px}.li{display:flex;align-items:center;gap:6px;font-size:12px;color:#d2ddeb}.sw{width:10px;height:10px;border-radius:999px}\n.rows{display:flex;flex-direction:column;gap:10px}.row{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center}.name{font-size:13px;color:#f2f7ff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.metric{font-size:12px;font-weight:700}.bw{position:relative;height:10px;border-radius:999px;background:rgba(148,163,184,.12);overflow:hidden;margin-top:6px}.bar{position:absolute;inset:0 auto 0 0;border-radius:999px;background:linear-gradient(90deg,#38bdf8,#2563eb)}\n.nb{border-radius:16px;border:1px solid rgba(148,163,184,.10);background:rgba(2,8,23,.28);padding:14px}.nt{font-size:12px;color:#8bb8ff;text-transform:uppercase;letter-spacing:.06em;margin-bottom:10px}.ni{font-size:13px;line-height:1.5;color:#e8f2ff;margin-bottom:10px}.sub{color:#90a9c7;font-size:12px}svg{width:100%;height:100%;display:block}\n.cta{margin-top:16px;display:flex;gap:10px;flex-wrap:wrap}.btn{display:inline-flex;align-items:center;justify-content:center;padding:10px 14px;border-radius:12px;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.04em}.btn-primary{background:linear-gradient(135deg,#2563eb,#38bdf8);color:white}.btn-secondary{background:rgba(37,99,235,.10);color:#dbeafe;border:1px solid rgba(96,165,250,.20)}\n@media (max-width:980px){.cards{grid-template-columns:repeat(2,minmax(0,1fr))}.hero{grid-template-columns:1fr}}\n",
+        "dynamicData": false,
+        "dynamicFieldDisplayValues": false,
+        "dynamicHtmlGraphics": false,
+        "dynamicProps": false,
+        "html": "<div class=\"r\"><div class=\"s\"><div class=\"t\">Detalhamento</div><div id=\"rows\" class=\"rows\"></div></div></div>",
+        "onInit": "",
+        "onInitOnResize": false,
+        "onRender": "\nconst C=['#60a5fa','#22c55e','#f59e0b','#a78bfa','#ef4444','#14b8a6','#f472b6','#eab308'];\nconst arr=v=>{if(v==null)return[];if(Array.isArray(v))return v;if(Array.isArray(v.buffer))return v.buffer;if(typeof v.toArray==='function')return v.toArray();if(typeof v.get==='function'&&typeof v.length==='number'){const a=[];for(let i=0;i<v.length;i++)a.push(v.get(i));return a}return[]};\nconst sum=a=>a.reduce((x,y)=>x+(Number(y)||0),0);\nconst fb=n=>{n=Number(n)||0;if(!n)return'0 B';const u=['B','KB','MB','GB','TB'];const i=Math.min(Math.floor(Math.log(n)/Math.log(1024)),u.length-1);const v=n/Math.pow(1024,i);return `${v>=100?v.toFixed(0):v>=10?v.toFixed(1):v.toFixed(2)} ${u[i]}`};\nconst fn=n=>new Intl.NumberFormat('pt-BR').format(Math.round(Number(n)||0));\nconst eh=s=>String(s??'').replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('\"','&quot;').replaceAll(\"'\",'&#039;');\nconst vf=s=>!s||!s.fields?null:(s.fields.find(f=>f.type&&f.type!=='time'&&f.type!=='string')||s.fields[1]||null);\nconst lf=s=>!s||!s.fields?null:(s.fields.find(f=>f.type==='string')||s.fields[0]||null);\nconst total=s=>{const f=vf(s);return f?sum(Array.isArray(f.values)?f.values:arr(f.values)):0};\nconst pts=s=>{const f=vf(s);return f?arr(f.values).map(v=>Number(v)||0):[]};\nconst termRows=()=>{const s=htmlGraphics.data?.series?.[0];if(!s)return[];const l=lf(s),v=vf(s);const ls=l?arr(l.values):[],vs=v?arr(v.values):[];return ls.map((x,i)=>({label:x,value:Number(vs[i])||0})).sort((a,b)=>b.value-a.value)};\nconst spark=(values,w=180,h=34,c='#60a5fa')=>{if(!values.length)return `<svg viewBox=\"0 0 ${w} ${h}\"><text x=\"8\" y=\"${h/2}\" fill=\"#93a4bf\" font-size=\"11\">Sem dados</text></svg>`;const mx=Math.max(...values,1),mn=Math.min(...values,0),sp=Math.max(mx-mn,1);const p=values.map((v,i)=>{const x=(i/Math.max(values.length-1,1))*w;const y=h-((v-mn)/sp)*(h-6)-3;return `${x.toFixed(2)},${y.toFixed(2)}`}).join(' ');return `<svg viewBox=\"0 0 ${w} ${h}\" preserveAspectRatio=\"none\"><polyline fill=\"none\" stroke=\"${c}\" stroke-width=\"2\" points=\"${p}\" /></svg>`};\n\nconst host=htmlGraphics.htmlNode.querySelector('#rows'); if(!host)return; const rows=termRows(),mx=Math.max(...rows.map(r=>r.value),1);\nhost.innerHTML=rows.map(r=>`<div class=\"row\"><div><div class=\"name\">${eh(r.label)}</div><div class=\"bw\"><div class=\"bar\" style=\"width:${(r.value/mx)*100}%\"></div></div></div><div class=\"metric\">${fb(r.value)}</div></div>`).join('')||'<div class=\"sub\">Sem dados.</div>';\n",
+        "overflow": "visible",
+        "panelupdateOnMount": true,
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull",
+            "last",
+            "firstNotNull",
+            "first",
+            "min",
+            "max",
+            "mean",
+            "sum",
+            "count",
+            "range",
+            "delta",
+            "step",
+            "diff",
+            "logmin",
+            "allIsZero",
+            "allIsNull",
+            "diffperc"
+          ]
+        },
+        "renderOnMount": true,
+        "rootCSS": "",
+        "useGrafanaScrollbar": false
+      },
+      "pluginVersion": "2.2.3",
+      "targets": [
+        {
+          "alias": "Regiões",
+          "bucketAggs": [
+            {
+              "field": "source.geo.region_name",
+              "id": "2",
+              "settings": {
+                "min_doc_count": "1",
+                "order": "desc",
+                "orderBy": "1",
+                "size": "10"
+              },
+              "type": "terms"
+            }
+          ],
+          "metrics": [
+            {
+              "field": "network.bytes",
+              "id": "1",
+              "type": "sum"
+            }
+          ],
+          "query": "*",
+          "refId": "A",
+          "timeField": "@timestamp"
+        }
+      ],
+      "title": "Top Regiões",
+      "transparent": true,
+      "type": "gapit-htmlgraphics-panel"
+    },
+    {
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "cdx1w3w4lbwu8a"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 16,
+        "w": 8,
+        "x": 0,
+        "y": 56
+      },
+      "id": 8,
+      "options": {
+        "SVGBaseFix": true,
+        "add100Percentage": false,
+        "calcsMutation": "standard",
+        "centerAlignContent": false,
+        "codeData": "{}",
+        "css": "\n:host,*{box-sizing:border-box}body,.r{margin:0;padding:0;font-family:Inter,Arial,sans-serif;color:#ecf4ff}\n.r{width:100%;height:100%;padding:14px;background:\nradial-gradient(circle at top right, rgba(12,84,188,.22), transparent 28%),\nradial-gradient(circle at bottom left, rgba(2,132,199,.14), transparent 22%),\nlinear-gradient(180deg, rgba(8,15,28,.99), rgba(6,12,20,.99))}\n.s{width:100%;height:100%;border:1px solid rgba(120,170,255,.14);border-radius:22px;background:rgba(10,18,32,.72);padding:16px;box-shadow:0 12px 40px rgba(0,0,0,.20), inset 0 1px 0 rgba(255,255,255,.03)}\n.t{font-size:12px;text-transform:uppercase;letter-spacing:.08em;font-weight:700;color:#8bb8ff;margin-bottom:10px}\n.hero{display:grid;grid-template-columns:1.35fr .9fr;gap:16px;height:100%}\n.k{display:inline-flex;align-items:center;gap:8px;width:fit-content;border:1px solid rgba(96,165,250,.30);border-radius:999px;padding:6px 10px;color:#dbeafe;background:rgba(29,78,216,.14);font-size:12px;font-weight:700;margin-bottom:10px}\n.brand{display:flex;align-items:center;gap:10px;margin-bottom:12px}.brand-badge{width:40px;height:40px;border-radius:12px;background:linear-gradient(135deg,#2563eb,#38bdf8);display:flex;align-items:center;justify-content:center;font-weight:900;color:white}.brand-name{font-size:18px;font-weight:800;color:#f8fbff}.brand-sub{font-size:12px;color:#9ab3cf}\n.h1{font-size:30px;line-height:1.06;font-weight:850;margin:0 0 10px 0}.c{font-size:13px;line-height:1.6;color:#d3deea;max-width:760px}\n.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}.tag{padding:6px 10px;border-radius:999px;font-size:11px;color:#dbeafe;background:rgba(37,99,235,.12);border:1px solid rgba(96,165,250,.18)}\n.hr{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}\n.m{border-radius:16px;padding:14px;background:rgba(2,8,23,.42);border:1px solid rgba(148,163,184,.12)}.ml{font-size:11px;color:#98aeca;margin-bottom:8px;text-transform:uppercase;letter-spacing:.06em}.mv{font-size:24px;font-weight:800;line-height:1.05}.mn{margin-top:8px;color:#8ea8c7;font-size:11px}\n.cards{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}.card{border:1px solid rgba(148,163,184,.12);border-radius:16px;padding:14px;background:rgba(2,8,23,.34)}.card .l{font-size:12px;color:#8ea8c7;margin-bottom:6px}.card .v{font-size:22px;font-weight:800;line-height:1.1}.mini{margin-top:10px;height:34px}\n.w{width:100%;height:calc(100% - 22px);border-radius:16px;background:rgba(2,8,23,.28);border:1px solid rgba(148,163,184,.10);padding:12px}\n.legend{display:flex;flex-wrap:wrap;gap:8px 12px;margin-top:8px}.li{display:flex;align-items:center;gap:6px;font-size:12px;color:#d2ddeb}.sw{width:10px;height:10px;border-radius:999px}\n.rows{display:flex;flex-direction:column;gap:10px}.row{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center}.name{font-size:13px;color:#f2f7ff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.metric{font-size:12px;font-weight:700}.bw{position:relative;height:10px;border-radius:999px;background:rgba(148,163,184,.12);overflow:hidden;margin-top:6px}.bar{position:absolute;inset:0 auto 0 0;border-radius:999px;background:linear-gradient(90deg,#38bdf8,#2563eb)}\n.nb{border-radius:16px;border:1px solid rgba(148,163,184,.10);background:rgba(2,8,23,.28);padding:14px}.nt{font-size:12px;color:#8bb8ff;text-transform:uppercase;letter-spacing:.06em;margin-bottom:10px}.ni{font-size:13px;line-height:1.5;color:#e8f2ff;margin-bottom:10px}.sub{color:#90a9c7;font-size:12px}svg{width:100%;height:100%;display:block}\n.cta{margin-top:16px;display:flex;gap:10px;flex-wrap:wrap}.btn{display:inline-flex;align-items:center;justify-content:center;padding:10px 14px;border-radius:12px;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.04em}.btn-primary{background:linear-gradient(135deg,#2563eb,#38bdf8);color:white}.btn-secondary{background:rgba(37,99,235,.10);color:#dbeafe;border:1px solid rgba(96,165,250,.20)}\n@media (max-width:980px){.cards{grid-template-columns:repeat(2,minmax(0,1fr))}.hero{grid-template-columns:1fr}}\n",
+        "dynamicData": false,
+        "dynamicFieldDisplayValues": false,
+        "dynamicHtmlGraphics": false,
+        "dynamicProps": false,
+        "html": "<div class=\"r\"><div class=\"s\"><div class=\"t\">Detalhamento</div><div id=\"rows\" class=\"rows\"></div></div></div>",
+        "onInit": "",
+        "onInitOnResize": false,
+        "onRender": "\nconst C=['#60a5fa','#22c55e','#f59e0b','#a78bfa','#ef4444','#14b8a6','#f472b6','#eab308'];\nconst arr=v=>{if(v==null)return[];if(Array.isArray(v))return v;if(Array.isArray(v.buffer))return v.buffer;if(typeof v.toArray==='function')return v.toArray();if(typeof v.get==='function'&&typeof v.length==='number'){const a=[];for(let i=0;i<v.length;i++)a.push(v.get(i));return a}return[]};\nconst sum=a=>a.reduce((x,y)=>x+(Number(y)||0),0);\nconst fb=n=>{n=Number(n)||0;if(!n)return'0 B';const u=['B','KB','MB','GB','TB'];const i=Math.min(Math.floor(Math.log(n)/Math.log(1024)),u.length-1);const v=n/Math.pow(1024,i);return `${v>=100?v.toFixed(0):v>=10?v.toFixed(1):v.toFixed(2)} ${u[i]}`};\nconst fn=n=>new Intl.NumberFormat('pt-BR').format(Math.round(Number(n)||0));\nconst eh=s=>String(s??'').replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('\"','&quot;').replaceAll(\"'\",'&#039;');\nconst vf=s=>!s||!s.fields?null:(s.fields.find(f=>f.type&&f.type!=='time'&&f.type!=='string')||s.fields[1]||null);\nconst lf=s=>!s||!s.fields?null:(s.fields.find(f=>f.type==='string')||s.fields[0]||null);\nconst total=s=>{const f=vf(s);return f?sum(Array.isArray(f.values)?f.values:arr(f.values)):0};\nconst pts=s=>{const f=vf(s);return f?arr(f.values).map(v=>Number(v)||0):[]};\nconst termRows=()=>{const s=htmlGraphics.data?.series?.[0];if(!s)return[];const l=lf(s),v=vf(s);const ls=l?arr(l.values):[],vs=v?arr(v.values):[];return ls.map((x,i)=>({label:x,value:Number(vs[i])||0})).sort((a,b)=>b.value-a.value)};\nconst spark=(values,w=180,h=34,c='#60a5fa')=>{if(!values.length)return `<svg viewBox=\"0 0 ${w} ${h}\"><text x=\"8\" y=\"${h/2}\" fill=\"#93a4bf\" font-size=\"11\">Sem dados</text></svg>`;const mx=Math.max(...values,1),mn=Math.min(...values,0),sp=Math.max(mx-mn,1);const p=values.map((v,i)=>{const x=(i/Math.max(values.length-1,1))*w;const y=h-((v-mn)/sp)*(h-6)-3;return `${x.toFixed(2)},${y.toFixed(2)}`}).join(' ');return `<svg viewBox=\"0 0 ${w} ${h}\" preserveAspectRatio=\"none\"><polyline fill=\"none\" stroke=\"${c}\" stroke-width=\"2\" points=\"${p}\" /></svg>`};\n\nconst host=htmlGraphics.htmlNode.querySelector('#rows'); if(!host)return; const rows=termRows(),mx=Math.max(...rows.map(r=>r.value),1);\nhost.innerHTML=rows.map(r=>`<div class=\"row\"><div><div class=\"name\">${eh(r.label)}</div><div class=\"bw\"><div class=\"bar\" style=\"width:${(r.value/mx)*100}%\"></div></div></div><div class=\"metric\">${fb(r.value)}</div></div>`).join('')||'<div class=\"sub\">Sem dados.</div>';\n",
+        "overflow": "visible",
+        "panelupdateOnMount": true,
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull",
+            "last",
+            "firstNotNull",
+            "first",
+            "min",
+            "max",
+            "mean",
+            "sum",
+            "count",
+            "range",
+            "delta",
+            "step",
+            "diff",
+            "logmin",
+            "allIsZero",
+            "allIsNull",
+            "diffperc"
+          ]
+        },
+        "renderOnMount": true,
+        "rootCSS": "",
+        "useGrafanaScrollbar": false
+      },
+      "pluginVersion": "2.2.3",
+      "targets": [
+        {
+          "alias": "Portas",
+          "bucketAggs": [
+            {
+              "field": "destination.port",
+              "id": "2",
+              "settings": {
+                "min_doc_count": "1",
+                "order": "desc",
+                "orderBy": "1",
+                "size": "10"
+              },
+              "type": "terms"
+            }
+          ],
+          "metrics": [
+            {
+              "field": "network.bytes",
+              "id": "1",
+              "type": "sum"
+            }
+          ],
+          "query": "*",
+          "refId": "A",
+          "timeField": "@timestamp"
+        }
+      ],
+      "title": "Top Portas",
+      "transparent": true,
+      "type": "gapit-htmlgraphics-panel"
+    },
+    {
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "cdx1w3w4lbwu8a"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 16,
+        "w": 16,
+        "x": 8,
+        "y": 56
+      },
+      "id": 9,
+      "options": {
+        "SVGBaseFix": true,
+        "add100Percentage": false,
+        "calcsMutation": "standard",
+        "centerAlignContent": false,
+        "codeData": "{}",
+        "css": "\n:host,*{box-sizing:border-box}body,.r{margin:0;padding:0;font-family:Inter,Arial,sans-serif;color:#ecf4ff}\n.r{width:100%;height:100%;padding:14px;background:\nradial-gradient(circle at top right, rgba(12,84,188,.22), transparent 28%),\nradial-gradient(circle at bottom left, rgba(2,132,199,.14), transparent 22%),\nlinear-gradient(180deg, rgba(8,15,28,.99), rgba(6,12,20,.99))}\n.s{width:100%;height:100%;border:1px solid rgba(120,170,255,.14);border-radius:22px;background:rgba(10,18,32,.72);padding:16px;box-shadow:0 12px 40px rgba(0,0,0,.20), inset 0 1px 0 rgba(255,255,255,.03)}\n.t{font-size:12px;text-transform:uppercase;letter-spacing:.08em;font-weight:700;color:#8bb8ff;margin-bottom:10px}\n.hero{display:grid;grid-template-columns:1.35fr .9fr;gap:16px;height:100%}\n.k{display:inline-flex;align-items:center;gap:8px;width:fit-content;border:1px solid rgba(96,165,250,.30);border-radius:999px;padding:6px 10px;color:#dbeafe;background:rgba(29,78,216,.14);font-size:12px;font-weight:700;margin-bottom:10px}\n.brand{display:flex;align-items:center;gap:10px;margin-bottom:12px}.brand-badge{width:40px;height:40px;border-radius:12px;background:linear-gradient(135deg,#2563eb,#38bdf8);display:flex;align-items:center;justify-content:center;font-weight:900;color:white}.brand-name{font-size:18px;font-weight:800;color:#f8fbff}.brand-sub{font-size:12px;color:#9ab3cf}\n.h1{font-size:30px;line-height:1.06;font-weight:850;margin:0 0 10px 0}.c{font-size:13px;line-height:1.6;color:#d3deea;max-width:760px}\n.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}.tag{padding:6px 10px;border-radius:999px;font-size:11px;color:#dbeafe;background:rgba(37,99,235,.12);border:1px solid rgba(96,165,250,.18)}\n.hr{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}\n.m{border-radius:16px;padding:14px;background:rgba(2,8,23,.42);border:1px solid rgba(148,163,184,.12)}.ml{font-size:11px;color:#98aeca;margin-bottom:8px;text-transform:uppercase;letter-spacing:.06em}.mv{font-size:24px;font-weight:800;line-height:1.05}.mn{margin-top:8px;color:#8ea8c7;font-size:11px}\n.cards{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}.card{border:1px solid rgba(148,163,184,.12);border-radius:16px;padding:14px;background:rgba(2,8,23,.34)}.card .l{font-size:12px;color:#8ea8c7;margin-bottom:6px}.card .v{font-size:22px;font-weight:800;line-height:1.1}.mini{margin-top:10px;height:34px}\n.w{width:100%;height:calc(100% - 22px);border-radius:16px;background:rgba(2,8,23,.28);border:1px solid rgba(148,163,184,.10);padding:12px}\n.legend{display:flex;flex-wrap:wrap;gap:8px 12px;margin-top:8px}.li{display:flex;align-items:center;gap:6px;font-size:12px;color:#d2ddeb}.sw{width:10px;height:10px;border-radius:999px}\n.rows{display:flex;flex-direction:column;gap:10px}.row{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center}.name{font-size:13px;color:#f2f7ff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.metric{font-size:12px;font-weight:700}.bw{position:relative;height:10px;border-radius:999px;background:rgba(148,163,184,.12);overflow:hidden;margin-top:6px}.bar{position:absolute;inset:0 auto 0 0;border-radius:999px;background:linear-gradient(90deg,#38bdf8,#2563eb)}\n.nb{border-radius:16px;border:1px solid rgba(148,163,184,.10);background:rgba(2,8,23,.28);padding:14px}.nt{font-size:12px;color:#8bb8ff;text-transform:uppercase;letter-spacing:.06em;margin-bottom:10px}.ni{font-size:13px;line-height:1.5;color:#e8f2ff;margin-bottom:10px}.sub{color:#90a9c7;font-size:12px}svg{width:100%;height:100%;display:block}\n.cta{margin-top:16px;display:flex;gap:10px;flex-wrap:wrap}.btn{display:inline-flex;align-items:center;justify-content:center;padding:10px 14px;border-radius:12px;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.04em}.btn-primary{background:linear-gradient(135deg,#2563eb,#38bdf8);color:white}.btn-secondary{background:rgba(37,99,235,.10);color:#dbeafe;border:1px solid rgba(96,165,250,.20)}\n@media (max-width:980px){.cards{grid-template-columns:repeat(2,minmax(0,1fr))}.hero{grid-template-columns:1fr}}\n",
+        "dynamicData": false,
+        "dynamicFieldDisplayValues": false,
+        "dynamicHtmlGraphics": false,
+        "dynamicProps": false,
+        "html": "\n<div class=\"r\"><div class=\"s\"><div class=\"t\">Leitura executiva</div><div class=\"nb\"><div class=\"nt\">Narrativa recomendada</div><div class=\"ni\">A camada superior reforça a presença das principais plataformas observadas no período selecionado e sustenta a conversa comercial com base em dados reais.</div><div class=\"ni\">A evolução temporal ajuda a mostrar concentração de tráfego, sazonalidade e correlação entre volume agregado e consumo por Big Tech/CDN.</div><div class=\"ni\">Os blocos de ranking, regiões, portas e top IPs adicionam profundidade técnica sem perder clareza para diretoria, cliente final ou operação.</div></div></div></div>\n",
+        "onInit": "",
+        "onInitOnResize": false,
+        "onRender": "/* estatico */",
+        "overflow": "visible",
+        "panelupdateOnMount": true,
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull",
+            "last",
+            "firstNotNull",
+            "first",
+            "min",
+            "max",
+            "mean",
+            "sum",
+            "count",
+            "range",
+            "delta",
+            "step",
+            "diff",
+            "logmin",
+            "allIsZero",
+            "allIsNull",
+            "diffperc"
+          ]
+        },
+        "renderOnMount": true,
+        "rootCSS": "",
+        "useGrafanaScrollbar": false
+      },
+      "pluginVersion": "2.2.3",
+      "targets": [
+        {
+          "alias": "",
+          "bucketAggs": [
+            {
+              "field": "@timestamp",
+              "id": "2",
+              "settings": {
+                "interval": "auto"
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "metrics": [
+            {
+              "id": "1",
+              "type": "count"
+            }
+          ],
+          "query": "",
+          "refId": "A",
+          "timeField": "@timestamp"
+        }
+      ],
+      "title": "Leitura Executiva",
+      "transparent": true,
+      "type": "gapit-htmlgraphics-panel"
+    }
+  ],
+  "preload": false,
+  "refresh": "30s",
+  "schemaVersion": 40,
+  "tags": [
+    "netflow",
+    "flowspec"
+  ],
+  "templating": {
+    "list": []
+  },
+  "time": {
+    "from": "now-6h",
+    "to": "now"
+  },
+  "timepicker": {},
+  "timezone": "",
+  "title": "Flowspec Solutions - NETFLOW - BIGTECHs",
+  "uid": "flowspec-premium-master-htmlgraphics",
+  "version": 6,
+  "weekStart": ""
+}
