@@ -7,6 +7,7 @@ Uso:
   ES_PASS='senha' ./c2scan.py                     # ultimas 24h, saida em tabela
   ES_PASS='senha' ./c2scan.py --hours 72 --csv    # 72h, saida CSV
   ES_PASS='senha' ./c2scan.py --json              # JSON (integracao com Zabbix/n8n)
+  ES_PASS='senha' ./c2scan.py --es-write          # grava no Elastic p/ o dashboard (usar no cron)
 
 Fontes (abuse.ch): Feodo Tracker (C2 de botnets), ThreatFox (IOCs de malware), URLhaus (hosts de distribuicao).
 Requer apenas python3. Roda no proprio servidor do Elastic.
@@ -51,13 +52,39 @@ def carregar_blocklists(fontes):
         print(f"[info] {nome}: {n} IPs", file=sys.stderr)
     return ips
 
-def es_query(body):
+def es_http(path, body=None, method="POST", ctype="application/json"):
     ctx = ssl.create_default_context(cafile=ES_CA) if os.path.exists(ES_CA) else ssl._create_unverified_context()
-    auth = base64.b64encode(f"{ES_USER}:{ES_PASS}".encode()).decode()
-    req = urllib.request.Request(f"{ES_URL}/{ES_INDEX}/_search", data=json.dumps(body).encode(), method="POST",
-                                 headers={"Content-Type": "application/json", "Authorization": f"Basic {auth}"})
-    with urllib.request.urlopen(req, timeout=120, context=ctx) as r:
-        return json.load(r)
+    auth = base64.b64encode(f"{ES_USER}:{ES_PASS.strip()}".encode()).decode()
+    data = body.encode() if isinstance(body, str) else (json.dumps(body).encode() if body is not None else None)
+    req = urllib.request.Request(f"{ES_URL}{path}", data=data, method=method,
+                                 headers={"Content-Type": ctype, "Authorization": f"Basic {auth}"})
+    try:
+        with urllib.request.urlopen(req, timeout=120, context=ctx) as r:
+            return json.load(r)
+    except urllib.error.HTTPError as e:
+        sys.exit(f"Elastic HTTP {e.code}: " + ("usuario/senha recusados (ES_USER/ES_PASS)" if e.code == 401 else e.read().decode()[:400]))
+
+def es_query(body):
+    return es_http(f"/{ES_INDEX}/_search", body)
+
+def es_gravar(achados, horas):
+    """Grava os achados no data stream do Filebeat (event.dataset=c2.findings) para o dashboard ler."""
+    ds = es_http(f"/_data_stream/{ES_INDEX}", method="GET").get("data_streams", [])
+    if not ds: sys.exit(f"nenhum data stream casando com {ES_INDEX}")
+    alvo = os.environ.get("ES_OUT") or ds[0]["name"]
+    agora = datetime.datetime.now(datetime.timezone.utc).isoformat(timespec="seconds").replace("+00:00", "Z")
+    linhas = []
+    for x in achados:
+        doc = {"@timestamp": agora, "event": {"dataset": "c2.findings", "kind": "alert", "module": "flowspec", "action": "c2_contact"},
+               "source": {"ip": x["cpe"]}, "destination": {"ip": x["c2"], "port": int(x["portas"].split(",")[0]) if x["portas"] else None},
+               "network": {"bytes": x["bytes"], "packets": x["pacotes"]},
+               "threat": {"indicator": {"provider": x["fontes"], "ip": x["c2"]}},
+               "flowspec": {"flows": x["flows"], "janela_horas": horas, "ultimo_contato": x["ultimo_contato"], "portas": x["portas"]}}
+        linhas.append(json.dumps({"create": {}})); linhas.append(json.dumps(doc))
+    if not linhas:
+        linhas = [json.dumps({"create": {}}), json.dumps({"@timestamp": agora, "event": {"dataset": "c2.heartbeat", "module": "flowspec"}, "flowspec": {"janela_horas": horas, "achados": 0}})]
+    r = es_http(f"/{alvo}/_bulk", "\n".join(linhas) + "\n", ctype="application/x-ndjson")
+    print(f"[info] gravados {len(achados)} achados em {alvo} (erros={r.get('errors')})", file=sys.stderr)
 
 def buscar(ips, horas, lote=20000):
     """Para cada lote de IPs de C2, agrega source.ip (CPE) -> destination.ip (C2) com bytes/pacotes/flows."""
@@ -96,12 +123,14 @@ def main():
     ap.add_argument("--hours", type=int, default=24)
     ap.add_argument("--csv", action="store_true"); ap.add_argument("--json", action="store_true")
     ap.add_argument("--fontes", default="feodo,threatfox,urlhaus")
+    ap.add_argument("--es-write", action="store_true", help="grava os achados no Elastic (event.dataset=c2.findings)")
     a = ap.parse_args()
     if not ES_PASS: sys.exit("Defina ES_PASS")
     fontes = {k: v for k, v in FONTES.items() if k in a.fontes.split(",")}
     ips = carregar_blocklists(fontes)
     if not ips: sys.exit("Nenhuma blocklist carregada (sem acesso ao abuse.ch?)")
     achados = buscar(ips, a.hours)
+    if a.es_write: es_gravar(achados, a.hours)
     if a.json:
         print(json.dumps({"gerado": datetime.datetime.now().isoformat(timespec="seconds"), "horas": a.hours,
                           "prefixo": PREFIX, "ips_blocklist": len(ips), "cpes": len({x['cpe'] for x in achados}),

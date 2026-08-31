@@ -2171,14 +2171,14 @@
       "transparent": true,
       "options": {
         "mode": "html",
-        "content": "<div style=\"font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;letter-spacing:.14em;color:#8fa3b3;border-top:1px solid rgba(255,255,255,.08);padding-top:10px;\"><span style=\"color:#ff5a5a\">/02</span>&nbsp; CORRELAÇÃO COM BASES C2 &nbsp;<span style=\"opacity:.6\">— todo o tráfego do bloco (qualquer porta) cruzado com a blocklist Feodo Tracker (abuse.ch, C2 de botnets: Emotet, Dridex, QakBot, TrickBot…)</span></div>"
+        "content": "<div style=\"font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;letter-spacing:.14em;color:#8fa3b3;border-top:1px solid rgba(255,255,255,.08);padding-top:10px;\"><span style=\"color:#ff5a5a\">/02</span>&nbsp; CORRELAÇÃO COM BASES C2 &nbsp;<span style=\"opacity:.6\">— achados do c2scan (Feodo Tracker · ThreatFox · URLhaus) gravados no Elastic; todo o tráfego do bloco, qualquer porta</span></div>"
       }
     },
     {
       "id": 20,
       "type": "table",
       "title": "CPEs FALANDO COM C2 CONHECIDO",
-      "description": "Inner join entre destinos do bloco CGNAT e a lista Feodo Tracker (atualizada a cada carregamento). Qualquer linha aqui é um CPE comprometido com alta confiança.",
+      "description": "Achados do c2scan.py no intervalo selecionado. Cada linha: CPE do bloco que trocou tráfego com IP presente nas blocklists.",
       "gridPos": {
         "x": 0,
         "y": 54,
@@ -2186,8 +2186,8 @@
         "h": 10
       },
       "datasource": {
-        "type": "datasource",
-        "uid": "-- Mixed --"
+        "type": "elasticsearch",
+        "uid": "dfm7jlq2b2fwgf"
       },
       "targets": [
         {
@@ -2196,103 +2196,55 @@
             "type": "elasticsearch",
             "uid": "dfm7jlq2b2fwgf"
           },
-          "query": "source.ip: \"$prefixos\" AND NOT destination.ip: \"$prefixos\" AND netflow.exporter.address: $exportador",
+          "query": "event.dataset: \"c2.findings\" AND source.ip: \"$prefixos\"",
           "queryType": "lucene",
           "timeField": "@timestamp",
-          "bucketAggs": [
-            {
-              "type": "terms",
-              "id": "t1",
-              "field": "destination.ip",
-              "settings": {
-                "size": "500",
-                "order": "desc",
-                "orderBy": "1",
-                "min_doc_count": "1"
-              }
-            },
-            {
-              "type": "terms",
-              "id": "t2",
-              "field": "source.ip",
-              "settings": {
-                "size": "20",
-                "order": "desc",
-                "orderBy": "1",
-                "min_doc_count": "1"
-              }
-            }
-          ],
           "metrics": [
             {
               "id": "1",
-              "type": "sum",
-              "field": "network.bytes"
-            },
-            {
-              "id": "2",
-              "type": "count"
+              "type": "raw_data",
+              "settings": {
+                "size": "500"
+              }
             }
           ],
+          "bucketAggs": [],
           "alias": ""
-        },
-        {
-          "refId": "B",
-          "datasource": {
-            "type": "yesoreyeram-infinity-datasource",
-            "uid": "f7ncx2q9wd8k1e"
-          },
-          "type": "csv",
-          "source": "url",
-          "format": "table",
-          "url": "https://feodotracker.abuse.ch/downloads/ipblocklist_aggressive.txt",
-          "url_options": {
-            "method": "GET",
-            "data": ""
-          },
-          "parser": "backend",
-          "csv_options": {
-            "delimiter": ",",
-            "skip_empty_lines": true,
-            "skip_lines_with_error": true,
-            "relax_column_count": true,
-            "columns": "destination.ip"
-          },
-          "columns": [
-            {
-              "selector": "destination.ip",
-              "text": "destination.ip",
-              "type": "string"
-            }
-          ],
-          "filters": [],
-          "global_query_id": "",
-          "root_selector": ""
         }
       ],
       "transformations": [
         {
-          "id": "joinByField",
-          "options": {
-            "byField": "destination.ip",
-            "mode": "inner"
-          }
-        },
-        {
           "id": "organize",
           "options": {
-            "excludeByName": {},
+            "includeByName": {
+              "@timestamp": true,
+              "source.ip": true,
+              "destination.ip": true,
+              "threat.indicator.provider": true,
+              "flowspec.portas": true,
+              "flowspec.flows": true,
+              "network.bytes": true,
+              "flowspec.ultimo_contato": true
+            },
             "indexByName": {
-              "source.ip": 0,
-              "destination.ip": 1,
-              "Sum network.bytes": 2,
-              "Count": 3
+              "@timestamp": 0,
+              "source.ip": 1,
+              "destination.ip": 2,
+              "threat.indicator.provider": 3,
+              "flowspec.portas": 4,
+              "flowspec.flows": 5,
+              "network.bytes": 6,
+              "flowspec.ultimo_contato": 7
             },
             "renameByName": {
+              "@timestamp": "Varredura",
               "source.ip": "CPE",
-              "destination.ip": "C2 (destino)",
-              "Sum network.bytes": "Bytes",
-              "Count": "Flows"
+              "destination.ip": "C2",
+              "threat.indicator.provider": "Fonte",
+              "flowspec.portas": "Portas",
+              "flowspec.flows": "Flows",
+              "network.bytes": "Bytes",
+              "flowspec.ultimo_contato": "Último contato"
             }
           }
         }
@@ -2366,6 +2318,18 @@
                 }
               }
             ]
+          },
+          {
+            "matcher": {
+              "id": "byRegexp",
+              "options": "^Varredura$|^Último contato$"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "dateTimeAsLocal"
+              }
+            ]
           }
         ]
       },
@@ -2391,7 +2355,7 @@
       "id": 21,
       "type": "stat",
       "title": "CPEs COM CONTATO C2",
-      "description": "Quantidade de IPs do bloco que aparecem na correlação acima.",
+      "description": "IPs distintos do bloco com achado no intervalo. Verde = zero.",
       "gridPos": {
         "x": 16,
         "y": 54,
@@ -2399,8 +2363,8 @@
         "h": 5
       },
       "datasource": {
-        "type": "datasource",
-        "uid": "-- Mixed --"
+        "type": "elasticsearch",
+        "uid": "dfm7jlq2b2fwgf"
       },
       "targets": [
         {
@@ -2409,95 +2373,31 @@
             "type": "elasticsearch",
             "uid": "dfm7jlq2b2fwgf"
           },
-          "query": "source.ip: \"$prefixos\" AND NOT destination.ip: \"$prefixos\" AND netflow.exporter.address: $exportador",
+          "query": "event.dataset: \"c2.findings\" AND source.ip: \"$prefixos\"",
           "queryType": "lucene",
           "timeField": "@timestamp",
           "bucketAggs": [
             {
-              "type": "terms",
-              "id": "t1",
-              "field": "destination.ip",
+              "type": "filters",
+              "id": "f",
               "settings": {
-                "size": "500",
-                "order": "desc",
-                "orderBy": "1",
-                "min_doc_count": "1"
-              }
-            },
-            {
-              "type": "terms",
-              "id": "t2",
-              "field": "source.ip",
-              "settings": {
-                "size": "20",
-                "order": "desc",
-                "orderBy": "1",
-                "min_doc_count": "1"
+                "filters": [
+                  {
+                    "query": "*",
+                    "label": "total"
+                  }
+                ]
               }
             }
           ],
           "metrics": [
             {
               "id": "1",
-              "type": "count"
+              "type": "cardinality",
+              "field": "source.ip"
             }
           ],
           "alias": ""
-        },
-        {
-          "refId": "B",
-          "datasource": {
-            "type": "yesoreyeram-infinity-datasource",
-            "uid": "f7ncx2q9wd8k1e"
-          },
-          "type": "csv",
-          "source": "url",
-          "format": "table",
-          "url": "https://feodotracker.abuse.ch/downloads/ipblocklist_aggressive.txt",
-          "url_options": {
-            "method": "GET",
-            "data": ""
-          },
-          "parser": "backend",
-          "csv_options": {
-            "delimiter": ",",
-            "skip_empty_lines": true,
-            "skip_lines_with_error": true,
-            "relax_column_count": true,
-            "columns": "destination.ip"
-          },
-          "columns": [
-            {
-              "selector": "destination.ip",
-              "text": "destination.ip",
-              "type": "string"
-            }
-          ],
-          "filters": [],
-          "global_query_id": "",
-          "root_selector": ""
-        }
-      ],
-      "transformations": [
-        {
-          "id": "joinByField",
-          "options": {
-            "byField": "destination.ip",
-            "mode": "inner"
-          }
-        },
-        {
-          "id": "groupBy",
-          "options": {
-            "fields": {
-              "source.ip": {
-                "aggregations": [
-                  "distinctCount"
-                ],
-                "operation": "aggregate"
-              }
-            }
-          }
         }
       ],
       "fieldConfig": {
@@ -2505,8 +2405,7 @@
           "unit": "short",
           "decimals": 0,
           "color": {
-            "mode": "fixed",
-            "fixedColor": "#ff5a5a"
+            "mode": "thresholds"
           },
           "thresholds": {
             "mode": "absolute",
@@ -2543,8 +2442,8 @@
     {
       "id": 22,
       "type": "stat",
-      "title": "IPs NA BLOCKLIST (carregados)",
-      "description": "Tamanho da lista Feodo Tracker obtida agora. Zero = servidor sem acesso a abuse.ch.",
+      "title": "ÚLTIMA VARREDURA C2",
+      "description": "Quando o c2scan rodou pela última vez (achado ou heartbeat). Se envelhecer, o cron parou.",
       "gridPos": {
         "x": 16,
         "y": 59,
@@ -2552,81 +2451,60 @@
         "h": 5
       },
       "datasource": {
-        "type": "yesoreyeram-infinity-datasource",
-        "uid": "f7ncx2q9wd8k1e"
+        "type": "elasticsearch",
+        "uid": "dfm7jlq2b2fwgf"
       },
       "targets": [
         {
-          "refId": "B",
+          "refId": "A",
           "datasource": {
-            "type": "yesoreyeram-infinity-datasource",
-            "uid": "f7ncx2q9wd8k1e"
+            "type": "elasticsearch",
+            "uid": "dfm7jlq2b2fwgf"
           },
-          "type": "csv",
-          "source": "url",
-          "format": "table",
-          "url": "https://feodotracker.abuse.ch/downloads/ipblocklist_aggressive.txt",
-          "url_options": {
-            "method": "GET",
-            "data": ""
-          },
-          "parser": "backend",
-          "csv_options": {
-            "delimiter": ",",
-            "skip_empty_lines": true,
-            "skip_lines_with_error": true,
-            "relax_column_count": true,
-            "columns": "destination.ip"
-          },
-          "columns": [
+          "query": "event.dataset: \"c2.findings\" OR event.dataset: \"c2.heartbeat\"",
+          "queryType": "lucene",
+          "timeField": "@timestamp",
+          "bucketAggs": [
             {
-              "selector": "destination.ip",
-              "text": "destination.ip",
-              "type": "string"
+              "type": "filters",
+              "id": "f",
+              "settings": {
+                "filters": [
+                  {
+                    "query": "*",
+                    "label": "total"
+                  }
+                ]
+              }
             }
           ],
-          "filters": [],
-          "global_query_id": "",
-          "root_selector": ""
-        }
-      ],
-      "transformations": [
-        {
-          "id": "filterByValue",
-          "options": {
-            "filters": [
-              {
-                "fieldName": "destination.ip",
-                "config": {
-                  "id": "regex",
-                  "options": {
-                    "value": "^[0-9]+\\."
-                  }
-                }
-              }
-            ],
-            "type": "include",
-            "match": "any"
-          }
+          "metrics": [
+            {
+              "id": "1",
+              "type": "max",
+              "field": "@timestamp"
+            }
+          ],
+          "alias": ""
         }
       ],
       "fieldConfig": {
         "defaults": {
-          "unit": "short",
+          "unit": "dateTimeFromNow",
           "color": {
             "mode": "fixed",
             "fixedColor": "#8fa3b3"
           },
-          "noValue": "0"
+          "noValue": "nunca"
         },
         "overrides": []
       },
       "options": {
         "reduceOptions": {
           "calcs": [
-            "count"
+            "lastNotNull"
           ],
-          "fields": "/.*/",
+          "fields": "",
           "values": false
         },
         "textMode": "value",
@@ -2634,6 +2512,92 @@
         "graphMode": "none",
         "justifyMode": "center",
         "wideLayout": true
+      }
+    },
+    {
+      "id": 23,
+      "type": "timeseries",
+      "title": "ACHADOS C2 POR VARREDURA",
+      "gridPos": {
+        "x": 0,
+        "y": 64,
+        "w": 24,
+        "h": 7
+      },
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "dfm7jlq2b2fwgf"
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "dfm7jlq2b2fwgf"
+          },
+          "query": "event.dataset: \"c2.findings\" AND source.ip: \"$prefixos\"",
+          "queryType": "lucene",
+          "timeField": "@timestamp",
+          "bucketAggs": [
+            {
+              "type": "terms",
+              "id": "t",
+              "field": "threat.indicator.provider",
+              "settings": {
+                "size": "10",
+                "order": "desc",
+                "orderBy": "_count",
+                "min_doc_count": "1"
+              }
+            },
+            {
+              "type": "date_histogram",
+              "id": "dh",
+              "field": "@timestamp",
+              "settings": {
+                "interval": "1h",
+                "min_doc_count": "0"
+              }
+            }
+          ],
+          "metrics": [
+            {
+              "id": "1",
+              "type": "count"
+            }
+          ],
+          "alias": ""
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "short",
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "drawStyle": "bars",
+            "fillOpacity": 60,
+            "lineWidth": 1,
+            "stacking": {
+              "mode": "normal",
+              "group": "A"
+            },
+            "axisBorderShow": false
+          }
+        },
+        "overrides": []
+      },
+      "options": {
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "multi",
+          "sort": "desc"
+        }
       }
     }
   ],
