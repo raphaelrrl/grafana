@@ -1,0 +1,2080 @@
+{
+  "uid": "ad98p95",
+  "title": "[CPE] FLUXO PROTOCOLOS DNS",
+  "tags": [
+    "flowspec",
+    "netflow",
+    "dns"
+  ],
+  "timezone": "browser",
+  "editable": true,
+  "graphTooltip": 1,
+  "refresh": "30s",
+  "time": {
+    "from": "now-3h",
+    "to": "now"
+  },
+  "timepicker": {
+    "refresh_intervals": [
+      "10s",
+      "30s",
+      "1m",
+      "5m",
+      "15m",
+      "1h"
+    ]
+  },
+  "links": [
+    {
+      "title": "NOC",
+      "type": "link",
+      "url": "/d/aecn8csqbwdmob/home",
+      "icon": "dashboard",
+      "asDropdown": false,
+      "includeVars": false,
+      "keepTime": true,
+      "tags": [],
+      "targetBlank": false
+    },
+    {
+      "title": "Netflow",
+      "type": "dashboards",
+      "tags": [
+        "netflow"
+      ],
+      "asDropdown": true,
+      "includeVars": true,
+      "keepTime": true,
+      "icon": "external link",
+      "targetBlank": false
+    }
+  ],
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "datasource",
+          "uid": "grafana"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "templating": {
+    "list": [
+      {
+        "type": "textbox",
+        "name": "prefixos",
+        "label": "Bloco de clientes (CIDR)",
+        "query": "100.64.0.0/10",
+        "current": {
+          "text": "100.64.0.0/10",
+          "value": "100.64.0.0/10"
+        },
+        "options": [
+          {
+            "text": "100.64.0.0/10",
+            "value": "100.64.0.0/10",
+            "selected": true
+          }
+        ],
+        "hide": 0
+      },
+      {
+        "type": "custom",
+        "name": "dns_ok",
+        "label": "DNS autorizados",
+        "query": "201.77.12.0/22,201.77.8.20,208.67.222.0/24,1.1.1.1,8.8.8.8,8.8.4.4",
+        "multi": true,
+        "includeAll": false,
+        "current": {
+          "text": [
+            "201.77.12.0/22",
+            "201.77.8.20",
+            "208.67.222.0/24",
+            "1.1.1.1",
+            "8.8.8.8",
+            "8.8.4.4"
+          ],
+          "value": [
+            "201.77.12.0/22",
+            "201.77.8.20",
+            "208.67.222.0/24",
+            "1.1.1.1",
+            "8.8.8.8",
+            "8.8.4.4"
+          ]
+        },
+        "options": [
+          {
+            "text": "201.77.12.0/22",
+            "value": "201.77.12.0/22",
+            "selected": true
+          },
+          {
+            "text": "201.77.8.20",
+            "value": "201.77.8.20",
+            "selected": true
+          },
+          {
+            "text": "208.67.222.0/24",
+            "value": "208.67.222.0/24",
+            "selected": true
+          },
+          {
+            "text": "1.1.1.1",
+            "value": "1.1.1.1",
+            "selected": true
+          },
+          {
+            "text": "8.8.8.8",
+            "value": "8.8.8.8",
+            "selected": true
+          },
+          {
+            "text": "8.8.4.4",
+            "value": "8.8.4.4",
+            "selected": true
+          }
+        ],
+        "hide": 0,
+        "description": "Resolvers legítimos (do provedor e públicos aceitos). Tráfego DNS para qualquer outro destino é tratado como suspeito."
+      },
+      {
+        "type": "query",
+        "name": "exportador",
+        "label": "Exportador",
+        "datasource": {
+          "type": "elasticsearch",
+          "uid": "dfm7jlq2b2fwgf"
+        },
+        "query": "{\"find\":\"terms\",\"field\":\"netflow.exporter.address\",\"size\":50}",
+        "refresh": 2,
+        "multi": true,
+        "includeAll": true,
+        "allValue": "*",
+        "current": {
+          "text": "All",
+          "value": "$__all"
+        },
+        "options": [],
+        "sort": 1,
+        "hide": 0
+      }
+    ]
+  },
+  "panels": [
+    {
+      "id": 1,
+      "type": "marcusolsson-dynamictext-panel",
+      "title": "",
+      "gridPos": {
+        "x": 0,
+        "y": 0,
+        "w": 24,
+        "h": 3
+      },
+      "transparent": true,
+      "datasource": {
+        "type": "datasource",
+        "uid": "grafana"
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "datasource",
+            "uid": "grafana"
+          },
+          "queryType": "randomWalk",
+          "refId": "A"
+        }
+      ],
+      "options": {
+        "renderMode": "allRows",
+        "content": "<div class=\"fs-banner\">\n  <div class=\"fs-banner-left\">\n    <span class=\"fs-prompt\">flowspec@flowguard:<span class=\"fs-path\">~/netflow/dns</span></span>\n    <span class=\"fs-sep\">|</span>\n    <span class=\"fs-title\">ANÁLISE DNS <span class=\"fs-thin\">/ CPE → RESOLVERS NÃO AUTORIZADOS</span></span>\n  </div>\n  <div class=\"fs-banner-right\">\n    <span class=\"fs-pill fs-pill--ok\"><span class=\"fs-dot\"></span>NETFLOW · ONLINE</span>\n    <span class=\"fs-pill\"><span id=\"fs-clock\">--:--:--</span></span>\n    <a class=\"fs-pill fs-pill--link\" href=\"/d/aecn8csqbwdmob/home\">VOLTAR AO NOC</a>\n  </div>\n</div>\n",
+        "defaultContent": "<div class=\"fs-banner\">\n  <div class=\"fs-banner-left\">\n    <span class=\"fs-prompt\">flowspec@flowguard:<span class=\"fs-path\">~/netflow/dns</span></span>\n    <span class=\"fs-sep\">|</span>\n    <span class=\"fs-title\">ANÁLISE DNS <span class=\"fs-thin\">/ CPE → RESOLVERS NÃO AUTORIZADOS</span></span>\n  </div>\n  <div class=\"fs-banner-right\">\n    <span class=\"fs-pill fs-pill--ok\"><span class=\"fs-dot\"></span>NETFLOW · ONLINE</span>\n    <span class=\"fs-pill\"><span id=\"fs-clock\">--:--:--</span></span>\n    <a class=\"fs-pill fs-pill--link\" href=\"/d/aecn8csqbwdmob/home\">VOLTAR AO NOC</a>\n  </div>\n</div>\n",
+        "styles": ":root{--fs-accent:#00c8ff;--fs-text:#eef4f8;--fs-dim:#8fa3b3;--fs-line:rgba(255,255,255,.08);--fs-mono:ui-monospace,\"JetBrains Mono\",Menlo,Consolas,monospace;}\n.fs-banner{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;font-family:var(--fs-mono);color:var(--fs-dim);padding:6px 4px 6px;}\n.fs-banner-left{display:flex;align-items:center;gap:12px;font-size:12px;letter-spacing:.04em;}\n.fs-banner-right{display:flex;align-items:center;gap:8px;flex-wrap:wrap;}\n.fs-prompt{color:var(--fs-accent);}.fs-path{color:var(--fs-text);margin-left:6px;}.fs-sep{opacity:.35;}\n.fs-title{color:var(--fs-text);font-weight:700;letter-spacing:.14em;font-size:13px;}.fs-thin{font-weight:400;color:var(--fs-dim);}\n.fs-pill{display:inline-flex;align-items:center;gap:8px;padding:5px 12px;border:1px solid rgba(255,255,255,.16);border-radius:999px;color:var(--fs-text);font-family:var(--fs-mono);font-size:11px;letter-spacing:.12em;text-decoration:none;background:rgba(8,12,18,.6);}\n.fs-pill--ok{border-color:rgba(0,200,255,.35);background:rgba(0,200,255,.12);}\n.fs-pill--link:hover{border-color:var(--fs-accent);}\n.fs-dot{width:7px;height:7px;border-radius:50%;background:var(--fs-accent);animation:fs-pulse 1.8s ease-out infinite;}\n@keyframes fs-pulse{0%{box-shadow:0 0 0 0 rgba(0,200,255,.55)}100%{box-shadow:0 0 0 9px rgba(0,200,255,0)}}\n",
+        "afterRender": "(function(){\n  var root = (typeof context !== 'undefined' && context.element) ? context.element : (typeof element !== 'undefined' ? element : document);\n  var el = root.querySelector ? root.querySelector('#fs-clock') : null;\n  if (!el) return;\n  function tick(){ el.textContent = new Date().toLocaleTimeString('pt-BR',{hour12:false}); }\n  tick(); if (el._t) clearInterval(el._t); el._t = setInterval(tick, 1000);\n})();\n",
+        "helpers": "",
+        "status": "",
+        "wrap": false,
+        "contentPartials": [],
+        "externalScripts": [],
+        "externalStyles": [],
+        "editors": [
+          "styles",
+          "afterRender"
+        ],
+        "editor": {
+          "format": "auto",
+          "height": 200,
+          "language": "html"
+        }
+      }
+    },
+    {
+      "id": 2,
+      "type": "stat",
+      "title": "UPLOAD DNS NÃO AUTORIZADO",
+      "description": "CPE → resolvers fora da lista autorizada (agora)",
+      "gridPos": {
+        "x": 0,
+        "y": 3,
+        "w": 4,
+        "h": 4
+      },
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "dfm7jlq2b2fwgf"
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "dfm7jlq2b2fwgf"
+          },
+          "query": "destination.port: 53 AND source.ip: \"$prefixos\" AND NOT destination.ip: $dns_ok AND netflow.exporter.address: $exportador",
+          "queryType": "lucene",
+          "timeField": "@timestamp",
+          "bucketAggs": [
+            {
+              "type": "date_histogram",
+              "id": "dh",
+              "field": "@timestamp",
+              "settings": {
+                "interval": "1m",
+                "min_doc_count": "0",
+                "trimEdges": "0"
+              }
+            }
+          ],
+          "metrics": [
+            {
+              "id": "1",
+              "type": "sum",
+              "field": "network.bytes",
+              "hide": true
+            },
+            {
+              "id": "2",
+              "type": "bucket_script",
+              "pipelineVariables": [
+                {
+                  "name": "b",
+                  "pipelineAgg": "1"
+                }
+              ],
+              "settings": {
+                "script": "params.b * 8 / 60"
+              }
+            }
+          ],
+          "alias": ""
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "bps",
+          "decimals": 0,
+          "color": {
+            "mode": "fixed",
+            "fixedColor": "#ff5a5a"
+          },
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "#ff5a5a",
+                "value": null
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "options": {
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "textMode": "value",
+        "colorMode": "background_gradient",
+        "graphMode": "area",
+        "justifyMode": "center",
+        "wideLayout": true,
+        "showPercentChange": false
+      }
+    },
+    {
+      "id": 3,
+      "type": "stat",
+      "title": "DOWNLOAD DNS NÃO AUTORIZADO",
+      "description": "resolvers fora da lista → CPE (agora)",
+      "gridPos": {
+        "x": 4,
+        "y": 3,
+        "w": 4,
+        "h": 4
+      },
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "dfm7jlq2b2fwgf"
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "dfm7jlq2b2fwgf"
+          },
+          "query": "source.port: 53 AND destination.ip: \"$prefixos\" AND NOT source.ip: $dns_ok AND netflow.exporter.address: $exportador",
+          "queryType": "lucene",
+          "timeField": "@timestamp",
+          "bucketAggs": [
+            {
+              "type": "date_histogram",
+              "id": "dh",
+              "field": "@timestamp",
+              "settings": {
+                "interval": "1m",
+                "min_doc_count": "0",
+                "trimEdges": "0"
+              }
+            }
+          ],
+          "metrics": [
+            {
+              "id": "1",
+              "type": "sum",
+              "field": "network.bytes",
+              "hide": true
+            },
+            {
+              "id": "2",
+              "type": "bucket_script",
+              "pipelineVariables": [
+                {
+                  "name": "b",
+                  "pipelineAgg": "1"
+                }
+              ],
+              "settings": {
+                "script": "params.b * 8 / 60"
+              }
+            }
+          ],
+          "alias": ""
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "bps",
+          "decimals": 0,
+          "color": {
+            "mode": "fixed",
+            "fixedColor": "#ff9f43"
+          },
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "#ff9f43",
+                "value": null
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "options": {
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "textMode": "value",
+        "colorMode": "background_gradient",
+        "graphMode": "area",
+        "justifyMode": "center",
+        "wideLayout": true,
+        "showPercentChange": false
+      }
+    },
+    {
+      "id": 4,
+      "type": "stat",
+      "title": "CPEs SUSPEITOS",
+      "description": "IPs distintos no bloco consultando resolvers não autorizados no período",
+      "gridPos": {
+        "x": 8,
+        "y": 3,
+        "w": 4,
+        "h": 4
+      },
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "dfm7jlq2b2fwgf"
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "dfm7jlq2b2fwgf"
+          },
+          "query": "destination.port: 53 AND source.ip: \"$prefixos\" AND NOT destination.ip: $dns_ok AND netflow.exporter.address: $exportador",
+          "queryType": "lucene",
+          "timeField": "@timestamp",
+          "bucketAggs": [],
+          "metrics": [
+            {
+              "id": "1",
+              "type": "cardinality",
+              "field": "source.ip"
+            }
+          ],
+          "alias": ""
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "short",
+          "decimals": 0,
+          "color": {
+            "mode": "fixed",
+            "fixedColor": "#00c8ff"
+          },
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "#00c8ff",
+                "value": null
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "options": {
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "textMode": "value",
+        "colorMode": "background_gradient",
+        "graphMode": "none",
+        "justifyMode": "center",
+        "wideLayout": true,
+        "showPercentChange": false
+      }
+    },
+    {
+      "id": 5,
+      "type": "stat",
+      "title": "RESOLVERS EXTERNOS",
+      "description": "destinos DNS distintos fora da lista autorizada",
+      "gridPos": {
+        "x": 12,
+        "y": 3,
+        "w": 4,
+        "h": 4
+      },
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "dfm7jlq2b2fwgf"
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "dfm7jlq2b2fwgf"
+          },
+          "query": "destination.port: 53 AND source.ip: \"$prefixos\" AND NOT destination.ip: $dns_ok AND netflow.exporter.address: $exportador",
+          "queryType": "lucene",
+          "timeField": "@timestamp",
+          "bucketAggs": [],
+          "metrics": [
+            {
+              "id": "1",
+              "type": "cardinality",
+              "field": "destination.ip"
+            }
+          ],
+          "alias": ""
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "short",
+          "decimals": 0,
+          "color": {
+            "mode": "fixed",
+            "fixedColor": "#12b3a8"
+          },
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "#12b3a8",
+                "value": null
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "options": {
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "textMode": "value",
+        "colorMode": "background_gradient",
+        "graphMode": "none",
+        "justifyMode": "center",
+        "wideLayout": true,
+        "showPercentChange": false
+      }
+    },
+    {
+      "id": 6,
+      "type": "stat",
+      "title": "FLOWS DNS",
+      "description": "registros de fluxo no período",
+      "gridPos": {
+        "x": 16,
+        "y": 3,
+        "w": 4,
+        "h": 4
+      },
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "dfm7jlq2b2fwgf"
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "dfm7jlq2b2fwgf"
+          },
+          "query": "destination.port: 53 AND source.ip: \"$prefixos\" AND NOT destination.ip: $dns_ok AND netflow.exporter.address: $exportador",
+          "queryType": "lucene",
+          "timeField": "@timestamp",
+          "bucketAggs": [],
+          "metrics": [
+            {
+              "id": "1",
+              "type": "count"
+            }
+          ],
+          "alias": ""
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "short",
+          "decimals": 0,
+          "color": {
+            "mode": "fixed",
+            "fixedColor": "#9be15d"
+          },
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "#9be15d",
+                "value": null
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "options": {
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "textMode": "value",
+        "colorMode": "background_gradient",
+        "graphMode": "none",
+        "justifyMode": "center",
+        "wideLayout": true,
+        "showPercentChange": false
+      }
+    },
+    {
+      "id": 7,
+      "type": "stat",
+      "title": "DNS OVER TLS (853)",
+      "description": "DoT contorna o resolver do provedor; volume relevante merece olhar",
+      "gridPos": {
+        "x": 20,
+        "y": 3,
+        "w": 4,
+        "h": 4
+      },
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "dfm7jlq2b2fwgf"
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "dfm7jlq2b2fwgf"
+          },
+          "query": "destination.port: 853 AND source.ip: \"$prefixos\" AND netflow.exporter.address: $exportador",
+          "queryType": "lucene",
+          "timeField": "@timestamp",
+          "bucketAggs": [
+            {
+              "type": "date_histogram",
+              "id": "dh",
+              "field": "@timestamp",
+              "settings": {
+                "interval": "1m",
+                "min_doc_count": "0",
+                "trimEdges": "0"
+              }
+            }
+          ],
+          "metrics": [
+            {
+              "id": "1",
+              "type": "sum",
+              "field": "network.bytes",
+              "hide": true
+            },
+            {
+              "id": "2",
+              "type": "bucket_script",
+              "pipelineVariables": [
+                {
+                  "name": "b",
+                  "pipelineAgg": "1"
+                }
+              ],
+              "settings": {
+                "script": "params.b * 8 / 60"
+              }
+            }
+          ],
+          "alias": ""
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "bps",
+          "decimals": 0,
+          "color": {
+            "mode": "fixed",
+            "fixedColor": "#c56cf0"
+          },
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "#c56cf0",
+                "value": null
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "options": {
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "textMode": "value",
+        "colorMode": "background_gradient",
+        "graphMode": "area",
+        "justifyMode": "center",
+        "wideLayout": true,
+        "showPercentChange": false
+      }
+    },
+    {
+      "id": 8,
+      "type": "timeseries",
+      "title": "UPLOAD POR CPE → RESOLVERS NÃO AUTORIZADOS",
+      "description": "Cada linha é um IP de origem do bloco CGNAT. Quem se destaca aqui é candidato a CPE/setopbox comprometido.",
+      "gridPos": {
+        "x": 0,
+        "y": 7,
+        "w": 16,
+        "h": 10
+      },
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "dfm7jlq2b2fwgf"
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "dfm7jlq2b2fwgf"
+          },
+          "query": "destination.port: 53 AND source.ip: \"$prefixos\" AND NOT destination.ip: $dns_ok AND netflow.exporter.address: $exportador",
+          "queryType": "lucene",
+          "timeField": "@timestamp",
+          "bucketAggs": [
+            {
+              "type": "terms",
+              "id": "t",
+              "field": "source.ip",
+              "settings": {
+                "size": "15",
+                "order": "desc",
+                "orderBy": "1",
+                "min_doc_count": "1"
+              }
+            },
+            {
+              "type": "date_histogram",
+              "id": "dh",
+              "field": "@timestamp",
+              "settings": {
+                "interval": "1m",
+                "min_doc_count": "0",
+                "trimEdges": "0"
+              }
+            }
+          ],
+          "metrics": [
+            {
+              "id": "1",
+              "type": "sum",
+              "field": "network.bytes",
+              "hide": true
+            },
+            {
+              "id": "2",
+              "type": "bucket_script",
+              "pipelineVariables": [
+                {
+                  "name": "b",
+                  "pipelineAgg": "1"
+                }
+              ],
+              "settings": {
+                "script": "params.b * 8 / 60"
+              }
+            }
+          ],
+          "alias": "{{source.ip}}"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "bps",
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "drawStyle": "line",
+            "lineInterpolation": "smooth",
+            "lineWidth": 1,
+            "fillOpacity": 18,
+            "gradientMode": "opacity",
+            "showPoints": "never",
+            "spanNulls": true,
+            "stacking": {
+              "mode": "none",
+              "group": "A"
+            },
+            "axisBorderShow": false,
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "options": {
+        "legend": {
+          "displayMode": "table",
+          "placement": "right",
+          "showLegend": true,
+          "calcs": [
+            "lastNotNull",
+            "max",
+            "mean"
+          ],
+          "sortBy": "Max",
+          "sortDesc": true
+        },
+        "tooltip": {
+          "mode": "multi",
+          "sort": "desc"
+        }
+      }
+    },
+    {
+      "id": 9,
+      "type": "volkovlabs-echarts-panel",
+      "title": "TOP RESOLVERS EXTERNOS (bytes no período)",
+      "gridPos": {
+        "x": 16,
+        "y": 7,
+        "w": 8,
+        "h": 10
+      },
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "dfm7jlq2b2fwgf"
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "dfm7jlq2b2fwgf"
+          },
+          "query": "destination.port: 53 AND source.ip: \"$prefixos\" AND NOT destination.ip: $dns_ok AND netflow.exporter.address: $exportador",
+          "queryType": "lucene",
+          "timeField": "@timestamp",
+          "bucketAggs": [
+            {
+              "type": "terms",
+              "id": "t",
+              "field": "destination.ip",
+              "settings": {
+                "size": "12",
+                "order": "desc",
+                "orderBy": "1",
+                "min_doc_count": "1"
+              }
+            }
+          ],
+          "metrics": [
+            {
+              "id": "1",
+              "type": "sum",
+              "field": "network.bytes"
+            }
+          ],
+          "alias": ""
+        }
+      ],
+      "options": {
+        "renderer": "canvas",
+        "map": "none",
+        "editorMode": "code",
+        "getOption": "// Business Charts — ranking horizontal (terms x soma de bytes), sem date histogram\nconst ctx = (typeof context !== 'undefined') ? context : null;\nconst frames = ctx ? ctx.panel.data.series : data.series;\nconst vals = (f) => (f && f.values) ? (f.values.toArray ? f.values.toArray() : Array.from(f.values)) : [];\nconst fr = frames[0]; if (!fr) return { title: { text: 'sem dados', textStyle: { color: '#8fa3b3', fontSize: 12 } } };\nconst key = fr.fields.find(f => f.type === 'string'); const val = fr.fields.find(f => f.type === 'number');\nconst rows = vals(key).map((k, i) => [k, vals(val)[i] || 0]).sort((a, b) => a[1] - b[1]).slice(-12);\nconst fmt = (v) => v >= 1e9 ? (v/1e9).toFixed(1)+' GB' : v >= 1e6 ? (v/1e6).toFixed(1)+' MB' : v >= 1e3 ? (v/1e3).toFixed(0)+' KB' : v+' B';\nconst mono = 'ui-monospace, JetBrains Mono, Menlo, Consolas, monospace';\nreturn {\n  backgroundColor: 'transparent', animationDuration: 700,\n  grid: { left: 8, right: 70, top: 8, bottom: 8, containLabel: true },\n  tooltip: { trigger: 'axis', axisPointer: { type: 'shadow' }, backgroundColor: 'rgba(8,12,18,.95)', borderColor: 'rgba(0,200,255,.35)', textStyle: { color: '#eef4f8', fontFamily: mono, fontSize: 11 }, valueFormatter: fmt },\n  xAxis: { type: 'value', show: false },\n  yAxis: { type: 'category', data: rows.map(r => r[0]), axisLine: { show: false }, axisTick: { show: false }, axisLabel: { color: '#cfd8e3', fontFamily: mono, fontSize: 11 } },\n  series: [{ type: 'bar', data: rows.map(r => r[1]), barWidth: 14,\n    itemStyle: { borderRadius: [0, 4, 4, 0], color: { type: 'linear', x: 0, y: 0, x2: 1, y2: 0, colorStops: [{ offset: 0, color: 'rgba(0,200,255,.35)' }, { offset: 1, color: '#00c8ff' }] } },\n    label: { show: true, position: 'right', color: '#8fa3b3', fontFamily: mono, fontSize: 10, formatter: (p) => fmt(p.value) } }]\n};\n",
+        "editor": {
+          "format": "auto",
+          "height": 600
+        },
+        "themeEditor": {
+          "config": "{}",
+          "height": 400,
+          "name": "default"
+        },
+        "visualEditor": {
+          "code": "return { dataset: context.editor.dataset, series: context.editor.series }",
+          "dataset": [],
+          "series": [],
+          "codeHeight": 600
+        },
+        "baidu": {
+          "callback": "bmapReady",
+          "key": ""
+        },
+        "gaode": {
+          "key": "",
+          "plugin": "AMap.Scale,AMap.ToolBar"
+        },
+        "google": {
+          "callback": "gmapReady",
+          "key": ""
+        }
+      }
+    },
+    {
+      "id": 10,
+      "type": "table",
+      "title": "RANKING DE CPEs SUSPEITOS",
+      "description": "Ordenado por bytes enviados a resolvers não autorizados. Resolvers = quantos destinos DNS distintos cada CPE consultou.",
+      "gridPos": {
+        "x": 0,
+        "y": 17,
+        "w": 12,
+        "h": 10
+      },
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "dfm7jlq2b2fwgf"
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "dfm7jlq2b2fwgf"
+          },
+          "query": "destination.port: 53 AND source.ip: \"$prefixos\" AND NOT destination.ip: $dns_ok AND netflow.exporter.address: $exportador",
+          "queryType": "lucene",
+          "timeField": "@timestamp",
+          "bucketAggs": [
+            {
+              "type": "terms",
+              "id": "t",
+              "field": "source.ip",
+              "settings": {
+                "size": "25",
+                "order": "desc",
+                "orderBy": "1",
+                "min_doc_count": "1"
+              }
+            }
+          ],
+          "metrics": [
+            {
+              "id": "1",
+              "type": "sum",
+              "field": "network.bytes"
+            },
+            {
+              "id": "2",
+              "type": "sum",
+              "field": "network.packets"
+            },
+            {
+              "id": "3",
+              "type": "count"
+            },
+            {
+              "id": "4",
+              "type": "cardinality",
+              "field": "destination.ip"
+            }
+          ],
+          "alias": ""
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "align": "auto",
+            "cellOptions": {
+              "type": "auto"
+            },
+            "filterable": true
+          },
+          "color": {
+            "mode": "thresholds"
+          },
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "#00c8ff",
+                "value": null
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "source.ip"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "CPE (source.ip)"
+              },
+              {
+                "id": "custom.width",
+                "value": 150
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Sum network.bytes"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Bytes"
+              },
+              {
+                "id": "unit",
+                "value": "bytes"
+              },
+              {
+                "id": "custom.cellOptions",
+                "value": {
+                  "type": "gauge",
+                  "mode": "gradient",
+                  "valueDisplayMode": "text"
+                }
+              },
+              {
+                "id": "color",
+                "value": {
+                  "mode": "continuous-BlPu"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Sum network.packets"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Pacotes"
+              },
+              {
+                "id": "unit",
+                "value": "short"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Count"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Flows"
+              },
+              {
+                "id": "unit",
+                "value": "short"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Unique Count destination.ip"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Resolvers"
+              },
+              {
+                "id": "unit",
+                "value": "short"
+              }
+            ]
+          }
+        ]
+      },
+      "options": {
+        "showHeader": true,
+        "cellHeight": "sm",
+        "footer": {
+          "show": false,
+          "reducer": [
+            "sum"
+          ],
+          "fields": ""
+        },
+        "sortBy": [
+          {
+            "displayName": "Bytes",
+            "desc": true
+          }
+        ]
+      }
+    },
+    {
+      "id": 11,
+      "type": "geomap",
+      "title": "ONDE ESTÃO OS RESOLVERS EXTERNOS",
+      "description": "Densidade de consultas DNS por localização do resolver (GeoIP do Filebeat).",
+      "gridPos": {
+        "x": 12,
+        "y": 17,
+        "w": 12,
+        "h": 10
+      },
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "dfm7jlq2b2fwgf"
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "dfm7jlq2b2fwgf"
+          },
+          "query": "destination.port: 53 AND source.ip: \"$prefixos\" AND NOT destination.ip: $dns_ok AND netflow.exporter.address: $exportador",
+          "queryType": "lucene",
+          "timeField": "@timestamp",
+          "bucketAggs": [
+            {
+              "type": "geohash_grid",
+              "id": "g",
+              "field": "destination.geo.location",
+              "settings": {
+                "precision": "3"
+              }
+            }
+          ],
+          "metrics": [
+            {
+              "id": "1",
+              "type": "count"
+            }
+          ],
+          "alias": ""
+        }
+      ],
+      "options": {
+        "view": {
+          "id": "zero",
+          "lat": 0,
+          "lon": 0,
+          "zoom": 1.4
+        },
+        "controls": {
+          "showZoom": true,
+          "mouseWheelZoom": false,
+          "showAttribution": true
+        },
+        "basemap": {
+          "type": "carto",
+          "name": "Basemap",
+          "config": {
+            "theme": "dark",
+            "showLabels": true
+          }
+        },
+        "layers": [
+          {
+            "type": "heatmap",
+            "name": "Consultas DNS",
+            "config": {
+              "weight": {
+                "fixed": 1,
+                "min": 0,
+                "max": 1
+              },
+              "blur": 15,
+              "radius": 8
+            },
+            "location": {
+              "mode": "auto"
+            },
+            "tooltip": true
+          }
+        ]
+      },
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      }
+    },
+    {
+      "id": 12,
+      "type": "timeseries",
+      "title": "UPLOAD · POR RESOLVER DE DESTINO",
+      "description": "Pra onde os CPEs estão mandando DNS.",
+      "gridPos": {
+        "x": 0,
+        "y": 27,
+        "w": 12,
+        "h": 9
+      },
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "dfm7jlq2b2fwgf"
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "dfm7jlq2b2fwgf"
+          },
+          "query": "destination.port: 53 AND source.ip: \"$prefixos\" AND NOT destination.ip: $dns_ok AND netflow.exporter.address: $exportador",
+          "queryType": "lucene",
+          "timeField": "@timestamp",
+          "bucketAggs": [
+            {
+              "type": "terms",
+              "id": "t",
+              "field": "destination.ip",
+              "settings": {
+                "size": "12",
+                "order": "desc",
+                "orderBy": "1",
+                "min_doc_count": "1"
+              }
+            },
+            {
+              "type": "date_histogram",
+              "id": "dh",
+              "field": "@timestamp",
+              "settings": {
+                "interval": "1m",
+                "min_doc_count": "0",
+                "trimEdges": "0"
+              }
+            }
+          ],
+          "metrics": [
+            {
+              "id": "1",
+              "type": "sum",
+              "field": "network.bytes",
+              "hide": true
+            },
+            {
+              "id": "2",
+              "type": "bucket_script",
+              "pipelineVariables": [
+                {
+                  "name": "b",
+                  "pipelineAgg": "1"
+                }
+              ],
+              "settings": {
+                "script": "params.b * 8 / 60"
+              }
+            }
+          ],
+          "alias": "{{destination.ip}}"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "bps",
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "drawStyle": "line",
+            "lineInterpolation": "smooth",
+            "lineWidth": 1,
+            "fillOpacity": 18,
+            "gradientMode": "opacity",
+            "showPoints": "never",
+            "spanNulls": true,
+            "stacking": {
+              "mode": "none",
+              "group": "A"
+            },
+            "axisBorderShow": false,
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "options": {
+        "legend": {
+          "displayMode": "table",
+          "placement": "right",
+          "showLegend": true,
+          "calcs": [
+            "lastNotNull",
+            "max",
+            "mean"
+          ],
+          "sortBy": "Max",
+          "sortDesc": true
+        },
+        "tooltip": {
+          "mode": "multi",
+          "sort": "desc"
+        }
+      }
+    },
+    {
+      "id": 13,
+      "type": "timeseries",
+      "title": "DOWNLOAD · POR RESOLVER DE ORIGEM",
+      "description": "Respostas DNS voltando de resolvers fora da lista. Volume alto de resposta com pouca consulta = amplificação.",
+      "gridPos": {
+        "x": 12,
+        "y": 27,
+        "w": 12,
+        "h": 9
+      },
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "dfm7jlq2b2fwgf"
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "dfm7jlq2b2fwgf"
+          },
+          "query": "source.port: 53 AND destination.ip: \"$prefixos\" AND NOT source.ip: $dns_ok AND netflow.exporter.address: $exportador",
+          "queryType": "lucene",
+          "timeField": "@timestamp",
+          "bucketAggs": [
+            {
+              "type": "terms",
+              "id": "t",
+              "field": "source.ip",
+              "settings": {
+                "size": "12",
+                "order": "desc",
+                "orderBy": "1",
+                "min_doc_count": "1"
+              }
+            },
+            {
+              "type": "date_histogram",
+              "id": "dh",
+              "field": "@timestamp",
+              "settings": {
+                "interval": "1m",
+                "min_doc_count": "0",
+                "trimEdges": "0"
+              }
+            }
+          ],
+          "metrics": [
+            {
+              "id": "1",
+              "type": "sum",
+              "field": "network.bytes",
+              "hide": true
+            },
+            {
+              "id": "2",
+              "type": "bucket_script",
+              "pipelineVariables": [
+                {
+                  "name": "b",
+                  "pipelineAgg": "1"
+                }
+              ],
+              "settings": {
+                "script": "params.b * 8 / 60"
+              }
+            }
+          ],
+          "alias": "{{source.ip}}"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "bps",
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "drawStyle": "line",
+            "lineInterpolation": "smooth",
+            "lineWidth": 1,
+            "fillOpacity": 18,
+            "gradientMode": "opacity",
+            "showPoints": "never",
+            "spanNulls": true,
+            "stacking": {
+              "mode": "none",
+              "group": "A"
+            },
+            "axisBorderShow": false,
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "options": {
+        "legend": {
+          "displayMode": "table",
+          "placement": "right",
+          "showLegend": true,
+          "calcs": [
+            "lastNotNull",
+            "max",
+            "mean"
+          ],
+          "sortBy": "Max",
+          "sortDesc": true
+        },
+        "tooltip": {
+          "mode": "multi",
+          "sort": "desc"
+        }
+      }
+    },
+    {
+      "id": 14,
+      "type": "timeseries",
+      "title": "TRANSPORTE (UDP x TCP)",
+      "description": "DNS legítimo é quase todo UDP. TCP relevante em porta 53 sugere tunelamento ou transferência de zona.",
+      "gridPos": {
+        "x": 0,
+        "y": 36,
+        "w": 8,
+        "h": 8
+      },
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "dfm7jlq2b2fwgf"
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "dfm7jlq2b2fwgf"
+          },
+          "query": "destination.port: 53 AND source.ip: \"$prefixos\" AND NOT destination.ip: $dns_ok AND netflow.exporter.address: $exportador",
+          "queryType": "lucene",
+          "timeField": "@timestamp",
+          "bucketAggs": [
+            {
+              "type": "terms",
+              "id": "t",
+              "field": "network.transport",
+              "settings": {
+                "size": "4",
+                "order": "desc",
+                "orderBy": "1",
+                "min_doc_count": "1"
+              }
+            },
+            {
+              "type": "date_histogram",
+              "id": "dh",
+              "field": "@timestamp",
+              "settings": {
+                "interval": "1m",
+                "min_doc_count": "0",
+                "trimEdges": "0"
+              }
+            }
+          ],
+          "metrics": [
+            {
+              "id": "1",
+              "type": "sum",
+              "field": "network.bytes",
+              "hide": true
+            },
+            {
+              "id": "2",
+              "type": "bucket_script",
+              "pipelineVariables": [
+                {
+                  "name": "b",
+                  "pipelineAgg": "1"
+                }
+              ],
+              "settings": {
+                "script": "params.b * 8 / 60"
+              }
+            }
+          ],
+          "alias": "{{network.transport}}"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "bps",
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "drawStyle": "line",
+            "lineInterpolation": "smooth",
+            "lineWidth": 1,
+            "fillOpacity": 35,
+            "gradientMode": "opacity",
+            "showPoints": "never",
+            "spanNulls": true,
+            "stacking": {
+              "mode": "normal",
+              "group": "A"
+            },
+            "axisBorderShow": false,
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "options": {
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true,
+          "calcs": [],
+          "sortBy": "Max",
+          "sortDesc": true
+        },
+        "tooltip": {
+          "mode": "multi",
+          "sort": "desc"
+        }
+      }
+    },
+    {
+      "id": 15,
+      "type": "timeseries",
+      "title": "BYTES POR PACOTE (média)",
+      "description": "Consulta DNS normal fica em 60–120 bytes. Pacotes grandes de forma sustentada indicam tunelamento DNS ou payload anômalo.",
+      "gridPos": {
+        "x": 8,
+        "y": 36,
+        "w": 8,
+        "h": 8
+      },
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "dfm7jlq2b2fwgf"
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "dfm7jlq2b2fwgf"
+          },
+          "query": "destination.port: 53 AND source.ip: \"$prefixos\" AND NOT destination.ip: $dns_ok AND netflow.exporter.address: $exportador",
+          "queryType": "lucene",
+          "timeField": "@timestamp",
+          "bucketAggs": [
+            {
+              "type": "date_histogram",
+              "id": "dh",
+              "field": "@timestamp",
+              "settings": {
+                "interval": "1m",
+                "min_doc_count": "0",
+                "trimEdges": "0"
+              }
+            }
+          ],
+          "metrics": [
+            {
+              "id": "1",
+              "type": "sum",
+              "field": "network.bytes",
+              "hide": true
+            },
+            {
+              "id": "2",
+              "type": "sum",
+              "field": "network.packets",
+              "hide": true
+            },
+            {
+              "id": "3",
+              "type": "bucket_script",
+              "pipelineVariables": [
+                {
+                  "name": "b",
+                  "pipelineAgg": "1"
+                },
+                {
+                  "name": "p",
+                  "pipelineAgg": "2"
+                }
+              ],
+              "settings": {
+                "script": "params.p > 0 ? params.b / params.p : 0"
+              }
+            }
+          ],
+          "alias": "bytes/pkt"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "bytes",
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "drawStyle": "line",
+            "lineInterpolation": "smooth",
+            "lineWidth": 1,
+            "fillOpacity": 18,
+            "gradientMode": "opacity",
+            "showPoints": "never",
+            "spanNulls": true,
+            "stacking": {
+              "mode": "none",
+              "group": "A"
+            },
+            "axisBorderShow": false,
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "options": {
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true,
+          "calcs": [],
+          "sortBy": "Max",
+          "sortDesc": true
+        },
+        "tooltip": {
+          "mode": "multi",
+          "sort": "desc"
+        }
+      }
+    },
+    {
+      "id": 16,
+      "type": "piechart",
+      "title": "PAÍS DOS RESOLVERS EXTERNOS",
+      "gridPos": {
+        "x": 16,
+        "y": 36,
+        "w": 8,
+        "h": 8
+      },
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "dfm7jlq2b2fwgf"
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "dfm7jlq2b2fwgf"
+          },
+          "query": "destination.port: 53 AND source.ip: \"$prefixos\" AND NOT destination.ip: $dns_ok AND netflow.exporter.address: $exportador",
+          "queryType": "lucene",
+          "timeField": "@timestamp",
+          "bucketAggs": [
+            {
+              "type": "terms",
+              "id": "t",
+              "field": "destination.geo.country_name",
+              "settings": {
+                "size": "8",
+                "order": "desc",
+                "orderBy": "1",
+                "min_doc_count": "1"
+              }
+            }
+          ],
+          "metrics": [
+            {
+              "id": "1",
+              "type": "sum",
+              "field": "network.bytes"
+            }
+          ],
+          "alias": ""
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "bytes",
+          "color": {
+            "mode": "palette-classic"
+          }
+        },
+        "overrides": []
+      },
+      "options": {
+        "pieType": "donut",
+        "displayLabels": [
+          "percent"
+        ],
+        "legend": {
+          "displayMode": "list",
+          "placement": "right",
+          "showLegend": true,
+          "values": [
+            "percent"
+          ]
+        },
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": true
+        },
+        "tooltip": {
+          "mode": "single"
+        }
+      }
+    },
+    {
+      "id": 17,
+      "type": "table",
+      "title": "ASN DOS RESOLVERS EXTERNOS",
+      "description": "Organização (GeoIP ASN) dos destinos DNS não autorizados.",
+      "gridPos": {
+        "x": 0,
+        "y": 44,
+        "w": 12,
+        "h": 8
+      },
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "dfm7jlq2b2fwgf"
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "dfm7jlq2b2fwgf"
+          },
+          "query": "destination.port: 53 AND source.ip: \"$prefixos\" AND NOT destination.ip: $dns_ok AND netflow.exporter.address: $exportador",
+          "queryType": "lucene",
+          "timeField": "@timestamp",
+          "bucketAggs": [
+            {
+              "type": "terms",
+              "id": "t",
+              "field": "destination.as.organization.name",
+              "settings": {
+                "size": "15",
+                "order": "desc",
+                "orderBy": "1",
+                "min_doc_count": "1"
+              }
+            }
+          ],
+          "metrics": [
+            {
+              "id": "1",
+              "type": "sum",
+              "field": "network.bytes"
+            },
+            {
+              "id": "2",
+              "type": "cardinality",
+              "field": "source.ip"
+            }
+          ],
+          "alias": ""
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "align": "auto",
+            "cellOptions": {
+              "type": "auto"
+            },
+            "filterable": true
+          },
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "#00c8ff",
+                "value": null
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "destination.as.organization.name"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "ASN / Organização"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Sum network.bytes"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Bytes"
+              },
+              {
+                "id": "unit",
+                "value": "bytes"
+              },
+              {
+                "id": "custom.cellOptions",
+                "value": {
+                  "type": "gauge",
+                  "mode": "gradient",
+                  "valueDisplayMode": "text"
+                }
+              },
+              {
+                "id": "color",
+                "value": {
+                  "mode": "continuous-BlPu"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Unique Count source.ip"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "CPEs"
+              },
+              {
+                "id": "unit",
+                "value": "short"
+              }
+            ]
+          }
+        ]
+      },
+      "options": {
+        "showHeader": true,
+        "cellHeight": "sm",
+        "footer": {
+          "show": false,
+          "reducer": [
+            "sum"
+          ],
+          "fields": ""
+        },
+        "sortBy": [
+          {
+            "displayName": "Bytes",
+            "desc": true
+          }
+        ]
+      }
+    },
+    {
+      "id": 18,
+      "type": "timeseries",
+      "title": "DOWNLOAD · PORTA DE DESTINO NO CPE",
+      "description": "Porta em que a resposta chega no CPE. Resposta DNS caindo sempre na mesma porta alta, em volume, é padrão de reflexão.",
+      "gridPos": {
+        "x": 12,
+        "y": 44,
+        "w": 12,
+        "h": 8
+      },
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "dfm7jlq2b2fwgf"
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "dfm7jlq2b2fwgf"
+          },
+          "query": "source.port: 53 AND destination.ip: \"$prefixos\" AND NOT source.ip: $dns_ok AND netflow.exporter.address: $exportador",
+          "queryType": "lucene",
+          "timeField": "@timestamp",
+          "bucketAggs": [
+            {
+              "type": "terms",
+              "id": "t",
+              "field": "destination.port",
+              "settings": {
+                "size": "15",
+                "order": "desc",
+                "orderBy": "1",
+                "min_doc_count": "1"
+              }
+            },
+            {
+              "type": "date_histogram",
+              "id": "dh",
+              "field": "@timestamp",
+              "settings": {
+                "interval": "1m",
+                "min_doc_count": "0",
+                "trimEdges": "0"
+              }
+            }
+          ],
+          "metrics": [
+            {
+              "id": "1",
+              "type": "sum",
+              "field": "network.bytes",
+              "hide": true
+            },
+            {
+              "id": "2",
+              "type": "bucket_script",
+              "pipelineVariables": [
+                {
+                  "name": "b",
+                  "pipelineAgg": "1"
+                }
+              ],
+              "settings": {
+                "script": "params.b * 8 / 60"
+              }
+            }
+          ],
+          "alias": "porta {{destination.port}}"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "bps",
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "drawStyle": "line",
+            "lineInterpolation": "smooth",
+            "lineWidth": 1,
+            "fillOpacity": 18,
+            "gradientMode": "opacity",
+            "showPoints": "never",
+            "spanNulls": true,
+            "stacking": {
+              "mode": "none",
+              "group": "A"
+            },
+            "axisBorderShow": false,
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "options": {
+        "legend": {
+          "displayMode": "table",
+          "placement": "right",
+          "showLegend": true,
+          "calcs": [
+            "lastNotNull",
+            "max",
+            "mean"
+          ],
+          "sortBy": "Max",
+          "sortDesc": true
+        },
+        "tooltip": {
+          "mode": "multi",
+          "sort": "desc"
+        }
+      }
+    }
+  ],
+  "schemaVersion": 41,
+  "version": 1,
+  "fiscalYearStartMonth": 0,
+  "liveNow": false,
+  "weekStart": ""
+}
