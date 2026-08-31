@@ -186,6 +186,28 @@
         "options": [],
         "sort": 1,
         "hide": 0
+      },
+      {
+        "type": "query",
+        "name": "categoria",
+        "label": "Categoria C2",
+        "datasource": {
+          "type": "elasticsearch",
+          "uid": "dfm7jlq2b2fwgf"
+        },
+        "query": "{\"find\":\"terms\",\"field\":\"threat.feed.name\",\"size\":20}",
+        "refresh": 2,
+        "multi": true,
+        "includeAll": true,
+        "allValue": "*",
+        "current": {
+          "text": "All",
+          "value": "$__all"
+        },
+        "options": [],
+        "sort": 1,
+        "hide": 0,
+        "description": "c2 = C2 confirmado | malware | anon = Tor | hostil = listas ruidosas | varredura = CPE escaneando"
       }
     ]
   },
@@ -2196,7 +2218,7 @@
             "type": "elasticsearch",
             "uid": "dfm7jlq2b2fwgf"
           },
-          "query": "event.dataset: \"c2.findings\" AND source.ip: \"$prefixos\"",
+          "query": "event.dataset: \"c2.findings\" AND source.ip: \"$prefixos\" AND threat.feed.name: $categoria",
           "queryType": "lucene",
           "timeField": "@timestamp",
           "metrics": [
@@ -2220,8 +2242,10 @@
               "@timestamp": true,
               "source.ip": true,
               "destination.ip": true,
-              "threat.indicator.provider": true,
+              "flowspec.categoria": true,
+              "flowspec.fontes": true,
               "flowspec.portas": true,
+              "flowspec.destinos": true,
               "flowspec.flows": true,
               "network.bytes": true,
               "flowspec.ultimo_contato": true
@@ -2229,19 +2253,23 @@
             "indexByName": {
               "@timestamp": 0,
               "source.ip": 1,
-              "destination.ip": 2,
-              "threat.indicator.provider": 3,
-              "flowspec.portas": 4,
-              "flowspec.flows": 5,
-              "network.bytes": 6,
-              "flowspec.ultimo_contato": 7
+              "flowspec.categoria": 2,
+              "destination.ip": 3,
+              "flowspec.fontes": 4,
+              "flowspec.portas": 5,
+              "flowspec.destinos": 6,
+              "flowspec.flows": 7,
+              "network.bytes": 8,
+              "flowspec.ultimo_contato": 9
             },
             "renameByName": {
               "@timestamp": "Varredura",
               "source.ip": "CPE",
-              "destination.ip": "C2",
-              "threat.indicator.provider": "Fonte",
+              "flowspec.categoria": "Categoria",
+              "destination.ip": "IP destino",
+              "flowspec.fontes": "Fonte",
               "flowspec.portas": "Portas",
+              "flowspec.destinos": "Destinos",
               "flowspec.flows": "Flows",
               "network.bytes": "Bytes",
               "flowspec.ultimo_contato": "Último contato"
@@ -2330,6 +2358,65 @@
                 "value": "dateTimeAsLocal"
               }
             ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Categoria"
+            },
+            "properties": [
+              {
+                "id": "mappings",
+                "value": [
+                  {
+                    "type": "regex",
+                    "options": {
+                      "pattern": ".*c2.*",
+                      "result": {
+                        "color": "#ff5a5a",
+                        "index": 0
+                      }
+                    }
+                  },
+                  {
+                    "type": "regex",
+                    "options": {
+                      "pattern": "varredura",
+                      "result": {
+                        "color": "#ff9f43",
+                        "index": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "regex",
+                    "options": {
+                      "pattern": ".*anon.*",
+                      "result": {
+                        "color": "#c56cf0",
+                        "index": 2
+                      }
+                    }
+                  },
+                  {
+                    "type": "regex",
+                    "options": {
+                      "pattern": "hostil",
+                      "result": {
+                        "color": "#8fa3b3",
+                        "index": 3
+                      }
+                    }
+                  }
+                ]
+              },
+              {
+                "id": "custom.cellOptions",
+                "value": {
+                  "type": "color-text"
+                }
+              }
+            ]
           }
         ]
       },
@@ -2373,7 +2460,7 @@
             "type": "elasticsearch",
             "uid": "dfm7jlq2b2fwgf"
           },
-          "query": "event.dataset: \"c2.findings\" AND source.ip: \"$prefixos\"",
+          "query": "event.dataset: \"c2.findings\" AND source.ip: \"$prefixos\" AND threat.feed.name: $categoria",
           "queryType": "lucene",
           "timeField": "@timestamp",
           "bucketAggs": [
@@ -2517,7 +2604,7 @@
     {
       "id": 23,
       "type": "timeseries",
-      "title": "ACHADOS C2 POR VARREDURA",
+      "title": "ACHADOS POR CATEGORIA E VARREDURA",
       "gridPos": {
         "x": 0,
         "y": 64,
@@ -2535,14 +2622,14 @@
             "type": "elasticsearch",
             "uid": "dfm7jlq2b2fwgf"
           },
-          "query": "event.dataset: \"c2.findings\" AND source.ip: \"$prefixos\"",
+          "query": "event.dataset: \"c2.findings\" AND source.ip: \"$prefixos\" AND threat.feed.name: $categoria",
           "queryType": "lucene",
           "timeField": "@timestamp",
           "bucketAggs": [
             {
               "type": "terms",
               "id": "t",
-              "field": "threat.indicator.provider",
+              "field": "threat.feed.name",
               "settings": {
                 "size": "10",
                 "order": "desc",
