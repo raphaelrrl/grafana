@@ -9,7 +9,7 @@
   "timezone": "browser",
   "editable": true,
   "graphTooltip": 1,
-  "refresh": "30s",
+  "refresh": "1m",
   "time": {
     "from": "now-3h",
     "to": "now"
@@ -89,46 +89,52 @@
         "type": "custom",
         "name": "dns_ok",
         "label": "DNS autorizados",
-        "query": "201.77.12.0/22,201.77.8.20,208.67.222.0/24,1.1.1.1,8.8.8.8,8.8.4.4",
+        "query": "187.86.57.253,187.86.57.254,1.1.1.1,1.0.0.1,8.8.8.8,8.8.4.4,9.9.9.9,208.67.222.0/24,208.67.220.0/24",
         "multi": true,
         "includeAll": false,
         "current": {
           "text": [
-            "201.77.12.0/22",
-            "201.77.8.20",
-            "208.67.222.0/24",
+            "187.86.57.253",
+            "187.86.57.254",
             "1.1.1.1",
+            "1.0.0.1",
             "8.8.8.8",
-            "8.8.4.4"
+            "8.8.4.4",
+            "9.9.9.9",
+            "208.67.222.0/24",
+            "208.67.220.0/24"
           ],
           "value": [
-            "201.77.12.0/22",
-            "201.77.8.20",
-            "208.67.222.0/24",
+            "187.86.57.253",
+            "187.86.57.254",
             "1.1.1.1",
+            "1.0.0.1",
             "8.8.8.8",
-            "8.8.4.4"
+            "8.8.4.4",
+            "9.9.9.9",
+            "208.67.222.0/24",
+            "208.67.220.0/24"
           ]
         },
         "options": [
           {
-            "text": "201.77.12.0/22",
-            "value": "201.77.12.0/22",
+            "text": "187.86.57.253",
+            "value": "187.86.57.253",
             "selected": true
           },
           {
-            "text": "201.77.8.20",
-            "value": "201.77.8.20",
-            "selected": true
-          },
-          {
-            "text": "208.67.222.0/24",
-            "value": "208.67.222.0/24",
+            "text": "187.86.57.254",
+            "value": "187.86.57.254",
             "selected": true
           },
           {
             "text": "1.1.1.1",
             "value": "1.1.1.1",
+            "selected": true
+          },
+          {
+            "text": "1.0.0.1",
+            "value": "1.0.0.1",
             "selected": true
           },
           {
@@ -139,6 +145,21 @@
           {
             "text": "8.8.4.4",
             "value": "8.8.4.4",
+            "selected": true
+          },
+          {
+            "text": "9.9.9.9",
+            "value": "9.9.9.9",
+            "selected": true
+          },
+          {
+            "text": "208.67.222.0/24",
+            "value": "208.67.222.0/24",
+            "selected": true
+          },
+          {
+            "text": "208.67.220.0/24",
+            "value": "208.67.220.0/24",
             "selected": true
           }
         ],
@@ -1235,6 +1256,7 @@
             "name": "Densidade",
             "config": {
               "weight": {
+                "field": "Count",
                 "fixed": 1,
                 "min": 0,
                 "max": 1
@@ -1243,7 +1265,8 @@
               "radius": 10
             },
             "location": {
-              "mode": "auto"
+              "mode": "geohash",
+              "geohash": "destination.geo.location"
             },
             "tooltip": true
           },
@@ -1253,9 +1276,10 @@
             "config": {
               "style": {
                 "size": {
+                  "field": "Count",
                   "fixed": 5,
                   "min": 3,
-                  "max": 12
+                  "max": 14
                 },
                 "color": {
                   "fixed": "#00c8ff"
@@ -1269,7 +1293,8 @@
               "showLegend": false
             },
             "location": {
-              "mode": "auto"
+              "mode": "geohash",
+              "geohash": "destination.geo.location"
             },
             "tooltip": true
           }
