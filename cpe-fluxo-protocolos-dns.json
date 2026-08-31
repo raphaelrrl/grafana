@@ -201,13 +201,23 @@
         "includeAll": true,
         "allValue": "*",
         "current": {
-          "text": "All",
-          "value": "$__all"
+          "text": [
+            "c2",
+            "anon",
+            "malware",
+            "varredura"
+          ],
+          "value": [
+            "c2",
+            "anon",
+            "malware",
+            "varredura"
+          ]
         },
         "options": [],
         "sort": 1,
         "hide": 0,
-        "description": "c2 = C2 confirmado | malware | anon = Tor | hostil = listas ruidosas | varredura = CPE escaneando"
+        "description": "c2 = C2 confirmado | anon = Tor | varredura = CPE escaneando | hostil = listas ruidosas (marque para ver)"
       }
     ]
   },
@@ -2200,7 +2210,7 @@
       "id": 20,
       "type": "table",
       "title": "CPEs FALANDO COM C2 CONHECIDO",
-      "description": "Achados do c2scan.py no intervalo selecionado. Cada linha: CPE do bloco que trocou tráfego com IP presente nas blocklists.",
+      "description": "Achados do c2scan no intervalo (ate 2000 linhas). Use a variavel 'Categoria C2' no topo para filtrar; o filtro da coluna so enxerga as linhas ja carregadas.",
       "gridPos": {
         "x": 0,
         "y": 54,
@@ -2226,7 +2236,7 @@
               "id": "1",
               "type": "raw_data",
               "settings": {
-                "size": "500"
+                "size": "2000"
               }
             }
           ],
@@ -2274,6 +2284,17 @@
               "network.bytes": "Bytes",
               "flowspec.ultimo_contato": "Último contato"
             }
+          }
+        },
+        {
+          "id": "sortBy",
+          "options": {
+            "sort": [
+              {
+                "field": "Bytes",
+                "desc": true
+              }
+            ]
           }
         }
       ],

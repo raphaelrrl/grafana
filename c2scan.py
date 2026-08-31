@@ -71,7 +71,7 @@ def es_http(path, body=None, method="POST", ctype="application/json"):
     req = urllib.request.Request(f"{ES_URL}{path}", data=data, method=method,
                                  headers={"Content-Type": ctype, "Authorization": f"Basic {auth}"})
     try:
-        with urllib.request.urlopen(req, timeout=120, context=ctx) as r:
+        with urllib.request.urlopen(req, timeout=300, context=ctx) as r:
             return json.load(r)
     except urllib.error.HTTPError as e:
         sys.exit(f"Elastic HTTP {e.code}: " + ("usuario/senha recusados (ES_USER/ES_PASS)" if e.code == 401 else e.read().decode()[:400]))
@@ -146,20 +146,27 @@ def buscar(ips, horas, min_pkts=3, lote=20000):
     achados.sort(key=lambda x: (min(ordem.get(c, 9) for c in x["categoria"].split("+")), -x["bytes"], x["cpe"]))
     return achados
 
-def varredura(horas, min_dest=100, max_bytes_flow=600):
-    """CPE -> muitos destinos distintos na mesma porta, flows pequenos = bot escaneando."""
+# portas com fan-out legitimo alto (web/CDN, P2P): exigem limiar bem maior para contar como varredura
+PORTAS_COMUNS = {443, 80, 8080, 0, 6881, 6969, 51413, 4001, 7649, 7172, 23000}
+
+def varredura(horas, min_dest=100, min_dest_comum=3000):
+    """CPE -> muitos destinos distintos na mesma porta com flows minusculos (SYN sem resposta) = bot escaneando.
+    Com jflow amostrado quase todo registro tem 1 pacote, por isso o limiar por porta e o que separa scan de navegacao."""
     body = {"size": 0,
-      "query": {"bool": {"filter": [{"range": {"@timestamp": {"gte": f"now-{horas}h"}}}, {"term": {"source.ip": PREFIX}}]}},
-      "aggs": {"cpe": {"terms": {"field": "source.ip", "size": 3000, "order": {"dests": "desc"}},
-         "aggs": {"dests": {"cardinality": {"field": "destination.ip"}},
-                  "porta": {"terms": {"field": "destination.port", "size": 5, "order": {"d": "desc"}},
+      "query": {"bool": {"filter": [
+          {"range": {"@timestamp": {"gte": f"now-{horas}h"}}},
+          {"term": {"source.ip": PREFIX}},
+          {"range": {"network.packets": {"lte": 3}}},      # assinatura de scan: 1-3 pacotes por flow
+          {"range": {"network.bytes": {"lte": 600}}}]}},
+      "aggs": {"cpe": {"terms": {"field": "source.ip", "size": 2000, "min_doc_count": min_dest, "order": {"_count": "desc"}},
+         "aggs": {"porta": {"terms": {"field": "destination.port", "size": 5, "min_doc_count": min_dest},
                             "aggs": {"d": {"cardinality": {"field": "destination.ip"}}, "bytes": {"sum": {"field": "network.bytes"}}, "ultimo": {"max": {"field": "@timestamp"}}}}}}}}
     r = es_query(body); out = []
     for b in r["aggregations"]["cpe"]["buckets"]:
         for p in b["porta"]["buckets"]:
-            d = int(p["d"]["value"]); fl = p["doc_count"]
-            if d >= min_dest and (p["bytes"]["value"] / max(fl, 1)) <= max_bytes_flow:
-                out.append({"cpe": b["key"], "porta": p["key"], "destinos": d, "flows": fl, "bytes": int(p["bytes"]["value"]),
+            d = int(p["d"]["value"])
+            if d >= (min_dest_comum if p["key"] in PORTAS_COMUNS else min_dest):
+                out.append({"cpe": b["key"], "porta": p["key"], "destinos": d, "flows": p["doc_count"], "bytes": int(p["bytes"]["value"]),
                             "ultimo_contato": p["ultimo"].get("value_as_string", "")})
     out.sort(key=lambda x: -x["destinos"]); return out
 
@@ -188,6 +195,8 @@ def main():
     ap.add_argument("--es-write", action="store_true", help="grava os achados no Elastic (event.dataset=c2.findings)")
     ap.add_argument("--scan", action="store_true", help="tambem detecta CPEs escaneando (fan-out de destinos por porta)")
     ap.add_argument("--min-dest", type=int, default=100, help="--scan: minimo de IPs distintos na mesma porta")
+    ap.add_argument("--scan-hours", type=int, default=2, help="--scan: janela propria da varredura (curta: escaneamento e continuo)")
+    ap.add_argument("--min-dest-comum", type=int, default=3000, help="--scan: limiar para portas de fan-out legitimo (443, 80, P2P)")
     a = ap.parse_args()
     if not ES_PASS: sys.exit("Defina ES_PASS")
     sel = FONTES.keys() if a.fontes == "all" else a.fontes.split(",")
@@ -195,10 +204,10 @@ def main():
     ips = carregar_blocklists(fontes)
     if not ips: sys.exit("Nenhuma blocklist carregada (sem acesso ao abuse.ch?)")
     achados = buscar(ips, a.hours, a.min_pkts)
-    scan = varredura(a.hours, a.min_dest) if a.scan else []
+    scan = varredura(a.scan_hours, a.min_dest, a.min_dest_comum) if a.scan else []
     if a.es_write:
         es_gravar(achados, a.hours)
-        if scan: es_gravar_varredura(scan, a.hours)
+        if scan: es_gravar_varredura(scan, a.scan_hours)
     if a.json:
         print(json.dumps({"gerado": datetime.datetime.now().isoformat(timespec="seconds"), "horas": a.hours,
                           "prefixo": PREFIX, "ips_blocklist": len(ips), "cpes": len({x['cpe'] for x in achados}),
@@ -213,7 +222,7 @@ def main():
         print(f"{x['cpe']:16s} {x['c2']:16s} {x['categoria']:11s} {x['fontes'][:20]:20s} {x['portas'][:12]:12s} {x['flows']:6d} {x['bytes']:11d} {x['ultimo_contato'][:19]}")
     print()
     if a.scan:
-        print(f"CPEs escaneando (>= {a.min_dest} destinos na mesma porta): {len({x['cpe'] for x in scan})}\n")
+        print(f"CPEs escaneando (>= {a.min_dest} destinos na mesma porta, ultimas {a.scan_hours}h): {len({x['cpe'] for x in scan})}\n")
         print(f"{'CPE':16s} {'porta':>6s} {'destinos':>9s} {'flows':>7s} {'bytes':>11s} {'ultimo contato'}")
         for x in scan: print(f"{x['cpe']:16s} {x['porta']:6d} {x['destinos']:9d} {x['flows']:7d} {x['bytes']:11d} {x['ultimo_contato'][:19]}")
         print()
