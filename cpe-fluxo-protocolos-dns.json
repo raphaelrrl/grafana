@@ -436,7 +436,20 @@
           "query": "destination.port: 53 AND source.ip: \"$prefixos\" AND NOT destination.ip: $dns_ok AND netflow.exporter.address: $exportador",
           "queryType": "lucene",
           "timeField": "@timestamp",
-          "bucketAggs": [],
+          "bucketAggs": [
+            {
+              "type": "filters",
+              "id": "f",
+              "settings": {
+                "filters": [
+                  {
+                    "query": "*",
+                    "label": "total"
+                  }
+                ]
+              }
+            }
+          ],
           "metrics": [
             {
               "id": "1",
@@ -508,7 +521,20 @@
           "query": "destination.port: 53 AND source.ip: \"$prefixos\" AND NOT destination.ip: $dns_ok AND netflow.exporter.address: $exportador",
           "queryType": "lucene",
           "timeField": "@timestamp",
-          "bucketAggs": [],
+          "bucketAggs": [
+            {
+              "type": "filters",
+              "id": "f",
+              "settings": {
+                "filters": [
+                  {
+                    "query": "*",
+                    "label": "total"
+                  }
+                ]
+              }
+            }
+          ],
           "metrics": [
             {
               "id": "1",
@@ -580,7 +606,20 @@
           "query": "destination.port: 53 AND source.ip: \"$prefixos\" AND NOT destination.ip: $dns_ok AND netflow.exporter.address: $exportador",
           "queryType": "lucene",
           "timeField": "@timestamp",
-          "bucketAggs": [],
+          "bucketAggs": [
+            {
+              "type": "filters",
+              "id": "f",
+              "settings": {
+                "filters": [
+                  {
+                    "query": "*",
+                    "label": "total"
+                  }
+                ]
+              }
+            }
+          ],
           "metrics": [
             {
               "id": "1",
@@ -1017,8 +1056,8 @@
         "overrides": [
           {
             "matcher": {
-              "id": "byName",
-              "options": "source.ip"
+              "id": "byRegexp",
+              "options": "^source\\.ip$"
             },
             "properties": [
               {
@@ -1033,8 +1072,8 @@
           },
           {
             "matcher": {
-              "id": "byName",
-              "options": "Sum network.bytes"
+              "id": "byRegexp",
+              "options": "^Sum network\\.bytes$|^Sum$"
             },
             "properties": [
               {
@@ -1063,8 +1102,8 @@
           },
           {
             "matcher": {
-              "id": "byName",
-              "options": "Sum network.packets"
+              "id": "byRegexp",
+              "options": "^Sum network\\.packets$"
             },
             "properties": [
               {
@@ -1079,8 +1118,8 @@
           },
           {
             "matcher": {
-              "id": "byName",
-              "options": "Count"
+              "id": "byRegexp",
+              "options": "^Count$"
             },
             "properties": [
               {
@@ -1095,8 +1134,8 @@
           },
           {
             "matcher": {
-              "id": "byName",
-              "options": "Unique Count destination.ip"
+              "id": "byRegexp",
+              "options": "^Unique Count.*"
             },
             "properties": [
               {
@@ -1186,25 +1225,48 @@
           "showAttribution": true
         },
         "basemap": {
-          "type": "carto",
+          "type": "osm-standard",
           "name": "Basemap",
-          "config": {
-            "theme": "dark",
-            "showLabels": true
-          }
+          "config": {}
         },
         "layers": [
           {
             "type": "heatmap",
-            "name": "Consultas DNS",
+            "name": "Densidade",
             "config": {
               "weight": {
                 "fixed": 1,
                 "min": 0,
                 "max": 1
               },
-              "blur": 15,
-              "radius": 8
+              "blur": 18,
+              "radius": 10
+            },
+            "location": {
+              "mode": "auto"
+            },
+            "tooltip": true
+          },
+          {
+            "type": "markers",
+            "name": "Resolvers",
+            "config": {
+              "style": {
+                "size": {
+                  "fixed": 5,
+                  "min": 3,
+                  "max": 12
+                },
+                "color": {
+                  "fixed": "#00c8ff"
+                },
+                "opacity": 0.7,
+                "symbol": {
+                  "mode": "fixed",
+                  "fixed": "img/icons/marker/circle.svg"
+                }
+              },
+              "showLegend": false
             },
             "location": {
               "mode": "auto"
@@ -1869,8 +1931,8 @@
         "overrides": [
           {
             "matcher": {
-              "id": "byName",
-              "options": "destination.as.organization.name"
+              "id": "byRegexp",
+              "options": "^destination\\.as\\.organization\\.name$"
             },
             "properties": [
               {
@@ -1881,8 +1943,8 @@
           },
           {
             "matcher": {
-              "id": "byName",
-              "options": "Sum network.bytes"
+              "id": "byRegexp",
+              "options": "^Sum.*"
             },
             "properties": [
               {
@@ -1911,8 +1973,8 @@
           },
           {
             "matcher": {
-              "id": "byName",
-              "options": "Unique Count source.ip"
+              "id": "byRegexp",
+              "options": "^Unique Count.*"
             },
             "properties": [
               {
@@ -2069,6 +2131,484 @@
           "mode": "multi",
           "sort": "desc"
         }
+      }
+    },
+    {
+      "id": 19,
+      "type": "text",
+      "title": "",
+      "gridPos": {
+        "x": 0,
+        "y": 52,
+        "w": 24,
+        "h": 2
+      },
+      "transparent": true,
+      "options": {
+        "mode": "html",
+        "content": "<div style=\"font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;letter-spacing:.14em;color:#8fa3b3;border-top:1px solid rgba(255,255,255,.08);padding-top:10px;\"><span style=\"color:#ff5a5a\">/02</span>&nbsp; CORRELAÇÃO COM BASES C2 &nbsp;<span style=\"opacity:.6\">— todo o tráfego do bloco (qualquer porta) cruzado com a blocklist Feodo Tracker (abuse.ch, C2 de botnets: Emotet, Dridex, QakBot, TrickBot…)</span></div>"
+      }
+    },
+    {
+      "id": 20,
+      "type": "table",
+      "title": "CPEs FALANDO COM C2 CONHECIDO",
+      "description": "Inner join entre destinos do bloco CGNAT e a lista Feodo Tracker (atualizada a cada carregamento). Qualquer linha aqui é um CPE comprometido com alta confiança.",
+      "gridPos": {
+        "x": 0,
+        "y": 54,
+        "w": 16,
+        "h": 10
+      },
+      "datasource": {
+        "type": "datasource",
+        "uid": "-- Mixed --"
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "dfm7jlq2b2fwgf"
+          },
+          "query": "source.ip: \"$prefixos\" AND NOT destination.ip: \"$prefixos\" AND netflow.exporter.address: $exportador",
+          "queryType": "lucene",
+          "timeField": "@timestamp",
+          "bucketAggs": [
+            {
+              "type": "terms",
+              "id": "t1",
+              "field": "destination.ip",
+              "settings": {
+                "size": "500",
+                "order": "desc",
+                "orderBy": "1",
+                "min_doc_count": "1"
+              }
+            },
+            {
+              "type": "terms",
+              "id": "t2",
+              "field": "source.ip",
+              "settings": {
+                "size": "20",
+                "order": "desc",
+                "orderBy": "1",
+                "min_doc_count": "1"
+              }
+            }
+          ],
+          "metrics": [
+            {
+              "id": "1",
+              "type": "sum",
+              "field": "network.bytes"
+            },
+            {
+              "id": "2",
+              "type": "count"
+            }
+          ],
+          "alias": ""
+        },
+        {
+          "refId": "B",
+          "datasource": {
+            "type": "yesoreyeram-infinity-datasource",
+            "uid": "f7ncx2q9wd8k1e"
+          },
+          "type": "csv",
+          "source": "url",
+          "format": "table",
+          "url": "https://feodotracker.abuse.ch/downloads/ipblocklist_aggressive.txt",
+          "url_options": {
+            "method": "GET",
+            "data": ""
+          },
+          "parser": "backend",
+          "csv_options": {
+            "delimiter": ",",
+            "skip_empty_lines": true,
+            "skip_lines_with_error": true,
+            "relax_column_count": true,
+            "columns": "destination.ip"
+          },
+          "columns": [
+            {
+              "selector": "destination.ip",
+              "text": "destination.ip",
+              "type": "string"
+            }
+          ],
+          "filters": [],
+          "global_query_id": "",
+          "root_selector": ""
+        }
+      ],
+      "transformations": [
+        {
+          "id": "joinByField",
+          "options": {
+            "byField": "destination.ip",
+            "mode": "inner"
+          }
+        },
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {},
+            "indexByName": {
+              "source.ip": 0,
+              "destination.ip": 1,
+              "Sum network.bytes": 2,
+              "Count": 3
+            },
+            "renameByName": {
+              "source.ip": "CPE",
+              "destination.ip": "C2 (destino)",
+              "Sum network.bytes": "Bytes",
+              "Count": "Flows"
+            }
+          }
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "align": "auto",
+            "cellOptions": {
+              "type": "auto"
+            },
+            "filterable": true
+          },
+          "color": {
+            "mode": "thresholds"
+          },
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "#ff5a5a",
+                "value": null
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byRegexp",
+              "options": "^Bytes$"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "bytes"
+              },
+              {
+                "id": "custom.cellOptions",
+                "value": {
+                  "type": "gauge",
+                  "mode": "gradient",
+                  "valueDisplayMode": "text"
+                }
+              },
+              {
+                "id": "color",
+                "value": {
+                  "mode": "continuous-RdYlGr"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byRegexp",
+              "options": "^CPE$"
+            },
+            "properties": [
+              {
+                "id": "custom.cellOptions",
+                "value": {
+                  "type": "color-text"
+                }
+              },
+              {
+                "id": "color",
+                "value": {
+                  "mode": "fixed",
+                  "fixedColor": "#ff5a5a"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "options": {
+        "showHeader": true,
+        "cellHeight": "sm",
+        "footer": {
+          "show": false,
+          "reducer": [
+            "sum"
+          ],
+          "fields": ""
+        },
+        "sortBy": [
+          {
+            "displayName": "Bytes",
+            "desc": true
+          }
+        ]
+      }
+    },
+    {
+      "id": 21,
+      "type": "stat",
+      "title": "CPEs COM CONTATO C2",
+      "description": "Quantidade de IPs do bloco que aparecem na correlação acima.",
+      "gridPos": {
+        "x": 16,
+        "y": 54,
+        "w": 8,
+        "h": 5
+      },
+      "datasource": {
+        "type": "datasource",
+        "uid": "-- Mixed --"
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "dfm7jlq2b2fwgf"
+          },
+          "query": "source.ip: \"$prefixos\" AND NOT destination.ip: \"$prefixos\" AND netflow.exporter.address: $exportador",
+          "queryType": "lucene",
+          "timeField": "@timestamp",
+          "bucketAggs": [
+            {
+              "type": "terms",
+              "id": "t1",
+              "field": "destination.ip",
+              "settings": {
+                "size": "500",
+                "order": "desc",
+                "orderBy": "1",
+                "min_doc_count": "1"
+              }
+            },
+            {
+              "type": "terms",
+              "id": "t2",
+              "field": "source.ip",
+              "settings": {
+                "size": "20",
+                "order": "desc",
+                "orderBy": "1",
+                "min_doc_count": "1"
+              }
+            }
+          ],
+          "metrics": [
+            {
+              "id": "1",
+              "type": "count"
+            }
+          ],
+          "alias": ""
+        },
+        {
+          "refId": "B",
+          "datasource": {
+            "type": "yesoreyeram-infinity-datasource",
+            "uid": "f7ncx2q9wd8k1e"
+          },
+          "type": "csv",
+          "source": "url",
+          "format": "table",
+          "url": "https://feodotracker.abuse.ch/downloads/ipblocklist_aggressive.txt",
+          "url_options": {
+            "method": "GET",
+            "data": ""
+          },
+          "parser": "backend",
+          "csv_options": {
+            "delimiter": ",",
+            "skip_empty_lines": true,
+            "skip_lines_with_error": true,
+            "relax_column_count": true,
+            "columns": "destination.ip"
+          },
+          "columns": [
+            {
+              "selector": "destination.ip",
+              "text": "destination.ip",
+              "type": "string"
+            }
+          ],
+          "filters": [],
+          "global_query_id": "",
+          "root_selector": ""
+        }
+      ],
+      "transformations": [
+        {
+          "id": "joinByField",
+          "options": {
+            "byField": "destination.ip",
+            "mode": "inner"
+          }
+        },
+        {
+          "id": "groupBy",
+          "options": {
+            "fields": {
+              "source.ip": {
+                "aggregations": [
+                  "distinctCount"
+                ],
+                "operation": "aggregate"
+              }
+            }
+          }
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "short",
+          "decimals": 0,
+          "color": {
+            "mode": "fixed",
+            "fixedColor": "#ff5a5a"
+          },
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "#9be15d",
+                "value": null
+              },
+              {
+                "color": "#ff5a5a",
+                "value": 1
+              }
+            ]
+          },
+          "noValue": "0"
+        },
+        "overrides": []
+      },
+      "options": {
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "textMode": "value",
+        "colorMode": "background_gradient",
+        "graphMode": "none",
+        "justifyMode": "center",
+        "wideLayout": true
+      }
+    },
+    {
+      "id": 22,
+      "type": "stat",
+      "title": "IPs NA BLOCKLIST (carregados)",
+      "description": "Tamanho da lista Feodo Tracker obtida agora. Zero = servidor sem acesso a abuse.ch.",
+      "gridPos": {
+        "x": 16,
+        "y": 59,
+        "w": 8,
+        "h": 5
+      },
+      "datasource": {
+        "type": "yesoreyeram-infinity-datasource",
+        "uid": "f7ncx2q9wd8k1e"
+      },
+      "targets": [
+        {
+          "refId": "B",
+          "datasource": {
+            "type": "yesoreyeram-infinity-datasource",
+            "uid": "f7ncx2q9wd8k1e"
+          },
+          "type": "csv",
+          "source": "url",
+          "format": "table",
+          "url": "https://feodotracker.abuse.ch/downloads/ipblocklist_aggressive.txt",
+          "url_options": {
+            "method": "GET",
+            "data": ""
+          },
+          "parser": "backend",
+          "csv_options": {
+            "delimiter": ",",
+            "skip_empty_lines": true,
+            "skip_lines_with_error": true,
+            "relax_column_count": true,
+            "columns": "destination.ip"
+          },
+          "columns": [
+            {
+              "selector": "destination.ip",
+              "text": "destination.ip",
+              "type": "string"
+            }
+          ],
+          "filters": [],
+          "global_query_id": "",
+          "root_selector": ""
+        }
+      ],
+      "transformations": [
+        {
+          "id": "filterByValue",
+          "options": {
+            "filters": [
+              {
+                "fieldName": "destination.ip",
+                "config": {
+                  "id": "regex",
+                  "options": {
+                    "value": "^[0-9]+\\."
+                  }
+                }
+              }
+            ],
+            "type": "include",
+            "match": "any"
+          }
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "short",
+          "color": {
+            "mode": "fixed",
+            "fixedColor": "#8fa3b3"
+          },
+          "noValue": "0"
+        },
+        "overrides": []
+      },
+      "options": {
+        "reduceOptions": {
+          "calcs": [
+            "count"
+          ],
+          "fields": "/.*/",
+          "values": false
+        },
+        "textMode": "value",
+        "colorMode": "none",
+        "graphMode": "none",
+        "justifyMode": "center",
+        "wideLayout": true
       }
     }
   ],
