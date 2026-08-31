@@ -1,0 +1,1462 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "grafana",
+          "uid": "-- Grafana --"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "target": {
+          "limit": 100,
+          "matchAny": false,
+          "tags": [],
+          "type": "dashboard"
+        },
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "id": 30,
+  "links": [],
+  "panels": [
+    {
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "ef19x5d2knzlsa"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 80,
+      "options": {
+        "afterRender": "",
+        "content": "<div\n  style=\" background-image: linear-gradient(to left, Green , black); display: flex; align-items: center;  border-left: 8px solid Lime; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);\">\n  <div style=\"flex-shrink: 0;\">\n    <a style=\"color: inherit; text-decoration: none;\" href=\"https://flowspec.net.br\" target=\"_blank\">\n      <img src=\"https://flowspec.net.br/assets/images/logo-transparente.png\" alt=\"Logo\" style=\"width: 180px; height: 50px;\"></a>\n  </div>\n  <h1>DASHBOARD FLUXO PROTOCOLOS</h1>\n  <div style=\"flex-shrink: 0;\">\n    <a href=\"http://ticket.nowtecnologia.com.br:8118\"\n      target=\"_blank\"><button class=\"custom-btn2 btn-15\">Ticket</button></a>\n    <a\n      href=\"http://201.77.11.255:3000/d/ee3cdulyval1ceAWE/dashboard-inicial\"><button class=\"custom-btn2 btn-15\">Voltar</button></a>\n  </div>\n</div>",
+        "contentPartials": [],
+        "defaultContent": "The query didn't return any results.",
+        "editor": {
+          "format": "none",
+          "language": "html"
+        },
+        "editors": [
+          "styles"
+        ],
+        "externalStyles": [],
+        "helpers": "",
+        "renderMode": "allRows",
+        "styles": "\r\nh1 {\r\n  text-align: center;\r\n  font-family: Tahoma, Arial, sans-serif;\r\n  color: Lime;\r\n  flex-grow: 1;\r\n  font-size: 26px; \r\n  font-weight: bold; \r\n  margin: 0;\r\n}\r\n\r\n.box {\r\n  width: 40%;\r\n  margin: 0 auto;\r\n  background: rgba(255,255,255,0.2);\r\n  padding: 35px;\r\n  border: 2px solid #fff;\r\n  border-radius: 20px/50px;\r\n  background-clip: padding-box;\r\n  text-align: center;\r\n}\r\n\r\n.overlay {\r\n  position: fixed;\r\n  top: 0;\r\n  bottom: 0;\r\n  left: 0;\r\n  right: 0;\r\n  background: rgba(0, 0, 0, 0.7);\r\n  transition: opacity 500ms;\r\n  visibility: hidden;\r\n  opacity: 0;\r\n}\r\n.overlay:target {\r\n  visibility: visible;\r\n  opacity: 1;\r\n}\r\n\r\n.popup {\r\n  margin: 70px auto;\r\n  padding: 10px;\r\n  background: rgb(251, 253, 252);\r\n  border-radius: 5px;\r\n  width: 50%;\r\n  position: relative;\r\n  transition: all 5s ease-in-out;\r\n}\r\n\r\n.popup h2 {\r\n  margin-top: 0;\r\n  color: #333;\r\n  font-family: Tahoma, Arial, sans-serif;\r\n}\r\n.popup .close {\r\n  position: absolute;\r\n  top: 1px;\r\n  right: 20px;\r\n  transition: all 200ms;\r\n  font-size: 30px;\r\n  font-weight: bold;\r\n  text-decoration: none;\r\n  color: #888585;\r\n}\r\n.popup .close:hover {\r\n  color: #000000;\r\n}\r\n.popup .content {\r\n  max-height: 30%;\r\n  overflow: auto;\r\n}\r\n\r\n@media screen and (max-width: 800px){\r\n  .box{\r\n    width: 70%;\r\n  }\r\n  .popup{\r\n    width: 70%;\r\n  }\r\n}\r\n.frame {\r\n  width: 90%;\r\n  margin: 5px auto;\r\n  text-align: center;\r\n}\r\nbutton {\r\n  margin: 10px;\r\n}\r\n.custom-btn {\r\n  color: rgb(10, 10, 10);\r\n  border-radius: 5px;\r\n  font-family: 'Lato', sans-serif;\r\n  font-weight: 500;\r\n  background: transparent;\r\n  cursor: pointer;\r\n  transition: all 0.3s ease;\r\n  position: relative;\r\n  display: inline-block;\r\n   box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),\r\n   7px 7px 20px 0px rgba(0,0,0,.1),\r\n   4px 4px 5px 0px rgba(0,0,0,.1);\r\n  outline: none;\r\n}\r\n.custom-btn2 {\r\n  color: rgb(252, 250, 250);\r\n  border-radius: 5px;\r\n  font-family: 'Lato', sans-serif;\r\n  font-weight: bold;\r\n  background: transparent;\r\n  cursor: pointer;\r\n  transition: all 0.3s ease;\r\n  position: relative;\r\n  display: inline-block;\r\n   box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),\r\n   7px 7px 20px 0px rgba(0,0,0,.1),\r\n   4px 4px 5px 0px rgba(0,0,0,.1);\r\n  outline: none;\r\n}\r\n\r\n.btn-3 {\r\n  background: Lime;\r\nbackground: linear-gradient(0deg, Lime 0%, black) 100%);\r\n  line-height: 42px;\r\n padding: 0;\r\n  border: none;\r\n  \r\n}\r\n.btn-3 span {\r\n  position: relative;\r\n  display: block;\r\n  padding: 0 5px;\r\n\r\n}\r\n.btn-3:before,\r\n.btn-3:after {\r\n  position: absolute;\r\n  content: \"\";\r\n  right: 0;\r\n  top: 0;\r\n   background: Lime;\r\n  transition: all 0.3s ease;\r\n}\r\n.btn-3:before {\r\n  height: 0%;\r\n  width: 2px;\r\n}\r\n.btn-3:after {\r\n  width: 0%;\r\n  height: 2px;\r\n}\r\n.btn-3:hover{\r\n   background: transparent;\r\n  box-shadow: none;\r\n}\r\n.btn-3:hover:before {\r\n  height: 100%;\r\n}\r\n.btn-3:hover:after {\r\n  width: 100%;\r\n}\r\n.btn-3 span:hover{\r\n   color: green;\r\n    font-weight: bold; \r\n}\r\n.btn-3 span:before,\r\n.btn-3 span:after {\r\n  position: absolute;\r\n  content: \"\";\r\n  left: 0;\r\n  bottom: 0;\r\n   background: Lime;\r\n  transition: all 0.3s ease;\r\n}\r\n.btn-3 span:before {\r\n  width: 2px;\r\n  height: 0%;\r\n}\r\n.btn-3 span:after {\r\n  width: 0%;\r\n  height: 2px;\r\n}\r\n.btn-3 span:hover:before {\r\n  height: 100%;\r\n}\r\n.btn-3 span:hover:after {\r\n  width: 100%;\r\n}\r\n.btn-15 {\r\n border: 2px solid Lime;\r\n  z-index: 1;\r\n}\r\n.btn-15:after {\r\n  position: absolute;\r\n  content: \"\";\r\n  width: 0;\r\n  height: 100%;\r\n  top: 0;\r\n  right: 0;\r\n  z-index: -1;\r\n  background-color: lime;\r\n  border-radius: 5px;\r\n   box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),\r\n   7px 7px 20px 0px rgba(0,0,0,.1),\r\n   4px 4px 5px 0px rgba(0,0,0,.1);\r\n  transition: all 0.3s ease;\r\n}\r\n.btn-15:hover {\r\n  color: rgb(2, 2, 2);\r\n}\r\n.btn-15:hover:after {\r\n  left: 0;\r\n  width: 100%;\r\n}\r\n.btn-15:active {\r\n    top: 2px;\r\n}",
+        "wrap": true
+      },
+      "pluginVersion": "6.0.0",
+      "targets": [
+        {
+          "alias": "",
+          "bucketAggs": [
+            {
+              "field": "@timestamp",
+              "id": "2",
+              "settings": {
+                "interval": "auto"
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "ef19x5d2knzlsa"
+          },
+          "metrics": [
+            {
+              "id": "1",
+              "type": "count"
+            }
+          ],
+          "query": "",
+          "refId": "A",
+          "timeField": "@timestamp"
+        }
+      ],
+      "title": "",
+      "transparent": true,
+      "type": "marcusolsson-dynamictext-panel"
+    },
+    {
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 2
+      },
+      "id": 83,
+      "panels": [],
+      "title": "TOP PROTOCOLO",
+      "type": "row"
+    },
+    {
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 24,
+        "x": 0,
+        "y": 3
+      },
+      "id": 85,
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "<div style=\"font-size:30px;\n            text-align:center;\n            font-family:Arial;\n            border-radius: 20px;\n            font-weight: bold;\n            background-image: linear-gradient(to bottom, #FF355E, #DC143C, #FF355E);\n            background-size: 100% 100%;\n            color:#FFFFFF\">ENDEREÇOS INFECTADOS COM OUTROS DNS</div>",
+        "mode": "html"
+      },
+      "pluginVersion": "12.3.2",
+      "title": "",
+      "transparent": true,
+      "type": "text"
+    },
+    {
+      "datasource": {},
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "barWidthFactor": 0.6,
+            "drawStyle": "line",
+            "fillOpacity": 25,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "smooth",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "showValues": false,
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "Kbits"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "*"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "dark-blue",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 24,
+        "x": 0,
+        "y": 5
+      },
+      "id": 87,
+      "options": {
+        "legend": {
+          "calcs": [
+            "lastNotNull",
+            "max"
+          ],
+          "displayMode": "table",
+          "placement": "right",
+          "showLegend": true,
+          "sortBy": "Max",
+          "sortDesc": true
+        },
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "multi",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "12.3.2",
+      "targets": [
+        {
+          "alias": "",
+          "application": {
+            "filter": ""
+          },
+          "bucketAggs": [
+            {
+              "field": "source.ip",
+              "id": "2",
+              "settings": {
+                "min_doc_count": "1",
+                "order": "desc",
+                "orderBy": "1",
+                "size": "0"
+              },
+              "type": "terms"
+            },
+            {
+              "field": "@timestamp",
+              "id": "3",
+              "settings": {
+                "interval": "10s",
+                "min_doc_count": "1",
+                "timeZone": "utc",
+                "trimEdges": "0"
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "countTriggersBy": "",
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "a2be8205-212c-4334-978e-eeb852fa7854"
+          },
+          "functions": [
+            {
+              "added": true,
+              "def": {
+                "category": "Alias",
+                "defaultParams": [
+                  "/(.*)/",
+                  "$1"
+                ],
+                "name": "replaceAlias",
+                "params": [
+                  {
+                    "name": "regexp",
+                    "type": "string"
+                  },
+                  {
+                    "name": "newAlias",
+                    "type": "string"
+                  }
+                ]
+              },
+              "params": [
+                "NE-F1A-BGP: Interface Eth-Trunk1.2207(AS26162-IXBR-RJ-DURAND-v6): ",
+                "DURAND-v6 - "
+              ],
+              "text": "replaceAlias(/(.*)/, $1)"
+            },
+            {
+              "added": true,
+              "def": {
+                "category": "Alias",
+                "defaultParams": [
+                  "/(.*)/",
+                  "$1"
+                ],
+                "name": "replaceAlias",
+                "params": [
+                  {
+                    "name": "regexp",
+                    "type": "string"
+                  },
+                  {
+                    "name": "newAlias",
+                    "type": "string"
+                  }
+                ]
+              },
+              "params": [
+                "NE-F1A-BGP: Interface Eth-Trunk1.2206(AS26162-IXBR-RJ-DURAND): ",
+                "DURAND-v4 - "
+              ],
+              "text": "replaceAlias(/(.*)/, $1)"
+            }
+          ],
+          "group": {
+            "filter": "BGP"
+          },
+          "host": {
+            "filter": "NE-F1A-BGP"
+          },
+          "item": {
+            "filter": "/Bits.*/"
+          },
+          "itemTag": {
+            "filter": "interface: Eth-Trunk1"
+          },
+          "macro": {
+            "filter": ""
+          },
+          "metrics": [
+            {
+              "field": "network.bytes",
+              "id": "1",
+              "type": "sum"
+            }
+          ],
+          "options": {
+            "count": false,
+            "disableDataAlignment": false,
+            "showDisabledItems": false,
+            "skipEmptyValues": false,
+            "useTrends": "default",
+            "useZabbixValueMapping": false
+          },
+          "proxy": {
+            "filter": ""
+          },
+          "query": "destination.port: \"53\" AND source.ip: $Prefixos AND NOT destination.ip: \"201.77.12.0/22\" AND NOT destination.ip: \"208.67.222.0/24\" AND NOT destination.ip: \"1.1.1.1\" AND NOT destination.ip: \"8.8.8.8\" AND NOT destination.ip: \"8.8.4.4\" AND NOT destination.ip: \"201.77.8.20\"",
+          "queryType": "0",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "schema": 12,
+          "table": {
+            "skipEmptyValues": false
+          },
+          "tags": {
+            "filter": ""
+          },
+          "textFilter": "",
+          "timeField": "@timestamp",
+          "trigger": {
+            "filter": ""
+          }
+        }
+      ],
+      "title": "",
+      "transparent": true,
+      "type": "timeseries"
+    },
+    {
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 24,
+        "x": 0,
+        "y": 14
+      },
+      "id": 53,
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "<div style=\"font-size:30px;\n            text-align:center;\n            font-family:Arial;\n            border-radius: 20px;\n            font-weight: bold;\n            background-image: linear-gradient(to bottom, #FF355E, #DC143C, #FF355E);\n            background-size: 100% 100%;\n            color:#FFFFFF\">UPLOAD DNS </div>",
+        "mode": "html"
+      },
+      "pluginVersion": "12.3.2",
+      "title": "",
+      "transparent": true,
+      "type": "text"
+    },
+    {
+      "datasource": {},
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "barWidthFactor": 0.6,
+            "drawStyle": "line",
+            "fillOpacity": 25,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "smooth",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "showValues": false,
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "Kbits"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "*"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "dark-blue",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 12,
+        "x": 0,
+        "y": 16
+      },
+      "id": 75,
+      "options": {
+        "legend": {
+          "calcs": [
+            "last",
+            "max"
+          ],
+          "displayMode": "table",
+          "placement": "right",
+          "showLegend": true,
+          "sortBy": "Max",
+          "sortDesc": true
+        },
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "multi",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "12.3.2",
+      "targets": [
+        {
+          "alias": "",
+          "application": {
+            "filter": ""
+          },
+          "bucketAggs": [
+            {
+              "field": "destination.port",
+              "id": "2",
+              "settings": {
+                "min_doc_count": "1",
+                "order": "desc",
+                "orderBy": "1",
+                "size": "0"
+              },
+              "type": "terms"
+            },
+            {
+              "field": "@timestamp",
+              "id": "3",
+              "settings": {
+                "interval": "10s",
+                "min_doc_count": "1",
+                "timeZone": "utc",
+                "trimEdges": "0"
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "countTriggersBy": "",
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "a2be8205-212c-4334-978e-eeb852fa7854"
+          },
+          "functions": [
+            {
+              "added": true,
+              "def": {
+                "category": "Alias",
+                "defaultParams": [
+                  "/(.*)/",
+                  "$1"
+                ],
+                "name": "replaceAlias",
+                "params": [
+                  {
+                    "name": "regexp",
+                    "type": "string"
+                  },
+                  {
+                    "name": "newAlias",
+                    "type": "string"
+                  }
+                ]
+              },
+              "params": [
+                "NE-F1A-BGP: Interface Eth-Trunk1.2207(AS26162-IXBR-RJ-DURAND-v6): ",
+                "DURAND-v6 - "
+              ],
+              "text": "replaceAlias(/(.*)/, $1)"
+            },
+            {
+              "added": true,
+              "def": {
+                "category": "Alias",
+                "defaultParams": [
+                  "/(.*)/",
+                  "$1"
+                ],
+                "name": "replaceAlias",
+                "params": [
+                  {
+                    "name": "regexp",
+                    "type": "string"
+                  },
+                  {
+                    "name": "newAlias",
+                    "type": "string"
+                  }
+                ]
+              },
+              "params": [
+                "NE-F1A-BGP: Interface Eth-Trunk1.2206(AS26162-IXBR-RJ-DURAND): ",
+                "DURAND-v4 - "
+              ],
+              "text": "replaceAlias(/(.*)/, $1)"
+            }
+          ],
+          "group": {
+            "filter": "BGP"
+          },
+          "host": {
+            "filter": "NE-F1A-BGP"
+          },
+          "item": {
+            "filter": "/Bits.*/"
+          },
+          "itemTag": {
+            "filter": "interface: Eth-Trunk1"
+          },
+          "macro": {
+            "filter": ""
+          },
+          "metrics": [
+            {
+              "field": "network.bytes",
+              "id": "1",
+              "type": "sum"
+            }
+          ],
+          "options": {
+            "count": false,
+            "disableDataAlignment": false,
+            "showDisabledItems": false,
+            "skipEmptyValues": false,
+            "useTrends": "default",
+            "useZabbixValueMapping": false
+          },
+          "proxy": {
+            "filter": ""
+          },
+          "query": "destination.port: \"53\" AND source.ip: $Prefixos AND NOT destination.ip: \"201.77.12.0/22\" AND NOT destination.ip: \"208.67.222.0/24\" AND NOT destination.ip: \"1.1.1.1\" AND NOT destination.ip: \"8.8.8.8\" AND NOT destination.ip: \"8.8.4.4\" AND NOT destination.ip: \"201.77.8.20\"",
+          "queryType": "0",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "schema": 12,
+          "table": {
+            "skipEmptyValues": false
+          },
+          "tags": {
+            "filter": ""
+          },
+          "textFilter": "",
+          "timeField": "@timestamp",
+          "trigger": {
+            "filter": ""
+          }
+        }
+      ],
+      "title": "SOURCE.PORT 53 DNS  SOURCE.IP  53 VETOR DNS",
+      "transparent": true,
+      "type": "timeseries"
+    },
+    {
+      "datasource": {},
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "barWidthFactor": 0.6,
+            "drawStyle": "line",
+            "fillOpacity": 25,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "smooth",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "showValues": false,
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "Kbits"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "*"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "dark-blue",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 12,
+        "x": 12,
+        "y": 16
+      },
+      "id": 84,
+      "options": {
+        "legend": {
+          "calcs": [
+            "lastNotNull",
+            "max"
+          ],
+          "displayMode": "table",
+          "placement": "right",
+          "showLegend": true,
+          "sortBy": "Max",
+          "sortDesc": true
+        },
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "multi",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "12.3.2",
+      "targets": [
+        {
+          "alias": "",
+          "application": {
+            "filter": ""
+          },
+          "bucketAggs": [
+            {
+              "field": "destination.ip",
+              "id": "2",
+              "settings": {
+                "min_doc_count": "1",
+                "order": "desc",
+                "orderBy": "1",
+                "size": "0"
+              },
+              "type": "terms"
+            },
+            {
+              "field": "@timestamp",
+              "id": "3",
+              "settings": {
+                "interval": "10s",
+                "min_doc_count": "1",
+                "timeZone": "utc",
+                "trimEdges": "0"
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "countTriggersBy": "",
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "a2be8205-212c-4334-978e-eeb852fa7854"
+          },
+          "functions": [
+            {
+              "added": true,
+              "def": {
+                "category": "Alias",
+                "defaultParams": [
+                  "/(.*)/",
+                  "$1"
+                ],
+                "name": "replaceAlias",
+                "params": [
+                  {
+                    "name": "regexp",
+                    "type": "string"
+                  },
+                  {
+                    "name": "newAlias",
+                    "type": "string"
+                  }
+                ]
+              },
+              "params": [
+                "NE-F1A-BGP: Interface Eth-Trunk1.2207(AS26162-IXBR-RJ-DURAND-v6): ",
+                "DURAND-v6 - "
+              ],
+              "text": "replaceAlias(/(.*)/, $1)"
+            },
+            {
+              "added": true,
+              "def": {
+                "category": "Alias",
+                "defaultParams": [
+                  "/(.*)/",
+                  "$1"
+                ],
+                "name": "replaceAlias",
+                "params": [
+                  {
+                    "name": "regexp",
+                    "type": "string"
+                  },
+                  {
+                    "name": "newAlias",
+                    "type": "string"
+                  }
+                ]
+              },
+              "params": [
+                "NE-F1A-BGP: Interface Eth-Trunk1.2206(AS26162-IXBR-RJ-DURAND): ",
+                "DURAND-v4 - "
+              ],
+              "text": "replaceAlias(/(.*)/, $1)"
+            }
+          ],
+          "group": {
+            "filter": "BGP"
+          },
+          "host": {
+            "filter": "NE-F1A-BGP"
+          },
+          "item": {
+            "filter": "/Bits.*/"
+          },
+          "itemTag": {
+            "filter": "interface: Eth-Trunk1"
+          },
+          "macro": {
+            "filter": ""
+          },
+          "metrics": [
+            {
+              "field": "network.bytes",
+              "id": "1",
+              "type": "sum"
+            }
+          ],
+          "options": {
+            "count": false,
+            "disableDataAlignment": false,
+            "showDisabledItems": false,
+            "skipEmptyValues": false,
+            "useTrends": "default",
+            "useZabbixValueMapping": false
+          },
+          "proxy": {
+            "filter": ""
+          },
+          "query": "destination.port: \"53\" AND source.ip: $Prefixos AND NOT destination.ip: \"201.77.12.0/22\" AND NOT destination.ip: \"208.67.222.0/24\" AND NOT destination.ip: \"1.1.1.1\" AND NOT destination.ip: \"8.8.8.8\" AND NOT destination.ip: \"8.8.4.4\" AND NOT destination.ip: \"201.77.8.20\"",
+          "queryType": "0",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "schema": 12,
+          "table": {
+            "skipEmptyValues": false
+          },
+          "tags": {
+            "filter": ""
+          },
+          "textFilter": "",
+          "timeField": "@timestamp",
+          "trigger": {
+            "filter": ""
+          }
+        }
+      ],
+      "title": "SOURCE.PORT 53 DNS SOURCE.IP DESTINARION.IP ",
+      "transparent": true,
+      "type": "timeseries"
+    },
+    {
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 24,
+        "x": 0,
+        "y": 23
+      },
+      "id": 86,
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "<div style=\"font-size:30px;\n            text-align:center;\n            font-family:Arial;\n            border-radius: 20px;\n            font-weight: bold;\n            background-image: linear-gradient(to bottom, #FF355E, #DC143C, #FF355E);\n            background-size: 100% 100%;\n            color:#FFFFFF\">DOWNLOAD DNS</div>",
+        "mode": "html"
+      },
+      "pluginVersion": "12.3.2",
+      "title": "",
+      "transparent": true,
+      "type": "text"
+    },
+    {
+      "datasource": {},
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "barWidthFactor": 0.6,
+            "drawStyle": "line",
+            "fillOpacity": 25,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "smooth",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "showValues": false,
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "Kbits"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "*"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "dark-blue",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 12,
+        "x": 0,
+        "y": 25
+      },
+      "id": 44,
+      "options": {
+        "legend": {
+          "calcs": [
+            "last",
+            "max"
+          ],
+          "displayMode": "table",
+          "placement": "right",
+          "showLegend": true,
+          "sortBy": "Last",
+          "sortDesc": true
+        },
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "multi",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "12.3.2",
+      "targets": [
+        {
+          "alias": "",
+          "application": {
+            "filter": ""
+          },
+          "bucketAggs": [
+            {
+              "field": "source.port",
+              "id": "2",
+              "settings": {
+                "min_doc_count": "1",
+                "order": "desc",
+                "orderBy": "1",
+                "size": "20"
+              },
+              "type": "terms"
+            },
+            {
+              "field": "@timestamp",
+              "id": "3",
+              "settings": {
+                "interval": "10s",
+                "min_doc_count": "1",
+                "timeZone": "utc",
+                "trimEdges": "0"
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "countTriggersBy": "",
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "a2be8205-212c-4334-978e-eeb852fa7854"
+          },
+          "functions": [
+            {
+              "added": true,
+              "def": {
+                "category": "Alias",
+                "defaultParams": [
+                  "/(.*)/",
+                  "$1"
+                ],
+                "name": "replaceAlias",
+                "params": [
+                  {
+                    "name": "regexp",
+                    "type": "string"
+                  },
+                  {
+                    "name": "newAlias",
+                    "type": "string"
+                  }
+                ]
+              },
+              "params": [
+                "NE-F1A-BGP: Interface Eth-Trunk1.2207(AS26162-IXBR-RJ-DURAND-v6): ",
+                "DURAND-v6 - "
+              ],
+              "text": "replaceAlias(/(.*)/, $1)"
+            },
+            {
+              "added": true,
+              "def": {
+                "category": "Alias",
+                "defaultParams": [
+                  "/(.*)/",
+                  "$1"
+                ],
+                "name": "replaceAlias",
+                "params": [
+                  {
+                    "name": "regexp",
+                    "type": "string"
+                  },
+                  {
+                    "name": "newAlias",
+                    "type": "string"
+                  }
+                ]
+              },
+              "params": [
+                "NE-F1A-BGP: Interface Eth-Trunk1.2206(AS26162-IXBR-RJ-DURAND): ",
+                "DURAND-v4 - "
+              ],
+              "text": "replaceAlias(/(.*)/, $1)"
+            }
+          ],
+          "group": {
+            "filter": "BGP"
+          },
+          "host": {
+            "filter": "NE-F1A-BGP"
+          },
+          "item": {
+            "filter": "/Bits.*/"
+          },
+          "itemTag": {
+            "filter": "interface: Eth-Trunk1"
+          },
+          "macro": {
+            "filter": ""
+          },
+          "metrics": [
+            {
+              "field": "network.bytes",
+              "id": "1",
+              "type": "sum"
+            }
+          ],
+          "options": {
+            "count": false,
+            "disableDataAlignment": false,
+            "showDisabledItems": false,
+            "skipEmptyValues": false,
+            "useTrends": "default",
+            "useZabbixValueMapping": false
+          },
+          "proxy": {
+            "filter": ""
+          },
+          "query": "source.port: \"53\" AND destination.ip: $Prefixos AND NOT source.ip: \"201.77.12.0/22\" AND NOT source.ip: \"208.67.222.0/24\" AND NOT source.ip: \"1.1.1.1\" AND NOT source.ip: \"8.8.8.8\" AND NOT source.ip: \"8.8.4.4\" AND NOT source.ip: \"201.77.8.20\"",
+          "queryType": "0",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "schema": 12,
+          "table": {
+            "skipEmptyValues": false
+          },
+          "tags": {
+            "filter": ""
+          },
+          "textFilter": "",
+          "timeField": "@timestamp",
+          "trigger": {
+            "filter": ""
+          }
+        }
+      ],
+      "title": "",
+      "transparent": true,
+      "type": "timeseries"
+    },
+    {
+      "datasource": {},
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "barWidthFactor": 0.6,
+            "drawStyle": "line",
+            "fillOpacity": 25,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "smooth",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "showValues": false,
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "Kbits"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "*"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "dark-blue",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 12,
+        "x": 12,
+        "y": 25
+      },
+      "id": 45,
+      "options": {
+        "legend": {
+          "calcs": [
+            "last",
+            "max"
+          ],
+          "displayMode": "table",
+          "placement": "right",
+          "showLegend": true,
+          "sortBy": "Max",
+          "sortDesc": true
+        },
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "multi",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "12.3.2",
+      "targets": [
+        {
+          "alias": "",
+          "application": {
+            "filter": ""
+          },
+          "bucketAggs": [
+            {
+              "field": "source.ip",
+              "id": "2",
+              "settings": {
+                "min_doc_count": "1",
+                "order": "desc",
+                "orderBy": "1",
+                "size": "0"
+              },
+              "type": "terms"
+            },
+            {
+              "field": "@timestamp",
+              "id": "3",
+              "settings": {
+                "interval": "10s",
+                "min_doc_count": "1",
+                "timeZone": "utc",
+                "trimEdges": "0"
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "countTriggersBy": "",
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "a2be8205-212c-4334-978e-eeb852fa7854"
+          },
+          "functions": [
+            {
+              "added": true,
+              "def": {
+                "category": "Alias",
+                "defaultParams": [
+                  "/(.*)/",
+                  "$1"
+                ],
+                "name": "replaceAlias",
+                "params": [
+                  {
+                    "name": "regexp",
+                    "type": "string"
+                  },
+                  {
+                    "name": "newAlias",
+                    "type": "string"
+                  }
+                ]
+              },
+              "params": [
+                "NE-F1A-BGP: Interface Eth-Trunk1.2207(AS26162-IXBR-RJ-DURAND-v6): ",
+                "DURAND-v6 - "
+              ],
+              "text": "replaceAlias(/(.*)/, $1)"
+            },
+            {
+              "added": true,
+              "def": {
+                "category": "Alias",
+                "defaultParams": [
+                  "/(.*)/",
+                  "$1"
+                ],
+                "name": "replaceAlias",
+                "params": [
+                  {
+                    "name": "regexp",
+                    "type": "string"
+                  },
+                  {
+                    "name": "newAlias",
+                    "type": "string"
+                  }
+                ]
+              },
+              "params": [
+                "NE-F1A-BGP: Interface Eth-Trunk1.2206(AS26162-IXBR-RJ-DURAND): ",
+                "DURAND-v4 - "
+              ],
+              "text": "replaceAlias(/(.*)/, $1)"
+            }
+          ],
+          "group": {
+            "filter": "BGP"
+          },
+          "host": {
+            "filter": "NE-F1A-BGP"
+          },
+          "item": {
+            "filter": "/Bits.*/"
+          },
+          "itemTag": {
+            "filter": "interface: Eth-Trunk1"
+          },
+          "macro": {
+            "filter": ""
+          },
+          "metrics": [
+            {
+              "field": "network.bytes",
+              "id": "1",
+              "type": "sum"
+            }
+          ],
+          "options": {
+            "count": false,
+            "disableDataAlignment": false,
+            "showDisabledItems": false,
+            "skipEmptyValues": false,
+            "useTrends": "default",
+            "useZabbixValueMapping": false
+          },
+          "proxy": {
+            "filter": ""
+          },
+          "query": "source.port: \"53\" AND destination.ip: $Prefixos AND NOT source.ip: \"201.77.12.0/22\" AND NOT source.ip: \"208.67.222.0/24\" AND NOT source.ip: \"1.1.1.1\" AND NOT source.ip: \"8.8.8.8\" AND NOT source.ip: \"8.8.4.4\" AND NOT source.ip: \"201.77.8.20\"",
+          "queryType": "0",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "schema": 12,
+          "table": {
+            "skipEmptyValues": false
+          },
+          "tags": {
+            "filter": ""
+          },
+          "textFilter": "",
+          "timeField": "@timestamp",
+          "trigger": {
+            "filter": ""
+          }
+        }
+      ],
+      "title": "",
+      "transparent": true,
+      "type": "timeseries"
+    }
+  ],
+  "preload": false,
+  "refresh": "5s",
+  "schemaVersion": 42,
+  "tags": [],
+  "templating": {
+    "list": [
+      {
+        "current": {
+          "text": "100.64.0.0/10",
+          "value": "100.64.0.0/10"
+        },
+        "label": "Prefixos",
+        "name": "Prefixos",
+        "options": [
+          {
+            "selected": true,
+            "text": "100.64.0.0/10",
+            "value": "100.64.0.0/10"
+          }
+        ],
+        "query": "100.64.0.0/10",
+        "type": "textbox"
+      }
+    ]
+  },
+  "time": {
+    "from": "now-3h",
+    "to": "now"
+  },
+  "timepicker": {},
+  "timezone": "",
+  "title": "[CPE] FLUXO PROTOCOLOS DNS",
+  "uid": "ad98p95",
+  "version": 18
+}
