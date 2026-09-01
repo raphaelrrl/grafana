@@ -35,9 +35,8 @@ FONTES = {
     "etbotcc":   ("https://rules.emergingthreats.net/blockrules/emerging-botcc.rules", "c2"),
     "digitalside":("https://osint.digitalside.it/Threat-Intel/lists/latestips.txt", "c2"),
     "botvrij":   ("https://www.botvrij.eu/data/ioclist.ip-dst.raw", "c2"),
-    "bambenek":  ("https://osint.bambenekconsulting.com/feeds/c2-ipmasterlist.txt", "c2"),
+    "bambenek":  ("https://faf.bambenekconsulting.com/feeds/c2-ipmasterlist.txt", "c2"),
     # bot = o proprio IP e um dispositivo infectado (visto pelo IP publico); util para checar o pool CGNAT (--publico)
-    "mirai":     ("https://mirai.security.gives/data/ip_list.txt", "bot"),
     "bl_bots":   ("https://lists.blocklist.de/lists/bots.txt", "bot"),
     # urlhaus NAO entra na correlacao por IP: lista URLs em hospedagem compartilhada (Google, CDNs) -> falso positivo em massa
     "tor":       ("https://check.torproject.org/torbulkexitlist", "anon"),
@@ -49,9 +48,13 @@ FONTES = {
 FONTES_PADRAO = "feodo,threatfox,sslbl,c2intel,threatview,etbotcc,digitalside,botvrij,bambenek,tor"
 IP_RE = re.compile(r"\b(?:\d{1,3}\.){3}\d{1,3}(?:/\d{1,2})?\b")   # IP ou CIDR (terms em campo ip aceita CIDR)
 
-def fetch(url, timeout=30):
-    req = urllib.request.Request(url, headers={"User-Agent": "flowspec-c2scan/1.0"})
-    with urllib.request.urlopen(req, timeout=timeout) as r:
+def fetch(url, timeout=45):
+    req = urllib.request.Request(url, headers={
+        "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0 Safari/537.36",
+        "Accept": "text/plain,text/csv,*/*"})
+    # HTTPRedirectHandler segue 301/302 por padrao; ctx ignora cadeias TLS estranhas de alguns feeds
+    ctx = ssl.create_default_context(); ctx.check_hostname = False; ctx.verify_mode = ssl.CERT_NONE
+    with urllib.request.urlopen(req, timeout=timeout, context=ctx) as r:
         return r.read().decode("utf-8", "ignore")
 
 def carregar_blocklists(fontes):
