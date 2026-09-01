@@ -1,0 +1,1520 @@
+{
+  "apiVersion": "dashboard.grafana.app/v2",
+  "kind": "Dashboard",
+  "metadata": {
+    "name": "aecn8csqbwdmob",
+    "namespace": "default",
+    "uid": "ec0465ff-2f44-42d6-bcbc-2d612b915421",
+    "resourceVersion": "1788154020626990",
+    "generation": 6,
+    "creationTimestamp": "2026-08-30T23:32:06Z",
+    "labels": {
+      "grafana.app/deprecatedInternalID": "32730272047104"
+    },
+    "annotations": {
+      "grafana.app/createdBy": "access-policy:service",
+      "grafana.app/managedBy": "classic-file-provisioning",
+      "grafana.app/managerAllowsEdits": "true",
+      "grafana.app/managerId": "flowspec",
+      "grafana.app/saved-from-ui": "Grafana v13.2.0 (f681b1359f)",
+      "grafana.app/sourceChecksum": "d4e6e0bbb5845e97c4d533ffc20f4a78",
+      "grafana.app/sourcePath": "/var/lib/grafana/dashboards/home.json",
+      "grafana.app/sourceTimestamp": "1788132791000",
+      "grafana.app/updatedBy": "user:ffwrm483162o0c",
+      "grafana.app/updatedTimestamp": "2026-08-31T05:27:00Z"
+    }
+  },
+  "spec": {
+    "annotations": [
+      {
+        "kind": "AnnotationQuery",
+        "spec": {
+          "query": {
+            "kind": "DataQuery",
+            "group": "grafana",
+            "version": "v0",
+            "datasource": {
+              "name": "grafana"
+            },
+            "spec": {}
+          },
+          "enable": true,
+          "hide": true,
+          "iconColor": "rgba(0, 211, 255, 1)",
+          "name": "Annotations & Alerts",
+          "builtIn": true
+        }
+      }
+    ],
+    "cursorSync": "Crosshair",
+    "editable": true,
+    "elements": {
+      "panel-1": {
+        "kind": "Panel",
+        "spec": {
+          "id": 1,
+          "title": "",
+          "description": "",
+          "links": [],
+          "data": {
+            "kind": "QueryGroup",
+            "spec": {
+              "queries": [
+                {
+                  "kind": "PanelQuery",
+                  "spec": {
+                    "query": {
+                      "kind": "DataQuery",
+                      "group": "datasource",
+                      "version": "v0",
+                      "datasource": {
+                        "name": "grafana"
+                      },
+                      "spec": {
+                        "queryType": "randomWalk"
+                      }
+                    },
+                    "refId": "A",
+                    "hidden": false
+                  }
+                }
+              ],
+              "transformations": [],
+              "queryOptions": {}
+            }
+          },
+          "vizConfig": {
+            "kind": "VizConfig",
+            "group": "marcusolsson-dynamictext-panel",
+            "version": "6.3.0",
+            "spec": {
+              "options": {
+                "afterRender": "(function(){\n  var root = (typeof context !== 'undefined' && context.element) ? context.element : (typeof element !== 'undefined' ? element : document);\n  var el = root.querySelector ? root.querySelector('#fs-clock') : null;\n  if (!el) return;\n  function tick(){ var d=new Date(); el.textContent = d.toLocaleTimeString('pt-BR',{hour12:false}) + ' BRT'; }\n  tick(); if (el._t) clearInterval(el._t); el._t = setInterval(tick, 1000);\n})();\n",
+                "content": "<div class=\"fs-banner\">\n  <div class=\"fs-banner-left\">\n    <span class=\"fs-prompt\">flowspec@flowguard:<span class=\"fs-path\">~/noc</span></span>\n    <span class=\"fs-sep\">|</span>\n    <span class=\"fs-title\">FLOWGUARD ANTI-DDOS <span class=\"fs-thin\">/ CENTRO DE OPERAÇÕES</span></span>\n  </div>\n  <div class=\"fs-banner-right\">\n    <span class=\"fs-pill fs-pill--ok\"><span class=\"fs-dot\"></span>SCRUBBING CENTER · ONLINE</span>\n    <span class=\"fs-pill\"><span class=\"fs-mono\" id=\"fs-clock\">--:--:--</span></span>\n    <a class=\"fs-pill fs-pill--alert\" href=\"https://api.whatsapp.com/send/?phone=5521997115461\" target=\"_blank\" rel=\"noopener\">SOB ATAQUE? · SOC 24/7</a>\n  </div>\n</div>\n<div class=\"fs-ticker\"><div class=\"fs-ticker-track\">\n  <span>+ BGP FLOWSPEC</span><span>+ RATE LIMITING</span><span>+ NULL ROUTING</span><span>+ FILTRAGEM DE TRÁFEGO</span><span>+ MACHINE LEARNING</span><span>+ ANÁLISE COMPORTAMENTAL</span><span>+ SOC 24/7</span><span>+ REDES NGN</span>\n  <span>+ BGP FLOWSPEC</span><span>+ RATE LIMITING</span><span>+ NULL ROUTING</span><span>+ FILTRAGEM DE TRÁFEGO</span><span>+ MACHINE LEARNING</span><span>+ ANÁLISE COMPORTAMENTAL</span><span>+ SOC 24/7</span><span>+ REDES NGN</span>\n</div></div>\n",
+                "contentPartials": [],
+                "defaultContent": "<div class=\"fs-banner\">\n  <div class=\"fs-banner-left\">\n    <span class=\"fs-prompt\">flowspec@flowguard:<span class=\"fs-path\">~/noc</span></span>\n    <span class=\"fs-sep\">|</span>\n    <span class=\"fs-title\">FLOWGUARD ANTI-DDOS <span class=\"fs-thin\">/ CENTRO DE OPERAÇÕES</span></span>\n  </div>\n  <div class=\"fs-banner-right\">\n    <span class=\"fs-pill fs-pill--ok\"><span class=\"fs-dot\"></span>SCRUBBING CENTER · ONLINE</span>\n    <span class=\"fs-pill\"><span class=\"fs-mono\" id=\"fs-clock\">--:--:--</span></span>\n    <a class=\"fs-pill fs-pill--alert\" href=\"https://api.whatsapp.com/send/?phone=5521997115461\" target=\"_blank\" rel=\"noopener\">SOB ATAQUE? · SOC 24/7</a>\n  </div>\n</div>\n<div class=\"fs-ticker\"><div class=\"fs-ticker-track\">\n  <span>+ BGP FLOWSPEC</span><span>+ RATE LIMITING</span><span>+ NULL ROUTING</span><span>+ FILTRAGEM DE TRÁFEGO</span><span>+ MACHINE LEARNING</span><span>+ ANÁLISE COMPORTAMENTAL</span><span>+ SOC 24/7</span><span>+ REDES NGN</span>\n  <span>+ BGP FLOWSPEC</span><span>+ RATE LIMITING</span><span>+ NULL ROUTING</span><span>+ FILTRAGEM DE TRÁFEGO</span><span>+ MACHINE LEARNING</span><span>+ ANÁLISE COMPORTAMENTAL</span><span>+ SOC 24/7</span><span>+ REDES NGN</span>\n</div></div>\n",
+                "editor": {
+                  "format": "auto",
+                  "height": 200,
+                  "language": "html"
+                },
+                "editors": [
+                  "styles",
+                  "afterRender"
+                ],
+                "externalScripts": [],
+                "externalStyles": [],
+                "helpers": "",
+                "renderMode": "allRows",
+                "status": "",
+                "styles": ":root{--fs-accent:#00c8ff;--fs-alert:#ff5a5a;--fs-text:#eef4f8;--fs-dim:#8fa3b3;--fs-line:rgba(255,255,255,.08);\n--fs-mono:ui-monospace,\"JetBrains Mono\",Menlo,Consolas,monospace;}\n.fs-banner{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;font-family:var(--fs-mono);color:var(--fs-dim);padding:6px 4px 10px;border-bottom:1px solid var(--fs-line);}\n.fs-banner-left{display:flex;align-items:center;gap:12px;font-size:12px;letter-spacing:.04em;}\n.fs-banner-right{display:flex;align-items:center;gap:8px;flex-wrap:wrap;}\n.fs-prompt{color:var(--fs-accent);}.fs-path{color:var(--fs-text);margin-left:6px;}.fs-sep{opacity:.35;}\n.fs-title{color:var(--fs-text);font-weight:700;letter-spacing:.14em;font-size:13px;}.fs-thin{font-weight:400;color:var(--fs-dim);}\n.fs-pill{display:inline-flex;align-items:center;gap:8px;padding:5px 12px;border:1px solid rgba(255,255,255,.16);border-radius:999px;color:var(--fs-text);font-family:var(--fs-mono);font-size:11px;letter-spacing:.12em;text-decoration:none;background:rgba(8,12,18,.6);}\n.fs-pill--ok{border-color:rgba(0,200,255,.35);background:rgba(0,200,255,.12);}\n.fs-pill--alert{border-color:rgba(255,90,90,.45);background:rgba(255,90,90,.12);color:#ffd5d5;}\n.fs-pill--alert:hover{background:rgba(255,90,90,.25);}\n.fs-dot{width:7px;height:7px;border-radius:50%;background:var(--fs-accent);animation:fs-pulse 1.8s ease-out infinite;}\n@keyframes fs-pulse{0%{box-shadow:0 0 0 0 rgba(0,200,255,.55)}100%{box-shadow:0 0 0 9px rgba(0,200,255,0)}}\n.fs-ticker{overflow:hidden;white-space:nowrap;margin-top:8px;font-family:var(--fs-mono);font-size:11px;letter-spacing:.16em;color:var(--fs-dim);}\n.fs-ticker-track{display:inline-block;animation:fs-scroll 40s linear infinite;}\n.fs-ticker-track span{margin-right:42px;}.fs-ticker-track span::first-letter{color:var(--fs-accent);}\n@keyframes fs-scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}\n",
+                "wrap": false
+              },
+              "fieldConfig": {
+                "defaults": {
+                  "thresholds": {
+                    "mode": "absolute",
+                    "steps": [
+                      {
+                        "value": 0,
+                        "color": "green"
+                      },
+                      {
+                        "value": 80,
+                        "color": "red"
+                      }
+                    ]
+                  }
+                },
+                "overrides": []
+              }
+            }
+          },
+          "transparent": true
+        }
+      },
+      "panel-6": {
+        "kind": "Panel",
+        "spec": {
+          "id": 6,
+          "title": "MÓDULOS",
+          "description": "Navegação entre os dashboards por área.",
+          "links": [],
+          "data": {
+            "kind": "QueryGroup",
+            "spec": {
+              "queries": [
+                {
+                  "kind": "PanelQuery",
+                  "spec": {
+                    "query": {
+                      "kind": "DataQuery",
+                      "group": "elasticsearch",
+                      "version": "v0",
+                      "datasource": {
+                        "name": "afws7qi7nf668b"
+                      },
+                      "spec": {
+                        "alias": "",
+                        "bucketAggs": [
+                          {
+                            "field": "@timestamp",
+                            "id": "2",
+                            "settings": {
+                              "interval": "auto"
+                            },
+                            "type": "date_histogram"
+                          }
+                        ],
+                        "editorType": "builder",
+                        "metrics": [
+                          {
+                            "id": "1",
+                            "type": "count"
+                          }
+                        ],
+                        "preserveQuery": false,
+                        "query": "",
+                        "queryType": "lucene",
+                        "timeField": "@timestamp"
+                      }
+                    },
+                    "refId": "A",
+                    "hidden": false
+                  }
+                }
+              ],
+              "transformations": [],
+              "queryOptions": {}
+            }
+          },
+          "vizConfig": {
+            "kind": "VizConfig",
+            "group": "volkovlabs-links-panel",
+            "version": "2.7.0",
+            "spec": {
+              "options": {
+                "customPadding": 0,
+                "dropdowns": [],
+                "groups": [
+                  {
+                    "dynamicFontSize": false,
+                    "gridColumns": 10,
+                    "gridLayout": false,
+                    "gridRowHeight": 16,
+                    "highlightCurrentLink": false,
+                    "highlightCurrentTimepicker": false,
+                    "items": [
+                      {
+                        "alignContentPosition": "left",
+                        "annotationKey": "",
+                        "customIconUrl": "",
+                        "dropdownConfig": {
+                          "align": "left",
+                          "buttonSize": "md",
+                          "type": "dropdown"
+                        },
+                        "dropdownName": "",
+                        "enable": true,
+                        "excludeVariables": [],
+                        "hideTooltipOnHover": false,
+                        "hoverMenu": false,
+                        "icon": "bolt",
+                        "id": "8ae7f784-0727-4bd7-a52e-ebdbe656e1f1",
+                        "includeKioskMode": false,
+                        "includeTimeRange": false,
+                        "includeVariables": false,
+                        "linkType": "single",
+                        "name": "LATÊNCIA JOGOS",
+                        "showCustomIcons": false,
+                        "showLoadingForRawMessage": true,
+                        "showMenuOnHover": false,
+                        "target": "_self",
+                        "timePickerConfig": {
+                          "highlightSecondsDiff": 30,
+                          "type": "field"
+                        },
+                        "type": "link",
+                        "url": "/d/adl4w2d/main",
+                        "useDefaultGrafanaMcp": false
+                      },
+                      {
+                        "alignContentPosition": "left",
+                        "annotationKey": "",
+                        "customIconUrl": "",
+                        "dropdownConfig": {
+                          "align": "left",
+                          "buttonSize": "md",
+                          "type": "dropdown"
+                        },
+                        "dropdownName": "",
+                        "enable": true,
+                        "excludeVariables": [],
+                        "hideTooltipOnHover": false,
+                        "hoverMenu": false,
+                        "icon": "bolt",
+                        "id": "78c7dadd-e692-41ff-bd03-0f9888bf59d2",
+                        "includeKioskMode": false,
+                        "includeTimeRange": false,
+                        "includeVariables": false,
+                        "linkType": "single",
+                        "name": "LATÊNCIA SERVIÇOS",
+                        "showCustomIcons": false,
+                        "showLoadingForRawMessage": true,
+                        "showMenuOnHover": false,
+                        "target": "_self",
+                        "timePickerConfig": {
+                          "highlightSecondsDiff": 30,
+                          "type": "field"
+                        },
+                        "type": "link",
+                        "url": "/d/YFfbg7z7k/main",
+                        "useDefaultGrafanaMcp": false
+                      },
+                      {
+                        "alignContentPosition": "left",
+                        "annotationKey": "",
+                        "customIconUrl": "",
+                        "dropdownConfig": {
+                          "align": "left",
+                          "buttonSize": "md",
+                          "type": "dropdown"
+                        },
+                        "dropdownName": "",
+                        "enable": true,
+                        "excludeVariables": [],
+                        "hideTooltipOnHover": false,
+                        "hoverMenu": false,
+                        "icon": "globe",
+                        "id": "d0817d4a-54b9-4a68-b71b-29b076c36b68",
+                        "includeKioskMode": false,
+                        "includeTimeRange": false,
+                        "includeVariables": false,
+                        "linkType": "single",
+                        "name": "LATÊNCIA SITES DIVERSOS",
+                        "showCustomIcons": false,
+                        "showLoadingForRawMessage": true,
+                        "showMenuOnHover": false,
+                        "target": "_self",
+                        "timePickerConfig": {
+                          "highlightSecondsDiff": 30,
+                          "type": "field"
+                        },
+                        "type": "link",
+                        "url": "/d/SBFRcio7k/main",
+                        "useDefaultGrafanaMcp": false
+                      },
+                      {
+                        "alignContentPosition": "left",
+                        "annotationKey": "",
+                        "customIconUrl": "",
+                        "dropdownConfig": {
+                          "align": "left",
+                          "buttonSize": "md",
+                          "type": "dropdown"
+                        },
+                        "dropdownName": "",
+                        "enable": true,
+                        "excludeVariables": [],
+                        "hideTooltipOnHover": false,
+                        "hoverMenu": false,
+                        "icon": "sitemap",
+                        "id": "1097acb4-ebac-4d10-8c19-2d4517a2251d",
+                        "includeKioskMode": false,
+                        "includeTimeRange": false,
+                        "includeVariables": false,
+                        "linkType": "single",
+                        "name": "RT-NE-M4 HUAWEI",
+                        "showCustomIcons": false,
+                        "showLoadingForRawMessage": true,
+                        "showMenuOnHover": false,
+                        "target": "_self",
+                        "timePickerConfig": {
+                          "highlightSecondsDiff": 30,
+                          "type": "field"
+                        },
+                        "type": "link",
+                        "url": "/d/fevhtcyezb6dcf2/main",
+                        "useDefaultGrafanaMcp": false
+                      },
+                      {
+                        "alignContentPosition": "left",
+                        "annotationKey": "",
+                        "customIconUrl": "",
+                        "dropdownConfig": {
+                          "align": "left",
+                          "buttonSize": "md",
+                          "type": "dropdown"
+                        },
+                        "dropdownName": "",
+                        "enable": true,
+                        "excludeVariables": [],
+                        "hideTooltipOnHover": false,
+                        "hoverMenu": false,
+                        "icon": "sitemap",
+                        "id": "5425c282-575e-4343-8849-555519eb13a2",
+                        "includeKioskMode": false,
+                        "includeTimeRange": false,
+                        "includeVariables": false,
+                        "linkType": "single",
+                        "name": "RT-NE8000 HUAWEI",
+                        "showCustomIcons": false,
+                        "showLoadingForRawMessage": true,
+                        "showMenuOnHover": false,
+                        "target": "_self",
+                        "timePickerConfig": {
+                          "highlightSecondsDiff": 30,
+                          "type": "field"
+                        },
+                        "type": "link",
+                        "url": "/d/adtp899/main",
+                        "useDefaultGrafanaMcp": false
+                      }
+                    ],
+                    "manualGridLayout": [],
+                    "name": "BORDA"
+                  },
+                  {
+                    "dynamicFontSize": false,
+                    "gridColumns": 10,
+                    "gridLayout": false,
+                    "gridRowHeight": 16,
+                    "highlightCurrentLink": false,
+                    "highlightCurrentTimepicker": false,
+                    "items": [
+                      {
+                        "alignContentPosition": "left",
+                        "annotationKey": "",
+                        "customIconUrl": "",
+                        "dropdownConfig": {
+                          "align": "left",
+                          "buttonSize": "md",
+                          "type": "dropdown"
+                        },
+                        "dropdownName": "",
+                        "enable": true,
+                        "excludeVariables": [],
+                        "hideTooltipOnHover": false,
+                        "hoverMenu": false,
+                        "icon": "shield",
+                        "id": "4ff0f129-63e9-4aad-957c-90937b02a65d",
+                        "includeKioskMode": false,
+                        "includeTimeRange": false,
+                        "includeVariables": false,
+                        "linkType": "single",
+                        "name": "CPE-x01",
+                        "showCustomIcons": false,
+                        "showLoadingForRawMessage": true,
+                        "showMenuOnHover": false,
+                        "target": "_self",
+                        "timePickerConfig": {
+                          "highlightSecondsDiff": 30,
+                          "type": "field"
+                        },
+                        "type": "link",
+                        "url": "/d/deu3yk6j47abkc/main",
+                        "useDefaultGrafanaMcp": false
+                      },
+                      {
+                        "alignContentPosition": "left",
+                        "annotationKey": "",
+                        "customIconUrl": "",
+                        "dropdownConfig": {
+                          "align": "left",
+                          "buttonSize": "md",
+                          "type": "dropdown"
+                        },
+                        "dropdownName": "",
+                        "enable": true,
+                        "excludeVariables": [],
+                        "hideTooltipOnHover": false,
+                        "hoverMenu": false,
+                        "icon": "shield",
+                        "id": "1ee71072-6b11-4466-8900-56639a6cabe9",
+                        "includeKioskMode": false,
+                        "includeTimeRange": false,
+                        "includeVariables": false,
+                        "linkType": "single",
+                        "name": "CPE-x02",
+                        "showCustomIcons": false,
+                        "showLoadingForRawMessage": true,
+                        "showMenuOnHover": false,
+                        "target": "_self",
+                        "timePickerConfig": {
+                          "highlightSecondsDiff": 30,
+                          "type": "field"
+                        },
+                        "type": "link",
+                        "url": "/d/dewkv4fhmyj9cd/main",
+                        "useDefaultGrafanaMcp": false
+                      },
+                      {
+                        "alignContentPosition": "left",
+                        "annotationKey": "",
+                        "customIconUrl": "",
+                        "dropdownConfig": {
+                          "align": "left",
+                          "buttonSize": "md",
+                          "type": "dropdown"
+                        },
+                        "dropdownName": "",
+                        "enable": true,
+                        "excludeVariables": [],
+                        "hideTooltipOnHover": false,
+                        "hoverMenu": false,
+                        "icon": "shield",
+                        "id": "3f334666-9223-43b0-912c-6f33e572f4a0",
+                        "includeKioskMode": false,
+                        "includeTimeRange": false,
+                        "includeVariables": false,
+                        "linkType": "single",
+                        "name": "CPE-x03",
+                        "showCustomIcons": false,
+                        "showLoadingForRawMessage": true,
+                        "showMenuOnHover": false,
+                        "target": "_self",
+                        "timePickerConfig": {
+                          "highlightSecondsDiff": 30,
+                          "type": "field"
+                        },
+                        "type": "link",
+                        "url": "/d/aew4b9w0nn85cd/main",
+                        "useDefaultGrafanaMcp": false
+                      },
+                      {
+                        "alignContentPosition": "left",
+                        "annotationKey": "",
+                        "customIconUrl": "",
+                        "dropdownConfig": {
+                          "align": "left",
+                          "buttonSize": "md",
+                          "type": "dropdown"
+                        },
+                        "dropdownName": "",
+                        "enable": true,
+                        "excludeVariables": [],
+                        "hideTooltipOnHover": false,
+                        "hoverMenu": false,
+                        "icon": "shield",
+                        "id": "6e7a8cfb-2322-4081-a024-4eefb279395a",
+                        "includeKioskMode": false,
+                        "includeTimeRange": false,
+                        "includeVariables": false,
+                        "linkType": "single",
+                        "name": "CPE-x04",
+                        "showCustomIcons": false,
+                        "showLoadingForRawMessage": true,
+                        "showMenuOnHover": false,
+                        "target": "_self",
+                        "timePickerConfig": {
+                          "highlightSecondsDiff": 30,
+                          "type": "field"
+                        },
+                        "type": "link",
+                        "url": "/d/bew5i24m1cbuod/main",
+                        "useDefaultGrafanaMcp": false
+                      },
+                      {
+                        "alignContentPosition": "left",
+                        "annotationKey": "",
+                        "customIconUrl": "",
+                        "dropdownConfig": {
+                          "align": "left",
+                          "buttonSize": "md",
+                          "type": "dropdown"
+                        },
+                        "dropdownName": "",
+                        "enable": true,
+                        "excludeVariables": [],
+                        "hideTooltipOnHover": false,
+                        "hoverMenu": false,
+                        "icon": "shield",
+                        "id": "99008167-eef0-4ded-a580-3e12a2928158",
+                        "includeKioskMode": false,
+                        "includeTimeRange": false,
+                        "includeVariables": false,
+                        "linkType": "single",
+                        "name": "CPE-x05",
+                        "showCustomIcons": false,
+                        "showLoadingForRawMessage": true,
+                        "showMenuOnHover": false,
+                        "target": "_self",
+                        "timePickerConfig": {
+                          "highlightSecondsDiff": 30,
+                          "type": "field"
+                        },
+                        "type": "link",
+                        "url": "/d/eez9at1d6ocn4e/main",
+                        "useDefaultGrafanaMcp": false
+                      },
+                      {
+                        "alignContentPosition": "left",
+                        "annotationKey": "",
+                        "customIconUrl": "",
+                        "dropdownConfig": {
+                          "align": "left",
+                          "buttonSize": "md",
+                          "type": "dropdown"
+                        },
+                        "dropdownName": "",
+                        "enable": true,
+                        "excludeVariables": [],
+                        "hideTooltipOnHover": false,
+                        "hoverMenu": false,
+                        "icon": "shield",
+                        "id": "7967264d-6e5c-42f4-8cb0-0f743703746f",
+                        "includeKioskMode": false,
+                        "includeTimeRange": false,
+                        "includeVariables": false,
+                        "linkType": "single",
+                        "name": "CPE-x06",
+                        "showCustomIcons": false,
+                        "showLoadingForRawMessage": true,
+                        "showMenuOnHover": false,
+                        "target": "_self",
+                        "timePickerConfig": {
+                          "highlightSecondsDiff": 30,
+                          "type": "field"
+                        },
+                        "type": "link",
+                        "url": "/d/ef25suj86wjcwc/main",
+                        "useDefaultGrafanaMcp": false
+                      }
+                    ],
+                    "manualGridLayout": [],
+                    "name": "CLIENTES"
+                  },
+                  {
+                    "dynamicFontSize": false,
+                    "gridColumns": 10,
+                    "gridLayout": false,
+                    "gridRowHeight": 16,
+                    "highlightCurrentLink": false,
+                    "highlightCurrentTimepicker": false,
+                    "items": [
+                      {
+                        "alignContentPosition": "left",
+                        "annotationKey": "",
+                        "customIconUrl": "",
+                        "dropdownConfig": {
+                          "align": "left",
+                          "buttonSize": "md",
+                          "type": "dropdown"
+                        },
+                        "dropdownName": "",
+                        "enable": true,
+                        "excludeVariables": [],
+                        "hideTooltipOnHover": false,
+                        "hoverMenu": false,
+                        "icon": "chart-line",
+                        "id": "d9ad20c3-7fd1-441f-9b90-572c1a8dbddc",
+                        "includeKioskMode": false,
+                        "includeTimeRange": false,
+                        "includeVariables": false,
+                        "linkType": "single",
+                        "name": "HUAWEI-BRAS-MÉTRICAS",
+                        "showCustomIcons": false,
+                        "showLoadingForRawMessage": true,
+                        "showMenuOnHover": false,
+                        "target": "_self",
+                        "timePickerConfig": {
+                          "highlightSecondsDiff": 30,
+                          "type": "field"
+                        },
+                        "type": "link",
+                        "url": "/d/vMtK49V4z222/main",
+                        "useDefaultGrafanaMcp": false
+                      },
+                      {
+                        "alignContentPosition": "left",
+                        "annotationKey": "",
+                        "customIconUrl": "",
+                        "dropdownConfig": {
+                          "align": "left",
+                          "buttonSize": "md",
+                          "type": "dropdown"
+                        },
+                        "dropdownName": "",
+                        "enable": true,
+                        "excludeVariables": [],
+                        "hideTooltipOnHover": false,
+                        "hoverMenu": false,
+                        "icon": "database",
+                        "id": "20b5940b-e839-4c2a-9c59-61d3c8ab89a2",
+                        "includeKioskMode": false,
+                        "includeTimeRange": false,
+                        "includeVariables": false,
+                        "linkType": "single",
+                        "name": "HUAWEI-BRAS-SERVIÇOS",
+                        "showCustomIcons": false,
+                        "showLoadingForRawMessage": true,
+                        "showMenuOnHover": false,
+                        "target": "_self",
+                        "timePickerConfig": {
+                          "highlightSecondsDiff": 30,
+                          "type": "field"
+                        },
+                        "type": "link",
+                        "url": "/d/adpqxws/main",
+                        "useDefaultGrafanaMcp": false
+                      },
+                      {
+                        "alignContentPosition": "left",
+                        "annotationKey": "",
+                        "customIconUrl": "",
+                        "dropdownConfig": {
+                          "align": "left",
+                          "buttonSize": "md",
+                          "type": "dropdown"
+                        },
+                        "dropdownName": "",
+                        "enable": true,
+                        "excludeVariables": [],
+                        "hideTooltipOnHover": false,
+                        "hoverMenu": false,
+                        "icon": "exchange-alt",
+                        "id": "17348ece-0669-452c-a7cf-b8f663a97b2f",
+                        "includeKioskMode": false,
+                        "includeTimeRange": false,
+                        "includeVariables": false,
+                        "linkType": "single",
+                        "name": "A10 - CGNAT",
+                        "showCustomIcons": false,
+                        "showLoadingForRawMessage": true,
+                        "showMenuOnHover": false,
+                        "target": "_self",
+                        "timePickerConfig": {
+                          "highlightSecondsDiff": 30,
+                          "type": "field"
+                        },
+                        "type": "link",
+                        "url": "/d/df0j0gqonlam8a/main",
+                        "useDefaultGrafanaMcp": false
+                      },
+                      {
+                        "alignContentPosition": "left",
+                        "annotationKey": "",
+                        "customIconUrl": "",
+                        "dropdownConfig": {
+                          "align": "left",
+                          "buttonSize": "md",
+                          "type": "dropdown"
+                        },
+                        "dropdownName": "",
+                        "enable": true,
+                        "excludeVariables": [],
+                        "hideTooltipOnHover": false,
+                        "hoverMenu": false,
+                        "icon": "exclamation-triangle",
+                        "id": "7f2d7472-85e0-41f9-9e49-cc47cbf21fae",
+                        "includeKioskMode": false,
+                        "includeTimeRange": false,
+                        "includeVariables": false,
+                        "linkType": "single",
+                        "name": "RELATÓRIO DE INCIDENTES",
+                        "showCustomIcons": false,
+                        "showLoadingForRawMessage": true,
+                        "showMenuOnHover": false,
+                        "target": "_self",
+                        "timePickerConfig": {
+                          "highlightSecondsDiff": 30,
+                          "type": "field"
+                        },
+                        "type": "link",
+                        "url": "/d/aee5dvw6lqpdsf5/main",
+                        "useDefaultGrafanaMcp": false
+                      }
+                    ],
+                    "manualGridLayout": [],
+                    "name": "BNG-PPPOE"
+                  },
+                  {
+                    "dynamicFontSize": false,
+                    "gridColumns": 10,
+                    "gridLayout": false,
+                    "gridRowHeight": 16,
+                    "highlightCurrentLink": false,
+                    "highlightCurrentTimepicker": false,
+                    "items": [
+                      {
+                        "alignContentPosition": "left",
+                        "annotationKey": "",
+                        "customIconUrl": "",
+                        "dropdownConfig": {
+                          "align": "left",
+                          "buttonSize": "md",
+                          "type": "dropdown"
+                        },
+                        "dropdownName": "",
+                        "enable": true,
+                        "excludeVariables": [],
+                        "hideTooltipOnHover": false,
+                        "hoverMenu": false,
+                        "icon": "cloud",
+                        "id": "3a6bcb72-1adf-4893-8ffc-095ee88fdc46",
+                        "includeKioskMode": false,
+                        "includeTimeRange": false,
+                        "includeVariables": false,
+                        "linkType": "single",
+                        "name": "CPE-x01",
+                        "showCustomIcons": false,
+                        "showLoadingForRawMessage": true,
+                        "showMenuOnHover": false,
+                        "target": "_self",
+                        "timePickerConfig": {
+                          "highlightSecondsDiff": 30,
+                          "type": "field"
+                        },
+                        "type": "link",
+                        "url": "/d/deu3yk6j47abkc/main",
+                        "useDefaultGrafanaMcp": false
+                      },
+                      {
+                        "alignContentPosition": "left",
+                        "annotationKey": "",
+                        "customIconUrl": "",
+                        "dropdownConfig": {
+                          "align": "left",
+                          "buttonSize": "md",
+                          "type": "dropdown"
+                        },
+                        "dropdownName": "",
+                        "enable": true,
+                        "excludeVariables": [],
+                        "hideTooltipOnHover": false,
+                        "hoverMenu": false,
+                        "icon": "cloud",
+                        "id": "24bc1eca-859a-4461-802a-81d59f455e19",
+                        "includeKioskMode": false,
+                        "includeTimeRange": false,
+                        "includeVariables": false,
+                        "linkType": "single",
+                        "name": "CPE-x02",
+                        "showCustomIcons": false,
+                        "showLoadingForRawMessage": true,
+                        "showMenuOnHover": false,
+                        "target": "_self",
+                        "timePickerConfig": {
+                          "highlightSecondsDiff": 30,
+                          "type": "field"
+                        },
+                        "type": "link",
+                        "url": "/d/dewkv4fhmyj9cd/main",
+                        "useDefaultGrafanaMcp": false
+                      },
+                      {
+                        "alignContentPosition": "left",
+                        "annotationKey": "",
+                        "customIconUrl": "",
+                        "dropdownConfig": {
+                          "align": "left",
+                          "buttonSize": "md",
+                          "type": "dropdown"
+                        },
+                        "dropdownName": "",
+                        "enable": true,
+                        "excludeVariables": [],
+                        "hideTooltipOnHover": false,
+                        "hoverMenu": false,
+                        "icon": "cloud",
+                        "id": "1152fd5e-0e2f-4c1a-a530-876cbe58921e",
+                        "includeKioskMode": false,
+                        "includeTimeRange": false,
+                        "includeVariables": false,
+                        "linkType": "single",
+                        "name": "CPE-x03",
+                        "showCustomIcons": false,
+                        "showLoadingForRawMessage": true,
+                        "showMenuOnHover": false,
+                        "target": "_self",
+                        "timePickerConfig": {
+                          "highlightSecondsDiff": 30,
+                          "type": "field"
+                        },
+                        "type": "link",
+                        "url": "/d/aew4b9w0nn85cd/main",
+                        "useDefaultGrafanaMcp": false
+                      },
+                      {
+                        "alignContentPosition": "left",
+                        "annotationKey": "",
+                        "customIconUrl": "",
+                        "dropdownConfig": {
+                          "align": "left",
+                          "buttonSize": "md",
+                          "type": "dropdown"
+                        },
+                        "dropdownName": "",
+                        "enable": true,
+                        "excludeVariables": [],
+                        "hideTooltipOnHover": false,
+                        "hoverMenu": false,
+                        "icon": "cloud",
+                        "id": "c917b539-5f3e-46ff-b1a3-5c97ed181d2b",
+                        "includeKioskMode": false,
+                        "includeTimeRange": false,
+                        "includeVariables": false,
+                        "linkType": "single",
+                        "name": "CPE-x04",
+                        "showCustomIcons": false,
+                        "showLoadingForRawMessage": true,
+                        "showMenuOnHover": false,
+                        "target": "_self",
+                        "timePickerConfig": {
+                          "highlightSecondsDiff": 30,
+                          "type": "field"
+                        },
+                        "type": "link",
+                        "url": "/d/bew5i24m1cbuod/main",
+                        "useDefaultGrafanaMcp": false
+                      },
+                      {
+                        "alignContentPosition": "left",
+                        "annotationKey": "",
+                        "customIconUrl": "",
+                        "dropdownConfig": {
+                          "align": "left",
+                          "buttonSize": "md",
+                          "type": "dropdown"
+                        },
+                        "dropdownName": "",
+                        "enable": true,
+                        "excludeVariables": [],
+                        "hideTooltipOnHover": false,
+                        "hoverMenu": false,
+                        "icon": "cloud",
+                        "id": "6959bf61-38a3-4e61-bf5c-34369bb513ea",
+                        "includeKioskMode": false,
+                        "includeTimeRange": false,
+                        "includeVariables": false,
+                        "linkType": "single",
+                        "name": "CPE-x05",
+                        "showCustomIcons": false,
+                        "showLoadingForRawMessage": true,
+                        "showMenuOnHover": false,
+                        "target": "_self",
+                        "timePickerConfig": {
+                          "highlightSecondsDiff": 30,
+                          "type": "field"
+                        },
+                        "type": "link",
+                        "url": "/d/eez9at1d6ocn4e/main",
+                        "useDefaultGrafanaMcp": false
+                      },
+                      {
+                        "alignContentPosition": "left",
+                        "annotationKey": "",
+                        "customIconUrl": "",
+                        "dropdownConfig": {
+                          "align": "left",
+                          "buttonSize": "md",
+                          "type": "dropdown"
+                        },
+                        "dropdownName": "",
+                        "enable": true,
+                        "excludeVariables": [],
+                        "hideTooltipOnHover": false,
+                        "hoverMenu": false,
+                        "icon": "cloud",
+                        "id": "fa601169-2b60-48e2-8a12-e7f315e0b037",
+                        "includeKioskMode": false,
+                        "includeTimeRange": false,
+                        "includeVariables": false,
+                        "linkType": "single",
+                        "name": "CPE-x06",
+                        "showCustomIcons": false,
+                        "showLoadingForRawMessage": true,
+                        "showMenuOnHover": false,
+                        "target": "_self",
+                        "timePickerConfig": {
+                          "highlightSecondsDiff": 30,
+                          "type": "field"
+                        },
+                        "type": "link",
+                        "url": "/d/ef25suj86wjcwc/main",
+                        "useDefaultGrafanaMcp": false
+                      }
+                    ],
+                    "manualGridLayout": [],
+                    "name": "OLT"
+                  },
+                  {
+                    "dynamicFontSize": false,
+                    "gridColumns": 10,
+                    "gridLayout": false,
+                    "gridRowHeight": 16,
+                    "highlightCurrentLink": false,
+                    "highlightCurrentTimepicker": false,
+                    "items": [
+                      {
+                        "alignContentPosition": "left",
+                        "annotationKey": "",
+                        "customIconUrl": "",
+                        "dropdownConfig": {
+                          "align": "left",
+                          "buttonSize": "md",
+                          "type": "dropdown"
+                        },
+                        "dropdownName": "",
+                        "enable": true,
+                        "excludeVariables": [],
+                        "hideTooltipOnHover": false,
+                        "hoverMenu": false,
+                        "icon": "globe",
+                        "id": "8b51b330-f93e-4865-b475-13fd94f70c63",
+                        "includeKioskMode": false,
+                        "includeTimeRange": false,
+                        "includeVariables": false,
+                        "linkType": "single",
+                        "name": "FLUXO GEOLOCATION",
+                        "showCustomIcons": false,
+                        "showLoadingForRawMessage": true,
+                        "showMenuOnHover": false,
+                        "target": "_self",
+                        "timePickerConfig": {
+                          "highlightSecondsDiff": 30,
+                          "type": "field"
+                        },
+                        "type": "link",
+                        "url": "/d/B4rGN1y4k/main",
+                        "useDefaultGrafanaMcp": false
+                      },
+                      {
+                        "alignContentPosition": "left",
+                        "annotationKey": "",
+                        "customIconUrl": "",
+                        "dropdownConfig": {
+                          "align": "left",
+                          "buttonSize": "md",
+                          "type": "dropdown"
+                        },
+                        "dropdownName": "",
+                        "enable": true,
+                        "excludeVariables": [],
+                        "hideTooltipOnHover": false,
+                        "hoverMenu": false,
+                        "icon": "chart-line",
+                        "id": "85a6bb5b-972c-411c-80d9-910b96e64c1d",
+                        "includeKioskMode": false,
+                        "includeTimeRange": false,
+                        "includeVariables": false,
+                        "linkType": "single",
+                        "name": "FLUXO TOTAL",
+                        "showCustomIcons": false,
+                        "showLoadingForRawMessage": true,
+                        "showMenuOnHover": false,
+                        "target": "_self",
+                        "timePickerConfig": {
+                          "highlightSecondsDiff": 30,
+                          "type": "field"
+                        },
+                        "type": "link",
+                        "url": "/d/3adb5b52-e787-4b29-9360-164b2104c1/main",
+                        "useDefaultGrafanaMcp": false
+                      },
+                      {
+                        "alignContentPosition": "left",
+                        "annotationKey": "",
+                        "customIconUrl": "",
+                        "dropdownConfig": {
+                          "align": "left",
+                          "buttonSize": "md",
+                          "type": "dropdown"
+                        },
+                        "dropdownName": "",
+                        "enable": true,
+                        "excludeVariables": [],
+                        "hideTooltipOnHover": false,
+                        "hoverMenu": false,
+                        "icon": "layer-group",
+                        "id": "2039ae0c-7122-4c8e-9906-7a604683d0e0",
+                        "includeKioskMode": false,
+                        "includeTimeRange": false,
+                        "includeVariables": false,
+                        "linkType": "single",
+                        "name": "FLUXO PROTOCOLOS",
+                        "showCustomIcons": false,
+                        "showLoadingForRawMessage": true,
+                        "showMenuOnHover": false,
+                        "target": "_self",
+                        "timePickerConfig": {
+                          "highlightSecondsDiff": 30,
+                          "type": "field"
+                        },
+                        "type": "link",
+                        "url": "/d/0cda7e56-29fd-417a-b39a-2e8958e207d5/main",
+                        "useDefaultGrafanaMcp": false
+                      },
+                      {
+                        "alignContentPosition": "left",
+                        "annotationKey": "",
+                        "customIconUrl": "",
+                        "dropdownConfig": {
+                          "align": "left",
+                          "buttonSize": "md",
+                          "type": "dropdown"
+                        },
+                        "dropdownName": "",
+                        "enable": true,
+                        "excludeVariables": [],
+                        "hideTooltipOnHover": false,
+                        "hoverMenu": false,
+                        "icon": "sitemap",
+                        "id": "146799f7-8de5-4fa3-a01d-9c29e60f1732",
+                        "includeKioskMode": false,
+                        "includeTimeRange": false,
+                        "includeVariables": false,
+                        "linkType": "single",
+                        "name": "FLUXO ASN",
+                        "showCustomIcons": false,
+                        "showLoadingForRawMessage": true,
+                        "showMenuOnHover": false,
+                        "target": "_self",
+                        "timePickerConfig": {
+                          "highlightSecondsDiff": 30,
+                          "type": "field"
+                        },
+                        "type": "link",
+                        "url": "/d/fff4a0e1-5179-4224-b3bc-8377fc6fcdb3/main",
+                        "useDefaultGrafanaMcp": false
+                      },
+                      {
+                        "alignContentPosition": "left",
+                        "annotationKey": "",
+                        "customIconUrl": "",
+                        "dashboardUrl": "",
+                        "dropdownConfig": {
+                          "align": "left",
+                          "buttonSize": "md",
+                          "type": "dropdown"
+                        },
+                        "enable": true,
+                        "excludeVariables": [],
+                        "hideTooltipOnHover": false,
+                        "icon": "sitemap",
+                        "id": "016da36f-449e-43de-8593-ec0552f89402",
+                        "includeKioskMode": false,
+                        "includeTimeRange": false,
+                        "includeVariables": false,
+                        "linkType": "single",
+                        "mcpServers": [],
+                        "name": "CPE INFECTADO",
+                        "showCustomIcons": false,
+                        "showMenuOnHover": false,
+                        "tags": [],
+                        "target": "_self",
+                        "timePickerConfig": {
+                          "type": "field"
+                        },
+                        "url": "/d/ad98p95/cpe-fluxo-protocolos-dns"
+                      }
+                    ],
+                    "manualGridLayout": [],
+                    "name": "NETFLOW"
+                  },
+                  {
+                    "dynamicFontSize": false,
+                    "gridColumns": 10,
+                    "gridLayout": false,
+                    "gridRowHeight": 16,
+                    "highlightCurrentLink": false,
+                    "highlightCurrentTimepicker": false,
+                    "items": [
+                      {
+                        "alignContentPosition": "left",
+                        "annotationKey": "",
+                        "customIconUrl": "",
+                        "dropdownConfig": {
+                          "align": "left",
+                          "buttonSize": "md",
+                          "type": "dropdown"
+                        },
+                        "dropdownName": "",
+                        "enable": true,
+                        "excludeVariables": [],
+                        "hideTooltipOnHover": false,
+                        "hoverMenu": false,
+                        "icon": "apps",
+                        "id": "99228f82-cf65-4aae-8f48-ba12e777b164",
+                        "includeKioskMode": false,
+                        "includeTimeRange": false,
+                        "includeVariables": false,
+                        "linkType": "single",
+                        "name": "SWITCH 6730 CLUSTER",
+                        "showCustomIcons": false,
+                        "showLoadingForRawMessage": true,
+                        "showMenuOnHover": false,
+                        "target": "_self",
+                        "timePickerConfig": {
+                          "highlightSecondsDiff": 30,
+                          "type": "field"
+                        },
+                        "type": "link",
+                        "url": "/d/f08b8ec0-8220-4da1-9441-891bfa29a924/main",
+                        "useDefaultGrafanaMcp": false
+                      },
+                      {
+                        "alignContentPosition": "left",
+                        "annotationKey": "",
+                        "customIconUrl": "",
+                        "dropdownConfig": {
+                          "align": "left",
+                          "buttonSize": "md",
+                          "type": "dropdown"
+                        },
+                        "dropdownName": "",
+                        "enable": true,
+                        "excludeVariables": [],
+                        "hideTooltipOnHover": false,
+                        "hoverMenu": false,
+                        "icon": "apps",
+                        "id": "933e7a24-0f8e-4d36-b0e3-ea8262508364",
+                        "includeKioskMode": false,
+                        "includeTimeRange": false,
+                        "includeVariables": false,
+                        "linkType": "single",
+                        "name": "SWITCH DATACOM",
+                        "showCustomIcons": false,
+                        "showLoadingForRawMessage": true,
+                        "showMenuOnHover": false,
+                        "target": "_self",
+                        "timePickerConfig": {
+                          "highlightSecondsDiff": 30,
+                          "type": "field"
+                        },
+                        "type": "link",
+                        "url": "/d/b5b770cf-1589-4ea2-ace7-4f3d9881247e232/main",
+                        "useDefaultGrafanaMcp": false
+                      }
+                    ],
+                    "manualGridLayout": [],
+                    "name": "SWITCH"
+                  }
+                ],
+                "groupsSorting": false,
+                "sticky": false
+              },
+              "fieldConfig": {
+                "defaults": {},
+                "overrides": []
+              }
+            }
+          }
+        }
+      },
+      "panel-7": {
+        "kind": "Panel",
+        "spec": {
+          "id": 7,
+          "title": "TRÁFEGO · LIMPO x ATAQUE (Mbps)",
+          "description": "DEMO: séries geradas por random walk. Trocar as queries A/B por dado real.",
+          "links": [],
+          "data": {
+            "kind": "QueryGroup",
+            "spec": {
+              "queries": [
+                {
+                  "kind": "PanelQuery",
+                  "spec": {
+                    "query": {
+                      "kind": "DataQuery",
+                      "group": "datasource",
+                      "version": "v0",
+                      "datasource": {
+                        "name": "grafana"
+                      },
+                      "spec": {
+                        "queryType": "randomWalk"
+                      }
+                    },
+                    "refId": "A",
+                    "hidden": false
+                  }
+                },
+                {
+                  "kind": "PanelQuery",
+                  "spec": {
+                    "query": {
+                      "kind": "DataQuery",
+                      "group": "datasource",
+                      "version": "v0",
+                      "datasource": {
+                        "name": "grafana"
+                      },
+                      "spec": {
+                        "queryType": "randomWalk"
+                      }
+                    },
+                    "refId": "B",
+                    "hidden": false
+                  }
+                }
+              ],
+              "transformations": [],
+              "queryOptions": {}
+            }
+          },
+          "vizConfig": {
+            "kind": "VizConfig",
+            "group": "volkovlabs-echarts-panel",
+            "version": "7.2.5",
+            "spec": {
+              "options": {
+                "baidu": {
+                  "callback": "bmapReady",
+                  "key": ""
+                },
+                "editor": {
+                  "format": "auto",
+                  "height": 600
+                },
+                "editorMode": "code",
+                "gaode": {
+                  "key": "",
+                  "plugin": "AMap.Scale,AMap.ToolBar"
+                },
+                "getOption": "// Business Charts — tráfego limpo x ataque (DEMO com random walk; trocar query por dado real)\nconst ctx = (typeof context !== 'undefined') ? context : null;\nconst frames = ctx ? ctx.panel.data.series : data.series;\nconst vals = (f) => (f && f.values) ? (f.values.toArray ? f.values.toArray() : Array.from(f.values)) : [];\nconst pick = (i) => {\n  const fr = frames[i]; if (!fr) return { t: [], v: [] };\n  const tf = fr.fields.find(x => x.type === 'time'); const vf = fr.fields.find(x => x.type === 'number');\n  return { t: vals(tf), v: vals(vf) };\n};\nconst a = pick(0), b = pick(1);\nconst clean  = a.v.map(v => Math.round(820 + v * 55));\nconst attack = b.v.map(v => Math.max(0, Math.round(140 + v * 45)));\nconst times  = a.t.map(t => new Date(t).toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' }));\nconst mono = 'ui-monospace, JetBrains Mono, Menlo, Consolas, monospace';\nreturn {\n  backgroundColor: 'transparent',\n  animationDuration: 900, animationEasing: 'cubicOut',\n  textStyle: { fontFamily: mono },\n  legend: { top: 4, right: 8, textStyle: { color: '#8fa3b3', fontSize: 11, fontFamily: mono }, itemWidth: 14, itemHeight: 3, icon: 'rect' },\n  tooltip: { trigger: 'axis', backgroundColor: 'rgba(8,12,18,.95)', borderColor: 'rgba(0,200,255,.35)', textStyle: { color: '#eef4f8', fontFamily: mono, fontSize: 11 }, valueFormatter: v => v + ' Mbps' },\n  grid: { left: 44, right: 14, top: 34, bottom: 26 },\n  xAxis: { type: 'category', data: times, boundaryGap: false, axisLine: { lineStyle: { color: 'rgba(255,255,255,.12)' } }, axisLabel: { color: '#8fa3b3', fontSize: 10 }, axisTick: { show: false } },\n  yAxis: { type: 'value', splitLine: { lineStyle: { color: 'rgba(255,255,255,.06)' } }, axisLabel: { color: '#8fa3b3', fontSize: 10, formatter: '{value}' } },\n  series: [\n    { name: 'TRÁFEGO LIMPO', type: 'line', data: clean, smooth: true, showSymbol: false,\n      lineStyle: { width: 2, color: '#00c8ff', shadowColor: 'rgba(0,200,255,.6)', shadowBlur: 12 },\n      areaStyle: { color: { type: 'linear', x: 0, y: 0, x2: 0, y2: 1, colorStops: [{ offset: 0, color: 'rgba(0,200,255,.35)' }, { offset: 1, color: 'rgba(0,200,255,0)' }] } } },\n    { name: 'ATAQUE MITIGADO', type: 'line', data: attack, smooth: true, showSymbol: false,\n      lineStyle: { width: 2, color: '#ff5a5a', shadowColor: 'rgba(255,90,90,.6)', shadowBlur: 12 },\n      areaStyle: { color: { type: 'linear', x: 0, y: 0, x2: 0, y2: 1, colorStops: [{ offset: 0, color: 'rgba(255,90,90,.35)' }, { offset: 1, color: 'rgba(255,90,90,0)' }] } } }\n  ]\n};\n",
+                "google": {
+                  "callback": "gmapReady",
+                  "key": ""
+                },
+                "map": "none",
+                "renderer": "canvas",
+                "themeEditor": {
+                  "config": "{}",
+                  "height": 400,
+                  "name": "default"
+                },
+                "visualEditor": {
+                  "code": "return { dataset: context.editor.dataset, series: context.editor.series }",
+                  "codeHeight": 600,
+                  "dataset": [],
+                  "series": []
+                }
+              },
+              "fieldConfig": {
+                "defaults": {},
+                "overrides": []
+              }
+            }
+          }
+        }
+      },
+      "panel-8": {
+        "kind": "Panel",
+        "spec": {
+          "id": 8,
+          "title": "ACESSO RÁPIDO · RECENTES E FAVORITOS",
+          "description": "",
+          "links": [],
+          "data": {
+            "kind": "QueryGroup",
+            "spec": {
+              "queries": [],
+              "transformations": [],
+              "queryOptions": {}
+            }
+          },
+          "vizConfig": {
+            "kind": "VizConfig",
+            "group": "dashlist",
+            "version": "13.2.0",
+            "spec": {
+              "options": {
+                "folderUID": "",
+                "includeVars": false,
+                "keepTime": false,
+                "maxItems": 10,
+                "query": "",
+                "showFolderNames": true,
+                "showHeadings": true,
+                "showRecentlyViewed": true,
+                "showSearch": false,
+                "showStarred": true,
+                "tags": []
+              },
+              "fieldConfig": {
+                "defaults": {},
+                "overrides": []
+              }
+            }
+          }
+        }
+      },
+      "panel-9": {
+        "kind": "Panel",
+        "spec": {
+          "id": 9,
+          "title": "ALERTAS EM ANDAMENTO",
+          "description": "",
+          "links": [],
+          "data": {
+            "kind": "QueryGroup",
+            "spec": {
+              "queries": [],
+              "transformations": [],
+              "queryOptions": {}
+            }
+          },
+          "vizConfig": {
+            "kind": "VizConfig",
+            "group": "alertlist",
+            "version": "13.2.0",
+            "spec": {
+              "options": {
+                "alertInstanceLabelFilter": "",
+                "alertName": "",
+                "dashboardAlerts": false,
+                "datasource": "",
+                "groupBy": [],
+                "groupMode": "default",
+                "maxItems": 20,
+                "showInactiveAlerts": false,
+                "sortOrder": 1,
+                "statColorMode": "none",
+                "statThresholds": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "green",
+                      "value": 0
+                    },
+                    {
+                      "color": "red",
+                      "value": 80
+                    }
+                  ]
+                },
+                "statValueMappings": [],
+                "stateFilter": {
+                  "error": true,
+                  "firing": true,
+                  "noData": false,
+                  "normal": false,
+                  "pending": true,
+                  "recovering": true
+                },
+                "viewMode": "list"
+              },
+              "fieldConfig": {
+                "defaults": {},
+                "overrides": []
+              }
+            }
+          }
+        }
+      }
+    },
+    "layout": {
+      "kind": "GridLayout",
+      "spec": {
+        "items": [
+          {
+            "kind": "GridLayoutItem",
+            "spec": {
+              "x": 0,
+              "y": 0,
+              "width": 24,
+              "height": 4,
+              "element": {
+                "kind": "ElementReference",
+                "name": "panel-1"
+              }
+            }
+          },
+          {
+            "kind": "GridLayoutItem",
+            "spec": {
+              "x": 0,
+              "y": 4,
+              "width": 16,
+              "height": 10,
+              "element": {
+                "kind": "ElementReference",
+                "name": "panel-6"
+              }
+            }
+          },
+          {
+            "kind": "GridLayoutItem",
+            "spec": {
+              "x": 16,
+              "y": 4,
+              "width": 8,
+              "height": 10,
+              "element": {
+                "kind": "ElementReference",
+                "name": "panel-7"
+              }
+            }
+          },
+          {
+            "kind": "GridLayoutItem",
+            "spec": {
+              "x": 0,
+              "y": 14,
+              "width": 16,
+              "height": 8,
+              "element": {
+                "kind": "ElementReference",
+                "name": "panel-8"
+              }
+            }
+          },
+          {
+            "kind": "GridLayoutItem",
+            "spec": {
+              "x": 16,
+              "y": 14,
+              "width": 8,
+              "height": 8,
+              "element": {
+                "kind": "ElementReference",
+                "name": "panel-9"
+              }
+            }
+          }
+        ]
+      }
+    },
+    "links": [
+      {
+        "title": "SOB ATAQUE? · SOC 24/7",
+        "type": "link",
+        "icon": "external link",
+        "tooltip": "Resposta a incidentes 24/7",
+        "url": "https://api.whatsapp.com/send/?phone=5521997115461",
+        "tags": [],
+        "asDropdown": false,
+        "targetBlank": true,
+        "includeVars": false,
+        "keepTime": false
+      }
+    ],
+    "liveNow": false,
+    "preload": false,
+    "tags": [
+      "flowspec",
+      "noc"
+    ],
+    "timeSettings": {
+      "timezone": "America/Sao_Paulo",
+      "from": "now-1h",
+      "to": "now",
+      "autoRefresh": "30s",
+      "autoRefreshIntervals": [
+        "10s",
+        "30s",
+        "1m",
+        "5m",
+        "15m",
+        "30m",
+        "1h"
+      ],
+      "hideTimepicker": false,
+      "fiscalYearStartMonth": 0
+    },
+    "title": "home",
+    "variables": []
+  }
+}
