@@ -9,8 +9,10 @@ Uso:
   ES_PASS='senha' ./c2scan.py --json              # JSON (integracao com Zabbix/n8n)
   ES_PASS='senha' ./c2scan.py --es-write          # grava no Elastic p/ o dashboard (usar no cron)
 
-Fontes por categoria (ver FONTES): c2 (Feodo, ThreatFox, SSLBL, C2IntelFeeds, C2-Tracker), malware (URLhaus),
-anon (Tor exits), hostil (IPsum, Spamhaus DROP, ET, CINS - ruidosas, so com --fontes all).
+Fontes por categoria (ver FONTES): c2 (Feodo, ThreatFox, SSLBL, C2IntelFeeds, ThreatView, ET botcc, DigitalSide, Botvrij, Bambenek),
+anon (Tor exits), bot (Mirai Tracker, blocklist.de bots - dispositivos infectados; usar com --publico),
+hostil (IPsum, Spamhaus DROP, ET compromised, CINS - ruidosas, so com --fontes all).
+  ES_PASS='senha' ./c2scan.py --publico 187.86.48.0/22 --fontes mirai,bl_bots   # pool CGNAT x listas de bots
 Detector de varredura (--scan): CPE falando com muitos IPs distintos na mesma porta = bot escaneando (Mirai/Gafgyt).
 Requer apenas python3. Roda no proprio servidor do Elastic.
 """
@@ -30,6 +32,13 @@ FONTES = {
     "sslbl":     ("https://sslbl.abuse.ch/blacklist/sslipblacklist.csv", "c2"),
     "c2intel":   ("https://raw.githubusercontent.com/drb-ra/C2IntelFeeds/master/feeds/IPC2s.csv", "c2"),
     "threatview":("https://threatview.io/Downloads/IP-High-Confidence-Feed.txt", "c2"),
+    "etbotcc":   ("https://rules.emergingthreats.net/blockrules/emerging-botcc.rules", "c2"),
+    "digitalside":("https://osint.digitalside.it/Threat-Intel/lists/latestips.txt", "c2"),
+    "botvrij":   ("https://www.botvrij.eu/data/ioclist.ip-dst.raw", "c2"),
+    "bambenek":  ("https://osint.bambenekconsulting.com/feeds/c2-ipmasterlist.txt", "c2"),
+    # bot = o proprio IP e um dispositivo infectado (visto pelo IP publico); util para checar o pool CGNAT (--publico)
+    "mirai":     ("https://mirai.security.gives/data/ip_list.txt", "bot"),
+    "bl_bots":   ("https://lists.blocklist.de/lists/bots.txt", "bot"),
     # urlhaus NAO entra na correlacao por IP: lista URLs em hospedagem compartilhada (Google, CDNs) -> falso positivo em massa
     "tor":       ("https://check.torproject.org/torbulkexitlist", "anon"),
     "ipsum":     ("https://raw.githubusercontent.com/stamparm/ipsum/master/levels/3.txt", "hostil"),
@@ -37,7 +46,7 @@ FONTES = {
     "et":        ("https://rules.emergingthreats.net/blockrules/compromised-ips.txt", "hostil"),
     "cins":      ("https://cinsscore.com/list/ci-badguys.txt", "hostil"),
 }
-FONTES_PADRAO = "feodo,threatfox,sslbl,c2intel,threatview,tor"
+FONTES_PADRAO = "feodo,threatfox,sslbl,c2intel,threatview,etbotcc,digitalside,botvrij,bambenek,tor"
 IP_RE = re.compile(r"\b(?:\d{1,3}\.){3}\d{1,3}(?:/\d{1,2})?\b")   # IP ou CIDR (terms em campo ip aceita CIDR)
 
 def fetch(url, timeout=30):
@@ -142,7 +151,7 @@ def buscar(ips, horas, min_pkts=3, lote=20000):
             uniq[k]["categoria"] = "+".join(sorted(set(uniq[k]["categoria"].split("+")) | set(x["categoria"].split("+"))))
         else: uniq[k] = x
     achados = list(uniq.values())
-    ordem = {"c2": 0, "malware": 1, "anon": 2, "hostil": 3}
+    ordem = {"c2": 0, "malware": 1, "anon": 2, "bot": 3, "hostil": 4}
     achados.sort(key=lambda x: (min(ordem.get(c, 9) for c in x["categoria"].split("+")), -x["bytes"], x["cpe"]))
     return achados
 
@@ -186,6 +195,17 @@ def es_gravar_varredura(scan, horas):
         r = es_http(f"/{alvo}/_bulk", "\n".join(linhas) + "\n", ctype="application/x-ndjson")
         print(f"[info] gravadas {len(scan)} varreduras em {alvo} (erros={r.get('errors')})", file=sys.stderr)
 
+def checar_publico(prefixos, ips):
+    """IPs do pool publico (CGNAT) presentes em listas de infectados/hostis -> ha CPE infectado atras deles."""
+    redes = [ipaddress.ip_network(p.strip(), strict=False) for p in prefixos.split(",") if p.strip()]
+    out = []
+    for ip, fontes in ips.items():
+        if "/" in ip: continue
+        a = ipaddress.ip_address(ip)
+        if any(a in r for r in redes):
+            out.append({"ip": ip, "fontes": "+".join(sorted(fontes)), "categoria": "+".join(sorted({FONTES[f][1] for f in fontes}))})
+    return sorted(out, key=lambda x: x["ip"])
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--hours", type=int, default=24)
@@ -197,12 +217,18 @@ def main():
     ap.add_argument("--min-dest", type=int, default=100, help="--scan: minimo de IPs distintos na mesma porta")
     ap.add_argument("--scan-hours", type=int, default=2, help="--scan: janela propria da varredura (curta: escaneamento e continuo)")
     ap.add_argument("--min-dest-comum", type=int, default=3000, help="--scan: limiar para portas de fan-out legitimo (443, 80, P2P)")
+    ap.add_argument("--publico", default="", help="prefixos publicos do pool CGNAT (ex: 187.86.48.0/22,181.191.192.0/22) para checar nas listas de bots")
     a = ap.parse_args()
     if not ES_PASS: sys.exit("Defina ES_PASS")
     sel = FONTES.keys() if a.fontes == "all" else a.fontes.split(",")
     fontes = {k: v for k, v in FONTES.items() if k in sel}
     ips = carregar_blocklists(fontes)
     if not ips: sys.exit("Nenhuma blocklist carregada (sem acesso ao abuse.ch?)")
+    if a.publico:
+        pub = checar_publico(a.publico, ips)
+        print(f"\nIPs publicos do pool listados como infectados/hostis: {len(pub)}")
+        for x in pub: print(f"  {x['ip']:16s} {x['categoria']:11s} {x['fontes']}")
+        print("  -> cruzar com o log de NAT do CGNAT (A10) no horario para chegar ao CPE\n")
     achados = buscar(ips, a.hours, a.min_pkts)
     scan = varredura(a.scan_hours, a.min_dest, a.min_dest_comum) if a.scan else []
     if a.es_write:
