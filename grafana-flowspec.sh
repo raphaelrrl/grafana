@@ -105,12 +105,24 @@ GINI=/etc/grafana/grafana.ini
 IPGRF=$(hostname -I | awk '{print $1}')
 grep -qE '^;?\s*disable_sanitize_html' "$GINI" && sed -i 's/^;\?\s*disable_sanitize_html.*/disable_sanitize_html = true/' "$GINI" || sed -i '/^\[panels\]/a disable_sanitize_html = true' "$GINI"
 
+# Branding gravado em disco: reinicia AGORA para carregar (antes de qualquer chamada a API).
+systemctl restart grafana-server
+# Espera o Grafana responder na porta (ate 60s) - logo apos restart/reinstall ele demora.
+for i in $(seq 1 30); do
+  wget -qO- --timeout=2 "$GRAFANA/api/health" 2>/dev/null | grep -q '"database"' && break
+  sleep 2
+done
+wget -qO- --timeout=2 "$GRAFANA/api/health" 2>/dev/null | grep -q '"database"' || echo "  AVISO: Grafana nao respondeu em 60s; a etapa de dashboards pode falhar."
+
 ###############################################################################
 info "B) DATASOURCES existentes (nao alterar)"
 ###############################################################################
 gget "$GRAFANA/api/datasources" > "$TMP/ds.json"
-python3 -c "import json;[print(f\"  {d['type']:38s} {d['uid']:18s} {d['name']}\") for d in json.load(open('$TMP/ds.json'))]" \
-  || { echo "  Falha na API do Grafana - confira GRAFANA_PASS."; exit 1; }
+if ! python3 -c "import json;[print(f\"  {d['type']:38s} {d['uid']:18s} {d['name']}\") for d in json.load(open('$TMP/ds.json'))]" 2>/dev/null; then
+  echo "  Falha na API do Grafana (senha errada ou servico ainda subindo). Branding JA foi aplicado; dashboards NAO provisionados."
+  echo "  Rode de novo em 1 minuto: GRAFANA_PASS='...' $0"
+  rm -rf "$TMP"; exit 1
+fi
 
 ###############################################################################
 info "C) DASHBOARDS - provisioning + remapeamento por tipo"

@@ -356,6 +356,12 @@ instalar_grafana(){
   GINI=/etc/grafana/grafana.ini
   grep -qE '^;?\s*disable_sanitize_html' "$GINI" && sed -i 's/^;\?\s*disable_sanitize_html.*/disable_sanitize_html = true/' "$GINI" || sed -i '/^\[panels\]/a disable_sanitize_html = true' "$GINI"
 
+  # Branding gravado: reinicia e ESPERA o Grafana responder antes de chamar a API
+  systemctl restart grafana-server
+  for i in $(seq 1 30); do
+    wget -qO- --timeout=2 "$GRAFANA_URL/api/health" 2>/dev/null | grep -q '"database"' && break; sleep 2
+  done
+
   # --- DASHBOARDS: provisioning + remapeamento por tipo ---
   if [ -n "$GAUTH" ]; then
     PROV=/etc/grafana/provisioning/dashboards/flowspec.yaml
