@@ -24,6 +24,7 @@ GRAFANA_PASS="${GRAFANA_PASS:-}"
 REPO="${REPO:-https://raw.githubusercontent.com/raphaelrrl/grafana/main}"
 REPO_SLUG="${REPO_SLUG:-raphaelrrl/grafana}"
 BRANCH="${BRANCH:-main}"
+CHAMADO_URL="${CHAMADO_URL:-https://flowspec.net.br}"   # destino do item "Abrir chamado" no menu do Viewer
 DEST="${DEST:-/var/lib/grafana/dashboards}"
 GPUB="${GPUB:-/usr/share/grafana/public}"   # arvore public do grafana
 # =============================================================================
@@ -100,7 +101,9 @@ grep -q 'FLOWSPEC-FOOTER' "$IDX" || sed -i 's|</head>|<style>/*FLOWSPEC-FOOTER*/
 # 4) esconder Share/Export/Help e itens de menu SO para Viewer
 grep -q 'FLOWSPEC-UI' "$IDX" || sed -i 's|</head>|<style>/*FLOWSPEC-UI*/ body.fs-viewer [data-testid*="new share button"], body.fs-viewer [data-testid*="new export button"], body.fs-viewer [data-testid*="share-button"], body.fs-viewer button[aria-label="Help"], body.fs-viewer li:has(a[href^="/alerting"]), body.fs-viewer li:has(a[href^="/drilldown"]), body.fs-viewer li:has(a[href^="/bookmarks"]), body.fs-viewer li:has(a[href*="starred"]), body.fs-viewer *:has(> a[href^="/playlists"]), body.fs-viewer *:has(> a[href^="/library-panels"]), body.fs-viewer *:has(> a[href^="/dashboard/snapshots"]) {display:none !important;}</style>\n</head>|' "$IDX"
   # menu do usuario: esconde Profile / Notification history / Change theme SO para Viewer
-  grep -q 'FLOWSPEC-UMENU' "$IDX" || sed -i 's|</head>|<style>/*FLOWSPEC-UMENU*/ body.fs-viewer li:has(> a[href="/profile"]), body.fs-viewer li:has(> a[href^="/notifications"]), body.fs-viewer a[href="/profile"], body.fs-viewer a[href^="/notifications"], body.fs-viewer li:has(> [data-testid*="hange theme" i]), body.fs-viewer button[data-testid*="hange theme" i], body.fs-viewer button[aria-label*="hange theme" i] {display:none !important;}</style>\n</head>|' "$IDX"
+  grep -q 'FLOWSPEC-UMENU' "$IDX" || sed -i 's|</head>|<style>/*FLOWSPEC-UMENU*/ body.fs-viewer li:has(> a[href^="/profile"]), body.fs-viewer a[href^="/profile"], body.fs-viewer ul:has(> li > a[href="/profile"]) > li:nth-child(4), body.fs-viewer li:has(> a[href^="/dashboard/public"]), body.fs-viewer li:has(> a[href^="/dashboard/recently-deleted"]), body.fs-viewer li:has(> a[href^="/playlists"]), body.fs-viewer li:has(> a[href^="/library-panels"]), body.fs-viewer li:has(> a[href^="/dashboard/snapshots"]) {display:none !important;}</style>\n</head>|' "$IDX"
+  # "Dashboards" -> "Abrir chamado" (site Flowspec) SO para Viewer; some com subitens
+  grep -q 'FLOWSPEC-CHAMADO' "$IDX" || sed -i "s|</body>|<script>/*FLOWSPEC-CHAMADO*/(function(){function f(){if(!document.body.classList.contains(\"fs-viewer\"))return;document.querySelectorAll(\"nav a[href='/dashboards'], aside a[href='/dashboards']\").forEach(function(a){if(a.dataset.fs)return;a.dataset.fs=\"1\";a.href=\"${CHAMADO_URL}\";a.target=\"_blank\";a.rel=\"noopener\";a.querySelectorAll(\"span,div\").forEach(function(e){if(e.children.length===0\&\&e.textContent.trim()===\"Dashboards\")e.textContent=\"Abrir chamado\";});if(a.textContent.trim()===\"Dashboards\")a.textContent=\"Abrir chamado\";});}f();new MutationObserver(f).observe(document.body,{childList:true,subtree:true});})();</script></body>|" "$IDX"
 
 # --- publicBaseUrl e sanitize no grafana.ini (idempotente)
 GINI=/etc/grafana/grafana.ini
