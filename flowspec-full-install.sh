@@ -36,7 +36,8 @@ set -uo pipefail
 REPO="${REPO:-https://raw.githubusercontent.com/raphaelrrl/grafana/main}"
 REPO_SLUG="${REPO_SLUG:-raphaelrrl/grafana}"
 BRANCH="${BRANCH:-main}"
-GRAFANA_URL="${GRAFANA_URL:-http://localhost:3000}"
+_GP=$(grep -E '^\s*http_port\s*=' /etc/grafana/grafana.ini 2>/dev/null | grep -oE '[0-9]+' | tail -1)
+GRAFANA_URL="${GRAFANA_URL:-http://localhost:${_GP:-3000}}"   # porta lida do grafana.ini
 GRAFANA_USER="${GRAFANA_USER:-admin}"
 GRAFANA_PASS="${GRAFANA_PASS:-}"
 DASH_DEST="${DASH_DEST:-/var/lib/grafana/dashboards}"

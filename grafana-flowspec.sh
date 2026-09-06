@@ -16,7 +16,9 @@
 set -uo pipefail   # sem -e: um sed que nao casa nao deve abortar o resto
 
 # =========================== AJUSTE AQUI =====================================
-GRAFANA="${GRAFANA:-http://localhost:3000}"
+# Porta do Grafana: le do grafana.ini (http_port); se nao houver, 3000. Sobrescreva com GRAFANA=http://host:porta
+_GP=$(grep -E '^\s*http_port\s*=' /etc/grafana/grafana.ini 2>/dev/null | grep -oE '[0-9]+' | tail -1)
+GRAFANA="${GRAFANA:-http://localhost:${_GP:-3000}}"
 GRAFANA_USER="${GRAFANA_USER:-admin}"
 GRAFANA_PASS="${GRAFANA_PASS:-}"
 REPO="${REPO:-https://raw.githubusercontent.com/raphaelrrl/grafana/main}"
