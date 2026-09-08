@@ -3,7 +3,7 @@
 flowspec-api.py - Flowspec Solutions
 API minima (stdlib) para o dashboard do Grafana operar o FlowSpec:
   GET  /rules                 -> regras ativas (estado do c2flowspec)
-  POST /rules/remove          -> {"ip": "...", "motivo": "...", "dias": 7}   retira a regra e poe o IP na whitelist por N dias
+  POST /rules/remove          -> {"chave": "CPE>C2:porta/proto", "motivo": "...", "dias": 7, "escopo": "vetor|destino"}
   GET  /whitelist             -> lista da whitelist
   POST /whitelist/add         -> {"cidr": "...", "porta": 53, "proto": "udp", "motivo": "...", "dias": 0}  (dias=0 = permanente)
   POST /whitelist/remove      -> {"id": "..."}
@@ -33,13 +33,10 @@ def jload(p, default):
 def jsave(p, d):
     os.makedirs(os.path.dirname(p), exist_ok=True); json.dump(d, open(p, "w"), indent=1, ensure_ascii=False)
 
-def gobgp_del(ip):
-    """Retira as regras do IP (as duas direcoes; ignora erro se ja nao existir)."""
-    for s in ("destination", "source"):
-        subprocess.run([GOBGP, "global", "rib", "-a", "ipv4-flowspec", "del", "match", s, f"{ip}/32", "then", "discard"], capture_output=True)
-        # rate-limit: nao sabemos o bps usado; tentamos os comuns
-        for bps in ("100000", "10000"):
-            subprocess.run([GOBGP, "global", "rib", "-a", "ipv4-flowspec", "del", "match", s, f"{ip}/32", "then", "rate-limit", bps], capture_output=True)
+def gobgp_del_regras(regs):
+    """Retira exatamente as regras salvas no estado (args do gobgp)."""
+    for r in regs or []:
+        subprocess.run([GOBGP, "global", "rib", "-a", "ipv4-flowspec", "del"] + r, capture_output=True)
 
 def valida_cidr(c):
     return str(ipaddress.ip_network(c, strict=False))
@@ -66,8 +63,9 @@ class H(BaseHTTPRequestHandler):
         if not self._auth(): return self._json(401, {"erro": "token"})
         if p == "/rules":
             st = jload(STATE, {})
-            rows = [{"ip": ip, **v} for ip, v in st.items()]
-            rows.sort(key=lambda x: -x.get("cpes", 0))
+            rows = [{"chave": k, "cpe": v.get("cpe"), "c2": v.get("c2"), "porta": v.get("porta"), "proto": v.get("proto") or "*",
+                     "flows": v.get("flows"), "fontes": v.get("fontes"), "acao": v.get("acao"), "desde": v.get("desde"), "ultimo": v.get("ultimo")} for k, v in st.items()]
+            rows.sort(key=lambda x: -(x.get("flows") or 0))
             return self._json(200, rows)
         if p == "/whitelist":
             wl = jload(WLFILE, [])
@@ -80,17 +78,19 @@ class H(BaseHTTPRequestHandler):
         if not self._auth(): return self._json(401, {"erro": "token"})
         b = self._body()
         if p == "/rules/remove":
-            ip = (b.get("ip") or "").strip()
-            try: ipaddress.ip_address(ip)
-            except Exception: return self._json(400, {"erro": "ip invalido"})
-            st = jload(STATE, {}); gobgp_del(ip); st.pop(ip, None); jsave(STATE, st)
-            dias = int(b.get("dias") or 7)
+            chave = (b.get("chave") or "").strip()
+            st = jload(STATE, {})
+            if chave not in st: return self._json(404, {"erro": "chave nao encontrada (use a coluna 'chave' da tabela)"})
+            v = st[chave]; gobgp_del_regras(v.get("regras")); st.pop(chave, None); jsave(STATE, st)
+            dias = int(b.get("dias") or 7); escopo = (b.get("escopo") or "vetor")
             wl = jload(WLFILE, [])
-            wl.append({"id": uuid.uuid4().hex[:10], "cidr": f"{ip}/32", "porta": None, "proto": None,
-                       "motivo": b.get("motivo") or "removido pelo operador", "criado_em": agora(),
-                       "ate": (datetime.datetime.now(datetime.timezone.utc) + datetime.timedelta(days=dias)).replace(microsecond=0).isoformat() if dias > 0 else None})
-            jsave(WLFILE, wl)
-            return self._json(200, {"ok": True, "ip": ip, "whitelist_dias": dias})
+            # escopo 'vetor' = libera so este C2:porta/proto ; 'destino' = libera o C2 inteiro
+            ent = {"id": uuid.uuid4().hex[:10], "cidr": f"{v['c2']}/32",
+                   "porta": v.get("porta") if escopo == "vetor" else None, "proto": v.get("proto") if escopo == "vetor" else None,
+                   "motivo": b.get("motivo") or f"removido pelo operador ({chave})", "criado_em": agora(),
+                   "ate": (datetime.datetime.now(datetime.timezone.utc) + datetime.timedelta(days=dias)).replace(microsecond=0).isoformat() if dias > 0 else None}
+            wl.append(ent); jsave(WLFILE, wl)
+            return self._json(200, {"ok": True, "chave": chave, "whitelist": ent})
         if p == "/whitelist/add":
             try: cidr = valida_cidr((b.get("cidr") or "").strip())
             except Exception: return self._json(400, {"erro": "cidr invalido"})
@@ -108,8 +108,10 @@ class H(BaseHTTPRequestHandler):
             jsave(WLFILE, wl)
             # se ja existe regra ativa para esse IP, retira agora
             st = jload(STATE, {}); net = ipaddress.ip_network(cidr, strict=False)
-            for ip in [i for i in st if ipaddress.ip_address(i) in net and porta is None]:
-                gobgp_del(ip); st.pop(ip, None)
+            for k in list(st.keys()):
+                v = st[k]; cobre = any(ipaddress.ip_address(x) in net for x in (v.get("cpe"), v.get("c2")) if x)
+                if cobre and (porta is None or (v.get("porta") == porta and (proto is None or v.get("proto") == proto))):
+                    gobgp_del_regras(v.get("regras")); st.pop(k, None)
             jsave(STATE, st)
             return self._json(200, {"ok": True, "cidr": cidr, "porta": porta, "proto": proto})
         if p == "/whitelist/remove":

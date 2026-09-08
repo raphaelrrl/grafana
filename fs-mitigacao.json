@@ -279,14 +279,14 @@
       "transparent": true,
       "options": {
         "mode": "html",
-        "content": "<div style=\"font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;color:#8fa3b3;line-height:1.6;padding:6px;\"><span style=\"color:#ff5a5a\">REGRAS</span> = IPs de C2 confirmados sendo descartados nos roteadores via BGP FlowSpec (duas direcoes). Expiram sozinhas apos 24h sem reaparecer.<br><span style=\"color:#9be15d\">WHITELIST</span> = destinos que NUNCA sao bloqueados. Entrada com porta libera so aquela porta/protocolo; sem porta libera o bloco inteiro.</div>"
+        "content": "<div style=\"font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;color:#8fa3b3;line-height:1.6;padding:6px;\"><span style=\"color:#ff5a5a\">REGRAS</span> = fluxos especificos (CPE origem, C2 destino, porta, protocolo) descartados via BGP FlowSpec nas duas direcoes. Quanto mais especifico, menor a chance de falso positivo. Expiram sozinhas apos 24h sem reaparecer.<br><span style=\"color:#9be15d\">WHITELIST</span> = nunca bloquear. Sem porta libera o bloco inteiro; com porta/proto libera so aquele fluxo.</div>"
       }
     },
     {
       "id": 5,
       "type": "table",
-      "title": "REGRAS FLOWSPEC ATIVAS",
-      "description": "IPs de C2 atualmente anunciados via FlowSpec. CPEs = quantos clientes falaram com este destino. Para liberar um IP, use o formulario ao lado.",
+      "title": "REGRAS FLOWSPEC ATIVAS (vetor CPE -> C2 : porta / proto)",
+      "description": "Cada linha e UM fluxo especifico bloqueado (origem, destino, porta e protocolo) nas duas direcoes. Outros fluxos para o mesmo IP nao sao afetados. Copie a 'chave' para remover.",
       "gridPos": {
         "x": 0,
         "y": 7,
@@ -322,13 +322,33 @@
           "root_selector": "",
           "columns": [
             {
-              "selector": "ip",
-              "text": "IP bloqueado",
+              "selector": "chave",
+              "text": "chave",
               "type": "string"
             },
             {
-              "selector": "cpes",
-              "text": "CPEs",
+              "selector": "cpe",
+              "text": "CPE (origem)",
+              "type": "string"
+            },
+            {
+              "selector": "c2",
+              "text": "C2 (destino)",
+              "type": "string"
+            },
+            {
+              "selector": "porta",
+              "text": "Porta",
+              "type": "number"
+            },
+            {
+              "selector": "proto",
+              "text": "Proto",
+              "type": "string"
+            },
+            {
+              "selector": "flows",
+              "text": "Flows",
               "type": "number"
             },
             {
@@ -337,13 +357,13 @@
               "type": "string"
             },
             {
-              "selector": "desde",
-              "text": "Bloqueado em",
-              "type": "timestamp"
+              "selector": "acao",
+              "text": "Acao",
+              "type": "string"
             },
             {
-              "selector": "ultimo",
-              "text": "Ultimo contato",
+              "selector": "desde",
+              "text": "Bloqueado em",
               "type": "timestamp"
             }
           ],
@@ -377,7 +397,61 @@
           {
             "matcher": {
               "id": "byRegexp",
-              "options": "^CPEs$"
+              "options": "^chave$"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 300
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byRegexp",
+              "options": "^C2 \\(destino\\)$"
+            },
+            "properties": [
+              {
+                "id": "custom.cellOptions",
+                "value": {
+                  "type": "color-text"
+                }
+              },
+              {
+                "id": "color",
+                "value": {
+                  "mode": "fixed",
+                  "fixedColor": "#ff5a5a"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byRegexp",
+              "options": "^CPE \\(origem\\)$"
+            },
+            "properties": [
+              {
+                "id": "custom.cellOptions",
+                "value": {
+                  "type": "color-text"
+                }
+              },
+              {
+                "id": "color",
+                "value": {
+                  "mode": "fixed",
+                  "fixedColor": "#00c8ff"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byRegexp",
+              "options": "^Flows$"
             },
             "properties": [
               {
@@ -403,28 +477,7 @@
           {
             "matcher": {
               "id": "byRegexp",
-              "options": "^IP bloqueado$"
-            },
-            "properties": [
-              {
-                "id": "custom.cellOptions",
-                "value": {
-                  "type": "color-text"
-                }
-              },
-              {
-                "id": "color",
-                "value": {
-                  "mode": "fixed",
-                  "fixedColor": "#ff5a5a"
-                }
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byRegexp",
-              "options": "Bloqueado em|Ultimo contato"
+              "options": "Bloqueado em"
             },
             "properties": [
               {
@@ -450,8 +503,8 @@
     {
       "id": 6,
       "type": "volkovlabs-form-panel",
-      "title": "REMOVER REGRA (liberar IP)",
-      "description": "Retira a regra do GoBGP e coloca o IP na whitelist pelo prazo informado, para o c2flowspec nao reanunciar.",
+      "title": "REMOVER REGRA (liberar fluxo)",
+      "description": "Retira as duas regras (ida e volta) do GoBGP e poe o destino na whitelist pelo prazo: so a porta/proto do fluxo, ou o C2 inteiro.",
       "gridPos": {
         "x": 16,
         "y": 7,
@@ -465,18 +518,42 @@
       "options": {
         "elements": [
           {
-            "id": "ip",
-            "uid": "ip",
-            "title": "IP a liberar",
+            "id": "chave",
+            "uid": "chave",
+            "title": "Chave da regra",
             "type": "string",
             "value": "",
             "section": "",
             "width": 30,
-            "labelWidth": 14,
+            "labelWidth": 16,
             "unit": "",
-            "tooltip": "IP exatamente como aparece na tabela",
+            "tooltip": "copie da coluna 'chave' da tabela (CPE>C2:porta/proto)",
             "disableIf": "",
             "showIf": ""
+          },
+          {
+            "id": "escopo",
+            "uid": "escopo",
+            "title": "Liberar",
+            "type": "select",
+            "value": "vetor",
+            "section": "",
+            "width": 30,
+            "labelWidth": 16,
+            "unit": "",
+            "tooltip": "",
+            "disableIf": "",
+            "showIf": "",
+            "options": [
+              {
+                "value": "vetor",
+                "label": "so este fluxo (C2:porta/proto)"
+              },
+              {
+                "value": "destino",
+                "label": "o destino C2 inteiro"
+              }
+            ]
           },
           {
             "id": "motivo",
@@ -486,7 +563,7 @@
             "value": "falso positivo",
             "section": "",
             "width": 30,
-            "labelWidth": 14,
+            "labelWidth": 16,
             "unit": "",
             "tooltip": "",
             "disableIf": "",
@@ -500,9 +577,9 @@
             "value": 7,
             "section": "",
             "width": 30,
-            "labelWidth": 14,
+            "labelWidth": 16,
             "unit": "",
-            "tooltip": "0 = so remove agora; N = entra na whitelist por N dias",
+            "tooltip": "",
             "disableIf": "",
             "showIf": "",
             "min": 0,

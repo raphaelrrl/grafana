@@ -23,7 +23,11 @@ ES_USER  = os.environ.get("ES_USER", "elastic")
 ES_PASS  = os.environ.get("ES_PASS", "")
 ES_CA    = os.environ.get("ES_CA",   "/etc/elasticsearch/certs/http_ca.crt")
 ES_INDEX = os.environ.get("ES_INDEX","filebeat-*")
-PREFIX   = os.environ.get("PREFIXO", "100.64.0.0/10")
+PREFIX   = os.environ.get("PREFIXO", "100.64.0.0/10")   # um ou varios CIDRs separados por virgula
+PREFIXOS = [p.strip() for p in PREFIX.split(",") if p.strip()]
+def filtro_prefixo(campo="source.ip"):
+    """Filtro ES para os blocos de clientes (terms em campo ip aceita CIDR)."""
+    return {"terms": {campo: PREFIXOS}}
 
 # nome: (url, categoria)   categorias: c2 = servidor C2 confirmado | malware = distribuicao | anon = Tor | hostil = infra hostil/scanners (ruidoso)
 FONTES = {
@@ -104,7 +108,7 @@ def es_gravar(achados, horas):
                "network": {"bytes": x["bytes"], "packets": x["pacotes"]},
                "threat": {"indicator": {"provider": x["fontes"].split("+"), "ip": x["c2"], "type": "ipv4-addr"}, "feed": {"name": x["categoria"].split("+")}},
                "flowspec": {"flows": x["flows"], "janela_horas": horas, "ultimo_contato": x["ultimo_contato"], "portas": x["portas"],
-                            "categoria": x["categoria"], "fontes": x["fontes"]}}
+                            "protos": x.get("protos",""), "categoria": x["categoria"], "fontes": x["fontes"]}}
         linhas.append(json.dumps({"create": {}})); linhas.append(json.dumps(doc))
     if not linhas:
         linhas = [json.dumps({"create": {}}), json.dumps({"@timestamp": agora, "event": {"dataset": "c2.heartbeat", "module": "flowspec"}, "flowspec": {"janela_horas": horas, "achados": 0}})]
@@ -122,7 +126,7 @@ def buscar(ips, horas, min_pkts=3, lote=20000):
           "size": 0,
           "query": {"bool": {"filter": [
               {"range": {"@timestamp": {"gte": f"now-{horas}h"}}},
-              {"term":  {"source.ip": PREFIX}},              # CIDR em campo ip
+              filtro_prefixo("source.ip"),               # blocos de clientes (1 ou varios CIDR)
               {"terms": {"destination.ip": parte}}
           ]}},
           "aggs": {"cpe": {"terms": {"field": "source.ip", "size": 5000, "order": {"bytes": "desc"}},
@@ -131,6 +135,7 @@ def buscar(ips, horas, min_pkts=3, lote=20000):
                               "aggs": {"bytes": {"sum": {"field": "network.bytes"}},
                                        "pkts": {"sum": {"field": "network.packets"}},
                                        "portas": {"terms": {"field": "destination.port", "size": 5}},
+                                       "protos": {"terms": {"field": "network.transport", "size": 3}},
                                        "ultimo": {"max": {"field": "@timestamp"}}}}}}}}
         r = es_query(body)
         for b in r["aggregations"]["cpe"]["buckets"]:
@@ -143,6 +148,7 @@ def buscar(ips, horas, min_pkts=3, lote=20000):
                     "cpe": b["key"], "c2": c["key"],
                     "fontes": "+".join(sorted(fontes)), "categoria": "+".join(cats),
                     "portas": ",".join(str(p["key"]) for p in c["portas"]["buckets"]),
+                    "protos": ",".join(str(p["key"]) for p in c.get("protos",{}).get("buckets",[])),
                     "flows": c["doc_count"], "bytes": int(c["bytes"]["value"]), "pacotes": int(c["pkts"]["value"]),
                     "ultimo_contato": c["ultimo"].get("value_as_string", "")})
     # dedupe por par CPE->IP (IP presente em mais de uma lista/CIDR aparece em mais de um lote)
@@ -167,7 +173,7 @@ def varredura(horas, min_dest=100, min_dest_comum=3000):
     body = {"size": 0,
       "query": {"bool": {"filter": [
           {"range": {"@timestamp": {"gte": f"now-{horas}h"}}},
-          {"term": {"source.ip": PREFIX}},
+          filtro_prefixo("source.ip"),
           {"range": {"network.packets": {"lte": 3}}},      # assinatura de scan: 1-3 pacotes por flow
           {"range": {"network.bytes": {"lte": 600}}}]}},
       "aggs": {"cpe": {"terms": {"field": "source.ip", "size": 2000, "min_doc_count": min_dest, "order": {"_count": "desc"}},
