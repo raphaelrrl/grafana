@@ -58,6 +58,7 @@ b64=$(base64 -w0 "$TMP/logo.png")
 printf '<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512"><image width="512" height="512" preserveAspectRatio="xMidYMid meet" xlink:href="data:image/png;base64,%s"/></svg>' "$b64" > "$TMP/logo.svg"
 find "$GPUB" -name 'grafana_icon*.svg' -exec cp "$TMP/logo.svg" {} \;
 find "$GPUB" -name 'grafana_mask_icon*.svg' -exec cp "$TMP/logo.svg" {} \;
+find "$GPUB" -name 'grot-404*.svg' -exec cp "$TMP/logo.svg" {} \;   # mascote da pagina 404 -> logo Flowspec
 
 # --- Favicon e touch-icons
 for t in $(find "$GPUB" -name 'fav32*.png'); do cp "$TMP/fav.png" "$t"; done

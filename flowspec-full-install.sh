@@ -314,6 +314,7 @@ instalar_grafana(){
   printf '<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512"><image width="512" height="512" preserveAspectRatio="xMidYMid meet" xlink:href="data:image/png;base64,%s"/></svg>' "$b" > "$T/logo.svg"
   find "$GPUB" -name 'grafana_icon*.svg' -exec cp "$T/logo.svg" {} \;
   find "$GPUB" -name 'grafana_mask_icon*.svg' -exec cp "$T/logo.svg" {} \;
+  find "$GPUB" -name 'grot-404*.svg' -exec cp "$T/logo.svg" {} \;   # mascote da pagina 404 -> logo Flowspec
 
   # --- favicon ---
   for t in $(find "$GPUB" -name 'fav32*.png'); do cp "$T/fav.png" "$t"; done
