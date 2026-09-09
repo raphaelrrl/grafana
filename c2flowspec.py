@@ -28,6 +28,7 @@ ES_INDEX = os.environ.get("ES_INDEX","filebeat-*")
 GOBGP    = os.environ.get("GOBGP_BIN","gobgp")
 STATE    = os.environ.get("STATE","/var/lib/flowspec/c2flowspec.json")
 WLFILE   = os.environ.get("WLFILE","/var/lib/flowspec/whitelist.json")
+CFG      = os.environ.get("CFG","/var/lib/flowspec/config.json")
 WHITELIST_DEFAULT = "10.0.0.0/8,172.16.0.0/12,192.168.0.0/16,1.1.1.1/32,1.0.0.1/32,8.8.8.8/32,8.8.4.4/32,9.9.9.9/32,208.67.222.0/24,208.67.220.0/24"
 WHITELIST = [ipaddress.ip_network(p.strip(), strict=False) for p in (os.environ.get("WHITELIST","") + "," + WHITELIST_DEFAULT).split(",") if p.strip()]
 PROTO_NUM = {"tcp": "6", "udp": "17", "icmp": "1"}
@@ -111,9 +112,19 @@ def gobgp(args, dry):
     if r.returncode != 0: log(f"gobgp ERRO: {' '.join(cmd)} -> {r.stderr.strip()}"); return False
     return True
 
+def carregar_communities():
+    """Communities configuradas no dashboard (16-bit asn:val e 32-bit asn:x:y). Anexadas a cada regra."""
+    try: cfg = json.load(open(CFG))
+    except Exception: return []
+    args = []
+    for t, c in cfg.get("communities_tipos", [("std", x) for x in cfg.get("communities", [])]):
+        args += (["large-community", c] if t == "large" else ["community", c])
+    return args
+COMMUNITIES = carregar_communities()
+
 def regras(v, acao, bps):
     """Duas regras FlowSpec (ida e volta) com o vetor completo. Retorna lista de listas de args."""
-    then = ["then", "discard"] if acao == "discard" else ["then", "rate-limit", str(bps)]
+    then = (["then", "discard"] if acao == "discard" else ["then", "rate-limit", str(bps)]) + COMMUNITIES
     pr = ["protocol", PROTO_NUM[v["proto"]]] if v.get("proto") else []
     ida   = ["match", "source", f"{v['cpe']}/32", "destination", f"{v['c2']}/32"] + pr
     volta = ["match", "source", f"{v['c2']}/32", "destination", f"{v['cpe']}/32"] + pr

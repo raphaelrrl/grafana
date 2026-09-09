@@ -9,6 +9,8 @@ API minima (stdlib) para o dashboard do Grafana operar o FlowSpec:
   POST /whitelist/remove      -> {"id": "..."}
   POST /rules/clear           -> {"pausar_min": 60, "motivo": "..."}   PANICO: remove todas e pausa o c2flowspec
   POST /rules/resume          -> retoma (remove a pausa)
+  GET  /config                -> communities configuradas
+  POST /config/communities    -> {"communities": "53065:500, 65000:100:200"}  (16 ou 32 bits, virgula/linha)
   GET  /health
 
 Autenticacao: header  X-Token: <TOKEN>   ou  ?token=<TOKEN>
@@ -24,6 +26,7 @@ TOKEN  = os.environ.get("TOKEN", "")
 STATE  = os.environ.get("STATE", "/var/lib/flowspec/c2flowspec.json")
 WLFILE = os.environ.get("WLFILE", "/var/lib/flowspec/whitelist.json")
 PAUSA  = os.environ.get("PAUSA",  "/var/lib/flowspec/pausa.json")
+CFG    = os.environ.get("CFG",    "/var/lib/flowspec/config.json")
 GOBGP  = os.environ.get("GOBGP_BIN", "gobgp")
 BIND   = os.environ.get("BIND", "127.0.0.1")
 PORT   = int(os.environ.get("PORT", "8765"))
@@ -73,6 +76,8 @@ class H(BaseHTTPRequestHandler):
                      "flows": v.get("flows"), "fontes": v.get("fontes"), "acao": v.get("acao"), "desde": v.get("desde"), "ultimo": v.get("ultimo")} for k, v in st.items()]
             rows.sort(key=lambda x: -(x.get("flows") or 0))
             return self._json(200, rows)
+        if p == "/config":
+            return self._json(200, jload(CFG, {"communities": []}))
         if p == "/whitelist":
             wl = jload(WLFILE, [])
             for w in wl: w["ativo"] = (not w.get("ate")) or w["ate"] > agora()
@@ -110,6 +115,20 @@ class H(BaseHTTPRequestHandler):
             try: os.remove(PAUSA)
             except FileNotFoundError: pass
             return self._json(200, {"ok": True, "pausa": "removida"})
+        if p == "/config/communities":
+            raw = b.get("communities")
+            if isinstance(raw, str): itens = [c.strip() for c in raw.replace("\n", ",").split(",") if c.strip()]
+            else: itens = [str(c).strip() for c in (raw or []) if str(c).strip()]
+            import re as _re
+            validas, invalidas = [], []
+            for c in itens:
+                if _re.fullmatch(r"\d{1,10}:\d{1,10}", c): validas.append(("std", c))
+                elif _re.fullmatch(r"\d{1,10}:\d{1,10}:\d{1,10}", c): validas.append(("large", c))
+                elif c in ("no-export", "no-advertise", "blackhole"): validas.append(("std", c))
+                else: invalidas.append(c)
+            if invalidas: return self._json(400, {"erro": "communities invalidas: " + ", ".join(invalidas) + " (use asn:valor ou asn:x:y)"})
+            cfg = jload(CFG, {}); cfg["communities"] = [c for _, c in validas]; cfg["communities_tipos"] = validas; jsave(CFG, cfg)
+            return self._json(200, {"ok": True, "communities": cfg["communities"]})
         if p == "/whitelist/add":
             try: cidr = valida_cidr((b.get("cidr") or "").strip())
             except Exception: return self._json(400, {"erro": "cidr invalido"})
