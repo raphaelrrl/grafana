@@ -140,6 +140,9 @@ def main():
     ap.add_argument("--dry-run", action="store_true")
     a = ap.parse_args()
     if not ES_PASS: sys.exit("Defina ES_PASS")
+    import shutil
+    if not a.dry_run and not shutil.which(GOBGP):
+        sys.exit(f"gobgp nao encontrado ({GOBGP}). Este script precisa rodar no host do GoBGP (ou defina GOBGP_BIN=/caminho/gobgp). Use --dry-run para apenas simular.")
     cats = [c.strip() for c in a.categorias.split(",") if c.strip()]
 
     vet = buscar_vetores(a.hours, cats, a.min_flows)
