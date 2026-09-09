@@ -120,6 +120,30 @@ def regras(v, acao, bps):
 def aplicar(regs, op, dry):
     return all(gobgp(["global", "rib", "-a", "ipv4-flowspec", op] + r, dry) for r in regs)
 
+def rib_atual():
+    """Conjunto de (cpe, c2) presentes no RIB FlowSpec real do GoBGP (o RIB nao sobrevive a restart)."""
+    try:
+        r = subprocess.run([GOBGP, "global", "rib", "-a", "ipv4-flowspec", "-j"], capture_output=True, text=True, timeout=30)
+        if r.returncode != 0 or not r.stdout.strip(): return set()
+        txt = r.stdout
+    except Exception: return set()
+    import re
+    pares = set()
+    # chaves do JSON sao a representacao do NLRI, ex.: "[destination: 1.2.3.4/32][source: 5.6.7.8/32][destination-port: ==15758]"
+    for m in re.finditer(r'\[destination: ([0-9.]+)/32\]\[source: ([0-9.]+)/32\]', txt):
+        pares.add((m.group(2), m.group(1)))      # (source, destination)
+    return pares
+
+def reconciliar(st, acao, bps, dry):
+    """Re-anuncia vetores do estado que sumiram do RIB (ex.: apos restart do gobgpd)."""
+    if dry: return 0
+    rib = rib_atual(); n = 0
+    for k, v in st.items():
+        if (v["cpe"], v["c2"]) not in rib:
+            if aplicar(v.get("regras") or regras(v, v.get("acao", acao), bps), "add", dry): n += 1
+    if n: log(f"RECONCILIADO: {n} vetores re-anunciados (estavam no estado mas nao no RIB)")
+    return n
+
 # ---------------- estado ----------------
 def carregar_estado():
     try: return json.load(open(STATE))
@@ -148,6 +172,7 @@ def main():
     vet = buscar_vetores(a.hours, cats, a.min_flows)
     st = carregar_estado(); now = agora()
     novos = mant = ret = wl = 0
+    resync = reconciliar(st, a.acao, a.bps, a.dry_run)
 
     for k, v in sorted(vet.items(), key=lambda x: -x[1]["flows"]):
         if bloqueado_por_whitelist(v): wl += 1; continue
@@ -167,7 +192,7 @@ def main():
                 del st[k]; ret += 1; log(f"RETIRADO {k} (TTL {a.ttl}h)")
 
     if not a.dry_run: salvar_estado(st)
-    print(f"\nc2flowspec: novos={novos} mantidos={mant} retirados={ret} whitelist={wl} | vetores ativos={len(st)} (regras={2*len(st)}) | acao={a.acao}{' (DRY-RUN)' if a.dry_run else ''}")
+    print(f"\nc2flowspec: novos={novos} mantidos={mant} retirados={ret} reanunciados={resync} whitelist={wl} | vetores ativos={len(st)} (regras={2*len(st)}) | acao={a.acao}{' (DRY-RUN)' if a.dry_run else ''}")
 
 if __name__ == "__main__":
     main()

@@ -163,7 +163,10 @@
             }
           ],
           "filters": [],
-          "global_query_id": ""
+          "global_query_id": "",
+          "summarizeExpression": "count(chave)",
+          "summarizeBy": "",
+          "summarizeAlias": "total"
         }
       ],
       "fieldConfig": {
@@ -180,9 +183,9 @@
       "options": {
         "reduceOptions": {
           "calcs": [
-            "count"
+            "lastNotNull"
           ],
-          "fields": "/.*/",
+          "fields": "",
           "values": false
         },
         "textMode": "value",
@@ -237,7 +240,10 @@
             }
           ],
           "filters": [],
-          "global_query_id": ""
+          "global_query_id": "",
+          "summarizeExpression": "count(id)",
+          "summarizeBy": "",
+          "summarizeAlias": "total"
         }
       ],
       "fieldConfig": {
@@ -254,9 +260,9 @@
       "options": {
         "reduceOptions": {
           "calcs": [
-            "count"
+            "lastNotNull"
           ],
-          "fields": "/.*/",
+          "fields": "",
           "values": false
         },
         "textMode": "value",
@@ -635,7 +641,8 @@
           ],
           "code": "",
           "payload": {},
-          "confirm": false
+          "confirm": false,
+          "updatedOnly": false
         },
         "layout": {
           "variant": "single",
@@ -663,22 +670,6 @@
           "orientation": "center",
           "size": "md"
         },
-        "confirmModal": {
-          "title": "Confirmar",
-          "body": "Aplicar esta alteracao no FlowSpec?",
-          "confirm": "Sim, aplicar",
-          "cancel": "Cancelar",
-          "columns": {
-            "include": [
-              "name",
-              "oldValue",
-              "newValue"
-            ],
-            "name": "Campo",
-            "oldValue": "Antes",
-            "newValue": "Depois"
-          }
-        },
         "sync": true,
         "resetAction": {
           "mode": "initial",
@@ -686,7 +677,7 @@
           "payload": {}
         },
         "elementValueChanged": "",
-        "updateEnabled": "manual"
+        "updateEnabled": "auto"
       },
       "targets": [
         {
@@ -1042,7 +1033,8 @@
           ],
           "code": "",
           "payload": {},
-          "confirm": false
+          "confirm": false,
+          "updatedOnly": false
         },
         "layout": {
           "variant": "single",
@@ -1070,22 +1062,6 @@
           "orientation": "center",
           "size": "md"
         },
-        "confirmModal": {
-          "title": "Confirmar",
-          "body": "Aplicar esta alteracao no FlowSpec?",
-          "confirm": "Sim, aplicar",
-          "cancel": "Cancelar",
-          "columns": {
-            "include": [
-              "name",
-              "oldValue",
-              "newValue"
-            ],
-            "name": "Campo",
-            "oldValue": "Antes",
-            "newValue": "Depois"
-          }
-        },
         "sync": true,
         "resetAction": {
           "mode": "initial",
@@ -1093,7 +1069,7 @@
           "payload": {}
         },
         "elementValueChanged": "",
-        "updateEnabled": "manual"
+        "updateEnabled": "auto"
       }
     },
     {
@@ -1157,7 +1133,8 @@
           ],
           "code": "",
           "payload": {},
-          "confirm": false
+          "confirm": false,
+          "updatedOnly": false
         },
         "layout": {
           "variant": "single",
@@ -1185,22 +1162,6 @@
           "orientation": "center",
           "size": "md"
         },
-        "confirmModal": {
-          "title": "Confirmar",
-          "body": "Aplicar esta alteracao no FlowSpec?",
-          "confirm": "Sim, aplicar",
-          "cancel": "Cancelar",
-          "columns": {
-            "include": [
-              "name",
-              "oldValue",
-              "newValue"
-            ],
-            "name": "Campo",
-            "oldValue": "Antes",
-            "newValue": "Depois"
-          }
-        },
         "sync": true,
         "resetAction": {
           "mode": "initial",
@@ -1208,7 +1169,7 @@
           "payload": {}
         },
         "elementValueChanged": "",
-        "updateEnabled": "manual"
+        "updateEnabled": "auto"
       },
       "targets": [
         {
