@@ -157,6 +157,7 @@ def main():
     ap.add_argument("--hours", type=int, default=24)
     ap.add_argument("--ttl", type=int, default=24, help="horas sem reaparecer para retirar")
     ap.add_argument("--categorias", default="c2")
+    ap.add_argument("--fontes", default="", help="so bloquear achados destas fontes (ex.: feodo,threatfox,etbotcc,c2intel). Vazio = todas da categoria")
     ap.add_argument("--min-flows", type=int, default=2, help="minimo de flows do par para bloquear")
     ap.add_argument("--max-regras", type=int, default=5000, help="teto de vetores (cada um = 2 regras FlowSpec)")
     ap.add_argument("--acao", choices=["discard","rate-limit"], default="discard")
@@ -170,6 +171,11 @@ def main():
     cats = [c.strip() for c in a.categorias.split(",") if c.strip()]
 
     vet = buscar_vetores(a.hours, cats, a.min_flows)
+    if a.fontes:
+        permitidas = {f.strip() for f in a.fontes.split(",") if f.strip()}
+        antes = len(vet)
+        vet = {k: v for k, v in vet.items() if permitidas & set((v.get("fontes") or "").split("+"))}
+        log(f"filtro de fontes {sorted(permitidas)}: {antes} -> {len(vet)} vetores")
     st = carregar_estado(); now = agora()
     novos = mant = ret = wl = 0
     resync = reconciliar(st, a.acao, a.bps, a.dry_run)
