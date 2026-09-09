@@ -52,7 +52,8 @@ class H(BaseHTTPRequestHandler):
     def _json(self, code, obj):
         b = json.dumps(obj, ensure_ascii=False).encode()
         self.send_response(code); self.send_header("Content-Type", "application/json"); self.send_header("Access-Control-Allow-Origin", "*")
-        self.send_header("Access-Control-Allow-Headers", "Content-Type, X-Token"); self.send_header("Content-Length", str(len(b))); self.end_headers(); self.wfile.write(b)
+        self.send_header("Access-Control-Allow-Headers", "Content-Type, X-Token"); self.send_header("Access-Control-Allow-Methods", "GET, POST, OPTIONS")
+        self.send_header("Content-Length", str(len(b))); self.end_headers(); self.wfile.write(b)
     def _body(self):
         n = int(self.headers.get("Content-Length") or 0)
         try: return json.loads(self.rfile.read(n) or b"{}")
@@ -141,6 +142,15 @@ class H(BaseHTTPRequestHandler):
             return self._json(200, {"ok": True, "removidos": n - len(wl)})
         return self._json(404, {"erro": "rota"})
 
+class Srv6(ThreadingHTTPServer):
+    import socket as _s
+    address_family = _s.AF_INET6      # dual-stack: atende IPv4 e IPv6 (Linux, bindv6only=0)
+
 if __name__ == "__main__":
-    print(f"flowspec-api em http://{BIND}:{PORT}", file=sys.stderr)
-    ThreadingHTTPServer((BIND, PORT), H).serve_forever()
+    srv = None
+    if ":" in BIND:
+        try: srv = Srv6((BIND, PORT), H); print(f"flowspec-api em http://[{BIND}]:{PORT} (dual-stack)", file=sys.stderr)
+        except OSError as e: print(f"IPv6 indisponivel ({e}); caindo para IPv4 0.0.0.0", file=sys.stderr); BIND = "0.0.0.0"
+    if srv is None:
+        srv = ThreadingHTTPServer((BIND, PORT), H); print(f"flowspec-api em http://{BIND}:{PORT}", file=sys.stderr)
+    srv.serve_forever()
