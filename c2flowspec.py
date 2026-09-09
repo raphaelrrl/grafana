@@ -170,6 +170,13 @@ def main():
         sys.exit(f"gobgp nao encontrado ({GOBGP}). Este script precisa rodar no host do GoBGP (ou defina GOBGP_BIN=/caminho/gobgp). Use --dry-run para apenas simular.")
     cats = [c.strip() for c in a.categorias.split(",") if c.strip()]
 
+    PAUSA = os.environ.get("PAUSA", "/var/lib/flowspec/pausa.json")
+    try:
+        pz = json.load(open(PAUSA))
+        if pz.get("ate") and pz["ate"] > agora().replace(microsecond=0).isoformat():
+            print(f"c2flowspec: PAUSADO ate {pz['ate']} ({pz.get('motivo','')}). Nada anunciado. Retome pelo dashboard ou apague {PAUSA}."); return
+    except FileNotFoundError: pass
+    except Exception: pass
     vet = buscar_vetores(a.hours, cats, a.min_flows)
     if a.fontes:
         permitidas = {f.strip() for f in a.fontes.split(",") if f.strip()}

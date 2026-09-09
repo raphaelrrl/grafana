@@ -7,6 +7,8 @@ API minima (stdlib) para o dashboard do Grafana operar o FlowSpec:
   GET  /whitelist             -> lista da whitelist
   POST /whitelist/add         -> {"cidr": "...", "porta": 53, "proto": "udp", "motivo": "...", "dias": 0}  (dias=0 = permanente)
   POST /whitelist/remove      -> {"id": "..."}
+  POST /rules/clear           -> {"pausar_min": 60, "motivo": "..."}   PANICO: remove todas e pausa o c2flowspec
+  POST /rules/resume          -> retoma (remove a pausa)
   GET  /health
 
 Autenticacao: header  X-Token: <TOKEN>   ou  ?token=<TOKEN>
@@ -21,6 +23,7 @@ from urllib.parse import urlparse, parse_qs
 TOKEN  = os.environ.get("TOKEN", "")
 STATE  = os.environ.get("STATE", "/var/lib/flowspec/c2flowspec.json")
 WLFILE = os.environ.get("WLFILE", "/var/lib/flowspec/whitelist.json")
+PAUSA  = os.environ.get("PAUSA",  "/var/lib/flowspec/pausa.json")
 GOBGP  = os.environ.get("GOBGP_BIN", "gobgp")
 BIND   = os.environ.get("BIND", "127.0.0.1")
 PORT   = int(os.environ.get("PORT", "8765"))
@@ -59,7 +62,9 @@ class H(BaseHTTPRequestHandler):
 
     def do_GET(self):
         p = urlparse(self.path).path
-        if p == "/health": return self._json(200, {"ok": True, "hora": agora()})
+        if p == "/health":
+            pz = jload(PAUSA, {}); ativa = bool(pz.get("ate")) and pz["ate"] > agora()
+            return self._json(200, {"ok": True, "hora": agora(), "pausado": ativa, "pausado_ate": pz.get("ate") if ativa else None})
         if not self._auth(): return self._json(401, {"erro": "token"})
         if p == "/rules":
             st = jload(STATE, {})
@@ -91,6 +96,19 @@ class H(BaseHTTPRequestHandler):
                    "ate": (datetime.datetime.now(datetime.timezone.utc) + datetime.timedelta(days=dias)).replace(microsecond=0).isoformat() if dias > 0 else None}
             wl.append(ent); jsave(WLFILE, wl)
             return self._json(200, {"ok": True, "chave": chave, "whitelist": ent})
+        if p == "/rules/clear":
+            # PANICO: retira TODAS as regras, zera o estado e pausa o c2flowspec por N minutos
+            st = jload(STATE, {}); n = 0
+            for k, v in st.items(): gobgp_del_regras(v.get("regras")); n += 1
+            jsave(STATE, {})
+            minutos = int(b.get("pausar_min") or 60)
+            ate = (datetime.datetime.now(datetime.timezone.utc) + datetime.timedelta(minutes=minutos)).replace(microsecond=0).isoformat()
+            jsave(PAUSA, {"ate": ate, "motivo": b.get("motivo") or "panico pelo operador", "em": agora()})
+            return self._json(200, {"ok": True, "removidas": n, "pausado_ate": ate})
+        if p == "/rules/resume":
+            try: os.remove(PAUSA)
+            except FileNotFoundError: pass
+            return self._json(200, {"ok": True, "pausa": "removida"})
         if p == "/whitelist/add":
             try: cidr = valida_cidr((b.get("cidr") or "").strip())
             except Exception: return self._json(400, {"erro": "cidr invalido"})
