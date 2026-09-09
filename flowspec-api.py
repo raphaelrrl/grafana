@@ -5,7 +5,7 @@ API minima (stdlib) para o dashboard do Grafana operar o FlowSpec:
   GET  /rules                 -> regras ativas (estado do c2flowspec)
   POST /rules/remove          -> {"chave": "CPE>C2:porta/proto", "motivo": "...", "dias": 7, "escopo": "vetor|destino"}
   GET  /whitelist             -> lista da whitelist
-  POST /whitelist/add         -> {"cidr": "...", "porta": 53, "proto": "udp", "motivo": "...", "dias": 0}  (dias=0 = permanente)
+  POST /whitelist/add         -> {"cidr": "...", "porta": 53, "proto": "udp", "ip_lado": "origem|destino|qualquer", "porta_lado": "origem|destino|qualquer", "motivo": "...", "dias": 0}
   POST /whitelist/remove      -> {"id": "..."}
   POST /rules/clear           -> {"pausar_min": 60, "motivo": "..."}   PANICO: remove todas e pausa o c2flowspec
   POST /rules/resume          -> retoma (remove a pausa)
@@ -91,7 +91,7 @@ class H(BaseHTTPRequestHandler):
             dias = int(b.get("dias") or 7); escopo = (b.get("escopo") or "vetor")
             wl = jload(WLFILE, [])
             # escopo 'vetor' = libera so este C2:porta/proto ; 'destino' = libera o C2 inteiro
-            ent = {"id": uuid.uuid4().hex[:10], "cidr": f"{v['c2']}/32",
+            ent = {"id": uuid.uuid4().hex[:10], "cidr": f"{v['c2']}/32", "ip_lado": "destino", "porta_lado": "destino",
                    "porta": v.get("porta") if escopo == "vetor" else None, "proto": v.get("proto") if escopo == "vetor" else None,
                    "motivo": b.get("motivo") or f"removido pelo operador ({chave})", "criado_em": agora(),
                    "ate": (datetime.datetime.now(datetime.timezone.utc) + datetime.timedelta(days=dias)).replace(microsecond=0).isoformat() if dias > 0 else None}
@@ -120,10 +120,14 @@ class H(BaseHTTPRequestHandler):
                 except Exception: return self._json(400, {"erro": "porta invalida"})
             else: porta = None
             if proto and proto not in ("tcp", "udp"): return self._json(400, {"erro": "proto deve ser tcp ou udp"})
+            ip_lado = (b.get("ip_lado") or "qualquer").lower(); porta_lado = (b.get("porta_lado") or "destino").lower()
+            if ip_lado not in ("origem", "destino", "qualquer") or porta_lado not in ("origem", "destino", "qualquer"):
+                return self._json(400, {"erro": "ip_lado/porta_lado devem ser origem, destino ou qualquer"})
             try: dias = int(str(b.get("dias") or "0").strip() or 0)
             except Exception: dias = 0
             wl = jload(WLFILE, [])
             wl.append({"id": uuid.uuid4().hex[:10], "cidr": cidr, "porta": porta, "proto": proto,
+                       "ip_lado": ip_lado, "porta_lado": porta_lado,
                        "motivo": b.get("motivo") or "", "criado_em": agora(),
                        "ate": (datetime.datetime.now(datetime.timezone.utc) + datetime.timedelta(days=dias)).replace(microsecond=0).isoformat() if dias > 0 else None})
             jsave(WLFILE, wl)

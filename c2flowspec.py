@@ -73,29 +73,34 @@ def buscar_vetores(horas, categorias, min_flows):
 
 # ---------------- whitelist ----------------
 def carregar_wl():
+    """Whitelist do dashboard. Cada entrada: cidr, porta, proto, ip_lado (origem|destino|qualquer), porta_lado (origem|destino|qualquer), ate."""
     try: wl = json.load(open(WLFILE))
     except Exception: wl = []
-    now = agora().replace(microsecond=0).isoformat()
-    tot, par = [], {}
+    now = agora().replace(microsecond=0).isoformat(); out = []
     for w in wl:
         if w.get("ate") and w["ate"] < now: continue
         try: net = ipaddress.ip_network(w["cidr"], strict=False)
         except Exception: continue
-        if w.get("porta"): par.setdefault(net, []).append((int(w["porta"]), (w.get("proto") or "").lower() or None))
-        else: tot.append(net)
-    return tot, par
-WL_TOTAL, WL_PARCIAL = carregar_wl()
+        out.append({"net": net, "porta": int(w["porta"]) if w.get("porta") else None, "proto": (w.get("proto") or "").lower() or None,
+                    "ip_lado": (w.get("ip_lado") or "qualquer").lower(), "porta_lado": (w.get("porta_lado") or "destino").lower()})
+    return out
+WL = carregar_wl()
 
 def bloqueado_por_whitelist(v):
-    """True se o vetor NAO pode ser bloqueado (IP na whitelist total, ou porta/proto liberados)."""
-    c2 = ipaddress.ip_address(v["c2"])
-    if not c2.is_global: return True                      # C2 nunca e IP privado
-    if any(c2 in n for n in WHITELIST): return True       # DNS publicos etc.
-    for ip in (v["cpe"], v["c2"]):
-        a = ipaddress.ip_address(ip)
-        if any(a in n for n in WL_TOTAL): return True
-        for net, lst in WL_PARCIAL.items():
-            if a in net and any((p == v["porta"]) and (pr is None or pr == v["proto"]) for p, pr in lst): return True
+    """True se o vetor NAO pode ser bloqueado.
+       No vetor: cpe = ORIGEM, c2 = DESTINO, porta = porta do DESTINO (C2). Porta de origem do CPE nao e rastreada."""
+    c2 = ipaddress.ip_address(v["c2"]); cpe = ipaddress.ip_address(v["cpe"])
+    if not c2.is_global: return True
+    if any(c2 in n for n in WHITELIST): return True
+    for w in WL:
+        # o IP da entrada casa com o lado indicado?
+        lado_ok = ((w["ip_lado"] in ("destino", "qualquer") and c2 in w["net"]) or
+                   (w["ip_lado"] in ("origem", "qualquer") and cpe in w["net"]))
+        if not lado_ok: continue
+        if w["porta"] is None: return True                       # bloco inteiro liberado
+        # entrada com porta: so libera se a porta casar no lado certo
+        if w["porta_lado"] == "origem": continue                  # porta de origem do CPE nao e conhecida -> nao casa
+        if w["porta"] == v.get("porta") and (w["proto"] is None or w["proto"] == v.get("proto")): return True
     return False
 
 # ---------------- GoBGP ----------------
