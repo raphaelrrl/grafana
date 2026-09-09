@@ -290,394 +290,18 @@
     },
     {
       "id": 5,
-      "type": "table",
+      "type": "marcusolsson-dynamictext-panel",
       "title": "REGRAS FLOWSPEC ATIVAS (vetor CPE -> C2 : porta / proto)",
-      "description": "Cada linha e UM fluxo especifico bloqueado (origem, destino, porta e protocolo) nas duas direcoes. Outros fluxos para o mesmo IP nao sao afetados. Copie a 'chave' para remover.",
+      "description": "Cada linha e UM fluxo bloqueado (origem, destino, porta, protocolo) nas duas direcoes. 'Liberar fluxo' retira a regra e libera so aquele C2:porta/proto por 7 dias; 'Liberar C2' libera o destino inteiro.",
       "gridPos": {
         "x": 0,
         "y": 7,
-        "w": 16,
-        "h": 11
+        "w": 24,
+        "h": 13
       },
       "datasource": {
         "type": "yesoreyeram-infinity-datasource",
         "uid": "f7ncx2q9wd8k1e"
-      },
-      "targets": [
-        {
-          "refId": "A",
-          "datasource": {
-            "type": "yesoreyeram-infinity-datasource",
-            "uid": "f7ncx2q9wd8k1e"
-          },
-          "type": "json",
-          "source": "url",
-          "format": "table",
-          "parser": "backend",
-          "url": "${api}/rules",
-          "url_options": {
-            "method": "GET",
-            "data": "",
-            "headers": [
-              {
-                "key": "X-Token",
-                "value": "${token}"
-              }
-            ]
-          },
-          "root_selector": "",
-          "columns": [
-            {
-              "selector": "chave",
-              "text": "chave",
-              "type": "string"
-            },
-            {
-              "selector": "cpe",
-              "text": "CPE (origem)",
-              "type": "string"
-            },
-            {
-              "selector": "c2",
-              "text": "C2 (destino)",
-              "type": "string"
-            },
-            {
-              "selector": "porta",
-              "text": "Porta",
-              "type": "number"
-            },
-            {
-              "selector": "proto",
-              "text": "Proto",
-              "type": "string"
-            },
-            {
-              "selector": "flows",
-              "text": "Flows",
-              "type": "number"
-            },
-            {
-              "selector": "fontes",
-              "text": "Fonte",
-              "type": "string"
-            },
-            {
-              "selector": "acao",
-              "text": "Acao",
-              "type": "string"
-            },
-            {
-              "selector": "desde",
-              "text": "Bloqueado em",
-              "type": "timestamp"
-            }
-          ],
-          "filters": [],
-          "global_query_id": ""
-        }
-      ],
-      "fieldConfig": {
-        "defaults": {
-          "custom": {
-            "align": "auto",
-            "cellOptions": {
-              "type": "auto"
-            },
-            "filterable": true
-          },
-          "color": {
-            "mode": "thresholds"
-          },
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "#ff5a5a",
-                "value": null
-              }
-            ]
-          }
-        },
-        "overrides": [
-          {
-            "matcher": {
-              "id": "byRegexp",
-              "options": "^chave$"
-            },
-            "properties": [
-              {
-                "id": "custom.width",
-                "value": 300
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byRegexp",
-              "options": "^C2 \\(destino\\)$"
-            },
-            "properties": [
-              {
-                "id": "custom.cellOptions",
-                "value": {
-                  "type": "color-text"
-                }
-              },
-              {
-                "id": "color",
-                "value": {
-                  "mode": "fixed",
-                  "fixedColor": "#ff5a5a"
-                }
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byRegexp",
-              "options": "^CPE \\(origem\\)$"
-            },
-            "properties": [
-              {
-                "id": "custom.cellOptions",
-                "value": {
-                  "type": "color-text"
-                }
-              },
-              {
-                "id": "color",
-                "value": {
-                  "mode": "fixed",
-                  "fixedColor": "#00c8ff"
-                }
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byRegexp",
-              "options": "^Flows$"
-            },
-            "properties": [
-              {
-                "id": "custom.cellOptions",
-                "value": {
-                  "type": "gauge",
-                  "mode": "gradient",
-                  "valueDisplayMode": "text"
-                }
-              },
-              {
-                "id": "color",
-                "value": {
-                  "mode": "continuous-RdYlGr"
-                }
-              },
-              {
-                "id": "min",
-                "value": 0
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byRegexp",
-              "options": "Bloqueado em"
-            },
-            "properties": [
-              {
-                "id": "unit",
-                "value": "dateTimeAsLocal"
-              }
-            ]
-          }
-        ]
-      },
-      "options": {
-        "showHeader": true,
-        "cellHeight": "sm",
-        "footer": {
-          "show": false,
-          "reducer": [
-            "sum"
-          ],
-          "fields": ""
-        }
-      },
-      "transformations": [
-        {
-          "id": "organize",
-          "options": {
-            "excludeByName": {},
-            "indexByName": {
-              "chave": 0,
-              "CPE (origem)": 1,
-              "C2 (destino)": 2,
-              "Porta": 3,
-              "Proto": 4,
-              "Flows": 5,
-              "Fonte": 6,
-              "Acao": 7,
-              "Bloqueado em": 8
-            },
-            "renameByName": {}
-          }
-        }
-      ]
-    },
-    {
-      "id": 6,
-      "type": "volkovlabs-form-panel",
-      "title": "REMOVER REGRA (liberar fluxo)",
-      "description": "Escolha a regra na lista e clique em Remover. Retira as duas regras (ida e volta) do GoBGP e poe o destino na whitelist pelo prazo.",
-      "gridPos": {
-        "x": 16,
-        "y": 7,
-        "w": 8,
-        "h": 11
-      },
-      "datasource": {
-        "type": "yesoreyeram-infinity-datasource",
-        "uid": "f7ncx2q9wd8k1e"
-      },
-      "options": {
-        "elements": [
-          {
-            "id": "chave",
-            "uid": "chave",
-            "title": "Regra",
-            "type": "select",
-            "value": "",
-            "section": "",
-            "width": 40,
-            "labelWidth": 10,
-            "unit": "",
-            "tooltip": "escolha a regra (CPE>C2:porta/proto)",
-            "disableIf": "",
-            "showIf": "",
-            "optionsSource": "Query",
-            "queryOptions": {
-              "source": "A",
-              "value": "chave",
-              "label": "chave"
-            },
-            "options": []
-          },
-          {
-            "id": "escopo",
-            "uid": "escopo",
-            "title": "Liberar",
-            "type": "select",
-            "value": "vetor",
-            "section": "",
-            "width": 30,
-            "labelWidth": 16,
-            "unit": "",
-            "tooltip": "",
-            "disableIf": "",
-            "showIf": "",
-            "options": [
-              {
-                "value": "vetor",
-                "label": "so este fluxo (C2:porta/proto)"
-              },
-              {
-                "value": "destino",
-                "label": "o destino C2 inteiro"
-              }
-            ]
-          },
-          {
-            "id": "motivo",
-            "uid": "motivo",
-            "title": "Motivo",
-            "type": "string",
-            "value": "falso positivo",
-            "section": "",
-            "width": 30,
-            "labelWidth": 16,
-            "unit": "",
-            "tooltip": "",
-            "disableIf": "",
-            "showIf": ""
-          },
-          {
-            "id": "dias",
-            "uid": "dias",
-            "title": "Nao rebloquear por (dias)",
-            "type": "number",
-            "value": 7,
-            "section": "",
-            "width": 30,
-            "labelWidth": 16,
-            "unit": "",
-            "tooltip": "",
-            "disableIf": "",
-            "showIf": "",
-            "min": 0,
-            "max": 365
-          }
-        ],
-        "initial": {
-          "method": "datasource",
-          "datasource": "",
-          "contentType": "application/json",
-          "code": "",
-          "highlight": false,
-          "highlightColor": "red",
-          "payload": {}
-        },
-        "update": {
-          "method": "POST",
-          "url": "${api}/rules/remove",
-          "contentType": "application/json",
-          "payloadMode": "all",
-          "header": [
-            {
-              "name": "X-Token",
-              "value": "${token}"
-            }
-          ],
-          "code": "",
-          "payload": {},
-          "confirm": false,
-          "updatedOnly": false
-        },
-        "layout": {
-          "variant": "single",
-          "orientation": "vertical",
-          "padding": 10
-        },
-        "submit": {
-          "text": "Remover regra",
-          "variant": "primary",
-          "icon": "check",
-          "backgroundColor": "#ff5a5a",
-          "foregroundColor": "#fff"
-        },
-        "reset": {
-          "text": "Limpar",
-          "variant": "hidden",
-          "icon": "process"
-        },
-        "saveDefault": {
-          "variant": "hidden",
-          "icon": "save",
-          "text": ""
-        },
-        "buttonGroup": {
-          "orientation": "center",
-          "size": "md"
-        },
-        "sync": true,
-        "resetAction": {
-          "mode": "initial",
-          "code": "",
-          "payload": {}
-        },
-        "elementValueChanged": "",
-        "updateEnabled": "auto"
       },
       "targets": [
         {
@@ -717,459 +341,74 @@
               "selector": "c2",
               "text": "c2",
               "type": "string"
-            }
-          ],
-          "filters": [],
-          "global_query_id": ""
-        }
-      ]
-    },
-    {
-      "id": 7,
-      "type": "table",
-      "title": "WHITELIST (nunca bloquear)",
-      "description": "Entradas da whitelist. Use o 'id' para remover. Porta vazia = bloco inteiro liberado; com porta = so aquela porta/protocolo.",
-      "gridPos": {
-        "x": 0,
-        "y": 18,
-        "w": 16,
-        "h": 11
-      },
-      "datasource": {
-        "type": "yesoreyeram-infinity-datasource",
-        "uid": "f7ncx2q9wd8k1e"
-      },
-      "targets": [
-        {
-          "refId": "A",
-          "datasource": {
-            "type": "yesoreyeram-infinity-datasource",
-            "uid": "f7ncx2q9wd8k1e"
-          },
-          "type": "json",
-          "source": "url",
-          "format": "table",
-          "parser": "backend",
-          "url": "${api}/whitelist",
-          "url_options": {
-            "method": "GET",
-            "data": "",
-            "headers": [
-              {
-                "key": "X-Token",
-                "value": "${token}"
-              }
-            ]
-          },
-          "root_selector": "",
-          "columns": [
-            {
-              "selector": "id",
-              "text": "id",
-              "type": "string"
-            },
-            {
-              "selector": "cidr",
-              "text": "CIDR",
-              "type": "string"
             },
             {
               "selector": "porta",
-              "text": "Porta",
+              "text": "porta",
               "type": "number"
             },
             {
               "selector": "proto",
-              "text": "Proto",
+              "text": "proto",
               "type": "string"
             },
             {
-              "selector": "motivo",
-              "text": "Motivo",
+              "selector": "flows",
+              "text": "flows",
+              "type": "number"
+            },
+            {
+              "selector": "fontes",
+              "text": "fontes",
               "type": "string"
             },
             {
-              "selector": "criado_em",
-              "text": "Criado em",
-              "type": "timestamp"
-            },
-            {
-              "selector": "ate",
-              "text": "Expira em",
-              "type": "timestamp"
-            },
-            {
-              "selector": "ativo",
-              "text": "Ativa",
-              "type": "boolean"
+              "selector": "desde",
+              "text": "desde",
+              "type": "string"
             }
           ],
           "filters": [],
           "global_query_id": ""
         }
       ],
-      "fieldConfig": {
-        "defaults": {
-          "custom": {
-            "align": "auto",
-            "cellOptions": {
-              "type": "auto"
-            },
-            "filterable": true
-          },
-          "color": {
-            "mode": "thresholds"
-          },
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "#ff5a5a",
-                "value": null
-              }
-            ]
-          }
-        },
-        "overrides": [
-          {
-            "matcher": {
-              "id": "byRegexp",
-              "options": "^CIDR$"
-            },
-            "properties": [
-              {
-                "id": "custom.cellOptions",
-                "value": {
-                  "type": "color-text"
-                }
-              },
-              {
-                "id": "color",
-                "value": {
-                  "mode": "fixed",
-                  "fixedColor": "#9be15d"
-                }
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byRegexp",
-              "options": "Criado em|Expira em"
-            },
-            "properties": [
-              {
-                "id": "unit",
-                "value": "dateTimeAsLocal"
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byRegexp",
-              "options": "^id$"
-            },
-            "properties": [
-              {
-                "id": "custom.width",
-                "value": 110
-              }
-            ]
-          }
-        ]
-      },
       "options": {
-        "showHeader": true,
-        "cellHeight": "sm",
-        "footer": {
-          "show": false,
-          "reducer": [
-            "sum"
-          ],
-          "fields": ""
-        }
-      },
-      "transformations": [
-        {
-          "id": "organize",
-          "options": {
-            "excludeByName": {},
-            "indexByName": {
-              "CIDR": 0,
-              "Porta": 1,
-              "Proto": 2,
-              "Motivo": 3,
-              "Ativa": 4,
-              "Expira em": 5,
-              "Criado em": 6,
-              "id": 7
-            },
-            "renameByName": {}
-          }
-        }
-      ]
-    },
-    {
-      "id": 8,
-      "type": "volkovlabs-form-panel",
-      "title": "ADICIONAR A WHITELIST",
-      "description": "Destino/porta que nunca sera mitigado. Se ja houver regra ativa cobrindo o bloco (sem porta), ela e retirada na hora.",
-      "gridPos": {
-        "x": 16,
-        "y": 18,
-        "w": 8,
-        "h": 11
-      },
-      "datasource": {
-        "type": "datasource",
-        "uid": "grafana"
-      },
-      "options": {
-        "elements": [
-          {
-            "id": "cidr",
-            "uid": "cidr",
-            "title": "IP ou bloco",
-            "type": "string",
-            "value": "",
-            "section": "",
-            "width": 30,
-            "labelWidth": 16,
-            "unit": "",
-            "tooltip": "ex.: 200.1.2.0/24 ou 200.1.2.7/32",
-            "disableIf": "",
-            "showIf": ""
-          },
-          {
-            "id": "porta",
-            "uid": "porta",
-            "title": "Porta (vazio = todas)",
-            "type": "string",
-            "value": "",
-            "section": "",
-            "width": 30,
-            "labelWidth": 16,
-            "unit": "",
-            "tooltip": "",
-            "disableIf": "",
-            "showIf": ""
-          },
-          {
-            "id": "proto",
-            "uid": "proto",
-            "title": "Protocolo",
-            "type": "select",
-            "value": "",
-            "section": "",
-            "width": 30,
-            "labelWidth": 16,
-            "unit": "",
-            "tooltip": "",
-            "disableIf": "",
-            "showIf": "",
-            "options": [
-              {
-                "value": "",
-                "label": "qualquer"
-              },
-              {
-                "value": "tcp",
-                "label": "TCP"
-              },
-              {
-                "value": "udp",
-                "label": "UDP"
-              }
-            ],
-            "optionsSource": "Custom"
-          },
-          {
-            "id": "motivo",
-            "uid": "motivo",
-            "title": "Motivo",
-            "type": "string",
-            "value": "",
-            "section": "",
-            "width": 30,
-            "labelWidth": 16,
-            "unit": "",
-            "tooltip": "",
-            "disableIf": "",
-            "showIf": ""
-          },
-          {
-            "id": "dias",
-            "uid": "dias",
-            "title": "Validade em dias (0 = permanente)",
-            "type": "string",
-            "value": "0",
-            "section": "",
-            "width": 30,
-            "labelWidth": 16,
-            "unit": "",
-            "tooltip": "",
-            "disableIf": "",
-            "showIf": ""
-          }
+        "renderMode": "allRows",
+        "content": "<div class=\"fs-wrap\" data-api=\"${api}\" data-token=\"${token}\">\n<table class=\"fs-tab\">\n<thead><tr><th>CPE (origem)</th><th>C2 (destino)</th><th>Porta</th><th>Proto</th><th>Flows</th><th>Fonte</th><th>Bloqueado em</th><th></th></tr></thead>\n<tbody>\n{{#each data}}\n<tr>\n  <td class=\"fs-cpe\">{{cpe}}</td>\n  <td class=\"fs-c2\">{{c2}}</td>\n  <td>{{porta}}</td>\n  <td>{{proto}}</td>\n  <td class=\"fs-num\">{{flows}}</td>\n  <td class=\"fs-dim\">{{fontes}}</td>\n  <td class=\"fs-dim\">{{desde}}</td>\n  <td class=\"fs-act\">\n    <button class=\"fs-btn\" data-acao=\"remover\" data-chave=\"{{chave}}\" data-escopo=\"vetor\" title=\"Libera so este fluxo (C2:porta/proto) por 7 dias\">Liberar fluxo</button>\n    <button class=\"fs-btn fs-btn--warn\" data-acao=\"remover\" data-chave=\"{{chave}}\" data-escopo=\"destino\" title=\"Libera o C2 inteiro por 7 dias\">Liberar C2</button>\n  </td>\n</tr>\n{{/each}}\n</tbody></table>\n<div class=\"fs-msg\" id=\"fs-msg\"></div>\n</div>\n",
+        "defaultContent": "<div class=\"fs-wrap fs-dim\">Nenhum registro.</div>",
+        "styles": ".fs-wrap{font-family:ui-monospace,\"JetBrains Mono\",Menlo,Consolas,monospace;font-size:12px;color:#cfd8e3;}\n.fs-tab{width:100%;border-collapse:collapse;}\n.fs-tab th{text-align:left;color:#8fa3b3;font-weight:600;letter-spacing:.08em;font-size:11px;padding:6px 8px;border-bottom:1px solid rgba(255,255,255,.12);}\n.fs-tab td{padding:5px 8px;border-bottom:1px solid rgba(255,255,255,.06);white-space:nowrap;}\n.fs-tab tr:hover td{background:rgba(0,200,255,.05);}\n.fs-cpe{color:#00c8ff;}.fs-c2{color:#ff5a5a;}.fs-num{text-align:right;}.fs-dim{color:#8fa3b3;}.fs-act{text-align:right;}\n.fs-btn{font-family:inherit;font-size:11px;letter-spacing:.06em;padding:4px 10px;border-radius:5px;border:1px solid rgba(0,200,255,.4);background:rgba(0,200,255,.12);color:#eef4f8;cursor:pointer;margin-left:6px;}\n.fs-btn:hover{background:rgba(0,200,255,.28);}\n.fs-btn--warn{border-color:rgba(255,90,90,.45);background:rgba(255,90,90,.12);}.fs-btn--warn:hover{background:rgba(255,90,90,.3);}\n.fs-btn--ok{border-color:rgba(155,225,93,.45);background:rgba(155,225,93,.14);}.fs-btn--ok:hover{background:rgba(155,225,93,.3);}\n.fs-btn:disabled{opacity:.5;cursor:wait;}\n.fs-form{display:flex;flex-wrap:wrap;gap:10px;align-items:flex-end;padding:8px 8px 12px;margin-bottom:8px;border:1px solid rgba(255,255,255,.1);border-radius:8px;background:rgba(8,12,18,.5);}\n.fs-form-title{width:100%;color:#9be15d;font-size:11px;letter-spacing:.14em;}\n.fs-form label{display:flex;flex-direction:column;gap:4px;color:#8fa3b3;font-size:11px;}\n.fs-form input,.fs-form select{font-family:inherit;font-size:12px;padding:5px 8px;border-radius:5px;border:1px solid rgba(255,255,255,.16);background:rgba(255,255,255,.05);color:#eef4f8;min-width:150px;}\n.fs-msg{margin-top:8px;min-height:16px;font-size:11px;}\n.fs-msg.ok{color:#9be15d;}.fs-msg.err{color:#ff5a5a;}\n",
+        "afterRender": "(function(){\n  var root=(typeof context!=='undefined'&&context.element)?context.element:document;\n  var wrap=root.querySelector('.fs-wrap'); if(!wrap||wrap.dataset.fsBound) return; wrap.dataset.fsBound='1';\n  var API=wrap.dataset.api, TOKEN=wrap.dataset.token, msg=root.querySelector('#fs-msg');\n  function say(t,ok){ if(msg){msg.textContent=t; msg.className='fs-msg '+(ok?'ok':'err');} }\n  function refresh(){ try{ if(typeof context!=='undefined'&&context.grafana&&context.grafana.refresh) context.grafana.refresh(); }catch(e){} }\n  function post(path,body,btn){\n    if(btn) btn.disabled=true;\n    return fetch(API+path,{method:'POST',headers:{'Content-Type':'application/json','X-Token':TOKEN},body:JSON.stringify(body)})\n      .then(function(r){return r.json().then(function(j){return {ok:r.ok,j:j};});})\n      .then(function(x){ if(x.ok){say('OK: '+JSON.stringify(x.j),true); setTimeout(refresh,600);} else say('Erro: '+(x.j.erro||JSON.stringify(x.j)),false); })\n      .catch(function(e){ say('Falha de rede: '+e,false); })\n      .finally(function(){ if(btn) btn.disabled=false; });\n  }\n  wrap.addEventListener('click',function(e){\n    var b=e.target.closest&&e.target.closest('button[data-acao]'); if(!b) return;\n    e.preventDefault();\n    var a=b.dataset.acao;\n    if(a==='remover'){ if(!confirm('Liberar '+(b.dataset.escopo==='destino'?'o C2 inteiro':'este fluxo')+' de '+b.dataset.chave+' ?')) return;\n      post('/rules/remove',{chave:b.dataset.chave,escopo:b.dataset.escopo,motivo:'liberado pelo operador',dias:7},b); }\n    else if(a==='wl-add'){ var g=function(id){var el=root.querySelector('#'+id);return el?el.value.trim():'';};\n      if(!g('wl-cidr')){say('Informe o IP/CIDR',false);return;}\n      post('/whitelist/add',{cidr:g('wl-cidr'),porta:g('wl-porta'),proto:g('wl-proto'),motivo:g('wl-motivo'),dias:g('wl-dias')||'0'},b); }\n    else if(a==='wl-del'){ if(!confirm('Remover a entrada da whitelist?')) return; post('/whitelist/remove',{id:b.dataset.id},b); }\n  });\n})();\n",
+        "helpers": "",
+        "status": "",
+        "wrap": false,
+        "contentPartials": [],
+        "externalScripts": [],
+        "externalStyles": [],
+        "editors": [
+          "styles",
+          "afterRender"
         ],
-        "initial": {
-          "method": "-",
-          "contentType": "application/json",
-          "code": "",
-          "highlight": false,
-          "highlightColor": "red",
-          "payload": {}
-        },
-        "update": {
-          "method": "POST",
-          "url": "${api}/whitelist/add",
-          "contentType": "application/json",
-          "payloadMode": "all",
-          "header": [
-            {
-              "name": "X-Token",
-              "value": "${token}"
-            }
-          ],
-          "code": "",
-          "payload": {},
-          "confirm": false,
-          "updatedOnly": false
-        },
-        "layout": {
-          "variant": "single",
-          "orientation": "vertical",
-          "padding": 10
-        },
-        "submit": {
-          "text": "Adicionar",
-          "variant": "primary",
-          "icon": "check",
-          "backgroundColor": "#ff5a5a",
-          "foregroundColor": "#fff"
-        },
-        "reset": {
-          "text": "Limpar",
-          "variant": "hidden",
-          "icon": "process"
-        },
-        "saveDefault": {
-          "variant": "hidden",
-          "icon": "save",
-          "text": ""
-        },
-        "buttonGroup": {
-          "orientation": "center",
-          "size": "md"
-        },
-        "sync": true,
-        "resetAction": {
-          "mode": "initial",
-          "code": "",
-          "payload": {}
-        },
-        "elementValueChanged": "",
-        "updateEnabled": "auto"
+        "editor": {
+          "format": "auto",
+          "height": 200,
+          "language": "html"
+        }
       }
     },
     {
-      "id": 9,
-      "type": "volkovlabs-form-panel",
-      "title": "REMOVER DA WHITELIST",
-      "description": "Remove a entrada; o IP volta a ser elegivel a bloqueio na proxima rodada do c2flowspec.",
+      "id": 6,
+      "type": "marcusolsson-dynamictext-panel",
+      "title": "WHITELIST (nunca bloquear)",
+      "description": "Sem porta libera o bloco inteiro; com porta/proto libera so aquele fluxo. Entradas com validade expiram sozinhas.",
       "gridPos": {
         "x": 0,
-        "y": 29,
-        "w": 8,
-        "h": 6
+        "y": 20,
+        "w": 24,
+        "h": 13
       },
       "datasource": {
         "type": "yesoreyeram-infinity-datasource",
         "uid": "f7ncx2q9wd8k1e"
-      },
-      "options": {
-        "elements": [
-          {
-            "id": "id",
-            "uid": "id",
-            "title": "Entrada",
-            "type": "select",
-            "optionsSource": "Query",
-            "queryOptions": {
-              "source": "A",
-              "value": "id",
-              "label": "cidr"
-            },
-            "options": [],
-            "value": "",
-            "section": "",
-            "width": 40,
-            "labelWidth": 10,
-            "unit": "",
-            "tooltip": "",
-            "disableIf": "",
-            "showIf": ""
-          }
-        ],
-        "initial": {
-          "method": "datasource",
-          "datasource": "",
-          "contentType": "application/json",
-          "code": "",
-          "highlight": false,
-          "highlightColor": "red",
-          "payload": {}
-        },
-        "update": {
-          "method": "POST",
-          "url": "${api}/whitelist/remove",
-          "contentType": "application/json",
-          "payloadMode": "all",
-          "header": [
-            {
-              "name": "X-Token",
-              "value": "${token}"
-            }
-          ],
-          "code": "",
-          "payload": {},
-          "confirm": false,
-          "updatedOnly": false
-        },
-        "layout": {
-          "variant": "single",
-          "orientation": "vertical",
-          "padding": 10
-        },
-        "submit": {
-          "text": "Remover",
-          "variant": "primary",
-          "icon": "check",
-          "backgroundColor": "#ff5a5a",
-          "foregroundColor": "#fff"
-        },
-        "reset": {
-          "text": "Limpar",
-          "variant": "hidden",
-          "icon": "process"
-        },
-        "saveDefault": {
-          "variant": "hidden",
-          "icon": "save",
-          "text": ""
-        },
-        "buttonGroup": {
-          "orientation": "center",
-          "size": "md"
-        },
-        "sync": true,
-        "resetAction": {
-          "mode": "initial",
-          "code": "",
-          "payload": {}
-        },
-        "elementValueChanged": "",
-        "updateEnabled": "auto"
       },
       "targets": [
         {
@@ -1204,12 +443,59 @@
               "selector": "cidr",
               "text": "cidr",
               "type": "string"
+            },
+            {
+              "selector": "porta",
+              "text": "porta",
+              "type": "string"
+            },
+            {
+              "selector": "proto",
+              "text": "proto",
+              "type": "string"
+            },
+            {
+              "selector": "motivo",
+              "text": "motivo",
+              "type": "string"
+            },
+            {
+              "selector": "ate",
+              "text": "ate",
+              "type": "string"
+            },
+            {
+              "selector": "ativo",
+              "text": "ativo",
+              "type": "string"
             }
           ],
           "filters": [],
           "global_query_id": ""
         }
-      ]
+      ],
+      "options": {
+        "renderMode": "allRows",
+        "content": "<div class=\"fs-wrap\" data-api=\"${api}\" data-token=\"${token}\">\n<div class=\"fs-form\">\n  <div class=\"fs-form-title\">ADICIONAR A WHITELIST</div>\n  <label>IP ou bloco (CIDR) <input id=\"wl-cidr\" placeholder=\"200.1.2.0/24\"></label>\n  <label>Porta (vazio = todas) <input id=\"wl-porta\" placeholder=\"53\"></label>\n  <label>Protocolo <select id=\"wl-proto\"><option value=\"\">qualquer</option><option value=\"tcp\">TCP</option><option value=\"udp\">UDP</option></select></label>\n  <label>Motivo <input id=\"wl-motivo\" placeholder=\"resolver do cliente\"></label>\n  <label>Validade (dias, 0 = permanente) <input id=\"wl-dias\" value=\"0\"></label>\n  <button class=\"fs-btn fs-btn--ok\" data-acao=\"wl-add\">Adicionar</button>\n</div>\n<table class=\"fs-tab\">\n<thead><tr><th>CIDR</th><th>Porta</th><th>Proto</th><th>Motivo</th><th>Expira</th><th>Ativa</th><th></th></tr></thead>\n<tbody>\n{{#each data}}\n<tr>\n  <td class=\"fs-cpe\">{{cidr}}</td><td>{{porta}}</td><td>{{proto}}</td><td class=\"fs-dim\">{{motivo}}</td><td class=\"fs-dim\">{{ate}}</td><td>{{ativo}}</td>\n  <td class=\"fs-act\"><button class=\"fs-btn fs-btn--warn\" data-acao=\"wl-del\" data-id=\"{{id}}\">Remover</button></td>\n</tr>\n{{/each}}\n</tbody></table>\n<div class=\"fs-msg\" id=\"fs-msg\"></div>\n</div>\n",
+        "defaultContent": "<div class=\"fs-wrap fs-dim\">Nenhum registro.</div>",
+        "styles": ".fs-wrap{font-family:ui-monospace,\"JetBrains Mono\",Menlo,Consolas,monospace;font-size:12px;color:#cfd8e3;}\n.fs-tab{width:100%;border-collapse:collapse;}\n.fs-tab th{text-align:left;color:#8fa3b3;font-weight:600;letter-spacing:.08em;font-size:11px;padding:6px 8px;border-bottom:1px solid rgba(255,255,255,.12);}\n.fs-tab td{padding:5px 8px;border-bottom:1px solid rgba(255,255,255,.06);white-space:nowrap;}\n.fs-tab tr:hover td{background:rgba(0,200,255,.05);}\n.fs-cpe{color:#00c8ff;}.fs-c2{color:#ff5a5a;}.fs-num{text-align:right;}.fs-dim{color:#8fa3b3;}.fs-act{text-align:right;}\n.fs-btn{font-family:inherit;font-size:11px;letter-spacing:.06em;padding:4px 10px;border-radius:5px;border:1px solid rgba(0,200,255,.4);background:rgba(0,200,255,.12);color:#eef4f8;cursor:pointer;margin-left:6px;}\n.fs-btn:hover{background:rgba(0,200,255,.28);}\n.fs-btn--warn{border-color:rgba(255,90,90,.45);background:rgba(255,90,90,.12);}.fs-btn--warn:hover{background:rgba(255,90,90,.3);}\n.fs-btn--ok{border-color:rgba(155,225,93,.45);background:rgba(155,225,93,.14);}.fs-btn--ok:hover{background:rgba(155,225,93,.3);}\n.fs-btn:disabled{opacity:.5;cursor:wait;}\n.fs-form{display:flex;flex-wrap:wrap;gap:10px;align-items:flex-end;padding:8px 8px 12px;margin-bottom:8px;border:1px solid rgba(255,255,255,.1);border-radius:8px;background:rgba(8,12,18,.5);}\n.fs-form-title{width:100%;color:#9be15d;font-size:11px;letter-spacing:.14em;}\n.fs-form label{display:flex;flex-direction:column;gap:4px;color:#8fa3b3;font-size:11px;}\n.fs-form input,.fs-form select{font-family:inherit;font-size:12px;padding:5px 8px;border-radius:5px;border:1px solid rgba(255,255,255,.16);background:rgba(255,255,255,.05);color:#eef4f8;min-width:150px;}\n.fs-msg{margin-top:8px;min-height:16px;font-size:11px;}\n.fs-msg.ok{color:#9be15d;}.fs-msg.err{color:#ff5a5a;}\n",
+        "afterRender": "(function(){\n  var root=(typeof context!=='undefined'&&context.element)?context.element:document;\n  var wrap=root.querySelector('.fs-wrap'); if(!wrap||wrap.dataset.fsBound) return; wrap.dataset.fsBound='1';\n  var API=wrap.dataset.api, TOKEN=wrap.dataset.token, msg=root.querySelector('#fs-msg');\n  function say(t,ok){ if(msg){msg.textContent=t; msg.className='fs-msg '+(ok?'ok':'err');} }\n  function refresh(){ try{ if(typeof context!=='undefined'&&context.grafana&&context.grafana.refresh) context.grafana.refresh(); }catch(e){} }\n  function post(path,body,btn){\n    if(btn) btn.disabled=true;\n    return fetch(API+path,{method:'POST',headers:{'Content-Type':'application/json','X-Token':TOKEN},body:JSON.stringify(body)})\n      .then(function(r){return r.json().then(function(j){return {ok:r.ok,j:j};});})\n      .then(function(x){ if(x.ok){say('OK: '+JSON.stringify(x.j),true); setTimeout(refresh,600);} else say('Erro: '+(x.j.erro||JSON.stringify(x.j)),false); })\n      .catch(function(e){ say('Falha de rede: '+e,false); })\n      .finally(function(){ if(btn) btn.disabled=false; });\n  }\n  wrap.addEventListener('click',function(e){\n    var b=e.target.closest&&e.target.closest('button[data-acao]'); if(!b) return;\n    e.preventDefault();\n    var a=b.dataset.acao;\n    if(a==='remover'){ if(!confirm('Liberar '+(b.dataset.escopo==='destino'?'o C2 inteiro':'este fluxo')+' de '+b.dataset.chave+' ?')) return;\n      post('/rules/remove',{chave:b.dataset.chave,escopo:b.dataset.escopo,motivo:'liberado pelo operador',dias:7},b); }\n    else if(a==='wl-add'){ var g=function(id){var el=root.querySelector('#'+id);return el?el.value.trim():'';};\n      if(!g('wl-cidr')){say('Informe o IP/CIDR',false);return;}\n      post('/whitelist/add',{cidr:g('wl-cidr'),porta:g('wl-porta'),proto:g('wl-proto'),motivo:g('wl-motivo'),dias:g('wl-dias')||'0'},b); }\n    else if(a==='wl-del'){ if(!confirm('Remover a entrada da whitelist?')) return; post('/whitelist/remove',{id:b.dataset.id},b); }\n  });\n})();\n",
+        "helpers": "",
+        "status": "",
+        "wrap": false,
+        "contentPartials": [],
+        "externalScripts": [],
+        "externalStyles": [],
+        "editors": [
+          "styles",
+          "afterRender"
+        ],
+        "editor": {
+          "format": "auto",
+          "height": 200,
+          "language": "html"
+        }
+      }
     }
   ],
   "schemaVersion": 41,
