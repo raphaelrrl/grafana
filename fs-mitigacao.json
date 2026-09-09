@@ -157,8 +157,8 @@
           "root_selector": "",
           "columns": [
             {
-              "selector": "ip",
-              "text": "ip",
+              "selector": "chave",
+              "text": "chave",
               "type": "string"
             }
           ],
@@ -498,13 +498,33 @@
           ],
           "fields": ""
         }
-      }
+      },
+      "transformations": [
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {},
+            "indexByName": {
+              "chave": 0,
+              "CPE (origem)": 1,
+              "C2 (destino)": 2,
+              "Porta": 3,
+              "Proto": 4,
+              "Flows": 5,
+              "Fonte": 6,
+              "Acao": 7,
+              "Bloqueado em": 8
+            },
+            "renameByName": {}
+          }
+        }
+      ]
     },
     {
       "id": 6,
       "type": "volkovlabs-form-panel",
       "title": "REMOVER REGRA (liberar fluxo)",
-      "description": "Retira as duas regras (ida e volta) do GoBGP e poe o destino na whitelist pelo prazo: so a porta/proto do fluxo, ou o C2 inteiro.",
+      "description": "Escolha a regra na lista e clique em Remover. Retira as duas regras (ida e volta) do GoBGP e poe o destino na whitelist pelo prazo.",
       "gridPos": {
         "x": 16,
         "y": 7,
@@ -512,24 +532,31 @@
         "h": 11
       },
       "datasource": {
-        "type": "datasource",
-        "uid": "grafana"
+        "type": "yesoreyeram-infinity-datasource",
+        "uid": "f7ncx2q9wd8k1e"
       },
       "options": {
         "elements": [
           {
             "id": "chave",
             "uid": "chave",
-            "title": "Chave da regra",
-            "type": "string",
+            "title": "Regra",
+            "type": "select",
             "value": "",
             "section": "",
-            "width": 30,
-            "labelWidth": 16,
+            "width": 40,
+            "labelWidth": 10,
             "unit": "",
-            "tooltip": "copie da coluna 'chave' da tabela (CPE>C2:porta/proto)",
+            "tooltip": "escolha a regra (CPE>C2:porta/proto)",
             "disableIf": "",
-            "showIf": ""
+            "showIf": "",
+            "optionsSource": "Query",
+            "queryOptions": {
+              "source": "A",
+              "value": "chave",
+              "label": "chave"
+            },
+            "options": []
           },
           {
             "id": "escopo",
@@ -587,7 +614,8 @@
           }
         ],
         "initial": {
-          "method": "-",
+          "method": "datasource",
+          "datasource": "",
           "contentType": "application/json",
           "code": "",
           "highlight": false,
@@ -659,7 +687,51 @@
         },
         "elementValueChanged": "",
         "updateEnabled": "manual"
-      }
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "yesoreyeram-infinity-datasource",
+            "uid": "f7ncx2q9wd8k1e"
+          },
+          "type": "json",
+          "source": "url",
+          "format": "table",
+          "parser": "backend",
+          "url": "${api}/rules",
+          "url_options": {
+            "method": "GET",
+            "data": "",
+            "headers": [
+              {
+                "key": "X-Token",
+                "value": "${token}"
+              }
+            ]
+          },
+          "root_selector": "",
+          "columns": [
+            {
+              "selector": "chave",
+              "text": "chave",
+              "type": "string"
+            },
+            {
+              "selector": "cpe",
+              "text": "cpe",
+              "type": "string"
+            },
+            {
+              "selector": "c2",
+              "text": "c2",
+              "type": "string"
+            }
+          ],
+          "filters": [],
+          "global_query_id": ""
+        }
+      ]
     },
     {
       "id": 7,
@@ -825,7 +897,26 @@
           ],
           "fields": ""
         }
-      }
+      },
+      "transformations": [
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {},
+            "indexByName": {
+              "CIDR": 0,
+              "Porta": 1,
+              "Proto": 2,
+              "Motivo": 3,
+              "Ativa": 4,
+              "Expira em": 5,
+              "Criado em": 6,
+              "id": 7
+            },
+            "renameByName": {}
+          }
+        }
+      ]
     },
     {
       "id": 8,
@@ -847,12 +938,12 @@
           {
             "id": "cidr",
             "uid": "cidr",
-            "title": "IP ou bloco (CIDR)",
+            "title": "IP ou bloco",
             "type": "string",
             "value": "",
             "section": "",
             "width": 30,
-            "labelWidth": 14,
+            "labelWidth": 16,
             "unit": "",
             "tooltip": "ex.: 200.1.2.0/24 ou 200.1.2.7/32",
             "disableIf": "",
@@ -861,18 +952,16 @@
           {
             "id": "porta",
             "uid": "porta",
-            "title": "Porta (opcional)",
-            "type": "number",
-            "value": 0,
+            "title": "Porta (vazio = todas)",
+            "type": "string",
+            "value": "",
             "section": "",
             "width": 30,
-            "labelWidth": 14,
+            "labelWidth": 16,
             "unit": "",
-            "tooltip": "0 = sem porta (libera o bloco inteiro)",
+            "tooltip": "",
             "disableIf": "",
-            "showIf": "",
-            "min": 0,
-            "max": 65535
+            "showIf": ""
           },
           {
             "id": "proto",
@@ -882,7 +971,7 @@
             "value": "",
             "section": "",
             "width": 30,
-            "labelWidth": 14,
+            "labelWidth": 16,
             "unit": "",
             "tooltip": "",
             "disableIf": "",
@@ -900,7 +989,8 @@
                 "value": "udp",
                 "label": "UDP"
               }
-            ]
+            ],
+            "optionsSource": "Custom"
           },
           {
             "id": "motivo",
@@ -910,7 +1000,7 @@
             "value": "",
             "section": "",
             "width": 30,
-            "labelWidth": 14,
+            "labelWidth": 16,
             "unit": "",
             "tooltip": "",
             "disableIf": "",
@@ -919,18 +1009,16 @@
           {
             "id": "dias",
             "uid": "dias",
-            "title": "Validade (dias)",
-            "type": "number",
-            "value": 0,
+            "title": "Validade em dias (0 = permanente)",
+            "type": "string",
+            "value": "0",
             "section": "",
             "width": 30,
-            "labelWidth": 14,
+            "labelWidth": 16,
             "unit": "",
-            "tooltip": "0 = permanente",
+            "tooltip": "",
             "disableIf": "",
-            "showIf": "",
-            "min": 0,
-            "max": 3650
+            "showIf": ""
           }
         ],
         "initial": {
@@ -1020,28 +1108,36 @@
         "h": 6
       },
       "datasource": {
-        "type": "datasource",
-        "uid": "grafana"
+        "type": "yesoreyeram-infinity-datasource",
+        "uid": "f7ncx2q9wd8k1e"
       },
       "options": {
         "elements": [
           {
             "id": "id",
             "uid": "id",
-            "title": "id da entrada",
-            "type": "string",
+            "title": "Entrada",
+            "type": "select",
+            "optionsSource": "Query",
+            "queryOptions": {
+              "source": "A",
+              "value": "id",
+              "label": "cidr"
+            },
+            "options": [],
             "value": "",
             "section": "",
-            "width": 30,
-            "labelWidth": 14,
+            "width": 40,
+            "labelWidth": 10,
             "unit": "",
-            "tooltip": "coluna 'id' da tabela acima",
+            "tooltip": "",
             "disableIf": "",
             "showIf": ""
           }
         ],
         "initial": {
-          "method": "-",
+          "method": "datasource",
+          "datasource": "",
           "contentType": "application/json",
           "code": "",
           "highlight": false,
@@ -1113,7 +1209,46 @@
         },
         "elementValueChanged": "",
         "updateEnabled": "manual"
-      }
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "yesoreyeram-infinity-datasource",
+            "uid": "f7ncx2q9wd8k1e"
+          },
+          "type": "json",
+          "source": "url",
+          "format": "table",
+          "parser": "backend",
+          "url": "${api}/whitelist",
+          "url_options": {
+            "method": "GET",
+            "data": "",
+            "headers": [
+              {
+                "key": "X-Token",
+                "value": "${token}"
+              }
+            ]
+          },
+          "root_selector": "",
+          "columns": [
+            {
+              "selector": "id",
+              "text": "id",
+              "type": "string"
+            },
+            {
+              "selector": "cidr",
+              "text": "cidr",
+              "type": "string"
+            }
+          ],
+          "filters": [],
+          "global_query_id": ""
+        }
+      ]
     }
   ],
   "schemaVersion": 41,

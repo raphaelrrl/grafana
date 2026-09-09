@@ -95,12 +95,14 @@ class H(BaseHTTPRequestHandler):
             try: cidr = valida_cidr((b.get("cidr") or "").strip())
             except Exception: return self._json(400, {"erro": "cidr invalido"})
             porta = b.get("porta"); proto = (b.get("proto") or "").lower() or None
-            if porta not in (None, "", 0):
+            if isinstance(porta, str): porta = porta.strip()
+            if porta not in (None, "", 0, "0"):
                 try: porta = int(porta); assert 1 <= porta <= 65535
                 except Exception: return self._json(400, {"erro": "porta invalida"})
             else: porta = None
             if proto and proto not in ("tcp", "udp"): return self._json(400, {"erro": "proto deve ser tcp ou udp"})
-            dias = int(b.get("dias") or 0)
+            try: dias = int(str(b.get("dias") or "0").strip() or 0)
+            except Exception: dias = 0
             wl = jload(WLFILE, [])
             wl.append({"id": uuid.uuid4().hex[:10], "cidr": cidr, "porta": porta, "proto": proto,
                        "motivo": b.get("motivo") or "", "criado_em": agora(),
